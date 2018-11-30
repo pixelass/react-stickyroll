@@ -62,3 +62,7 @@ typings/
 
 # rollup
 .rpt2_cache
+
+# deployment
+public
+**/dist
