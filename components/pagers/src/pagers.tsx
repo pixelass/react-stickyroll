@@ -1,0 +1,455 @@
+import React from "react";
+import styled, {css, StyledComponent} from "styled-components";
+import {ScrollConsumer} from "@stickyroll/context";
+
+/**
+ *
+ * @param {any} value
+ * @param {string} type
+ * @throws {?TypeError}
+ */
+export const assert = (value: any, type: string): void => {
+	const valueType = typeof value;
+	if (valueType !== type) {
+		throw new TypeError(`Expected "${type}" but "${valueType}" was received`);
+	}
+};
+
+/**
+ * @extends React.HTMLAttributes<HTMLAnchorElement>
+ * @typedef {object} IPagerProps<T>
+ * @property {boolean} [active]
+ * @property {boolean} [selected]
+ */
+export interface IPagerProps<T> extends React.HTMLAttributes<HTMLAnchorElement> {
+	active?: boolean;
+	selected?: boolean;
+}
+
+/**
+ * @typedef {IPagerProps<{}>} PagerProps
+ */
+export type PagerProps = IPagerProps<{}>;
+
+/**
+ * @type {StyledComponent<"a", {}, PagerProps>}
+ * @param {PagerProps} props
+ * @param {boolean} [props.active]
+ * @param {boolean} [props.selected]
+ * @return {React.ReactHTMLElement<HTMLAnchorElement>}
+ */
+export const Pager: StyledComponent<"a", {}, PagerProps> = styled.a`
+	position: relative;
+	z-index: 2;
+	height: var(--pager-size);
+	width: var(--pager-size);
+	margin: var(--pager-gap) 0.5rem;
+	visibility: visible;
+	border-radius: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: currentColor;
+	text-decoration: none;
+	background-clip: content-box;
+
+	${(props: PagerProps) => css`
+		color: var(--color);
+		background-color: ${props.selected ? "var(--pager-color-active)" : "var(--pager-color)"};
+		border: var(--stroke-width) solid ${props.active ? "var(--marker-color)" : "transparent"};
+
+		&:hover {
+			background-color: var(--pager-color-active);
+		}
+	`};
+`;
+
+/**
+ * @type {StyledComponent<"nav", {}>}
+ * @return {React.ReactHTMLElement<HTMLElement>}
+ */
+const StyledPagers: StyledComponent<"nav", {}> = styled.nav`
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	margin: calc(var(--pager-gap) * -1) -0.5rem;
+`;
+
+/**
+ * @typedef {object} IPagerWrapperProps
+ */
+export interface IPagerWrapperProps {
+	dark?: boolean;
+}
+
+/**
+ * @type {StyledComponent<"nav", {}>}
+ * @param {IPagerWrapperProps} props
+ * @param {boolean} [props.dark]
+ * @return {React.ReactHTMLElement<HTMLElement>}
+ */
+const PagerWrapper: StyledComponent<"div", {}, IPagerWrapperProps> = styled.div`
+	${(props: IPagerWrapperProps) => css`
+		--marker-width: var(--marker-size);
+		--marker-color: hsla(
+			var(--background-h),
+			var(--background-s),
+			calc(var(--background-l) ${props.dark ? "-" : "+"} 30%),
+			1
+		);
+		--pager-color: hsla(
+			var(--background-h),
+			var(--background-s),
+			calc(var(--background-l) ${props.dark ? "-" : "+"} 20%),
+			1
+		);
+		--pager-background-color: hsla(
+			var(--background-h),
+			var(--background-s),
+			calc(var(--background-l) ${props.dark ? "+" : "-"} 10%),
+			1
+		);
+		--pager-color-active: hsla(
+			var(--background-h),
+			var(--background-s),
+			calc(var(--background-l) ${props.dark ? "-" : "+"} 10%),
+			1
+		);
+	`};
+
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	margin: 0 0.5rem;
+	left: 0;
+	transform: translateY(-50%);
+	background-color: var(--pager-background-color);
+	border-radius: calc(var(--pager-size) / 2);
+`;
+
+/**
+ * @type {StyledComponent<"div", {}>}
+ * @return {React.ReactHTMLElement<HTMLElement>}
+ */
+export const StyledMarker: StyledComponent<"div", {}> = styled.div`
+	position: absolute;
+	z-index: 1;
+	top: calc((var(--pager-size) / 2) + var(--pager-gap));
+	left: calc(0.5rem + (var(--pager-size) - var(--marker-width)) / 2);
+	width: var(--marker-width);
+	background: var(--marker-color);
+	visibility: visible;
+
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+		display: block;
+		height: calc(var(--marker-width) / 2);
+		width: var(--marker-width);
+		left: 0;
+		background: inherit;
+	}
+
+	&::before {
+		bottom: 100%;
+		border-radius: calc(var(--marker-width) / 2) calc(var(--marker-width) / 2) 0 0;
+	}
+
+	&::after {
+		top: 100%;
+		border-radius: 0 0 calc(var(--marker-width) / 2) calc(var(--marker-width) / 2);
+	}
+`;
+
+/**
+ * @typedef {object} IMarkerProps
+ * @property {number} page
+ * @property {number} progress
+ */
+export interface IMarkerProps {
+	page: number;
+	progress: number;
+}
+
+/**
+ * @type {StyledComponent<"nav", {}>}
+ * @param {IMarkerProps} props
+ * @param {number} props.page
+ * @param {number} props.progress
+ * @return {React.ReactHTMLElement<HTMLElement>}
+ */
+export const Marker: React.FunctionComponent<IMarkerProps> = props => {
+	return (
+		<StyledMarker
+			style={{
+				height: `calc(${props.progress} * (var(--pager-gap) * 2 + var(--pager-size)) + ${
+					props.page
+				} * (var(--pager-gap) * 2 + var(--pager-size)))`
+			}}
+		/>
+	);
+};
+
+/**
+ * @type {StyledComponent<"svg", {}>}
+ * @return {React.ReactSVGElement<SVGSVGElement>}
+ */
+export const Icon: StyledComponent<"svg", {}> = styled.svg.attrs({
+	viewBox: "0 0 24 24"
+})`
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: currentColor;
+`;
+
+/**
+ * @type {StyledComponent<"a", {}>}
+ * @return {React.ReactHTMLElement<HTMLAnchorElement>}
+ */
+export const SkipLink: StyledComponent<"a", {}> = styled.a`
+	position: absolute;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	color: currentColor;
+	font-size: 1rem;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+`;
+
+/**
+ * @typedef {object} IScrollOptions
+ * @property {boolean} noFocus
+ * @property {boolean} noHash
+ */
+export interface IScrollToOptions {
+	noFocus?: boolean;
+	noHash?: boolean;
+}
+
+/**
+ * @param {string} hash
+ * @param {HTMLElement} target
+ * @param {IScrollToOptions} [options={}]
+ * @return {void}
+ */
+const scrollTo = (hash: string, target: HTMLElement, options: IScrollToOptions = {}): void => {
+	if (!options.noHash) {
+		window.location.hash = hash;
+	}
+	const el = document.getElementById(hash);
+	if (!options.noFocus) {
+		target.focus();
+	}
+
+	// Attempted to implement smooth scrolling if the page changes by one position.
+	// The page jumps in several state changes
+	// @todo Fix unless a browser bug exists.
+	// const index = parseInt(hash.split("/").reverse()[0], 10) - 1;
+	// const diff = Math.abs(index - page);
+	// document.documentElement.style["scroll-behavior"] = diff > 1 ? "auto" : "smooth";
+
+	el.scrollIntoView(true);
+
+	// Optionally if Element.scrollIntoView does not return the expected result.
+	// const {top: tEl} = el.getBoundingClientRect();
+	// const {top: tBody} = document.body.getBoundingClientRect();
+	// const offset = tEl - tBody;
+	// window.scrollTo(0, offset);
+};
+
+/**
+ * @typedef {object} ISkipBaseProps
+ * @property {string} prefix
+ */
+export interface ISkipBaseProps {
+	prefix: string;
+}
+
+/**
+ * @type {React.FunctionComponent<ISkipBaseProps>}
+ * @param {ISkipBaseProps} props
+ * @param {string} props.prefix
+ * @return {React.ReactHTMLElement<HTMLAnchorElement>}
+ */
+export const SkipBase: React.FunctionComponent<ISkipBaseProps> = props => {
+	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
+		e.preventDefault();
+		scrollTo(`${props.prefix}/skip`, e.target as HTMLElement, {noFocus: true, noHash: true});
+	};
+
+	return (
+		<SkipLink href={`#${props.prefix}/skip`} onClick={handleClick}>
+			Skip
+		</SkipLink>
+	);
+};
+
+/**
+ * @extends IPagerWrapperProps
+ * @typedef {object} IPagerBaseProps
+ * @property {number} page
+ * @property {number} pages
+ * @property {string} prefix
+ * @property {number} progress
+ * @property {boolean} [showLabels]
+ */
+export interface IPagerBaseProps extends IPagerWrapperProps {
+	page: number;
+	pages: number;
+	prefix: string;
+	progress: number;
+	showLabels?: boolean;
+}
+
+
+/**
+ * @type {React.FunctionComponent<IPagerBaseProps>}
+ * @param {ISkipBaseProps} props
+ * @param {number} props.page
+ * @param {number} props.pages
+ * @param {string} props.prefix
+ * @param {number} props.progress
+ * @param {boolean} [props.showLabels]
+ * @return {React.ReactHTMLElement<HTMLElement>}
+ */
+export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
+	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
+		e.preventDefault();
+		const target = e.target as HTMLElement;
+		const id = target.getAttribute("href").replace(/^#/, "");
+		scrollTo(id, target);
+	};
+
+	return (
+		<React.Fragment>
+			<PagerWrapper dark={props.dark}>
+				<StyledPagers>
+					<Marker progress={props.progress} page={props.page} />
+					{Array(props.pages)
+						.fill(Boolean)
+						.map((x, i) => {
+							const id = `${props.prefix}/${i + 1}`;
+							return (
+								<Pager
+									key={id}
+									active={i <= props.page}
+									selected={i === props.page && props.progress < 1}
+									href={`#${id}`}
+									onClick={handleClick}>
+									{props.showLabels && i + 1}
+								</Pager>
+							);
+						})}
+					<Pager
+						href={`#${props.prefix}/${props.pages + 1}`}
+						selected={props.page === props.pages - 1 && props.progress === 1}
+						active={props.page === props.pages - 1 && props.progress === 1}
+						onClick={handleClick}>
+						{props.showLabels && (
+							<Icon>
+								<path d="M4,5V19L11,12M18,5V19H20V5M11,5V19L18,12" />
+							</Icon>
+						)}
+					</Pager>
+				</StyledPagers>
+			</PagerWrapper>
+		</React.Fragment>
+	);
+};
+
+/**
+ * @extends IPagerWrapperProps
+ * @typedef {object} IPagerBaseProps
+ * @property {number} page
+ * @property {number} pages
+ * @property {string} prefix
+ * @property {number} progress
+ * @property {boolean} [showLabels]
+ * @property {boolean} [useContext]
+ */
+export interface IPagersProps extends IPagerWrapperProps {
+	page?: number;
+	pages?: number;
+	prefix?: string;
+	progress?: number;
+	showLabels?: boolean;
+	useContext?: boolean;
+}
+
+/**
+ * @type {React.FunctionComponent<IPagersProps>}
+ * @param {ISkipBaseProps} props
+ * @param {number} props.page
+ * @param {number} props.pages
+ * @param {string} props.prefix
+ * @param {number} props.progress
+ * @param {boolean} [props.showLabels]
+ * @param {boolean} [props.useContext]
+ * @return {React.ReactHTMLElement<HTMLElement>}
+ */
+export const Pagers: React.FunctionComponent<IPagersProps> = props => {
+	if (props.useContext) {
+		return (
+			<ScrollConsumer>
+				{context => (
+					<PagerBase
+						dark={props.dark}
+						page={context.page}
+						pages={context.pages}
+						prefix={context.anchors}
+						progress={context.progress}
+						showLabels={props.showLabels}
+					/>
+				)}
+			</ScrollConsumer>
+		);
+	}
+	assert(props.page, "number");
+	assert(props.pages, "number");
+	assert(props.progress, "number");
+	assert(props.prefix, "string");
+	return (
+		<PagerBase
+			dark={props.dark}
+			page={props.page}
+			pages={props.pages}
+			prefix={props.prefix}
+			progress={props.progress}
+			showLabels={props.showLabels}
+		/>
+	);
+};
+
+/**
+ * @extends IPagerWrapperProps
+ * @typedef {object} ISkipProps
+ * @property {string} prefix
+ * @property {boolean} [useContext]
+ */
+export interface ISkipProps extends IPagerWrapperProps {
+	useContext?: boolean;
+	prefix?: string;
+}
+
+/**
+ * @type {React.FunctionComponent<IPagersProps>}
+ * @param {ISkipBaseProps} props
+ * @param {string} [props.prefix]
+ * @param {boolean} [props.useContext]
+ * @return {React.ReactHTMLElement<HTMLElement>}
+ */
+export const Skip: React.FunctionComponent<ISkipProps> = props => {
+	if (props.useContext) {
+		return <ScrollConsumer>{context => <SkipBase prefix={context.anchors} />}</ScrollConsumer>;
+	}
+	assert(props.prefix, "string");
+	return <SkipBase prefix={props.prefix} />;
+};

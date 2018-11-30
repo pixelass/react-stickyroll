@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"alwaysStrict": true,
+		"declaration": false,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"jsx": "react",
+		"lib": ["dom", "es2015", "es2017.object", "es6", "es7"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"pretty": true,
+		"removeComments": true,
+		"rootDir": "",
+		"sourceMap": true,
+		"strict": false,
+		"target": "esnext"
+	},
+	"exclude": ["node_modules"]
+}

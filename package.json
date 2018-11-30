@@ -1,0 +1,67 @@
+{
+	"name": "stickyroll",
+	"version": "1.0.0",
+	"private": true,
+	"repository": "git@github.com:stickyroll/react-stickyroll.git",
+	"license": "MIT",
+	"author": "Gregor Adams <greg@pixelass.com>",
+	"main": "index.js",
+	"workspaces": [
+		"components/*",
+		"stickyroll/*"
+	],
+	"scripts": {
+		"build": "imhotep build",
+		"clean": "lerna run clean",
+		"clear:cache": "rimraf \"**/.rpt2_cache\"",
+		"clear:modules": "rimraf node_modules",
+		"clear:yarn": "rimraf yarn.lock yarn-error.log",
+		"clear:docs": "rimraf docs",
+		"docs": "yarn clear:docs && typedoc --out docs stickyroll components --name Stickyroll --readme README.md --mode file --target ES5 --excludeExternals && touch docs/.nojekyll",
+		"refresh": "yarn clear:cache; yarn clean; lerna clean --yes",
+		"reinstall": "yarn clear:yarn && yarn clear:modules && yarn",
+		"reset": "yarn refresh && yarn reinstall",
+		"dev": "yarn rollup && concurrently \"yarn rollup:watch\" \"imhotep dev --hot\"",
+		"serve:docs": "serve docs",
+		"serve:public": "serve public",
+		"format": "lerna run format",
+		"lint": "lerna run lint",
+		"check-updates": "npx npm-check-updates -a; yarn lerna exec \"npx npm-check-updates -a\"",
+		"ocd": "npx sort-package-json; lerna exec npx sort-package-json",
+		"prebuild": "imhotep clean; yarn rollup",
+		"rollup": "lerna run build",
+		"rollup:watch": "lerna run watch --parallel",
+		"test": "lerna run test"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.1.6",
+		"@types/react": "16.7.9",
+		"@types/react-dom": "16.0.11",
+		"@types/styled-components": "4.1.2",
+		"babel-plugin-styled-components": "1.9.2",
+		"concurrently": "^4.1.0",
+		"cross-env": "5.2.0",
+		"enzyme": "3.7.0",
+		"enzyme-adapter-react-16": "1.7.0",
+		"imhotep": "^1.1.3",
+		"lerna": "^3.5.1",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3",
+		"rimraf": "^2.6.2",
+		"serve": "^10.1.1",
+		"styled-components": "4.1.2",
+		"stylelint-config-styled-components": "0.1.1",
+		"stylelint-processor-styled-components": "1.5.1",
+		"tslib": "^1.9.3",
+		"typedoc": "^0.13.0",
+		"typescript": "3.2.1",
+		"yarn-upgrade-all": "^0.5.0"
+	},
+	"engines": {
+		"node": ">=8",
+		"npm": ">=6"
+	},
+	"renovate": {
+		"major": false
+	}
+}
