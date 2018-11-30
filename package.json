@@ -11,7 +11,7 @@
 		"stickyroll/*"
 	],
 	"scripts": {
-		"build": "imhotep build",
+		"build": "cross-env NODE_ENV=production imhotep build",
 		"clean": "lerna run clean",
 		"clear:cache": "rimraf \"**/.rpt2_cache\"",
 		"clear:modules": "rimraf node_modules",
