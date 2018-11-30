@@ -142,8 +142,8 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	}
 
 	/**
-	 * Write the current scrollPosition to the internal state when the component is mounted.
-	 * This will allow getting the correct page and progress after mounting.
+	 * Call the onPage handler if it is defined every time the page changes.
+	 * No initial call!
 	 * @public
 	 */
 	public componentDidUpdate(oldProps, oldState) {
@@ -227,7 +227,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	);
 
 	/**
-	 * Scroll handler to parse the page and progress fromm the scroll position.
+	 * Scroll handler to parse the page and progress from the scroll position.
 	 * @private
 	 * @param {number} scrollY
 	 * @returns {void}
