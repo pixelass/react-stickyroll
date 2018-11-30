@@ -32,6 +32,12 @@ export type TChild = TRender<any>;
 export type TPageHandler = (page: number) => void;
 
 /**
+ * @typedef {function} TProgressHandler
+ * @returns {void}
+ */
+export type TProgressHandler = () => void;
+
+/**
  * @typedef {object} IFrameDefaultProps
  * @property {number} factor
  */
@@ -56,7 +62,9 @@ export interface IFrameProps {
 	children?: TChild;
 	className?: string;
 	factor?: number;
+	onEnd?: TProgressHandler;
 	onPage?: TPageHandler;
+	onStart?: TProgressHandler;
 	pages: number | Array<any>;
 	render?: TRenderer;
 	throttle?: number;
@@ -147,9 +155,15 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 * @public
 	 */
 	public componentDidUpdate(oldProps, oldState) {
-		if (oldState.page !== this.state.page) {
-			if (typeof this.props.onPage === "function") {
-				this.props.onPage(this.state.page);
+		const {page, scrollOffset} = this.state;
+		if (oldState.page !== page) {
+			this.props.onPage && this.props.onPage(this.state.page);
+		}
+		if (oldState.scrollOffset !== scrollOffset) {
+			if (scrollOffset === 0 && page === 0) {
+				this.props.onStart && this.props.onStart();
+			} else if (scrollOffset === 100 && page === this.pageCount - 1) {
+					this.props.onEnd && this.props.onEnd();
 			}
 		}
 	}
@@ -176,7 +190,6 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		}
 		const {page} = this.state;
 		const Wrapper = this.Wrapper;
-		const pageCount: number = Array.isArray(pages) ? (pages as Array<any>).length : (pages as number);
 
 		// Convert the scrollOffset from percent to a timeline [0,1]
 		const progress = this.state.scrollOffset / 100;
@@ -190,7 +203,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 						{render({
 							anchors,
 							page,
-							pages: pageCount,
+							pages: this.pageCount,
 							progress
 						})}
 					</Wrapper>
@@ -198,7 +211,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			// Context based
 			default:
 				return (
-					<ScrollProvider value={{anchors, page, pages: pageCount, progress}}>
+					<ScrollProvider value={{anchors, page, pages: this.pageCount, progress}}>
 						<Wrapper>
 							<ScrollConsumer>{children}</ScrollConsumer>
 						</Wrapper>
@@ -207,6 +220,10 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		}
 	}
 
+	private get pageCount(): number {
+		const {pages} = this.props;
+		return Array.isArray(pages) ? (pages as Array<any>).length : (pages as number)
+	}
 	/**
 	 * A Wrapper around the content to ensure the correct behavior during interaction.
 	 * Renders a sticky container, an event-tracker and optionally anchor targets to allow deep-links.
@@ -241,21 +258,20 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 
 		const {top, bottom}: ClientRect = this.tracker.current.getBoundingClientRect();
 		const {factor, pages} = this.props;
-		const pageCount: number = Array.isArray(pages) ? (pages as Array<any>).length : (pages as number);
 		const {innerHeight = 0}: Window = window;
 		const touchedTop: boolean = top <= 0;
 		const touchedEnd: boolean = bottom <= innerHeight;
 		if (touchedTop && !touchedEnd) {
 			page = Math.max(
 				0,
-				Math.min(pageCount - 1, Math.floor((top * (-1 / factor)) / innerHeight))
+				Math.min(this.pageCount - 1, Math.floor((top * (-1 / factor)) / innerHeight))
 			);
 			scrollOffset = Math.max(
 				0,
 				Math.min(100, (((top * -1) % (innerHeight * factor)) / innerHeight / factor) * 100)
 			);
 		} else if (touchedEnd) {
-			page = pageCount - 1;
+			page = this.pageCount - 1;
 			scrollOffset = 100;
 		}
 		this.setState({
@@ -270,8 +286,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 */
 	private get wrapperStyle(): React.CSSProperties {
 		const {pages, factor} = this.props;
-		const pageCount: number = Array.isArray(pages) ? (pages as Array<any>).length : (pages as number);
-		const vh = pageCount * 100 * factor + 100;
+		const vh = this.pageCount * 100 * factor + 100;
 		return {
 			height: `${vh}vh`,
 			margin: 0,
@@ -290,9 +305,8 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			return null;
 		}
 		const {factor, pages} = this.props;
-		const pageCount: number = Array.isArray(pages) ? (pages as Array<any>).length : (pages as number);
 		const vh = 100 * factor;
-		const triggers = Array(pageCount + 1)
+		const triggers = Array(this.pageCount + 1)
 			.fill(Boolean)
 			.map((x, i) => (
 				<span

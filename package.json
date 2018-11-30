@@ -5,10 +5,10 @@
 	"repository": "git@github.com:stickyroll/react-stickyroll.git",
 	"license": "MIT",
 	"author": "Gregor Adams <greg@pixelass.com>",
-	"main": "index.js",
 	"workspaces": [
 		"components/*",
-		"stickyroll/*"
+		"packages/*",
+		"src/*"
 	],
 	"scripts": {
 		"build": "cross-env NODE_ENV=production imhotep build",

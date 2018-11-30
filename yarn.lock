@@ -1596,9 +1596,9 @@
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
 "@types/node@*", "@types/node@^10.12.10":
-  version "10.12.10"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.10.tgz#4fa76e6598b7de3f0cb6ec3abacc4f59e5b3a2ce"
-  integrity sha512-8xZEYckCbUVgK8Eg7lf5Iy4COKJ5uXlnIOnePN0WUwSQggy9tolM+tDJf7wMOnT/JT/W9xDYIaYggt3mRV2O5w==
+  version "10.12.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.11.tgz#715c476c99a5f6898a1ae61caf9825e43c03912e"
+  integrity sha512-3iIOhNiPGTdcUNVCv9e5G7GotfvJJe2pc9w2UgDXlUwnxSZ3RgcUocIU+xYm+rTU54jIKih998QE4dMOyMN1NQ==
 
 "@types/pify@^3.0.2":
   version "3.0.2"
@@ -1635,10 +1635,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.7.9":
-  version "16.7.9"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.9.tgz#d98497eccbd7b97d0a6d76f9cd61895e95d30def"
-  integrity sha512-86Ih5rppq0r6V4Rr642wigwPKmizNvr+Ftc6sAAVZHUnCKBMU/3GkrT1ock/2+/NpOrwUpIIsmnFB2VUCdU5RA==
+"@types/react@*", "@types/react@^16.7.10":
+  version "16.7.10"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.10.tgz#a0ebd3af6632d6997506f6d1aac67fed8d0851b0"
+  integrity sha512-8EFSjCFLUA7JJQ6lJ9+9/99urIrdHACwH8GqPlYAPyIjxOkz2snkttOzItwUwXgqc2xg+r/IYW8M1J8WXax7xg==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -1647,6 +1647,14 @@
   version "16.7.7"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.7.tgz#1e5e23e7dd922968ed4b484cdec00a5402c9f31b"
   integrity sha512-dJiq7CKxD1XJ/GqmbnsQisFnzG4z5lntKBw9X9qeSrguxFbrrhGa8cK9s0ONBp8wL1EfGfofEDVhjen26U46pw==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@16.7.9":
+  version "16.7.9"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.9.tgz#d98497eccbd7b97d0a6d76f9cd61895e95d30def"
+  integrity sha512-86Ih5rppq0r6V4Rr642wigwPKmizNvr+Ftc6sAAVZHUnCKBMU/3GkrT1ock/2+/NpOrwUpIIsmnFB2VUCdU5RA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -6341,9 +6349,9 @@ global-dirs@^0.1.0:
     ini "^1.3.4"
 
 global-modules-path@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/global-modules-path/-/global-modules-path-2.3.0.tgz#b0e2bac6beac39745f7db5c59d26a36a0b94f7dc"
-  integrity sha512-HchvMJNYh9dGSCy8pOQ2O8u/hoXaL+0XhnrwH0RyLiSXMMTl9W3N6KUU73+JFOg5PGjtzl6VZzUQsnrpm7Szag==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/global-modules-path/-/global-modules-path-2.3.1.tgz#e541f4c800a1a8514a990477b267ac67525b9931"
+  integrity sha512-y+shkf4InI7mPRHSo2b/k6ix6+NLDtyccYv86whhxrSGX9wjPX1VMITmrDbE1eh7zkzhiWtW2sHklJYoQ62Cxg==
 
 global-modules@^1.0.0:
   version "1.0.0"
@@ -6588,9 +6596,9 @@ hash-base@^3.0.0:
     safe-buffer "^5.0.1"
 
 hash.js@^1.0.0, hash.js@^1.0.3:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.5.tgz#e38ab4b85dfb1e0c40fe9265c0e9b54854c23812"
-  integrity sha512-eWI5HG9Np+eHV1KQhisXWwM+4EPPYe5dFX1UZZH7k/E3JzDEazVH+VGlZi6R94ZqImq+A3D1mCEtrFIfg/E7sA==
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.6.tgz#6d22881dd6aff23c5333033c7d418f5ee366bfc8"
+  integrity sha512-fj4u34pebbF6PKHDfVsQtIJGwr1M0goQyiqJE8OXCjiAgInFfKb/BGjD2ht6K9gCXeG6k1ZIR7mQ+KZSsxXK3A==
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"

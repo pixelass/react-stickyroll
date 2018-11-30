@@ -1,26 +1,51 @@
 import {hot} from "imhotep";
 import React from "react";
-import {Frame as Stickyroll} from "@stickyroll/frame";
+import {Stickyroll, Listener} from "@stickyroll/stickyroll";
 import {Pagers, Skip} from "@stickyroll/pagers";
 import {Inner} from "@stickyroll/inner";
 import {GlobalStyle} from "./style";
 
-const pages = ["a", "b", "c", "d"];
+const rolls = ["a", "b", "c", "d"];
+
+const Debugger = (props: any) => props.useContext ? (<Listener>
+	{(context) => (
+		<pre>
+			<code>
+				{JSON.stringify(context, null, 2)}
+			</code>
+		</pre>
+	)}
+</Listener>) : (
+	<pre>
+		<code>
+			{JSON.stringify(props, null, 2)}
+		</code>
+	</pre>
+);
+
+const handlePage = (currentPage: number) => {
+	console.log(`Page: ${currentPage + 1} of ${rolls.length}`)
+};
+
+const handleStart = () => {
+	console.log(`Hit the start`)
+};
+
+const handleEnd = () => {
+	console.log(`Hit the end`)
+};
 
 class App extends React.Component {
 	public render() {
 		return (
 			<React.Fragment>
 				<GlobalStyle/>
-				<Stickyroll pages={pages} anchors={"!/examples"} onPage={p => {console.log(p)}}>
+				<Stickyroll pages={rolls} anchors={"!/examples"} onPage={handlePage} onStart={handleStart} onEnd={handleEnd}>
 					{(context) => (
 						<Inner withPagers={true}>
-							<Pagers useContext={true} showLabels={false}/>
-							<pre style={{fontSize: "3rem"}}>
-								<code>
-									{JSON.stringify({...context, content: pages[context.page]}, null, 2)}
-								</code>
-							</pre>
+							<Pagers useContext={true}/>
+							<Debugger useContext={true}/>
+							<Debugger {...context}/>
 							<Skip useContext={true}/>
 						</Inner>)}
 				</Stickyroll>
