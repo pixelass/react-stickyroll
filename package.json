@@ -20,7 +20,7 @@
 		"clear:modules": "rimraf node_modules",
 		"clear:yarn": "rimraf yarn.lock yarn-error.log",
 		"dev": "yarn rollup && concurrently \"yarn rollup:watch\" \"imhotep dev --hot\"",
-		"docs": "yarn clear:docs && typedoc --out docs stickyroll components --name Stickyroll --readme README.md --mode file --target ES5 --excludeExternals && touch docs/.nojekyll",
+		"docs": "yarn clear:docs && typedoc --out docs src packages components --name Stickyroll --readme README.md --mode file --target ES5 --excludeExternals && touch docs/.nojekyll",
 		"format": "lerna run format",
 		"lint": "lerna run lint",
 		"ocd": "npx sort-package-json; lerna exec npx sort-package-json",
