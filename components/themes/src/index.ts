@@ -13,7 +13,6 @@ export * from "./lime";
 export * from "./orange";
 export * from "./pink";
 export * from "./purple";
-export * from "./orange";
 export * from "./red";
 export * from "./teal";
 export * from "./theme";
