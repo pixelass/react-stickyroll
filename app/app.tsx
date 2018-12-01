@@ -6,9 +6,11 @@ import {dark, indigo, yellow, deepOrange} from "@stickyroll/themes";
 import {Pagers, Skip} from "@stickyroll/pagers";
 import {Inner, Content} from "@stickyroll/inner";
 import Pagenumber from "./pagenumber";
-import Progressbar from "./progresbar";
 import {GlobalStyle} from "./style";
 import Markus from "./markus";
+import {GithubCorner} from "./github-corner";
+import {DeviceSupport} from "./device-support";
+import {Header, Title} from "./elements";
 
 const Card = styled.section`
 	max-width: 60rem;
@@ -54,22 +56,11 @@ class App extends React.Component {
 		return (
 			<React.Fragment>
 				<GlobalStyle />
-				<Stickyroll
-					pages={2}
-					onPage={handlePage}
-					onStart={handleStart}
-					onEnd={handleEnd}>
-					{() => (
-						<Inner>
-							<Content>
-								<Debugger useContext={true} />
-								<Progressbar />
-								<br />
-								<Pagenumber />
-							</Content>
-						</Inner>
-					)}
-				</Stickyroll>
+				<Header>
+					<Title>Sickyroll</Title>
+					<GithubCorner />
+				</Header>
+				<DeviceSupport/>
 				<Card>
 					<h2>Using Bodymovin (a.k.a. lottie)</h2>
 					<p>
@@ -80,11 +71,11 @@ class App extends React.Component {
 					<p>
 						The animation was made by{" "}
 						<a href="https://twitter.com/MotionMarkus">Markus Magnusson</a>. You can
-						support him on
+						support him on{" "}
 						<a href="https://www.patreon.com/motionmarkus">patreon</a>
 					</p>
 				</Card>
-				<Stickyroll pages={1} factor={4} anchors={"!/bodymovin"}>
+				<Stickyroll pages={1} factor={8} anchors={"!/bodymovin"}>
 					{() => (
 						<React.Fragment>
 							<Markus />

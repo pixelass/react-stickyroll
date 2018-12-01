@@ -5,7 +5,11 @@
 	"repository": "git@github.com:stickyroll/react-stickyroll.git",
 	"license": "MIT",
 	"author": "Gregor Adams <greg@pixelass.com>",
-	"workspaces": ["components/*", "packages/*", "src/*"],
+	"workspaces": [
+		"components/*",
+		"packages/*",
+		"src/*"
+	],
 	"scripts": {
 		"prebuild": "imhotep clean; yarn rollup",
 		"build": "cross-env NODE_ENV=production imhotep build",
@@ -48,6 +52,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.1.6",
+		"@popmotion/easing": "^1.0.1",
 		"babel-plugin-styled-components": "1.9.2",
 		"commitlint": "^7.2.1",
 		"concurrently": "^4.1.0",

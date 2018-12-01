@@ -54,7 +54,9 @@ The view uses `position: sticky` to remain in-view.
 Stickyroll offers some very unique features to build views for different use cases.
 
 -   fixed position Parallax views (e.g. for product landing pages)
+    -    [Parallax Example](https://stickyroll.netlify.com/#!/device-support/1)
 -   scrollable animation scenes (e.g. using [Bodymovin](https://github.com/airbnb/lottie-web))
+    -    [Bodymovin Example](https://stickyroll.netlify.com/#!/bodymovin/1)
 
 **In the wild**
 
