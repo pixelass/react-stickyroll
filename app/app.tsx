@@ -10,7 +10,8 @@ import {GlobalStyle} from "./style";
 import Markus from "./markus";
 import {GithubCorner} from "./github-corner";
 import {DeviceSupport} from "./device-support";
-import {Header, Title} from "./elements";
+import {Content as ContentEl, Copy, Header, Headline, Title} from "./elements";
+import {Examples} from "./examples";
 
 const Card = styled.section`
 	max-width: 60rem;
@@ -77,20 +78,22 @@ class App extends React.Component {
 				</Card>
 				<Stickyroll pages={1} factor={8} anchors={"!/bodymovin"}>
 					{() => (
-						<React.Fragment>
-							<Markus />
-							<Skip useContext={true} />
-						</React.Fragment>
+						<ThemeProvider theme={dark}>
+							<Inner>
+								<Markus />
+								<Skip useContext={true} />
+							</Inner>
+						</ThemeProvider>
 					)}
 				</Stickyroll>
 				<Card>
-					<h2>Themes</h2>
-					<p>
+					<Headline>Themes</Headline>
+					<Copy>
 						The next examples use themes and styled-components
-					</p>
-					<p>
+					</Copy>
+					<Copy>
 						Themes can be combined or inherited to nested components.
-					</p>
+					</Copy>
 				</Card>
 				<Stickyroll pages={rolls} anchors={"!/dark"}>
 					{context => (
@@ -141,6 +144,26 @@ class App extends React.Component {
 						</ThemeProvider>
 					)}
 				</Stickyroll>
+				{/* Optional examples
+				<Card>
+					<Headline>Config</Headline>
+					<Copy>
+						Stickyroll allows various options to configure the behavior.
+					</Copy>
+					<Copy>
+						Stickyroll always has a height of 100vh but the width can vary.
+						This allows multiple instances to be displayed next to each other.
+					</Copy>
+					<Copy>
+						Scroll through the different examples to see how different settings change the
+						behavior of the Stickyroll instance.
+					</Copy>
+					<Copy>
+						Some examples have pagers or links to allow skipping or jumping to specific pages.
+					</Copy>
+				</Card>
+				<Examples />
+				*/}
 			</React.Fragment>
 		);
 	}

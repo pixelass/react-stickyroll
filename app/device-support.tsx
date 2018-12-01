@@ -1,23 +1,11 @@
 import {easeIn, easeInOut, easeOut} from "@popmotion/easing";
-import {Inner, Content} from "@stickyroll/inner";
+import {Content, Inner} from "@stickyroll/inner";
 import {Pagers, Skip} from "@stickyroll/pagers";
 import {Stickyroll} from "@stickyroll/stickyroll";
 import React, {CSSProperties} from "react";
 import styled, {StyledComponent, ThemeProvider} from "styled-components";
-import {dark, indigo, light, lightBlue, pink} from "@stickyroll/themes";
-
-export type TProgressable = (
-	component: React.ReactElement<any>,
-	progress: number
-) => React.ReactElement<any>;
-
-export const progressable: TProgressable = (component, progress) =>
-	React.cloneElement(component, {
-		style: {
-			...(component.props.style || {}),
-			"--progress": progress
-		}
-	});
+import {dark, pink} from "@stickyroll/themes";
+import {progressable} from "./progressable";
 
 
 const Headline: StyledComponent<any, any> = styled.h3`
@@ -264,7 +252,6 @@ export const DeviceSupport = () => (
 					<ThemeProvider theme={pink}>
 						<Pagers useContext={true} position="left"/>
 					</ThemeProvider>
-					<ThemeProvider theme={light}>
 						<StyledContent>
 							{progressable(
 								<Headline>{headlines[context.page]}</Headline>,
@@ -272,7 +259,6 @@ export const DeviceSupport = () => (
 							)}
 							<Devices progress={context.progress} page={context.page} />
 						</StyledContent>
-					</ThemeProvider>
 					<Skip useContext={true}/>
 				</Inner>
 			</ThemeProvider>
