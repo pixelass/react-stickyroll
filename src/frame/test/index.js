@@ -1,4 +1,4 @@
-import {Frame as StickyFrame} from "@stickyroll/frame";
+import {Frame as StickyFrame, vendoredSticky} from "@stickyroll/frame";
 import test from "ava";
 import React from "react";
 import {renderToString} from "react-dom/server";
@@ -18,7 +18,7 @@ const createMarkup = ({
 } = DEFAULT_OPTIONS) =>
 	`<div${
 		className !== "" ? ` class="${className}"` : ""
-	} style="height:${height}vh;margin:0;position:relative">${anchors}<div style="height:100vh;position:sticky;top:0;width:100%">${content}</div></div>`;
+	} style="height:${height}vh;margin:0;position:relative">${anchors}<div style="height:100vh;position:${vendoredSticky()};top:0;width:100%">${content}</div></div>`;
 
 const createAnchors = (prefix = "!/examples", pages = 1) =>
 	`<div style="bottom:0;left:0;position:absolute;right:0;top:0">${Array(pages + 1)
@@ -29,25 +29,25 @@ const createAnchors = (prefix = "!/examples", pages = 1) =>
 test("Renders the correct markup ", t => {
 	const expected = createMarkup();
 	const actual = renderToString(<StickyFrame pages={1} render={() => null} />);
-	t.true(expected === actual);
+	t.is(expected, actual);
 });
 
 test("Renders children ", t => {
 	const expected = createMarkup({content: "<div></div>"});
 	const actual = renderToString(<StickyFrame pages={1} render={() => <div />} />);
-	t.true(expected === actual);
+	t.is(expected, actual);
 });
 
 test("Renders the correct height (2 pages)", t => {
 	const expected = createMarkup({height: 300});
 	const actual = renderToString(<StickyFrame pages={2} render={() => null} />);
-	t.true(expected === actual);
+	t.is(expected, actual);
 });
 
 test("Renders the correct height (10 pages)", t => {
 	const expected = createMarkup({height: 1100});
 	const actual = renderToString(<StickyFrame pages={10} render={() => null} />);
-	t.true(expected === actual);
+	t.is(expected, actual);
 });
 
 test("Allow adding anchor targets", t => {
@@ -55,13 +55,13 @@ test("Allow adding anchor targets", t => {
 		<StickyFrame pages={1} render={() => null} anchors="!/examples" />
 	);
 	const expected = createMarkup({anchors: createAnchors()});
-	t.true(expected === actual);
+	t.is(expected, actual);
 });
 
 test("Allow defining anchor prefix", t => {
 	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors="!/foobar" />);
 	const expected = createMarkup({anchors: createAnchors("!/foobar")});
-	t.true(expected === actual);
+	t.is(expected, actual);
 });
 
 test("Render the correct amount of anchors", t => {
@@ -69,11 +69,11 @@ test("Render the correct amount of anchors", t => {
 		<StickyFrame pages={3} render={() => null} anchors="!/examples" />
 	);
 	const expected = createMarkup({height: 400, anchors: createAnchors("!/examples", 3)});
-	t.true(expected === actual);
+	t.is(expected, actual);
 });
 
 test("Allows adding classNames", t => {
 	const actual = renderToString(<StickyFrame className="🌈" pages={1} render={() => null} />);
 	const expected = createMarkup({className: "🌈"});
-	t.true(expected === actual);
+	t.is(expected, actual);
 });

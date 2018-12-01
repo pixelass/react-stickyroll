@@ -91,13 +91,14 @@ export type PositionSticky = Globals | "-webkit-sticky" | "sticky";
  * Check for sticky support to fix safari issues.
  * @returns {PositionSticky}
  */
-const vendoredSticky = (): PositionSticky => {
+export const vendoredSticky = (): PositionSticky => {
 	if ("window" in global) {
 		if (CSS.supports("position", "sticky")) {
 			return "sticky";
 		}
 		return "-webkit-sticky";
 	}
+	return "sticky";
 };
 
 /**
