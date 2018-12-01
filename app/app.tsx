@@ -1,6 +1,8 @@
 import {hot} from "imhotep";
 import React from "react";
 import {Stickyroll, Listener} from "@stickyroll/stickyroll";
+import Progressbar from "./progresbar";
+import Pagenumber from "./pagenumber";
 import {Pagers, Skip} from "@stickyroll/pagers";
 import {Inner} from "@stickyroll/inner";
 import {GlobalStyle} from "./style";
@@ -46,6 +48,8 @@ class App extends React.Component {
 							<Pagers useContext={true}/>
 							<Debugger useContext={true}/>
 							<Debugger {...context}/>
+							<Progressbar/>
+							<Pagenumber/>
 							<Skip useContext={true}/>
 						</Inner>)}
 				</Stickyroll>
