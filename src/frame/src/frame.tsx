@@ -1,6 +1,7 @@
 import React from "react";
 import {IContext, ScrollConsumer, ScrollProvider} from "@stickyroll/context";
 import {Tracker} from "@stickyroll/tracker";
+import {Globals} from "csstype";
 
 /**
  * @typedef {function} TRender<T>
@@ -82,6 +83,22 @@ export interface IFrameState {
 }
 
 /**
+ * @typedef {Globals|"-webkit-sticky"|"sticky"} PositionSticky
+ */
+export type PositionSticky = Globals | "-webkit-sticky" | "sticky";
+
+/**
+ * Check for sticky support to fix safari issues.
+ * @returns {PositionSticky}
+ */
+const vendoredSticky = (): PositionSticky => {
+	if (CSS.supports("position", "sticky")) {
+		return "sticky";
+	}
+	return "-webkit-sticky";
+};
+
+/**
  * @type {React.CSSProperties}
  * @property {string|number} height
  * @property {string} position
@@ -90,7 +107,7 @@ export interface IFrameState {
  */
 const overlayStyle: React.CSSProperties = {
 	height: "100vh",
-	position: "sticky",
+	position: vendoredSticky(),
 	top: 0,
 	width: "100%"
 };
