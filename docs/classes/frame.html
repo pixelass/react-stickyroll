@@ -109,6 +109,7 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="frame.html#anchors" class="tsd-kind-icon">anchors</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="frame.html#pagecount" class="tsd-kind-icon">page<wbr>Count</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="frame.html#wrapperstyle" class="tsd-kind-icon">wrapper<wbr>Style</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-static"><a href="frame.html#defaultprops" class="tsd-kind-icon">default<wbr>Props</a></li>
 							</ul>
@@ -122,7 +123,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="frame.html#wrapper" class="tsd-kind-icon">Wrapper</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="frame.html#componentdidcatch" class="tsd-kind-icon">component<wbr>Did<wbr>Catch</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="frame.html#componentdidmount" class="tsd-kind-icon">component<wbr>Did<wbr>Mount</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="frame.html#componentdidupdate" class="tsd-kind-icon">component<wbr>Did<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="frame.html#componentdidupdate" class="tsd-kind-icon">component<wbr>Did<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="frame.html#componentwillmount" class="tsd-kind-icon">component<wbr>Will<wbr>Mount</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="frame.html#componentwillreceiveprops" class="tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="frame.html#componentwillunmount" class="tsd-kind-icon">component<wbr>Will<wbr>Unmount</a></li>
@@ -271,7 +272,7 @@ context!: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContex
 					<div class="tsd-signature tsd-kind-icon">tracker<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RefObject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLDivElement</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;React.createRef()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L111">stickyroll/frame/src/frame.tsx:111</a></li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L128">src/frame/src/frame.tsx:128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -327,7 +328,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L261">stickyroll/frame/src/frame.tsx:261</a></li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L301">src/frame/src/frame.tsx:301</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,6 +350,23 @@ class Foo extends React.Component {
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+					<a name="pagecount" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> page<wbr>Count</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> pageCount<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L222">src/frame/src/frame.tsx:222</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
 					<a name="wrapperstyle" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> wrapper<wbr>Style</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
@@ -358,7 +376,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L246">stickyroll/frame/src/frame.tsx:246</a></li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L286">src/frame/src/frame.tsx:286</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -382,7 +400,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L117">stickyroll/frame/src/frame.tsx:117</a></li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L134">src/frame/src/frame.tsx:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -546,7 +564,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L195">stickyroll/frame/src/frame.tsx:195</a></li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L235">src/frame/src/frame.tsx:235</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -614,7 +632,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides ComponentLifecycle.componentDidMount</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L128">stickyroll/frame/src/frame.tsx:128</a></li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L145">src/frame/src/frame.tsx:145</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -627,36 +645,33 @@ class Foo extends React.Component {
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 					<a name="componentdidupdate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> component<wbr>Did<wbr>Update</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">component<wbr>Did<wbr>Update<span class="tsd-signature-symbol">(</span>prevProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iframeprops.html" class="tsd-signature-type">IFrameProps</a><span class="tsd-signature-symbol">&gt;</span>, prevState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iframestate.html" class="tsd-signature-type">IFrameState</a><span class="tsd-signature-symbol">&gt;</span>, snapshot<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">SS</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<h3>component<wbr>Did<wbr>Update</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">component<wbr>Did<wbr>Update<span class="tsd-signature-symbol">(</span>oldProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, oldState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from NewLifecycle.componentDidUpdate</p>
+								<p>Overrides NewLifecycle.componentDidUpdate</p>
 								<ul>
-									<li>Defined in node_modules/@types/react/index.d.ts:574</li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L156">src/frame/src/frame.tsx:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Called immediately after updating occurs. Not called for the initial render.</p>
+									<p>Call the onPage handler if it is defined every time the page changes.
+									No initial call!</p>
 								</div>
-								<p>The snapshot is only present if getSnapshotBeforeUpdate is present and returns non-null.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>prevProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iframeprops.html" class="tsd-signature-type">IFrameProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>oldProps: <span class="tsd-signature-type">any</span></h5>
 								</li>
 								<li>
-									<h5>prevState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/iframestate.html" class="tsd-signature-type">IFrameState</a><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> snapshot: <span class="tsd-signature-type">SS</span></h5>
+									<h5>oldState: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -906,12 +921,12 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L211">stickyroll/frame/src/frame.tsx:211</a></li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L251">src/frame/src/frame.tsx:251</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Scroll handler to parse the page and progress fromm the scroll position.</p>
+									<p>Scroll handler to parse the page and progress from the scroll position.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -935,7 +950,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides Component.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L147">stickyroll/frame/src/frame.tsx:147</a></li>
+									<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L183">src/frame/src/frame.tsx:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1056,7 +1071,7 @@ class Foo extends React.Component {
 					<aside class="tsd-sources">
 						<p>Overrides Component.state</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L101">stickyroll/frame/src/frame.tsx:101</a></li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L118">src/frame/src/frame.tsx:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1072,7 +1087,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">page<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L102">stickyroll/frame/src/frame.tsx:102</a></li>
+								<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L119">src/frame/src/frame.tsx:119</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1082,7 +1097,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">scroll<wbr>Offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L103">stickyroll/frame/src/frame.tsx:103</a></li>
+								<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L120">src/frame/src/frame.tsx:120</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1092,7 +1107,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">scrollY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/6a57760/stickyroll/frame/src/frame.tsx#L104">stickyroll/frame/src/frame.tsx:104</a></li>
+								<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/src/frame/src/frame.tsx#L121">src/frame/src/frame.tsx:121</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1136,6 +1151,9 @@ class Foo extends React.Component {
 								<a href="frame.html#anchors" class="tsd-kind-icon">anchors</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+								<a href="frame.html#pagecount" class="tsd-kind-icon">page<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
 								<a href="frame.html#wrapperstyle" class="tsd-kind-icon">wrapper<wbr>Style</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
@@ -1159,7 +1177,7 @@ class Foo extends React.Component {
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 								<a href="frame.html#componentdidmount" class="tsd-kind-icon">component<wbr>Did<wbr>Mount</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 								<a href="frame.html#componentdidupdate" class="tsd-kind-icon">component<wbr>Did<wbr>Update</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">

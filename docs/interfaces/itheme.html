@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IInnerTheme | Stickyroll</title>
+	<title>ITheme | Stickyroll</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="iinnertheme.html">IInnerTheme</a>
+					<a href="itheme.html">ITheme</a>
 				</li>
 			</ul>
-			<h1>Interface IInnerTheme</h1>
+			<h1>Interface ITheme</h1>
 		</div>
 	</div>
 </header>
@@ -68,31 +68,31 @@
 				<div class="tsd-comment tsd-typography">
 					<dl class="tsd-comment-tags">
 						<dt>typedef</dt>
-						<dd><p>{object} IInnerTheme</p>
+						<dd><p>{object} ITheme</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{string} [color]</p>
+						<dd><p>{string} color</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{number} [hue]</p>
+						<dd><p>{number} hue</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{string} [lightness]</p>
+						<dd><p>{string} lightness</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{string} [markerSize]</p>
+						<dd><p>{string} markerSize</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{string} [pagerGap]</p>
+						<dd><p>{string} pagerGap</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{string} [pagerSize]</p>
+						<dd><p>{string} pagerSize</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{string} [saturation]</p>
+						<dd><p>{string} saturation</p>
 						</dd>
 						<dt>property</dt>
-						<dd><p>{string} [strokeWidth]</p>
+						<dd><p>{string} strokeWidth</p>
 						</dd>
 					</dl>
 				</div>
@@ -101,7 +101,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IInnerTheme</span>
+						<span class="target">ITheme</span>
 					</li>
 				</ul>
 			</section>
@@ -112,14 +112,16 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#color" class="tsd-kind-icon">color</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#hue" class="tsd-kind-icon">hue</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#lightness" class="tsd-kind-icon">lightness</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#markersize" class="tsd-kind-icon">marker<wbr>Size</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#pagergap" class="tsd-kind-icon">pager<wbr>Gap</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#pagersize" class="tsd-kind-icon">pager<wbr>Size</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#saturation" class="tsd-kind-icon">saturation</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinnertheme.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#backgroundcolor" class="tsd-kind-icon">background<wbr>Color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#color" class="tsd-kind-icon">color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#markercolor" class="tsd-kind-icon">marker<wbr>Color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#markerwidth" class="tsd-kind-icon">marker<wbr>Width</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#pagerbackgroundcolor" class="tsd-kind-icon">pager<wbr>Background<wbr>Color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#pagercolor" class="tsd-kind-icon">pager<wbr>Color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#pagercoloractive" class="tsd-kind-icon">pager<wbr>Color<wbr>Active</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#pagergap" class="tsd-kind-icon">pager<wbr>Gap</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#pagersize" class="tsd-kind-icon">pager<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itheme.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a></li>
 							</ul>
 						</section>
 					</div>
@@ -128,82 +130,102 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="backgroundcolor" class="tsd-anchor"></a>
+					<h3>background<wbr>Color</h3>
+					<div class="tsd-signature tsd-kind-icon">background<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L13">components/themes/src/theme.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="color" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> color</h3>
+					<h3>color</h3>
 					<div class="tsd-signature tsd-kind-icon">color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in components/inner/src/inner.tsx:15</li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L14">components/themes/src/theme.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="hue" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hue</h3>
-					<div class="tsd-signature tsd-kind-icon">hue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="markercolor" class="tsd-anchor"></a>
+					<h3>marker<wbr>Color</h3>
+					<div class="tsd-signature tsd-kind-icon">marker<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in components/inner/src/inner.tsx:16</li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L15">components/themes/src/theme.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="lightness" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> lightness</h3>
-					<div class="tsd-signature tsd-kind-icon">lightness<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="markerwidth" class="tsd-anchor"></a>
+					<h3>marker<wbr>Width</h3>
+					<div class="tsd-signature tsd-kind-icon">marker<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in components/inner/src/inner.tsx:17</li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L16">components/themes/src/theme.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="markersize" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> marker<wbr>Size</h3>
-					<div class="tsd-signature tsd-kind-icon">marker<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="pagerbackgroundcolor" class="tsd-anchor"></a>
+					<h3>pager<wbr>Background<wbr>Color</h3>
+					<div class="tsd-signature tsd-kind-icon">pager<wbr>Background<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in components/inner/src/inner.tsx:18</li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L17">components/themes/src/theme.ts:17</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="pagercolor" class="tsd-anchor"></a>
+					<h3>pager<wbr>Color</h3>
+					<div class="tsd-signature tsd-kind-icon">pager<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L18">components/themes/src/theme.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="pagercoloractive" class="tsd-anchor"></a>
+					<h3>pager<wbr>Color<wbr>Active</h3>
+					<div class="tsd-signature tsd-kind-icon">pager<wbr>Color<wbr>Active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L19">components/themes/src/theme.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="pagergap" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> pager<wbr>Gap</h3>
+					<h3>pager<wbr>Gap</h3>
 					<div class="tsd-signature tsd-kind-icon">pager<wbr>Gap<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in components/inner/src/inner.tsx:19</li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L20">components/themes/src/theme.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="pagersize" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> pager<wbr>Size</h3>
+					<h3>pager<wbr>Size</h3>
 					<div class="tsd-signature tsd-kind-icon">pager<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in components/inner/src/inner.tsx:20</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="saturation" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> saturation</h3>
-					<div class="tsd-signature tsd-kind-icon">saturation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in components/inner/src/inner.tsx:21</li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L21">components/themes/src/theme.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="strokewidth" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stroke<wbr>Width</h3>
+					<h3>stroke<wbr>Width</h3>
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in components/inner/src/inner.tsx:22</li>
+							<li>Defined in <a href="https://github.com/stickyroll/react-stickyroll/blob/f85ebb4/components/themes/src/theme.ts#L22">components/themes/src/theme.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -222,31 +244,37 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="iinnertheme.html" class="tsd-kind-icon">IInner<wbr>Theme</a>
+						<a href="itheme.html" class="tsd-kind-icon">ITheme</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#color" class="tsd-kind-icon">color</a>
+								<a href="itheme.html#backgroundcolor" class="tsd-kind-icon">background<wbr>Color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#hue" class="tsd-kind-icon">hue</a>
+								<a href="itheme.html#color" class="tsd-kind-icon">color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#lightness" class="tsd-kind-icon">lightness</a>
+								<a href="itheme.html#markercolor" class="tsd-kind-icon">marker<wbr>Color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#markersize" class="tsd-kind-icon">marker<wbr>Size</a>
+								<a href="itheme.html#markerwidth" class="tsd-kind-icon">marker<wbr>Width</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#pagergap" class="tsd-kind-icon">pager<wbr>Gap</a>
+								<a href="itheme.html#pagerbackgroundcolor" class="tsd-kind-icon">pager<wbr>Background<wbr>Color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#pagersize" class="tsd-kind-icon">pager<wbr>Size</a>
+								<a href="itheme.html#pagercolor" class="tsd-kind-icon">pager<wbr>Color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#saturation" class="tsd-kind-icon">saturation</a>
+								<a href="itheme.html#pagercoloractive" class="tsd-kind-icon">pager<wbr>Color<wbr>Active</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinnertheme.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a>
+								<a href="itheme.html#pagergap" class="tsd-kind-icon">pager<wbr>Gap</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="itheme.html#pagersize" class="tsd-kind-icon">pager<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="itheme.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a>
 							</li>
 						</ul>
 					</li>

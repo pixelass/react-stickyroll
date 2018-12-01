@@ -63,6 +63,128 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="stickyroll">Stickyroll</h1>
+				<h3 id="demo-documentation"><a href="https://stickyroll.netlify.com/">DEMO</a> | <a href="https://stickyroll.github.io/react-stickyroll/">DOCUMENTATION</a></h3>
+				<p><strong>Status</strong>: <em>active development</em><br><strong>Version</strong>: <em>unreleased</em></p>
+				<p><a href="https://www.npmjs.com/org/stickyroll"><img src="https://img.shields.io/npm/v/@stickyroll/react-stickyroll.svg?style=for-the-badge" alt="npm"></a>
+				<a href="https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="GitHub license"></a></p>
+				<p><a href="https://travis-ci.org/stickyroll/react-stickyroll"><img src="https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge" alt="Travis branch"></a></p>
+				<p><a href="https://github.com/stickyroll/react-stickyroll"><img src="https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge" alt="David"></a></p>
+				<!-- toc -->
+				<ul>
+					<li><a href="#intro">Intro</a></li>
+					<li><a href="#render-prop-vs-children">Render prop vs children</a></li>
+					<li><a href="#event-listeners">Event listeners</a></li>
+					<li><a href="#decorators-context-based">Decorators (context based)</a></li>
+					<li><a href="#plugins">Plugins</a></li>
+					<li><a href="#styled-components">Styled components</a><ul>
+							<li><a href="#available-components">Available components</a></li>
+						</ul>
+					</li>
+					<li><a href="#examples">Examples</a><ul>
+							<li><a href="#example-1">Example 1</a></li>
+							<li><a href="#example-2">Example 2</a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- tocstop -->
+				<h2 id="intro">Intro</h2>
+				<p>Stickyroll is the successor of <a href="https://github.com/pixelass/react-over-scroll/">react-over-scroll</a>.</p>
+				<p>This project is maintained as a monorepo via <a href="https://github.com/lerna/lerna">lerna</a>.</p>
+				<p>Stickyroll translates page scroll to paging and a progress timeline.
+				The view uses <code>position: sticky</code> to remain in-view.</p>
+				<h2 id="render-prop-vs-children">Render prop vs children</h2>
+				<p>Stickyroll accepts the same function as a render property or child function.<br><code>props.children</code> gives access to context based plugins and decorators
+				<code>props.render</code> is the lightweight version without context.</p>
+				<h2 id="event-listeners">Event listeners</h2>
+				<p>Stickyroll has 3 very basic listeners.</p>
+				<ul>
+					<li><code>onStart(): void</code>: fired when the start has been reached (undocked)</li>
+					<li><code>onEnd(): void</code>: fired when the end has been reached (undocked)</li>
+					<li><code>onPage(currentPage: number): void</code>: fired every time a page changes. <code>currentPage</code> has a 0 based index. (docked)</li>
+				</ul>
+				<p>More complex listeners can be implemented as Plugins using <code>@stickyroll/decorators</code> or <code>@stickyroll/context</code>
+				(<code>{Listener}</code> is also available from <code>@stickyroll/stickyroll</code>)</p>
+				<h2 id="decorators-context-based-">Decorators (context based)</h2>
+				<p>Stickyroll provides a set of decorators to allow injecting properties on-the-fly.</p>
+				<ul>
+					<li><code>@page</code>: injects <code>page: number</code> and <code>pages: number</code></li>
+					<li><code>@progress</code>: injects <code>progress: number</code></li>
+				</ul>
+				<p><strong>Example: page numbers</strong></p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> {page} <span class="hljs-keyword">from</span> <span class="hljs-string">"@stickyroll/decorators"</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+
+@page
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pagenumber</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    render() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.page + <span class="hljs-number">1</span>}</span> of <span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.pages}</span>`</span>;
+    }
+}</code></pre>
+				<h2 id="plugins">Plugins</h2>
+				<p>Stickyroll allows the creation and usage of plugins. With the help of context-aware
+				helpers it is easy to add a little spark to your roll.</p>
+				<p>Looking at <code>Pagers</code> is a good start to understand the plugin mechanism.</p>
+				<h2 id="styled-components">Styled components</h2>
+				<p>Stickyroll provides styled components. It will remain fully optional to use styled-components since
+				the core is build purely on <a href="https://www.npmjs.com/package/react">React</a> and <a href="https://www.npmjs.com/package/lodash.throttle">lodash.throttle</a></p>
+				<h3 id="available-components">Available components</h3>
+				<ul>
+					<li><code>@stickyroll/pagers</code>: Paging components to navigate to pages</li>
+					<li><code>@stickyroll/inner</code>: Content components to help with layout.</li>
+					<li><code>@stickyroll/themes</code>: A set of themes to use with styled-components</li>
+				</ul>
+				<h2 id="examples">Examples</h2>
+				<h3 id="example-1">Example 1</h3>
+				<p><strong>roll.tsx</strong></p>
+				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> {Stickyroll} <span class="hljs-keyword">from</span> <span class="hljs-string">"@stickyroll/stickyroll"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Stickyroll</span> <span class="hljs-attr">pages</span>=<span class="hljs-string">{5}</span>&gt;</span>{({page, progress}) =&gt; `${page}:${progress}`}<span class="hljs-tag">&lt;/<span class="hljs-name">Stickyroll</span>&gt;</span></span>
+);</code></pre>
+				<h3 id="example-2">Example 2</h3>
+				<p><strong>style.ts</strong></p>
+				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> {createGlobalStyle} <span class="hljs-keyword">from</span> <span class="hljs-string">"styled-components"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> GlobalStyle = createGlobalStyle<span class="hljs-string">`
+    body {
+        margin: 0;
+    }
+    * {
+        box-sizing: border-box;
+    }
+`</span>;</code></pre>
+				<p><strong>app.tsx</strong></p>
+				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> {Stickyroll} <span class="hljs-keyword">from</span> <span class="hljs-string">"@stickyroll/stickyroll"</span>;
+<span class="hljs-keyword">import</span> {Pagers, Skip} <span class="hljs-keyword">from</span> <span class="hljs-string">"@stickyroll/pagers"</span>;
+<span class="hljs-keyword">import</span> {Inner} <span class="hljs-keyword">from</span> <span class="hljs-string">"@stickyroll/inner"</span>;
+<span class="hljs-keyword">import</span> {GlobalStyle} <span class="hljs-keyword">from</span> <span class="hljs-string">"./style"</span>;
+
+<span class="hljs-keyword">const</span> myContent = [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    public render() {
+        <span class="hljs-keyword">return</span> (
+            &lt;React.Fragment&gt;
+                &lt;GlobalStyle/&gt;
+                &lt;Stickyroll pages={myContent} anchors={"!/examples"} onPage={p =&gt; {console.log(p)}}&gt;
+                    {(context) =&gt; (
+                        &lt;Inner withPagers={true}&gt;
+                            &lt;Pagers useContext={true}/&gt;
+                            &lt;pre&gt;
+                                &lt;code&gt;
+                                    {JSON.stringify({...context, content: myContent[context.page]}, null, 2)}
+                                &lt;/code&gt;
+                            &lt;/pre&gt;
+                            &lt;Skip useContext={true}/&gt;
+                        &lt;/Inner&gt;
+                    )}
+                &lt;/Stickyroll&gt;
+            &lt;/React.Fragment&gt;
+        );
+    }
+}</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -82,6 +204,9 @@
 						<a href="classes/tracker.html" class="tsd-kind-icon">Tracker</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/icontentprops.html" class="tsd-kind-icon">IContent<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/icontext.html" class="tsd-kind-icon">IContext</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -98,9 +223,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iinnerprops.html" class="tsd-kind-icon">IInner<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iinnertheme.html" class="tsd-kind-icon">IInner<wbr>Theme</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/imarkerprops.html" class="tsd-kind-icon">IMarker<wbr>Props</a>
@@ -126,11 +248,26 @@
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iskipprops.html" class="tsd-kind-icon">ISkip<wbr>Props</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itheme.html" class="tsd-kind-icon">ITheme</a>
+					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#pagerprops" class="tsd-kind-icon">Pager<wbr>Props</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#tchild" class="tsd-kind-icon">TChild</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tpage" class="tsd-kind-icon">TPage</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tpagehandler" class="tsd-kind-icon">TPage<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tprogress" class="tsd-kind-icon">TProgress</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tprogresshandler" class="tsd-kind-icon">TProgress<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#trender" class="tsd-kind-icon">TRender</a>
@@ -140,6 +277,9 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#tscrollhandler" class="tsd-kind-icon">TScroll<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#content" class="tsd-kind-icon">Content</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#icon" class="tsd-kind-icon">Icon</a>
@@ -186,17 +326,77 @@
 					<li class=" tsd-kind-function">
 						<a href="globals.html#assert" class="tsd-kind-icon">assert</a>
 					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#page" class="tsd-kind-icon">page</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#progress" class="tsd-kind-icon">progress</a>
+					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#scrollto" class="tsd-kind-icon">scroll<wbr>To</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#default_context" class="tsd-kind-icon">DEFAULT_<wbr>CONTEXT</a>
 					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#amber" class="tsd-kind-icon">amber</a>
+					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#anchorstyle" class="tsd-kind-icon">anchor<wbr>Style</a>
 					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#blue" class="tsd-kind-icon">blue</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#cyan" class="tsd-kind-icon">cyan</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#dark" class="tsd-kind-icon">dark</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#deeporange" class="tsd-kind-icon">deep<wbr>Orange</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#deeppurple" class="tsd-kind-icon">deep<wbr>Purple</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#green" class="tsd-kind-icon">green</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#indigo" class="tsd-kind-icon">indigo</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#light" class="tsd-kind-icon">light</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#lightblue" class="tsd-kind-icon">light<wbr>Blue</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#lightgreen" class="tsd-kind-icon">light<wbr>Green</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#lime" class="tsd-kind-icon">lime</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#orange" class="tsd-kind-icon">orange</a>
+					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#overlaystyle" class="tsd-kind-icon">overlay<wbr>Style</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#pink" class="tsd-kind-icon">pink</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#purple" class="tsd-kind-icon">purple</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#red" class="tsd-kind-icon">red</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#teal" class="tsd-kind-icon">teal</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#yellow" class="tsd-kind-icon">yellow</a>
 					</li>
 				</ul>
 			</nav>
