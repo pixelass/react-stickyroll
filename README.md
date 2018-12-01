@@ -14,16 +14,17 @@
 
 <!-- toc -->
 
--   [Intro](#intro)
--   [Render prop vs children](#render-prop-vs-children)
--   [Event listeners](#event-listeners)
--   [Decorators (context based)](#decorators-context-based)
--   [Plugins](#plugins)
--   [Styled components](#styled-components)
-    -   [Available components](#available-components)
--   [Examples](#examples)
-    -   [Example 1](#example-1)
-    -   [Example 2](#example-2)
+- [Intro](#intro)
+- [Render prop vs children](#render-prop-vs-children)
+- [Event listeners](#event-listeners)
+- [Decorators (context based)](#decorators-context-based)
+- [Plugins](#plugins)
+- [Styled components](#styled-components)
+  * [Available components](#available-components)
+- [Examples](#examples)
+  * [Example 1](#example-1)
+  * [Example 2](#example-2)
+- [Development](#development)
 
 <!-- tocstop -->
 
