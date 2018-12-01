@@ -37,10 +37,6 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.1.6",
-		"@stickyroll/context": "0.0.0",
-		"@stickyroll/frame": "0.0.0",
-		"@stickyroll/tracker": "0.0.0",
-		"@types/react": "^16.7.10",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.0-rc.2",
 		"cross-env": "5.2.0",
@@ -73,5 +69,13 @@
 		"last 2 Firefox versions",
 		"last 2 Safari versions",
 		"last 2 Edge versions"
-	]
+	],
+	"dependencies": {
+		"@stickyroll/context": "0.0.0",
+		"@stickyroll/frame": "0.0.0",
+		"@stickyroll/tracker": "0.0.0",
+		"@types/react": "^16.7.11",
+		"react": "^16.6.3",
+		"ts-lib": "^0.0.5"
+	}
 }
