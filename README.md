@@ -158,3 +158,38 @@ export default class App extends React.Component {
 	}
 }
 ```
+
+## Development
+
+To help develop Stickyroll follow these steps.
+
+```bash
+git clone git@github.com:stickyroll/react-stickyroll.git
+cd react-stickyroll
+yarn
+```
+
+For fast development use the `dev` script.  
+This will start a webpack dev-server on `port:3000` and watch all packages.  
+
+**Dev server (hot)** (watches packages)
+```bash
+yarn dev
+```
+
+**Build (production)**
+```bash
+yarn build
+```
+
+**Build packages**
+```bash
+yarn rollup
+```
+
+**Watch packages**
+```bash
+yarn rollup:watch
+```
+
+copyright © 2018 [Gregor Adams](https://github.com/pixelass)
