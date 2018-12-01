@@ -31,7 +31,8 @@
 		"prebuild": "imhotep clean; yarn rollup",
 		"rollup": "lerna run build",
 		"rollup:watch": "lerna run watch --parallel",
-		"test": "lerna run test"
+		"test": "lerna run test",
+		"toc": "npx markdown-toc README.md -i"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.1.6",
