@@ -14,17 +14,18 @@
 
 <!-- toc -->
 
-- [Intro](#intro)
-- [Render prop vs children](#render-prop-vs-children)
-- [Event listeners](#event-listeners)
-- [Decorators (context based)](#decorators-context-based)
-- [Plugins](#plugins)
-- [Styled components](#styled-components)
-  * [Available components](#available-components)
-- [Examples](#examples)
-  * [Example 1](#example-1)
-  * [Example 2](#example-2)
-- [Development](#development)
+-   [Intro](#intro)
+-   [Values](#values)
+-   [Render prop vs children](#render-prop-vs-children)
+-   [Event listeners](#event-listeners)
+-   [Decorators (context based)](#decorators-context-based)
+-   [Plugins](#plugins)
+-   [Styled components](#styled-components)
+    -   [Available components](#available-components)
+-   [Examples](#examples)
+    -   [Example 1](#example-1)
+    -   [Example 2](#example-2)
+-   [Development](#development)
 
 <!-- tocstop -->
 
@@ -34,8 +35,32 @@ Stickyroll is the successor of [react-over-scroll](https://github.com/pixelass/r
 
 This project is maintained as a monorepo via [lerna](https://github.com/lerna/lerna).
 
+## Values
+
 Stickyroll translates page scroll to paging and a progress timeline.
 The view uses `position: sticky` to remain in-view.
+
+**Some reasons why you should give it a try**
+
+-   Multiple instances on one page.
+-   Perfect transition from docked to undocked states
+-   No scroll-jacking
+-   Fully Accessible
+-   Allows deep links
+-   Allows skipping the entire content
+
+**Use cases**
+
+Stickyroll offers some very unique features to build views for different use cases.
+
+-   fixed position Parallax views (e.g. for product landing pages)
+-   scrollable animation scenes (e.g. using [Bodymovin](https://github.com/airbnb/lottie-web))
+
+**In the wild**
+
+If you are using stickyroll on your web page you can add it here via a pull request or by creating an issue.
+
+1. [Stickyroll](https://stickyroll.netlify.com/)
 
 ## Render prop vs children
 
@@ -143,8 +168,8 @@ export default class App extends React.Component {
 				<GlobalStyle/>
 				<Stickyroll pages={myContent} anchors={"!/examples"} onPage={p => {console.log(p)}}>
 					{(context) => (
-						<Inner withPagers={true}>
-							<Pagers useContext={true}/>
+						<Inner withPagers="left">
+							<Pagers useContext={true} position="left"/>
 							<pre>
 								<code>
 									{JSON.stringify({...context, content: myContent[context.page]}, null, 2)}
@@ -171,24 +196,28 @@ yarn
 ```
 
 For fast development use the `dev` script.  
-This will start a webpack dev-server on `port:3000` and watch all packages.  
+This will start a webpack dev-server on `port:3000` and watch all packages.
 
 **Dev server (hot)** (watches packages)
+
 ```bash
 yarn dev
 ```
 
 **Build (production)**
+
 ```bash
 yarn build
 ```
 
 **Build packages**
+
 ```bash
 yarn rollup
 ```
 
 **Watch packages**
+
 ```bash
 yarn rollup:watch
 ```
