@@ -21,7 +21,7 @@ const createMarkup = ({
 	} style="height:${height}vh;margin:0;position:relative">${anchors}<div style="height:100vh;position:sticky;top:0;width:100%">${content}</div></div>`;
 
 const createAnchors = (prefix = "!/examples", pages = 1) =>
-	`<div style="bottom:0;left:0;position:absolute;top:0">${Array(pages + 1)
+	`<div style="bottom:0;left:0;position:absolute;right:0;top:0">${Array(pages + 1)
 		.fill(Boolean)
 		.map((x, i) => `<span id="${prefix}/${i + 1}" style="display:block;height:100vh"></span>`)
 		.join("")}<span id="${prefix}/skip" style="position:absolute;top:100%"></span></div>`;
