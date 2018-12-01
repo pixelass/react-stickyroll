@@ -5,12 +5,14 @@ import React from "react";
 class Progressbar extends React.Component<any, {}> {
 	render() {
 		return (
-			<div style={{
-				background: "white",
-				height: "1rem",
-				width: `${this.props.progress * 100}%`
-			}}/>
-		)
+			<div
+				style={{
+					background: "currentColor",
+					height: "3rem",
+					width: `${this.props.progress * 100}%`
+				}}
+			/>
+		);
 	}
 }
 

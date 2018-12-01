@@ -14,16 +14,16 @@
 
 <!-- toc -->
 
-- [Intro](#intro)
-- [Render prop vs children](#render-prop-vs-children)
-- [Event listeners](#event-listeners)
-- [Decorators (context based)](#decorators-context-based)
-- [Plugins](#plugins)
-- [Styled components](#styled-components)
-  * [Available components](#available-components)
-- [Examples](#examples)
-  * [Example 1](#example-1)
-  * [Example 2](#example-2)
+-   [Intro](#intro)
+-   [Render prop vs children](#render-prop-vs-children)
+-   [Event listeners](#event-listeners)
+-   [Decorators (context based)](#decorators-context-based)
+-   [Plugins](#plugins)
+-   [Styled components](#styled-components)
+    -   [Available components](#available-components)
+-   [Examples](#examples)
+    -   [Example 1](#example-1)
+    -   [Example 2](#example-2)
 
 <!-- tocstop -->
 
@@ -40,15 +40,15 @@ The view uses `position: sticky` to remain in-view.
 
 Stickyroll accepts the same function as a render property or child function.  
 `props.children` gives access to context based plugins and decorators
-`props.render` is the lightweight version without context. 
+`props.render` is the lightweight version without context.
 
 ## Event listeners
 
 Stickyroll has 3 very basic listeners.
 
-* `onStart(): void`: fired when the start has been reached (undocked)  
-* `onEnd(): void`: fired when the end has been reached (undocked) 
-* `onPage(currentPage: number): void`: fired every time a page changes. `currentPage` has a 0 based index. (docked)
+-   `onStart(): void`: fired when the start has been reached (undocked)
+-   `onEnd(): void`: fired when the end has been reached (undocked)
+-   `onPage(currentPage: number): void`: fired every time a page changes. `currentPage` has a 0 based index. (docked)
 
 More complex listeners can be implemented as Plugins using `@stickyroll/decorators` or `@stickyroll/context`
 (`{Listener}` is also available from `@stickyroll/stickyroll`)
@@ -57,8 +57,8 @@ More complex listeners can be implemented as Plugins using `@stickyroll/decorato
 
 Stickyroll provides a set of decorators to allow injecting properties on-the-fly.
 
-* `@page`: injects `page: number` and `pages: number`
-* `@progress`: injects `progress: number`
+-   `@page`: injects `page: number` and `pages: number`
+-   `@progress`: injects `progress: number`
 
 **Example: page numbers**
 
@@ -69,7 +69,7 @@ import React from "react";
 @page
 export default class Pagenumber extends React.Component {
 	render() {
-		return `${this.props.page + 1} of ${this.props.pages}`
+		return `${this.props.page + 1} of ${this.props.pages}`;
 	}
 }
 ```
@@ -79,7 +79,7 @@ export default class Pagenumber extends React.Component {
 Stickyroll allows the creation and usage of plugins. With the help of context-aware
 helpers it is easy to add a little spark to your roll.
 
-Looking at `Pagers` is a good start to understand the plugin mechanism.  
+Looking at `Pagers` is a good start to understand the plugin mechanism.
 
 ## Styled components
 
@@ -88,8 +88,9 @@ the core is build purely on [React](https://www.npmjs.com/package/react) and [lo
 
 ### Available components
 
-* `@stickyroll/pagers`: reuses the theme from `@stickyroll/inner` via css-variables
-* `@stickyroll/inner`: a simple frame to host content. (made for `@stickyroll/pagers`)
+-   `@stickyroll/pagers`: Paging components to navigate to pages
+-   `@stickyroll/inner`: Content components to help with layout.
+-   `@stickyroll/themes`: A set of themes to use with styled-components
 
 ## Examples
 
@@ -102,12 +103,9 @@ import React from "react";
 import {Stickyroll} from "@stickyroll/stickyroll";
 
 export default () => (
-	<Stickyroll pages={5}>
-		{({page, progress}) =>
-			`${page}:${progress}`}
-	</Stickyroll>
+	<Stickyroll pages={5}>{({page, progress}) => `${page}:${progress}`}</Stickyroll>
 );
- ```
+```
 
 ### Example 2
 
@@ -125,6 +123,7 @@ export const GlobalStyle = createGlobalStyle`
 	}
 `;
 ```
+
 **app.tsx**
 
 ```jsx
