@@ -1,6 +1,7 @@
 import React from "react";
 import styled, {css, StyledComponent} from "styled-components";
 import {ScrollConsumer} from "@stickyroll/context";
+import {light, ITheme} from "@stickyroll/themes";
 
 /**
  *
@@ -60,8 +61,13 @@ export const Pager: StyledComponent<"a", {}, PagerProps> = styled.a`
 		background-color: ${props.selected ? "var(--pager-color-active)" : "var(--pager-color)"};
 		border: var(--stroke-width) solid ${props.active ? "var(--marker-color)" : "transparent"};
 
-		&:hover {
+		&:hover,
+		&:focus {
 			background-color: var(--pager-color-active);
+			border-color: var(--marker-color);
+		}
+		&:focus {
+			box-shadow: 0 0 0 2px var(--marker-color);
 		}
 	`};
 `;
@@ -84,53 +90,42 @@ const StyledPagers: StyledComponent<"nav", {}> = styled.nav`
  * @typedef {object} IPagerWrapperProps
  */
 export interface IPagerWrapperProps {
-	dark?: boolean;
+	position?: "left" | "right";
+	theme?: ITheme;
 }
 
 /**
  * @type {StyledComponent<"nav", {}>}
  * @param {IPagerWrapperProps} props
- * @param {boolean} [props.dark]
+ * @param {ITheme} [props.theme]
  * @return {React.ReactHTMLElement<HTMLElement>}
  */
 const PagerWrapper: StyledComponent<"div", {}, IPagerWrapperProps> = styled.div`
 	${(props: IPagerWrapperProps) => css`
-		--marker-width: var(--marker-size);
-		--marker-color: hsla(
-			var(--background-h),
-			var(--background-s),
-			calc(var(--background-l) ${props.dark ? "-" : "+"} 30%),
-			1
-		);
-		--pager-color: hsla(
-			var(--background-h),
-			var(--background-s),
-			calc(var(--background-l) ${props.dark ? "-" : "+"} 20%),
-			1
-		);
-		--pager-background-color: hsla(
-			var(--background-h),
-			var(--background-s),
-			calc(var(--background-l) ${props.dark ? "+" : "-"} 10%),
-			1
-		);
-		--pager-color-active: hsla(
-			var(--background-h),
-			var(--background-s),
-			calc(var(--background-l) ${props.dark ? "-" : "+"} 10%),
-			1
-		);
+		--marker-color: ${props.theme.markerColor};
+		--marker-width: ${props.theme.markerWidth};
+		--pager-background-color: ${props.theme.pagerBackgroundColor};
+		--pager-color: ${props.theme.pagerColor};
+		--pager-color-active: ${props.theme.pagerColorActive};
+		--pager-gap: ${props.theme.pagerGap};
+		--pager-size: ${props.theme.pagerSize};
+		--stroke-width: ${props.theme.strokeWidth};
+		${props.position}: 0;
 	`};
 
 	position: absolute;
 	z-index: 2;
 	top: 50%;
 	margin: 0 0.5rem;
-	left: 0;
 	transform: translateY(-50%);
 	background-color: var(--pager-background-color);
 	border-radius: calc(var(--pager-size) / 2);
 `;
+
+PagerWrapper.defaultProps = {
+	position: "left",
+	theme: light
+};
 
 /**
  * @type {StyledComponent<"div", {}>}
@@ -214,10 +209,12 @@ export const Icon: StyledComponent<"svg", {}> = styled.svg.attrs({
  */
 export const SkipLink: StyledComponent<"a", {}> = styled.a`
 	position: absolute;
-	bottom: 0.5rem;
-	right: 0.5rem;
+	bottom: 0;
+	right: 0;
+	padding: 0.5rem 1rem;
 	color: currentColor;
 	font-size: 1rem;
+	line-height: 1.5rem;
 	text-decoration: none;
 	&:hover {
 		text-decoration: underline;
@@ -309,7 +306,6 @@ export interface IPagerBaseProps extends IPagerWrapperProps {
 	showLabels?: boolean;
 }
 
-
 /**
  * @type {React.FunctionComponent<IPagerBaseProps>}
  * @param {ISkipBaseProps} props
@@ -330,7 +326,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 
 	return (
 		<React.Fragment>
-			<PagerWrapper dark={props.dark}>
+			<PagerWrapper position={props.position}>
 				<StyledPagers>
 					<Marker progress={props.progress} page={props.page} />
 					{Array(props.pages)
@@ -378,6 +374,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 export interface IPagersProps extends IPagerWrapperProps {
 	page?: number;
 	pages?: number;
+	position?: "left" | "right";
 	prefix?: string;
 	progress?: number;
 	showLabels?: boolean;
@@ -401,9 +398,9 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 			<ScrollConsumer>
 				{context => (
 					<PagerBase
-						dark={props.dark}
 						page={context.page}
 						pages={context.pages}
+						position={props.position}
 						prefix={context.anchors}
 						progress={context.progress}
 						showLabels={props.showLabels}
@@ -418,14 +415,18 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 	assert(props.prefix, "string");
 	return (
 		<PagerBase
-			dark={props.dark}
 			page={props.page}
 			pages={props.pages}
+			position={props.position}
 			prefix={props.prefix}
 			progress={props.progress}
 			showLabels={props.showLabels}
 		/>
 	);
+};
+
+Pagers.defaultProps = {
+	position: "left"
 };
 
 /**
