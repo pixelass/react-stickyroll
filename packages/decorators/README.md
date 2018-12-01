@@ -1,1 +1,1 @@
-# Stickyroll progressable
+# Stickyroll decorators

@@ -6,20 +6,16 @@ import React from "react";
  * @param {React.ComponentClass} BaseComponent
  * @return {any}
  */
-export type TProgress = (
-	BaseComponent: React.ComponentClass
-) => any;
+export type TProgress = (BaseComponent: React.ComponentClass) => any;
 
 /**
  * Add progress to the component properties
  * @type {TProgress}
  */
-export const progress: TProgress = (BaseComponent) => {
+export const progress: TProgress = BaseComponent => {
 	return (props: any) => (
 		<ScrollConsumer>
-		{({progress}) => (
-			<BaseComponent {...props} progress={progress}/>
-		)}
-	</ScrollConsumer>
+			{({progress}) => <BaseComponent {...props} progress={progress} />}
+		</ScrollConsumer>
 	);
 };

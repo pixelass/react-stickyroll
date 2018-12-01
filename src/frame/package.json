@@ -25,15 +25,22 @@
 		"test": "test"
 	},
 	"scripts": {
+		"prebuild": "yarn clean",
 		"build": "rollup -c",
 		"clean": "imhotep clean",
 		"format": "imhotep format",
 		"lint": "imhotep lint",
-		"upgrade-all": "yarn-upgrade-all",
-		"prebuild": "yarn clean",
 		"pretest": "yarn build",
 		"test": "ava",
+		"upgrade-all": "yarn-upgrade-all",
 		"watch": "rollup -cw"
+	},
+	"dependencies": {
+		"@stickyroll/context": "0.0.0",
+		"@stickyroll/tracker": "0.0.0",
+		"@types/react": "^16.7.11",
+		"react": "^16.6.3",
+		"ts-lib": "^0.0.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.1.6",
@@ -67,12 +74,5 @@
 		"last 2 Firefox versions",
 		"last 2 Safari versions",
 		"last 2 Edge versions"
-	],
-	"dependencies": {
-		"@stickyroll/context": "0.0.0",
-		"@stickyroll/tracker": "0.0.0",
-		"@types/react": "^16.7.11",
-		"react": "^16.6.3",
-		"ts-lib": "^0.0.5"
-	}
+	]
 }

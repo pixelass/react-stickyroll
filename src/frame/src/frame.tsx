@@ -23,7 +23,6 @@ export type TRenderer = TRender<any>;
  */
 export type TChild = TRender<any>;
 
-
 /**
  * @typedef {function} TPageHandler
  * @param {number} page
@@ -163,7 +162,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			if (scrollOffset === 0 && page === 0) {
 				this.props.onStart && this.props.onStart();
 			} else if (scrollOffset === 100 && page === this.pageCount - 1) {
-					this.props.onEnd && this.props.onEnd();
+				this.props.onEnd && this.props.onEnd();
 			}
 		}
 	}
@@ -222,7 +221,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 
 	private get pageCount(): number {
 		const {pages} = this.props;
-		return Array.isArray(pages) ? (pages as Array<any>).length : (pages as number)
+		return Array.isArray(pages) ? (pages as Array<any>).length : (pages as number);
 	}
 	/**
 	 * A Wrapper around the content to ensure the correct behavior during interaction.
