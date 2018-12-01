@@ -5,11 +5,7 @@
 	"repository": "git@github.com:stickyroll/react-stickyroll.git",
 	"license": "MIT",
 	"author": "Gregor Adams <greg@pixelass.com>",
-	"workspaces": [
-		"components/*",
-		"packages/*",
-		"src/*"
-	],
+	"workspaces": ["components/*", "packages/*", "src/*"],
 	"scripts": {
 		"prebuild": "imhotep clean; yarn rollup",
 		"build": "cross-env NODE_ENV=production imhotep build",
@@ -44,6 +40,7 @@
 		"@types/react": "^16.7.11",
 		"@types/react-dom": "16.0.11",
 		"@types/styled-components": "^4.1.2",
+		"lottie-web": "^5.4.2",
 		"react": "^16.6.3",
 		"react-dom": "^16.6.3",
 		"styled-components": "^4.1.2",
@@ -54,6 +51,7 @@
 		"babel-plugin-styled-components": "1.9.2",
 		"commitlint": "^7.2.1",
 		"concurrently": "^4.1.0",
+		"copy-webpack-plugin": "^4.6.0",
 		"cross-env": "5.2.0",
 		"enzyme": "3.7.0",
 		"enzyme-adapter-react-16": "1.7.0",
