@@ -2,32 +2,77 @@
 
 ### [DEMO](https://stickyroll.netlify.com/) | [DOCUMENTATION](https://stickyroll.github.io/react-stickyroll/)
 
+**Status**: _active development_  
+**Version**: _unreleased_
+
 [![npm](https://img.shields.io/npm/v/@stickyroll/react-stickyroll.svg?style=for-the-badge)](https://www.npmjs.com/org/stickyroll)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
 
 [![Travis branch](https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge)](https://travis-ci.org/stickyroll/react-stickyroll)
 
-[![David](https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
 [![David](https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
-[![David](https://img.shields.io/david/optional/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
-[![David](https://img.shields.io/david/peer/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
 
+<!-- toc -->
 
+- [Intro](#intro)
+- [Render prop vs children](#render-prop-vs-children)
+- [Event listeners](#event-listeners)
+- [Decorators (context based)](#decorators-context-based)
+- [Plugins](#plugins)
+- [Styled components](#styled-components)
+  * [Available components](#available-components)
+- [Examples](#examples)
+  * [Example 1](#example-1)
+  * [Example 2](#example-2)
+
+<!-- tocstop -->
+
+## Intro
 
 Stickyroll is the successor of [react-over-scroll](https://github.com/pixelass/react-over-scroll/).
 
 This project is maintained as a monorepo via [lerna](https://github.com/lerna/lerna).
 
-**Status**: _active development_  
-**Version**: _unreleased_
-
 Stickyroll translates page scroll to paging and a progress timeline.
 The view uses `position: sticky` to remain in-view.
 
-## Styled components
+## Render prop vs children
 
-Stickyroll provides styled components. It will remain fully optional to use styled-components but can help to 
-get started with some basic themes and plugins (See Pagers & Inner).
+Stickyroll accepts the same function as a render property or child function.  
+`props.children` gives access to context based plugins and decorators
+`props.render` is the lightweight version without context. 
+
+## Event listeners
+
+Stickyroll has 3 very basic listeners.
+
+* `onStart(): void`: fired when the start has been reached (undocked)  
+* `onEnd(): void`: fired when the end has been reached (undocked) 
+* `onPage(currentPage: number): void`: fired every time a page changes. `currentPage` has a 0 based index. (docked)
+
+More complex listeners can be implemented as Plugins using `@stickyroll/decorators` or `@stickyroll/context`
+(`{Listener}` is also available from `@stickyroll/stickyroll`)
+
+## Decorators (context based)
+
+Stickyroll provides a set of decorators to allow injecting properties on-the-fly.
+
+* `@page`: injects `page: number` and `pages: number`
+* `@progress`: injects `progress: number`
+
+**Example: page numbers**
+
+```js
+import {page} from "@stickyroll/decorators";
+import React from "react";
+
+@page
+export default class Pagenumber extends React.Component {
+	render() {
+		return `${this.props.page + 1} of ${this.props.pages}`
+	}
+}
+```
 
 ## Plugins
 
@@ -36,10 +81,17 @@ helpers it is easy to add a little spark to your roll.
 
 Looking at `Pagers` is a good start to understand the plugin mechanism.  
 
+## Styled components
+
+Stickyroll provides styled components. It will remain fully optional to use styled-components since
+the core is build purely on [React](https://www.npmjs.com/package/react) and [lodash.throttle](https://www.npmjs.com/package/lodash.throttle)
+
+### Available components
+
+* `@stickyroll/pagers`: reuses the theme from `@stickyroll/inner` via css-variables
+* `@stickyroll/inner`: a simple frame to host content. (made for `@stickyroll/pagers`)
+
 ## Examples
-
-Simple Examples (using internal-packages as prototype)
-
 
 ### Example 1
 
@@ -47,7 +99,7 @@ Simple Examples (using internal-packages as prototype)
 
 ```jsx
 import React from "react";
-import {Frame as Stickyroll} from "@stickyroll/frame";
+import {Stickyroll} from "@stickyroll/stickyroll";
 
 export default () => (
 	<Stickyroll pages={5}>
@@ -77,7 +129,7 @@ export const GlobalStyle = createGlobalStyle`
 
 ```jsx
 import React from "react";
-import {Frame as Stickyroll} from "@stickyroll/frame";
+import {Stickyroll} from "@stickyroll/stickyroll";
 import {Pagers, Skip} from "@stickyroll/pagers";
 import {Inner} from "@stickyroll/inner";
 import {GlobalStyle} from "./style";
