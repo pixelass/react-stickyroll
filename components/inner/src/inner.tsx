@@ -60,9 +60,9 @@ export interface IContentProps {
 	withPagers?: "left" | "right";
 }
 
-export const Content: StyledComponent<"div", ITheme, IContentProps> = styled.section`
+export const Content: StyledComponent<"div", ITheme, IContentProps> = styled.div`
 	flex: 1 1 1%;
-	${(props: IInnerProps) => css`
+	${(props: IContentProps) => css`
 		padding: 1rem;
 		color: ${props.theme.color};
 		background-color: ${props.theme.backgroundColor};
