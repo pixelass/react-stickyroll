@@ -1,6 +1,6 @@
 {
 	"name": "@stickyroll/inner",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"homepage": "https://github.com/stickyroll/react-stickyroll#readme",
 	"bugs": {
 		"url": "https://github.com/stickyroll/react-stickyroll/issues"
@@ -36,7 +36,7 @@
 		"watch": "rollup -cw"
 	},
 	"dependencies": {
-		"@stickyroll/themes": "^0.1.0",
+		"@stickyroll/themes": "^0.1.1",
 		"@types/react": "^16.7.11",
 		"@types/styled-components": "^4.1.2",
 		"react": "^16.6.3",
