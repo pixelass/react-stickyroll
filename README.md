@@ -2,10 +2,7 @@
 
 ### [DEMO](https://stickyroll.netlify.com/) | [DOCUMENTATION](https://stickyroll.github.io/react-stickyroll/)
 
-**Status**: _active development_  
-**Version**: _unreleased_
-
-[![npm](https://img.shields.io/npm/v/@stickyroll/react-stickyroll.svg?style=for-the-badge)](https://www.npmjs.com/org/stickyroll)
+[![npm](https://img.shields.io/npm/v/@stickyroll/stickyroll.svg?style=for-the-badge)](https://www.npmjs.com/org/stickyroll)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
 
 [![Travis branch](https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge)](https://travis-ci.org/stickyroll/react-stickyroll)
