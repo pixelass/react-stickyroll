@@ -2,10 +2,9 @@ import {progress} from "@stickyroll/decorators";
 import lottie from "lottie-web";
 import styled from "styled-components";
 import React from "react";
-const {NODE_ENV} = process.env;
 
 const path =
-	NODE_ENV === "production"
+	process.env.NODE_ENV === "production"
 		? "./data/markus.json"
 		: "https://labs.nearpod.com/bodymovin/demo/markus/halloween/markus.json";
 
