@@ -1,7 +1,10 @@
 import {Frame as StickyFrame, vendoredSticky} from "@stickyroll/frame";
+import {mount, initDOM} from "@stickyroll/testing-utils";
 import test from "ava";
 import React from "react";
 import {renderToString} from "react-dom/server";
+
+initDOM();
 
 const DEFAULT_OPTIONS = {
 	anchors: "",
@@ -29,12 +32,6 @@ const createAnchors = (prefix = "!/examples", pages = 1) =>
 test("Renders the correct markup ", t => {
 	const expected = createMarkup();
 	const actual = renderToString(<StickyFrame pages={1} render={() => null} />);
-	t.is(expected, actual);
-});
-
-test("Renders children ", t => {
-	const expected = createMarkup({content: "<div></div>"});
-	const actual = renderToString(<StickyFrame pages={1} render={() => <div />} />);
 	t.is(expected, actual);
 });
 
@@ -72,8 +69,14 @@ test("Render the correct amount of anchors", t => {
 	t.is(expected, actual);
 });
 
+test("Renders children when passed in", t => {
+	const wrapper = mount(
+		<StickyFrame className="🌈" pages={1} render={() => <div className="unique" />} />
+	);
+	t.true(wrapper.contains(<div className="unique" />));
+});
+
 test("Allows adding classNames", t => {
-	const actual = renderToString(<StickyFrame className="🌈" pages={1} render={() => null} />);
-	const expected = createMarkup({className: "🌈"});
-	t.is(expected, actual);
+	const wrapper = mount(<StickyFrame className="🌈" pages={1} render={() => null} />);
+	t.true(wrapper.hasClass("🌈"));
 });

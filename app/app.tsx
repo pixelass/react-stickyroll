@@ -61,7 +61,7 @@ class App extends React.Component {
 					<Title>Sickyroll</Title>
 					<GithubCorner />
 				</Header>
-				<DeviceSupport/>
+				<DeviceSupport />
 				<Card>
 					<h2>Using Bodymovin (a.k.a. lottie)</h2>
 					<p>
@@ -72,8 +72,7 @@ class App extends React.Component {
 					<p>
 						The animation was made by{" "}
 						<a href="https://twitter.com/MotionMarkus">Markus Magnusson</a>. You can
-						support him on{" "}
-						<a href="https://www.patreon.com/motionmarkus">patreon</a>
+						support him on <a href="https://www.patreon.com/motionmarkus">patreon</a>
 					</p>
 				</Card>
 				<Stickyroll pages={1} factor={8} anchors={"!/bodymovin"}>
@@ -88,12 +87,8 @@ class App extends React.Component {
 				</Stickyroll>
 				<Card>
 					<Headline>Themes</Headline>
-					<Copy>
-						The next examples use themes and styled-components
-					</Copy>
-					<Copy>
-						Themes can be combined or inherited to nested components.
-					</Copy>
+					<Copy>The next examples use themes and styled-components</Copy>
+					<Copy>Themes can be combined or inherited to nested components.</Copy>
 				</Card>
 				<Stickyroll pages={rolls} anchors={"!/dark"}>
 					{context => (

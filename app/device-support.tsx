@@ -7,7 +7,6 @@ import styled, {StyledComponent, ThemeProvider} from "styled-components";
 import {dark, pink} from "@stickyroll/themes";
 import {progressable} from "./progressable";
 
-
 const Headline: StyledComponent<any, any> = styled.h3`
 	font-size: 2em;
 	margin: 0;
@@ -223,8 +222,7 @@ export const Devices = (props: any) => {
 				)}
 				{progressable(
 					<Copy>
-						Stickyroll relies on the viewport and therefore ensures responsive
-						behavior.
+						Stickyroll relies on the viewport and therefore ensures responsive behavior.
 						<br />
 						Add your own logic to define how to display the content on different screen
 						sizes
@@ -236,13 +234,7 @@ export const Devices = (props: any) => {
 	);
 };
 
-const headlines = [
-	"Stickyroll",
-	"Mobile devices",
-	"Tablets",
-	"Desktops",
-	"Built for all devices"
-];
+const headlines = ["Stickyroll", "Mobile devices", "Tablets", "Desktops", "Built for all devices"];
 
 export const DeviceSupport = () => (
 	<Stickyroll pages={5} anchors="!/device-support">
@@ -250,16 +242,16 @@ export const DeviceSupport = () => (
 			<ThemeProvider theme={dark}>
 				<Inner withPagers="left">
 					<ThemeProvider theme={pink}>
-						<Pagers useContext={true} position="left"/>
+						<Pagers useContext={true} position="left" />
 					</ThemeProvider>
-						<StyledContent>
-							{progressable(
-								<Headline>{headlines[context.page]}</Headline>,
-								1 - context.progress
-							)}
-							<Devices progress={context.progress} page={context.page} />
-						</StyledContent>
-					<Skip useContext={true}/>
+					<StyledContent>
+						{progressable(
+							<Headline>{headlines[context.page]}</Headline>,
+							1 - context.progress
+						)}
+						<Devices progress={context.progress} page={context.page} />
+					</StyledContent>
+					<Skip useContext={true} />
 				</Inner>
 			</ThemeProvider>
 		)}

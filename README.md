@@ -1,18 +1,37 @@
 # Stickyroll
 
-### [DEMO](https://stickyroll.netlify.com/) | [DOCUMENTATION](https://stickyroll.github.io/react-stickyroll/)
+## It's about time
+
+#### [DEMO](https://stickyroll.netlify.com/) | [DOCUMENTATION](https://stickyroll.github.io/react-stickyroll/)
 
 [![npm](https://img.shields.io/npm/v/@stickyroll/stickyroll.svg?style=for-the-badge)](https://www.npmjs.com/org/stickyroll)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
+[![Travis branch](https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge&logo=travis)](https://travis-ci.org/stickyroll/react-stickyroll)
 
-[![Travis branch](https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge)](https://travis-ci.org/stickyroll/react-stickyroll)
+<!--
+[![node](https://img.shields.io/node/v/@stickyroll/stickyroll.svg?style=for-the-badge)](https://nodejs.org)
 
+[![Browserstack](https://img.shields.io/badge/browserstack-device_tests-brightgreen.svg?style=for-the-badge)](https://www.browserstack.com)
+[![Karma](https://img.shields.io/badge/karma-browser_tests-blue.svg?style=for-the-badge)](https://github.com/karma-runner/karma)
+[![Ava](https://img.shields.io/badge/ava-node_tests-4b4b77.svg?style=for-the-badge)](https://github.com/avajs/ava)
+
+[![Lerna](https://img.shields.io/badge/lerna-0.1.1-cd00ff.svg?style=for-the-badge)](https://github.com/avajs/ava)
+-->
+
+[![David](https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
 [![David](https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
+
+##### Powered by
+
+<!-- [![Webstorm](https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm)](https://www.jetbrains.com/buy/opensource/) -->
+
+[![Browserstack](https://img.shields.io/badge/browserstack-open_source-132434.svg?style=for-the-badge)](https://www.browserstack.com/open-source)
 
 <!-- toc -->
 
 -   [Intro](#intro)
 -   [Values](#values)
+-   [Browser matrix](#browser-matrix)
 -   [Render prop vs children](#render-prop-vs-children)
 -   [Event listeners](#event-listeners)
 -   [Decorators (context based)](#decorators-context-based)
@@ -20,6 +39,7 @@
 -   [Styled components](#styled-components)
     -   [Available components](#available-components)
 -   [Examples](#examples)
+    -   [Codesandboxes](#codesandboxes)
     -   [Example 1](#example-1)
     -   [Example 2](#example-2)
 -   [Development](#development)
@@ -30,8 +50,6 @@
 
 Stickyroll is the successor of [react-over-scroll](https://github.com/pixelass/react-over-scroll/).
 
-This project is maintained as a monorepo via [lerna](https://github.com/lerna/lerna).
-
 ## Values
 
 Stickyroll translates page scroll to paging and a progress timeline.
@@ -39,8 +57,9 @@ The view uses `position: sticky` to remain in-view.
 
 **Some reasons why you should give it a try**
 
--   Multiple instances on one page.
--   Perfect transition from docked to undocked states
+-   Tested in all modern browsers.
+-   Host multiple instances on one page.
+-   Smooth transitions from docked to undocked states
 -   No scroll-jacking
 -   Fully Accessible
 -   Allows deep links
@@ -48,18 +67,50 @@ The view uses `position: sticky` to remain in-view.
 
 **Use cases**
 
-Stickyroll offers some very unique features to build views for different use cases.
+Stickyroll offers some very unique features to build views for different use cases. Here are some basic examples.
 
 -   fixed position Parallax views (e.g. for product landing pages)
-    -    [Parallax Example](https://stickyroll.netlify.com/#!/device-support/1)
--   scrollable animation scenes (e.g. using [Bodymovin](https://github.com/airbnb/lottie-web))
-    -    [Bodymovin Example](https://stickyroll.netlify.com/#!/bodymovin/1)
+    -   [Parallax Example](https://stickyroll.netlify.com/#!/device-support/1)  
+        ![Parallax Example](./doc/assets/stickyroll_2.gif)
+-   scrollable animation scenes (e.g. using [lottie-web](https://github.com/airbnb/lottie-web))
+    -   [Lottie Example](https://stickyroll.netlify.com/#!/bodymovin/1)  
+        ![Parallax Example](./doc/assets/stickyroll.gif)
 
 **In the wild**
 
 If you are using stickyroll on your web page you can add it here via a pull request or by creating an issue.
 
 1. [Stickyroll](https://stickyroll.netlify.com/)
+
+## Browser matrix
+
+Stickyroll uses modern browser features and is therefore limited to these browsers. (Other browsers might work but are not being tested)
+
+-   **Chrome**: last 2 versions
+-   **Firefox**: last 2 versions
+-   **Safari**: last 2 versions
+-   **iOS**: last 2 versions
+-   **Opera**: last 2 versions
+-   **Edge**: last 2 versions
+
+Stickyroll is tested in various environments.
+With the help of [Browserstack](https://www.browserstack.com) and [Karma](https://github.com/karma-runner/karma)
+tests are run on actual machines.
+
+### Browserstack local tests:
+
+Local tests with head are enforced before each push. This ensures real browser tests before running remote tests.
+
+### Browserstack remote tests:
+
+-   windows 10
+    -   chrome 68.0
+    -   firefox 61.0
+    -   edge 17
+-   os x High Sierra
+    -   chrome 68.0
+    -   firefox 61.0
+    -   safari 11.1
 
 ## Render prop vs children
 
@@ -118,6 +169,11 @@ the core is build purely on [React](https://www.npmjs.com/package/react) and [lo
 -   `@stickyroll/themes`: A set of themes to use with styled-components
 
 ## Examples
+
+### Codesandboxes
+
+-   [Getting started](https://codesandbox.io/s/m1wxp21rx)
+-   [Using Components and themes](https://codesandbox.io/s/843o0630z2)
 
 ### Example 1
 

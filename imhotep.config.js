@@ -20,5 +20,5 @@ module.exports = {
 	src: {
 		path: "src"
 	},
-	ignore: ["**/package.json", "**/data/markus.json"]
+	ignore: ["**/package.json", "**/data/markus.json", "**/CHANGELOG.md"]
 };
