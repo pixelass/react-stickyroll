@@ -1,36 +1,55 @@
 # Stickyroll
 
-### [DEMO](https://stickyroll.netlify.com/) | [DOCUMENTATION](https://stickyroll.github.io/react-stickyroll/)
+## It's about time
+
+#### [DEMO](https://stickyroll.netlify.com/) | [DOCUMENTATION](https://stickyroll.github.io/react-stickyroll/)
 
 [![npm](https://img.shields.io/npm/v/@stickyroll/stickyroll.svg?style=for-the-badge)](https://www.npmjs.com/org/stickyroll)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE)
+[![Travis branch](https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge&logo=travis)](https://travis-ci.org/stickyroll/react-stickyroll)
 
-[![Travis branch](https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge)](https://travis-ci.org/stickyroll/react-stickyroll)
+<!--
+[![node](https://img.shields.io/node/v/@stickyroll/stickyroll.svg?style=for-the-badge)](https://nodejs.org)
 
+[![Browserstack](https://img.shields.io/badge/browserstack-device_tests-brightgreen.svg?style=for-the-badge)](https://www.browserstack.com)
+[![Karma](https://img.shields.io/badge/karma-browser_tests-blue.svg?style=for-the-badge)](https://github.com/karma-runner/karma)
+[![Ava](https://img.shields.io/badge/ava-node_tests-4b4b77.svg?style=for-the-badge)](https://github.com/avajs/ava)
+
+[![Lerna](https://img.shields.io/badge/lerna-0.1.1-cd00ff.svg?style=for-the-badge)](https://github.com/avajs/ava)
+-->
+
+[![David](https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
 [![David](https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
+
+##### Powered by
+
+<!-- [![Webstorm](https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm)](https://www.jetbrains.com/buy/opensource/) -->
+
+[![Browserstack](https://img.shields.io/badge/browserstack-open_source-132434.svg?style=for-the-badge)](https://www.browserstack.com/open-source)
 
 <!-- toc -->
 
--   [Intro](#intro)
--   [Values](#values)
--   [Render prop vs children](#render-prop-vs-children)
--   [Event listeners](#event-listeners)
--   [Decorators (context based)](#decorators-context-based)
--   [Plugins](#plugins)
--   [Styled components](#styled-components)
-    -   [Available components](#available-components)
--   [Examples](#examples)
-    -   [Example 1](#example-1)
-    -   [Example 2](#example-2)
--   [Development](#development)
+- [Intro](#intro)
+- [Values](#values)
+- [Browser matrix](#browser-matrix)
+  * [Browserstack remote tests:](#browserstack-remote-tests)
+- [Render prop vs children](#render-prop-vs-children)
+- [Event listeners](#event-listeners)
+- [Decorators (context based)](#decorators-context-based)
+- [Plugins](#plugins)
+- [Styled components](#styled-components)
+  * [Available components](#available-components)
+- [Examples](#examples)
+  * [Codesandboxes](#codesandboxes)
+  * [Example 1](#example-1)
+  * [Example 2](#example-2)
+- [Development](#development)
 
 <!-- tocstop -->
 
 ## Intro
 
 Stickyroll is the successor of [react-over-scroll](https://github.com/pixelass/react-over-scroll/).
-
-This project is maintained as a monorepo via [lerna](https://github.com/lerna/lerna).
 
 ## Values
 
@@ -39,8 +58,9 @@ The view uses `position: sticky` to remain in-view.
 
 **Some reasons why you should give it a try**
 
--   Multiple instances on one page.
--   Perfect transition from docked to undocked states
+-   Tested in all modern browsers.
+-   Host multiple instances on one page.
+-   Smooth transitions from docked to undocked states
 -   No scroll-jacking
 -   Fully Accessible
 -   Allows deep links
@@ -48,12 +68,14 @@ The view uses `position: sticky` to remain in-view.
 
 **Use cases**
 
-Stickyroll offers some very unique features to build views for different use cases.
+Stickyroll offers some very unique features to build views for different use cases. Here are some basic examples.
 
 -   fixed position Parallax views (e.g. for product landing pages)
-    -    [Parallax Example](https://stickyroll.netlify.com/#!/device-support/1)
--   scrollable animation scenes (e.g. using [Bodymovin](https://github.com/airbnb/lottie-web))
-    -    [Bodymovin Example](https://stickyroll.netlify.com/#!/bodymovin/1)
+    -   [Parallax Example](https://stickyroll.netlify.com/#!/device-support/1)  
+        ![Parallax Example](./doc/assets/stickyroll_2.gif)
+-   scrollable animation scenes (e.g. using [lottie-web](https://github.com/airbnb/lottie-web))
+    -   [Lottie Example](https://stickyroll.netlify.com/#!/bodymovin/1)  
+        ![Parallax Example](./doc/assets/stickyroll.gif)
 
 **In the wild**
 
@@ -61,19 +83,49 @@ If you are using stickyroll on your web page you can add it here via a pull requ
 
 1. [Stickyroll](https://stickyroll.netlify.com/)
 
+## Browser matrix
+
+Stickyroll uses modern browser features and is therefore limited to these browsers. (Other browsers might work but are not being tested)
+
+-   **Chrome**: last 2 versions
+-   **Firefox**: last 2 versions
+-   **Safari**: last 2 versions
+-   **iOS**: last 2 versions
+-   **Opera**: last 2 versions
+-   **Edge**: last 2 versions
+
+Stickyroll is tested in various environments.
+With the help of [Browserstack](https://www.browserstack.com) and [Karma](https://github.com/karma-runner/karma)
+tests are run on actual machines.
+
+### Browserstack remote tests:
+
+Thanks to the Browserstack [open source offer]((https://www.browserstack.com/open-source))
+we are able to test multiple browsers and platforms to ensure the best stability.
+
+-   windows 10
+    -   chrome 68.0
+    -   firefox 61.0
+    -   edge 17
+-   os x High Sierra
+    -   chrome 68.0
+    -   firefox 61.0
+    -   safari 11.1
+
 ## Render prop vs children
 
-Stickyroll accepts the same function as a render property or child function.  
-`props.children` gives access to context based plugins and decorators
-`props.render` is the lightweight version without context.
+Stickyroll accepts the same function as a render property or child function.
+
+-   `props.children` gives access to context based plugins and decorators
+-   `props.render` is the lightweight version without context.
 
 ## Event listeners
 
-Stickyroll has 3 very basic listeners.
+Stickyroll has 3 very basic listeners. They all allow to be synchronous or asynchronous
 
--   `onStart(): void`: fired when the start has been reached (undocked)
--   `onEnd(): void`: fired when the end has been reached (undocked)
--   `onPage(currentPage: number): void`: fired every time a page changes. `currentPage` has a 0 based index. (docked)
+-   `onStart(): void | Promise<void>`: fired when the start has been reached (undocked)
+-   `onEnd(): void | Promise<void>`: fired when the end has been reached (undocked)
+-   `onPage(currentPage: number): void | Promise<void>`: fired every time a page changes. `currentPage` has a 0 based index. (docked)
 
 More complex listeners can be implemented as Plugins using `@stickyroll/decorators` or `@stickyroll/context`
 (`{Listener}` is also available from `@stickyroll/stickyroll`)
@@ -82,7 +134,7 @@ More complex listeners can be implemented as Plugins using `@stickyroll/decorato
 
 Stickyroll provides a set of decorators to allow injecting properties on-the-fly.
 
--   `@page`: injects `page: number` and `pages: number`
+-   `@page`: injects `page: number`, `pageIndex: number` and `pages: number`
 -   `@progress`: injects `progress: number`
 
 **Example: page numbers**
@@ -118,6 +170,11 @@ the core is build purely on [React](https://www.npmjs.com/package/react) and [lo
 -   `@stickyroll/themes`: A set of themes to use with styled-components
 
 ## Examples
+
+### Codesandboxes
+
+-   [Getting started](https://codesandbox.io/s/m1wxp21rx)
+-   [Using Components and themes](https://codesandbox.io/s/843o0630z2)
 
 ### Example 1
 
@@ -171,7 +228,10 @@ export default class App extends React.Component {
 							<Pagers useContext={true} position="left"/>
 							<pre>
 								<code>
-									{JSON.stringify({...context, content: myContent[context.page]}, null, 2)}
+									{JSON.stringify({
+										...context,
+										content: myContent[context.pageIndex]
+									}, null, 2)}
 								</code>
 							</pre>
 							<Skip useContext={true}/>
@@ -219,6 +279,20 @@ yarn rollup
 
 ```bash
 yarn rollup:watch
+```
+
+**Testing**
+
+Basic tests:
+
+```bash
+yarn test
+```
+
+Karma runner:
+
+```bash
+yarn karma # [--local [--watch] | --remote]  [--chrome --firefox --safari --edge]
 ```
 
 copyright © 2018 [Gregor Adams](https://github.com/pixelass)

@@ -1,0 +1,7 @@
+packages/*
+src/*
+components/*
+**/data.json
+public/*
+docs/*
+CHANGELOG.md

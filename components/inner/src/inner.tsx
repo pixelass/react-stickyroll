@@ -57,7 +57,6 @@ Inner.defaultProps = {
 
 export interface IContentProps {
 	theme?: ITheme;
-	withPagers?: "left" | "right";
 }
 
 export const Content: StyledComponent<"div", ITheme, IContentProps> = styled.div`

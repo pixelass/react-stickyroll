@@ -75,8 +75,8 @@ const renderEasing: TRenderer = props => (
 				<Copy>
 					Each element can use an easing function to change the dynamics.
 					<br />
-					To keep Overscroll simple easing is not part of the options but should instead be
-					used where needed.
+					To keep Overscroll simple easing is not part of the options but should instead
+					be used where needed.
 				</Copy>
 			</Content>
 		</Inner>
@@ -120,7 +120,7 @@ const renderAnchors: TRenderer = props => (
 const renderPagers: TRenderer = props => (
 	<ThemeProvider theme={{...red, pagerSize: "3rem", pagerGap: "2rem"}}>
 		<Inner withPagers="right">
-			<Pagers {...props} prefix={props.anchors} showLabels={true} position="right"/>
+			<Pagers {...props} prefix={props.anchors} showLabels={true} position="right" />
 			<Content>
 				<Headline>Example with pagers</Headline>
 				<Debugger {...props} />
@@ -132,12 +132,12 @@ const renderPagers: TRenderer = props => (
 const renderFactor: TRenderer = props => (
 	<ThemeProvider theme={pink}>
 		<Inner withPagers="left">
-			<Pagers {...props} prefix={props.anchors} position="left"/>
+			<Pagers {...props} prefix={props.anchors} position="left" />
 			<Content>
 				<Headline>Example with factor</Headline>
 				<Debugger {...props} factor={0.5} />
 			</Content>
-			<Skip prefix={props.anchors}/>
+			<Skip prefix={props.anchors} />
 		</Inner>
 	</ThemeProvider>
 );

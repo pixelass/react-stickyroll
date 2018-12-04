@@ -5,6 +5,7 @@ export const Main: StyledComponent<any, any> = styled.main``;
 export const Header: StyledComponent<any, any> = styled.header`
 	text-align: center;
 	position: relative;
+	overflow: hidden;
 `;
 
 export const Title: StyledComponent<any, any> = styled.h1`

@@ -7,7 +7,6 @@ import styled, {StyledComponent, ThemeProvider} from "styled-components";
 import {dark, pink} from "@stickyroll/themes";
 import {progressable} from "./progressable";
 
-
 const Headline: StyledComponent<any, any> = styled.h3`
 	font-size: 2em;
 	margin: 0;
@@ -84,8 +83,8 @@ const ProgressDevices = (props: any) => (
 			<Group
 				transform="translate(681 55)"
 				style={{
-					...switchStyle("--progress", 2, props.page, easeIn(props.progress)),
-					...switchStyle("--progress-2", 3, props.page, easeOut(props.progress))
+					...switchStyle("--progress", 2, props.pageIndex, easeIn(props.progress)),
+					...switchStyle("--progress-2", 3, props.pageIndex, easeOut(props.progress))
 				}}>
 				<path
 					fill={`hsla(0, 0%, 10%, calc(var(--progress-2) * 1))`}
@@ -120,8 +119,8 @@ const ProgressDevices = (props: any) => (
 			<Group
 				transform="translate(1 1)"
 				style={{
-					...switchStyle("--progress", 3, props.page, easeIn(props.progress)),
-					...switchStyle("--progress-2", 4, props.page, easeOut(props.progress))
+					...switchStyle("--progress", 3, props.pageIndex, easeIn(props.progress)),
+					...switchStyle("--progress-2", 4, props.pageIndex, easeOut(props.progress))
 				}}>
 				<path
 					fill={`hsla(0, 0%, 10%, calc(var(--progress-2) * 1))`}
@@ -168,8 +167,8 @@ const ProgressDevices = (props: any) => (
 			<Group
 				transform="translate(576 177)"
 				style={{
-					...switchStyle("--progress", 0, props.page, easeIn(props.progress)),
-					...switchStyle("--progress-2", 1, props.page, easeOut(props.progress))
+					...switchStyle("--progress", 0, props.pageIndex, easeIn(props.progress)),
+					...switchStyle("--progress-2", 1, props.pageIndex, easeOut(props.progress))
 				}}>
 				<path
 					fill={`hsla(0, 0%, 10%, calc(var(--progress-2) * 1))`}
@@ -215,34 +214,27 @@ const ProgressDevices = (props: any) => (
 export const Devices = (props: any) => {
 	return (
 		<Figure>
-			<ProgressDevices progress={props.progress} page={props.page} />
+			<ProgressDevices progress={props.progress} pageIndex={props.pageIndex} />
 			<Figcaption>
 				{progressable(
 					<Headline>Built for all screen sizes</Headline>,
-					switchProgress(4, props.page, easeOut(props.progress))
+					switchProgress(4, props.pageIndex, easeOut(props.progress))
 				)}
 				{progressable(
 					<Copy>
-						Stickyroll relies on the viewport and therefore ensures responsive
-						behavior.
+						Stickyroll relies on the viewport and therefore ensures responsive behavior.
 						<br />
 						Add your own logic to define how to display the content on different screen
 						sizes
 					</Copy>,
-					switchProgress(3, props.page, easeInOut(props.progress))
+					switchProgress(3, props.pageIndex, easeInOut(props.progress))
 				)}
 			</Figcaption>
 		</Figure>
 	);
 };
 
-const headlines = [
-	"Stickyroll",
-	"Mobile devices",
-	"Tablets",
-	"Desktops",
-	"Built for all devices"
-];
+const headlines = ["Stickyroll", "Mobile devices", "Tablets", "Desktops", "Built for all devices"];
 
 export const DeviceSupport = () => (
 	<Stickyroll pages={5} anchors="!/device-support">
@@ -250,16 +242,16 @@ export const DeviceSupport = () => (
 			<ThemeProvider theme={dark}>
 				<Inner withPagers="left">
 					<ThemeProvider theme={pink}>
-						<Pagers useContext={true} position="left"/>
+						<Pagers useContext={true}/>
 					</ThemeProvider>
-						<StyledContent>
-							{progressable(
-								<Headline>{headlines[context.page]}</Headline>,
-								1 - context.progress
-							)}
-							<Devices progress={context.progress} page={context.page} />
-						</StyledContent>
-					<Skip useContext={true}/>
+					<StyledContent>
+						{progressable(
+							<Headline>{headlines[context.pageIndex]}</Headline>,
+							1 - context.progress
+						)}
+						<Devices progress={context.progress} pageIndex={context.pageIndex} />
+					</StyledContent>
+					<Skip useContext={true} />
 				</Inner>
 			</ThemeProvider>
 		)}

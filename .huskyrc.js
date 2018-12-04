@@ -1,5 +1,5 @@
 module.exports = {
-	"hooks": {
+	hooks: {
 		"pre-push": "yarn test",
 		"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 	}
