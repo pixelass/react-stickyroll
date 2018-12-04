@@ -97,11 +97,10 @@ Stickyroll is tested in various environments.
 With the help of [Browserstack](https://www.browserstack.com) and [Karma](https://github.com/karma-runner/karma)
 tests are run on actual machines.
 
-### Browserstack local tests:
-
-Local tests with head are enforced before each push. This ensures real browser tests before running remote tests.
-
 ### Browserstack remote tests:
+
+Thanks to the Browserstack [open source offer](<(https://www.browserstack.com/open-source)>)
+we are able to test multiple browsers and platforms to ensure the best stability.
 
 -   windows 10
     -   chrome 68.0
@@ -114,17 +113,18 @@ Local tests with head are enforced before each push. This ensures real browser t
 
 ## Render prop vs children
 
-Stickyroll accepts the same function as a render property or child function.  
-`props.children` gives access to context based plugins and decorators
-`props.render` is the lightweight version without context.
+Stickyroll accepts the same function as a render property or child function.
+
+-   `props.children` gives access to context based plugins and decorators
+-   `props.render` is the lightweight version without context.
 
 ## Event listeners
 
-Stickyroll has 3 very basic listeners.
+Stickyroll has 3 very basic listeners. They all allow to be synchronous or asynchronous
 
--   `onStart(): void`: fired when the start has been reached (undocked)
--   `onEnd(): void`: fired when the end has been reached (undocked)
--   `onPage(currentPage: number): void`: fired every time a page changes. `currentPage` has a 0 based index. (docked)
+-   `onStart(): void | Promise<void>`: fired when the start has been reached (undocked)
+-   `onEnd(): void | Promise<void>`: fired when the end has been reached (undocked)
+-   `onPage(currentPage: number): void | Promise<void>`: fired every time a page changes. `currentPage` has a 0 based index. (docked)
 
 More complex listeners can be implemented as Plugins using `@stickyroll/decorators` or `@stickyroll/context`
 (`{Listener}` is also available from `@stickyroll/stickyroll`)
@@ -133,7 +133,7 @@ More complex listeners can be implemented as Plugins using `@stickyroll/decorato
 
 Stickyroll provides a set of decorators to allow injecting properties on-the-fly.
 
--   `@page`: injects `page: number` and `pages: number`
+-   `@page`: injects `page: number`, `pageIndex: number` and `pages: number`
 -   `@progress`: injects `progress: number`
 
 **Example: page numbers**
@@ -227,7 +227,10 @@ export default class App extends React.Component {
 							<Pagers useContext={true} position="left"/>
 							<pre>
 								<code>
-									{JSON.stringify({...context, content: myContent[context.page]}, null, 2)}
+									{JSON.stringify({
+										...context,
+										content: myContent[context.pageIndex]
+									}, null, 2)}
 								</code>
 							</pre>
 							<Skip useContext={true}/>
@@ -275,6 +278,20 @@ yarn rollup
 
 ```bash
 yarn rollup:watch
+```
+
+**Testing**
+
+Basic tests:
+
+```bash
+yarn test
+```
+
+Karma runner:
+
+```bash
+yarn karma # [--local [--watch] | --remote]  [--chrome --firefox --safari --edge]
 ```
 
 copyright © 2018 [Gregor Adams](https://github.com/pixelass)
