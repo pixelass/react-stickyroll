@@ -13,6 +13,6 @@
 
 ## Intended version
 
-- [ ] Patch (BREAKING CHANGES)
+- [ ] Major (BREAKING CHANGES)
 - [ ] Minor (feat)
-- [ ] Major (fix)
+- [ ] Patch (fix)
