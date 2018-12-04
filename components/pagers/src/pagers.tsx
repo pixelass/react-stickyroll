@@ -2,6 +2,7 @@ import React from "react";
 import styled, {css, StyledComponent} from "styled-components";
 import {ScrollConsumer} from "@stickyroll/context";
 import {light, ITheme} from "@stickyroll/themes";
+import {TPagerPosition} from "@stickyroll/inner";
 
 /**
  *
@@ -90,7 +91,7 @@ const StyledPagers: StyledComponent<"nav", {}> = styled.nav`
  * @typedef {object} IPagerWrapperProps
  */
 export interface IPagerWrapperProps {
-	position?: "left" | "right";
+	position?: TPagerPosition;
 	theme?: ITheme;
 }
 
@@ -293,6 +294,7 @@ export const SkipBase: React.FunctionComponent<ISkipBaseProps> = props => {
  * @extends IPagerWrapperProps
  * @typedef {object} IPagerBaseProps
  * @property {number} page
+ * @property {number} pageIndex
  * @property {number} pages
  * @property {string} prefix
  * @property {number} progress
@@ -300,6 +302,7 @@ export const SkipBase: React.FunctionComponent<ISkipBaseProps> = props => {
  */
 export interface IPagerBaseProps extends IPagerWrapperProps {
 	page: number;
+	pageIndex: number;
 	pages: number;
 	prefix: string;
 	progress: number;
@@ -328,7 +331,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 		<React.Fragment>
 			<PagerWrapper position={props.position}>
 				<StyledPagers>
-					<Marker progress={props.progress} page={props.page} />
+					<Marker progress={props.progress} page={props.pageIndex} />
 					{Array(props.pages)
 						.fill(Boolean)
 						.map((x, i) => {
@@ -336,8 +339,8 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 							return (
 								<Pager
 									key={id}
-									active={i <= props.page}
-									selected={i === props.page && props.progress < 1}
+									active={i <= props.pageIndex}
+									selected={i === props.pageIndex && props.progress < 1}
 									href={`#${id}`}
 									onClick={handleClick}>
 									{props.showLabels && i + 1}
@@ -346,8 +349,8 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 						})}
 					<Pager
 						href={`#${props.prefix}/${props.pages + 1}`}
-						selected={props.page === props.pages - 1 && props.progress === 1}
-						active={props.page === props.pages - 1 && props.progress === 1}
+						selected={props.page === props.pages && props.progress === 1}
+						active={props.page === props.pages && props.progress === 1}
 						onClick={handleClick}>
 						{props.showLabels && (
 							<Icon>
@@ -362,24 +365,21 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 };
 
 /**
- * @extends IPagerWrapperProps
- * @typedef {object} IPagerBaseProps
- * @property {number} page
- * @property {number} pages
- * @property {string} prefix
- * @property {number} progress
- * @property {boolean} [showLabels]
+ * Make all properties in T optional
+ */
+type PartialProps<T> = {
+	[P in keyof T]?: T[P];
+};
+
+/**
+ * @extends Partial<IPagerBaseProps>
+ * @typedef {object} IPagersProps
  * @property {boolean} [useContext]
  */
-export interface IPagersProps extends IPagerWrapperProps {
-	page?: number;
-	pages?: number;
-	position?: "left" | "right";
-	prefix?: string;
-	progress?: number;
-	showLabels?: boolean;
+export interface IPagersProps extends Partial<IPagerBaseProps> {
 	useContext?: boolean;
 }
+
 
 /**
  * @type {React.FunctionComponent<IPagersProps>}
@@ -399,6 +399,7 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 				{context => (
 					<PagerBase
 						page={context.page}
+						pageIndex={context.pageIndex}
 						pages={context.pages}
 						position={props.position}
 						prefix={context.anchors}
@@ -410,12 +411,14 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 		);
 	}
 	assert(props.page, "number");
+	assert(props.pageIndex, "number");
 	assert(props.pages, "number");
 	assert(props.progress, "number");
 	assert(props.prefix, "string");
 	return (
 		<PagerBase
 			page={props.page}
+			pageIndex={props.pageIndex}
 			pages={props.pages}
 			position={props.position}
 			prefix={props.prefix}

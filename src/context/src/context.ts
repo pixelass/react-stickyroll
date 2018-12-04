@@ -10,6 +10,7 @@ import {Context, createContext} from "react";
 export interface IContext {
 	anchors?: string;
 	page: number;
+	pageIndex: number;
 	pages: number;
 	progress: number;
 }
@@ -17,7 +18,7 @@ export interface IContext {
 /**
  * @type {IContext}
  */
-export const DEFAULT_CONTEXT: IContext = {page: 0, progress: 0, pages: 0};
+export const DEFAULT_CONTEXT: IContext = {page: 1, pageIndex: 0, progress: 0, pages: 1};
 
 /**
  * @type {Context<IContext>}

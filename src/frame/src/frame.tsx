@@ -32,10 +32,23 @@ export type TChild = TRender<any>;
 export type TPageHandler = (page: number) => void;
 
 /**
+ * @typedef {function} TAsyncPageHandler
+ * @param {number} page
+ * @returns {Promise<void>}
+ */
+export type TAsyncPageHandler = (page: number) => Promise<void>;
+
+/**
  * @typedef {function} TProgressHandler
  * @returns {void}
  */
 export type TProgressHandler = () => void;
+
+/**
+ * @typedef {function} TAsyncProgressHandler
+ * @returns {Promise<void>}
+ */
+export type TAsyncProgressHandler = () => Promise<void>;
 
 /**
  * @typedef {object} IFrameDefaultProps
@@ -62,9 +75,9 @@ export interface IFrameProps {
 	children?: TChild;
 	className?: string;
 	factor?: number;
-	onEnd?: TProgressHandler;
-	onPage?: TPageHandler;
-	onStart?: TProgressHandler;
+	onEnd?: TProgressHandler | TAsyncProgressHandler;
+	onPage?: TPageHandler | TAsyncPageHandler;
+	onStart?: TProgressHandler | TAsyncProgressHandler;
 	pages: number | Array<any>;
 	render?: TRenderer;
 	throttle?: number;
@@ -88,7 +101,7 @@ export interface IFrameState {
 export type PositionSticky = Globals | "-webkit-sticky" | "sticky";
 
 /**
- * Check for sticky support to fix safari issues.
+ * Check for sticky support to fix webkit issues.
  * @returns {PositionSticky}
  */
 export const vendoredSticky = (): PositionSticky => {
@@ -181,7 +194,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		if (oldState.scrollOffset !== scrollOffset) {
 			if (scrollOffset === 0 && page === 0) {
 				this.props.onStart && this.props.onStart();
-			} else if (scrollOffset === 100 && page === this.pageCount - 1) {
+			} else if (scrollOffset === 1 && page === this.pageCount - 1) {
 				this.props.onEnd && this.props.onEnd();
 			}
 		}
@@ -211,7 +224,9 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		const Wrapper = this.Wrapper;
 
 		// Convert the scrollOffset from percent to a timeline [0,1]
-		const progress = this.state.scrollOffset / 100;
+		const progress = this.state.scrollOffset;
+		// const {innerHeight} = window;
+		// const clippedProgress = Math.round(progress * innerHeight) / innerHeight;
 
 		// Switch between context free and context based versions
 		switch (typeof render) {
@@ -221,7 +236,8 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 					<Wrapper>
 						{render({
 							anchors,
-							page,
+							page: page + 1,
+							pageIndex: page,
 							pages: this.pageCount,
 							progress
 						})}
@@ -230,7 +246,12 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			// Context based
 			default:
 				return (
-					<ScrollProvider value={{anchors, page, pages: this.pageCount, progress}}>
+					<ScrollProvider value={{
+						anchors,
+						page: page + 1,
+						pageIndex: page,
+						pages: this.pageCount, progress
+					}}>
 						<Wrapper>
 							<ScrollConsumer>{children}</ScrollConsumer>
 						</Wrapper>
@@ -276,7 +297,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		let scrollOffset: number = 0;
 
 		const {top, bottom}: ClientRect = this.tracker.current.getBoundingClientRect();
-		const {factor, pages} = this.props;
+		const {factor} = this.props;
 		const {innerHeight = 0}: Window = window;
 		const touchedTop: boolean = top <= 0;
 		const touchedEnd: boolean = bottom <= innerHeight;
@@ -287,11 +308,11 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			);
 			scrollOffset = Math.max(
 				0,
-				Math.min(100, (((top * -1) % (innerHeight * factor)) / innerHeight / factor) * 100)
+				Math.min(1, (((top * -1) % (innerHeight * factor)) / innerHeight / factor))
 			);
 		} else if (touchedEnd) {
 			page = this.pageCount - 1;
-			scrollOffset = 100;
+			scrollOffset = 1;
 		}
 		this.setState({
 			page,
@@ -304,7 +325,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 * @type {React.CSSProperties}
 	 */
 	private get wrapperStyle(): React.CSSProperties {
-		const {pages, factor} = this.props;
+		const {factor} = this.props;
 		const vh = this.pageCount * 100 * factor + 100;
 		return {
 			height: `${vh}vh`,
@@ -323,7 +344,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		if (!anchors) {
 			return null;
 		}
-		const {factor, pages} = this.props;
+		const {factor} = this.props;
 		const vh = 100 * factor;
 		const triggers = Array(this.pageCount + 1)
 			.fill(Boolean)

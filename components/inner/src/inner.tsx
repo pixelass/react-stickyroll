@@ -1,6 +1,8 @@
 import styled, {css, StyledComponent} from "styled-components";
 import {light, ITheme} from "@stickyroll/themes";
 
+export type TPagerPosition = "left" | "right";
+
 /**
  * @typedef {object} IInnerProps
  * @property {ITheme} [theme]
@@ -8,7 +10,7 @@ import {light, ITheme} from "@stickyroll/themes";
  */
 export interface IInnerProps {
 	theme?: ITheme;
-	withPagers?: "left" | "right";
+	withPagers?: TPagerPosition;
 }
 
 /**
@@ -57,7 +59,7 @@ Inner.defaultProps = {
 
 export interface IContentProps {
 	theme?: ITheme;
-	withPagers?: "left" | "right";
+	withPagers?: TPagerPosition;
 }
 
 export const Content: StyledComponent<"div", ITheme, IContentProps> = styled.div`
