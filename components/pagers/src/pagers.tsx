@@ -2,7 +2,6 @@ import React from "react";
 import styled, {css, StyledComponent} from "styled-components";
 import {ScrollConsumer} from "@stickyroll/context";
 import {light, ITheme} from "@stickyroll/themes";
-import {TPagerPosition} from "@stickyroll/inner";
 
 /**
  *
@@ -91,7 +90,7 @@ const StyledPagers: StyledComponent<"nav", {}> = styled.nav`
  * @typedef {object} IPagerWrapperProps
  */
 export interface IPagerWrapperProps {
-	position?: TPagerPosition;
+	position?: "left" | "right";
 	theme?: ITheme;
 }
 
