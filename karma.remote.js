@@ -26,9 +26,8 @@ module.exports = config => {
 	const indicated = [
 		cli.flags.edge && "bs_edge",
 		cli.flags.firefox && "bs_firefox_osx",
-		cli.flags.firefox && cli.flags.win && "bs_firefox_win",
-		cli.flags.chrome && cli.flags.win && "bs_chrome_win",
-		cli.flags.safari && cli.flags.ios && "bs_safari_ios",
+		cli.flags.firefox && "bs_firefox_win",
+		cli.flags.chrome && "bs_chrome_win",
 		cli.flags.safari && "bs_safari_osx",
 		cli.flags.chrome && "bs_chrome_osx"
 	].filter(Boolean);

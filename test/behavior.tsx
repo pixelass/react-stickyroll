@@ -1,319 +1,204 @@
 import React from "react";
-import {Frame as StickyFrame} from "@stickyroll/frame";
-import {Pagers, Skip, IScrollToOptions} from "@stickyroll/pagers";
+import {Stickyroll, IFrameProps, IContext} from "@stickyroll/stickyroll";
+import {Pagers, Skip} from "@stickyroll/pagers";
 import {Content, Inner} from "@stickyroll/inner";
 import ReactDOM from "react-dom";
-import {IContext} from "@stickyroll/context";
 
-const create = () => document.createElement("div");
-const cleanup = async el => await el.remove();
-const findPage = (page: number, prefix: string = "!/karma"): HTMLSpanElement | null =>
-	document.getElementById(`${prefix}/${page + 1}`);
+export type Create<T> = (
+	tagName: keyof HTMLElementTagNameMap,
+	attributes?: {[key: string]: string} | null,
+	children?: string | number | HTMLElement
+) => T;
 
-export type AsyncFunction<T> = () => Promise<T>;
+const create: Create<HTMLElement> = (
+	tagName,
+	attributes = null,
+	children?
+) => {
+	const el = document.createElement(tagName);
+	if (attributes !== null) {
+		Object.entries(attributes).forEach(([attribute, value]) => {
+			el.setAttribute(attribute, value)
+		});
+	}
+	if (!el.hasOwnProperty("innerHTML")) {
+		return el
+	}
+	if (typeof children === "string" || typeof children === "number") {
+		el.innerHTML = `${children}`;
+	} else if (typeof children === "object") {
+		if (!Array.isArray(children) && children.hasOwnProperty("nodeName")) {
+			el.appendChild(children)
+		} else if (Array.isArray(children)) {
+			children.forEach(child => {
+				if (typeof child === "string" || typeof child === "number") {
+					el.innerHTML += `${child}`;
+				} else if (typeof child === "object") {
+					if (!Array.isArray(child) && child.hasOwnProperty("nodeName")) {
+						el.appendChild(child)
+					}
+				}
+			})
+		}
+	}
+	return el;
+};
 
-const delayed = (callback: AsyncFunction<any>, ms: number = 200): Promise<any> =>
-	new Promise(resolve => {
-		setTimeout(async () => {
-			const result = await callback();
-			resolve(result);
-		}, ms);
-	});
-
-const getContext = async (rootEl: HTMLDivElement): Promise<IContext> => {
-	const el = rootEl.querySelector(".karma");
+const getContext = (rootEl: HTMLElement): IContext => {
+	const el = rootEl.querySelector("[data-stickyroll-context");
 	const {textContent} = el;
 	return JSON.parse(textContent) as IContext;
 };
 
-const scrollTo = async (
-	hash: string,
-	target: HTMLElement,
-	options: IScrollToOptions = {}
-): Promise<void> => {
-	if (!options.noHash) {
-		window.location.hash = hash;
-	}
-	const el = document.getElementById(hash);
-	if (!options.noFocus) {
-		await target.focus();
-	}
-	await el.scrollIntoView(true);
-};
 
-const handleClick = async (t): Promise<void> => {
-	const id = t.getAttribute("href").replace(/^#/, "");
-	const el = document.getElementById(id);
-	const {top: tEl} = el.getBoundingClientRect();
-	const {top: tBody} = document.body.getBoundingClientRect();
-	const offset = tEl - tBody;
-	await window.scrollTo(0, offset);
-};
-
-const delayLong = 300;
-const delayShort = 100;
-
-const setup = (pages, handlePage, handleStart, handleEnd) => {
-	let renderRoot = create();
-	document.body.innerHTML = "";
+const setup = (
+	props: IFrameProps,
+	log: (context: IContext) => void,
+	withPagers?: "left" | "right",
+	withSkip?: boolean
+) => {
+	const renderRoot = (create as Create<HTMLDivElement>)("div", {["data-stickyroll-root"]: ""});
+	const style = (create as Create<HTMLStyleElement>)("style", {["data-stickyroll-styles"]: ""}, `
+		body {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	`);
+	style.innerHTML = `
+		body {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	`
+	document.head.appendChild(style);
 	document.body.appendChild(renderRoot);
-	const App = props => (
-		<StickyFrame
-			pages={props.pages}
-			anchors={props.prefix}
-			onPage={handlePage}
-			onStart={handleStart}
-			onEnd={handleEnd}>
+	const App = () => (
+		<Stickyroll {...props}>
 			{context => (
-				<Inner>
-					<Pagers useContext={true} />
-					<Content>
-						<div className="karma">{JSON.stringify(context, null, 4)}</div>
-					</Content>
-					<Skip useContext={true} />
+				<Inner withPagers={withPagers}>
+					{withPagers && <Pagers useContext={true} position={withPagers}/>}
+					{log(context)}
+					{withSkip && <Skip useContext={true} />}
 				</Inner>
 			)}
-		</StickyFrame>
+		</Stickyroll>
 	);
-	ReactDOM.render(<App pages={pages} prefix="!/karma" />, renderRoot);
-	return renderRoot;
+	ReactDOM.render(<App/>, renderRoot);
+	return {renderRoot, style};
 };
 
-const style = document.createElement("style");
-style.innerHTML = `
-	body {
-		margin: 0;
-		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-		background: #E0E0E0;
-		color: black;
-	}
-	* {
-		box-sizing: border-box;
-	}
-`;
-document.head.appendChild(style);
+const clear = (renderRoot: HTMLDivElement, style: HTMLStyleElement) => {
+	renderRoot.remove();
+	style.remove();
+};
+
+const findAnchors = (renderRoot: HTMLDivElement):  HTMLAnchorElement[] =>
+	(Array.from(renderRoot.querySelectorAll("a")) as HTMLAnchorElement[])
+
+
 
 /*******************
  *      Tests      *
  *******************/
 
 // Before each test
-beforeEach(async () => {
+beforeEach(() => {
 	jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
-	await window.scrollTo(0, 0);
 });
 
-// After each test
-afterEach(async () => {
-	await window.scrollTo(0, 0);
-});
-
-// Run tests
-it("Scrolling works as expected", async done => {
-	const pages = [1, 2, 3, 4, 5];
-	let currentPage = 0;
-	let hitEnd = false;
-	let hitStart = false;
-	const handlePage = (page: number) => {
-		currentPage = page;
-		hitStart = false;
-		hitEnd = false;
+it("Pagers work as expected", async (done) => {
+	const pages = 10;
+	let counter = 0;
+	const results = [];
+	const logResults = {};
+	const log = (context: IContext): void => {
+		logResults[counter] = context;
 	};
-	const handleStart = () => {
-		hitEnd = false;
-		hitStart = true;
-	};
-	const handleEnd = () => {
-		hitStart = false;
-		hitEnd = true;
-	};
-	const renderRoot = setup(pages, handlePage, handleStart, handleEnd);
-	const {innerHeight} = window;
-	const {scrollHeight} = document.body;
-	const results = await Promise.all(
-		pages.map(
-			async (link, index) =>
-				await delayed(async () => {
-					await window.scrollTo(0, index * innerHeight);
-					return await delayed(async () => {
-						return {
-							...(await getContext(renderRoot)),
-							currentPage,
-							hitStart,
-							hitEnd,
-							index,
-							scrollY: window.scrollY,
-							expectedScroll: Math.min(
-								scrollHeight - innerHeight,
-								index * innerHeight
-							)
-						};
-					}, delayShort);
-				}, delayLong * index)
-		)
-	);
-	results.forEach((x, i) => {
-		const {page, currentPage, progress, hitEnd, index, expectedScroll, scrollY} = x;
-		expect(page).toBe(index);
-		expect(currentPage).toBe(index);
-		expect(progress).toBe(0);
-		expect(hitEnd).toBe(false);
-		expect(scrollY).toBe(expectedScroll);
-	});
-	await done();
-});
-
-it("Pagers work as expected", async done => {
-	const pages = 8;
-	let currentPage = 0;
-	let hitEnd = false;
-	let hitStart = false;
-	const handlePage = (page: number) => {
-		currentPage = page;
-		hitStart = false;
-		hitEnd = false;
-	};
-	const handleStart = () => {
-		hitEnd = false;
-		hitStart = true;
-	};
-	const handleEnd = () => {
-		hitStart = false;
-		hitEnd = true;
-	};
-	const renderRoot = setup(pages, handlePage, handleStart, handleEnd);
-	const {innerHeight} = window;
-	const {scrollHeight} = document.body;
-	const links: HTMLAnchorElement[] = Array.from(renderRoot.querySelectorAll("a"));
-	const results = await Promise.all(
-		links.map(
-			async (link, index) =>
-				await delayed(async () => {
-					await handleClick(link);
-					return await delayed(async () => {
-						return {
-							...(await getContext(renderRoot)),
-							currentPage,
-							hitStart,
-							hitEnd,
-							index,
-							scrollY: window.scrollY,
-							expectedScroll: Math.min(
-								scrollHeight - innerHeight,
-								index * innerHeight
-							)
-						};
-					}, delayShort);
-				}, delayLong * index)
-		)
-	);
-	// Test Pagers
-	// Test Skip
-	results.forEach((x, i) => {
-		const {page, pages, currentPage, progress, hitEnd, index, expectedScroll, scrollY} = x;
-		const lastPage = pages - 1;
-		if (index < pages) {
-			expect(page).toBe(index);
-			expect(currentPage).toBe(index);
-			expect(progress).toBe(0);
-			expect(hitEnd).toBe(false);
+	const onPage = async (page) => {
+		counter = page;
+		const context = logResults[counter - 1];
+		results.push({...context, currentPage: page});
+		if (page < pages - 1) {
+			links[page + 1].click();
 		} else {
-			expect(page).toBe(lastPage);
-			expect(currentPage).toBe(lastPage);
-			expect(progress).toBe(1);
-			expect(hitEnd).toBe(true);
+			expect(results.length).toEqual(counter);
+			expect(results.length).toEqual(pages - 1);
+			results.forEach(result => {
+				const {pageIndex, currentPage, progress} = result;
+				expect(pageIndex).toEqual(currentPage);
+				expect(progress).toEqual(0);
+			});
+			clear(renderRoot, style);
+			done();
 		}
-		// Does not pass on Travis
-		// Firefox 56.0.0 (Linux 0.0.0)
-		// @todo Fix test
-		expect(scrollY).toBe(expectedScroll);
-	});
-	await done();
+	};
+	const {renderRoot, style} = setup({pages, onPage, anchors: "!/"}, log, "left");
+	const links = findAnchors(renderRoot);
+	links[1].click();
 });
 
-it("Skip works", async done => {
-	const pages = 8;
-	let currentPage = 0;
-	let hitEnd = false;
-	let hitStart = false;
-	const handlePage = (page: number) => {
-		currentPage = page;
+it("The last pager works as expected", async (done) => {
+	const pages = 10;
+	const logResults = {};
+	const log = (context: IContext): void => {
+		logResults[0] = context;
 	};
-	const handleStart = () => {
-		hitStart = true;
+	const onEnd = async () => {
+		const results = logResults[0];
+		expect(results.page).toEqual(results.pages);
+		expect(results.progress).toEqual(1);
+		clear(renderRoot, style);
+		done();
 	};
-	const handleEnd = () => {
-		hitEnd = true;
-	};
-	const renderRoot = setup(pages, handlePage, handleStart, handleEnd);
-	const links: HTMLAnchorElement[] = Array.from(renderRoot.querySelectorAll("a"));
-	const result = await (async () => {
-		await handleClick(links.reverse()[0]);
-		return await delayed(async () => {
-			const {innerHeight} = window;
-			const {scrollHeight} = document.body;
-			const maxScroll = scrollHeight - innerHeight;
-			const context = await getContext(renderRoot);
-			return {
-				...context,
-				currentPage,
-				hitStart,
-				hitEnd,
-				targetPage: context.pages - 1,
-				scrollY: window.scrollY,
-				expectedScroll: maxScroll
-			};
-		}, delayShort);
-	})();
-
-	expect(result.page).toBe(result.targetPage);
-	expect(result.currentPage).toBe(result.targetPage);
-	expect(result.progress).toBe(1);
-	expect(result.hitEnd).toBe(true);
-	await done();
+	const {renderRoot, style} = setup({pages, onEnd, anchors: "!/"}, log, "left");
+	const links = findAnchors(renderRoot);
+	links[pages].click();
 });
 
-const testPages = 8;
-for (let index = 0; index < testPages; index++) {
-	it("Page navigation works", async done => {
-		const targetPage = index;
-		let currentPage = 0;
-		let hitEnd = false;
-		let hitStart = false;
-		const handlePage = (page: number) => {
-			currentPage = page;
-		};
-		const handleStart = () => {
-			hitStart = true;
-		};
-		const handleEnd = () => {
-			hitEnd = true;
-		};
-		const renderRoot = setup(testPages, handlePage, handleStart, handleEnd);
-		const links: HTMLAnchorElement[] = Array.from(renderRoot.querySelectorAll("a"));
-		const targetLink: HTMLAnchorElement = links[targetPage];
-		const result = await (async () => {
-			await handleClick(targetLink);
-			return await delayed(async () => {
-				const {innerHeight} = window;
-				const {scrollHeight} = document.body;
-				const maxScroll = scrollHeight - innerHeight;
-				return {
-					...(await getContext(renderRoot)),
-					currentPage,
-					hitStart,
-					hitEnd,
-					targetPage,
-					scrollY: window.scrollY,
-					expectedScroll: Math.min(maxScroll, targetPage * innerHeight)
-				};
-			}, delayShort);
-		})();
-		expect(result.currentPage).toBe(result.targetPage);
-		expect(result.page).toBe(result.targetPage);
-		expect(result.progress).toBe(0);
-		expect(result.hitEnd).toBe(false);
-		expect(result.scrollY).toBe(result.expectedScroll);
-		await done();
-	});
-}
+it("The skip link works as expected", async (done) => {
+	const pages = 10;
+	const logResults = {};
+	const log = (context: IContext): void => {
+		logResults[0] = context;
+	};
+	const onEnd = async () => {
+		const results = logResults[0];
+		expect(results.page).toEqual(results.pages);
+		expect(results.progress).toEqual(1);
+		clear(renderRoot, style);
+		done();
+	};
+	const {renderRoot, style} = setup({pages, onEnd, anchors: "!/"}, log, "left", true);
+	const links = findAnchors(renderRoot);
+	links[pages].click();
+});
+
+it("Scrolling works as expected", async (done) => {
+	const pages = 10;
+	let counter = 0;
+	const results = [];
+	const logResults = {};
+	const log = (context: IContext): void => {
+		logResults[counter] = context;
+	}
+	const onPage = async (page) => {
+		counter = page;
+		const context = logResults[counter - 1];
+		results.push({...context, currentPage: page});
+		if (page < pages - 1) {
+			window.scrollTo(0, window.innerHeight * (page + 1));
+		} else {
+			expect(results.length).toEqual(counter);
+			expect(results.length).toEqual(pages - 1);
+			results.forEach(result => {
+				const {pageIndex, currentPage, progress} = result;
+				expect(pageIndex).toEqual(currentPage);
+				expect(progress).toEqual(0);
+			});
+			clear(renderRoot, style);
+			done();
+		}
+	};
+	const {renderRoot, style} = setup({pages, onPage}, log);
+	window.scrollTo(0, window.innerHeight);
+});

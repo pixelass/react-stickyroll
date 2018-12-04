@@ -29,7 +29,8 @@
 		"format:ts": "prettier '{app,test}/**/*.{ts,tsx}' --parser typescript --write",
 		"karma": "cross-env HEADLESS=false karma start karma.js",
 		"karma:headless": "karma start karma.js",
-		"karma:browserstack": "karma start karma.js --remote",
+		"karma:remote": "karma start karma.js --remote --chrome --safari --firefox",
+		"karma:remote:edge": "yarn karma:remote --edge",
 		"lint": "lerna run lint",
 		"ocd": "npx sort-package-json; lerna exec npx sort-package-json",
 		"refresh": "yarn clear:cache; yarn clean; lerna clean --yes",
@@ -97,6 +98,7 @@
 		"typedoc": "^0.13.0",
 		"typescript": "3.2.1",
 		"webpack": "4.26.1",
+		"webpack-dev-server": "^3.1.10",
 		"yarn-upgrade-all": "^0.5.0"
 	},
 	"engines": {
