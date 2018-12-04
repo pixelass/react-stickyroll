@@ -123,9 +123,9 @@ class App extends React.Component {
 				<Stickyroll pages={rolls} anchors={"!/mixed"}>
 					{context => (
 						<ThemeProvider theme={yellow}>
-							<Inner withPagers={"right"}>
+							<Inner withPagers={"left"}>
 								<ThemeProvider theme={deepOrange}>
-									<Pagers useContext={true} position={"right"} />
+									<Pagers useContext={true} />
 								</ThemeProvider>
 								<ThemeProvider theme={dark}>
 									<Content>
