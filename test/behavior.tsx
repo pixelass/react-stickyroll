@@ -1,7 +1,7 @@
 import React from "react";
 import {Stickyroll, IFrameProps, IContext} from "@stickyroll/stickyroll";
 import {Pagers, Skip} from "@stickyroll/pagers";
-import {Content, Inner} from "@stickyroll/inner";
+import {Inner} from "@stickyroll/inner";
 import ReactDOM from "react-dom";
 
 export type Create<T> = (
