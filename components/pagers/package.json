@@ -1,6 +1,23 @@
 {
 	"name": "@stickyroll/pagers",
 	"version": "1.0.0-rc.0",
+	"keywords": [
+		"animation",
+		"canvas",
+		"content",
+		"fullscreen",
+		"paging",
+		"parallax",
+		"position sticky",
+		"presentation",
+		"react",
+		"scrollview",
+		"slider",
+		"slideshow",
+		"styled-components",
+		"svg",
+		"timeline"
+	],
 	"homepage": "https://github.com/stickyroll/react-stickyroll#readme",
 	"bugs": {
 		"url": "https://github.com/stickyroll/react-stickyroll/issues"
