@@ -15,7 +15,9 @@ export type TPage = (BaseComponent: React.ComponentClass) => any;
 export const page: TPage = BaseComponent => {
 	return (props: any) => (
 		<ScrollConsumer>
-			{({page, pageIndex, pages}) => <BaseComponent {...props} page={page} pageIndex={pageIndex} pages={pages} />}
+			{({page, pageIndex, pages}) => (
+				<BaseComponent {...props} page={page} pageIndex={pageIndex} pages={pages} />
+			)}
 		</ScrollConsumer>
 	);
 };

@@ -246,12 +246,14 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			// Context based
 			default:
 				return (
-					<ScrollProvider value={{
-						anchors,
-						page: page + 1,
-						pageIndex: page,
-						pages: this.pageCount, progress
-					}}>
+					<ScrollProvider
+						value={{
+							anchors,
+							page: page + 1,
+							pageIndex: page,
+							pages: this.pageCount,
+							progress
+						}}>
 						<Wrapper>
 							<ScrollConsumer>{children}</ScrollConsumer>
 						</Wrapper>
@@ -308,7 +310,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			);
 			scrollOffset = Math.max(
 				0,
-				Math.min(1, (((top * -1) % (innerHeight * factor)) / innerHeight / factor))
+				Math.min(1, ((top * -1) % (innerHeight * factor)) / innerHeight / factor)
 			);
 		} else if (touchedEnd) {
 			page = this.pageCount - 1;

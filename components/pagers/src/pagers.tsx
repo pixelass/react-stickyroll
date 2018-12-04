@@ -367,9 +367,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 /**
  * Make all properties in T optional
  */
-type PartialProps<T> = {
-	[P in keyof T]?: T[P];
-};
+type PartialProps<T> = {[P in keyof T]?: T[P]};
 
 /**
  * @extends Partial<IPagerBaseProps>
@@ -379,7 +377,6 @@ type PartialProps<T> = {
 export interface IPagersProps extends Partial<IPagerBaseProps> {
 	useContext?: boolean;
 }
-
 
 /**
  * @type {React.FunctionComponent<IPagersProps>}
