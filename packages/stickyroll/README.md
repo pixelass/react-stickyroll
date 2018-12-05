@@ -1,5 +1,7 @@
 # Stickyroll
 
+This is the core package of stickyroll.
+
 ```bash
 yarn add @stickyroll/stickyroll
 ```
@@ -35,7 +37,6 @@ export default class App extends React.Component {
 	public render() {
 		return (
 			<React.Fragment>
-				<GlobalStyle/>
 				<Stickyroll
 					pages={myContent}
 					anchors={"!/examples"}
