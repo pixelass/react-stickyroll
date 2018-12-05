@@ -18,8 +18,8 @@
 [![Lerna](https://img.shields.io/badge/lerna-0.1.1-cd00ff.svg?style=for-the-badge)](https://github.com/avajs/ava)
 -->
 
-[![David](https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
-[![David](https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://github.com/stickyroll/react-stickyroll)
+[![David](https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://david-dm.org/stickyroll/react-stickyroll)
+[![David](https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://david-dm.org/stickyroll/react-stickyroll?type=dev)
 
 ##### Powered by
 

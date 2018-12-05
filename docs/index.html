@@ -63,15 +63,33 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="stickyroll">Stickyroll</h1>
-				<h3 id="demo-documentation"><a href="https://stickyroll.netlify.com/">DEMO</a> | <a href="https://stickyroll.github.io/react-stickyroll/">DOCUMENTATION</a></h3>
-				<p><strong>Status</strong>: <em>active development</em><br><strong>Version</strong>: <em>unreleased</em></p>
-				<p><a href="https://www.npmjs.com/org/stickyroll"><img src="https://img.shields.io/npm/v/@stickyroll/react-stickyroll.svg?style=for-the-badge" alt="npm"></a>
-				<a href="https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="GitHub license"></a></p>
-				<p><a href="https://travis-ci.org/stickyroll/react-stickyroll"><img src="https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge" alt="Travis branch"></a></p>
-				<p><a href="https://github.com/stickyroll/react-stickyroll"><img src="https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge" alt="David"></a></p>
+				<h2 id="it-s-about-time">It&#39;s about time</h2>
+				<h4 id="demo-documentation"><a href="https://stickyroll.netlify.com/">DEMO</a> | <a href="https://stickyroll.github.io/react-stickyroll/">DOCUMENTATION</a></h4>
+				<p><a href="https://www.npmjs.com/org/stickyroll"><img src="https://img.shields.io/npm/v/@stickyroll/stickyroll.svg?style=for-the-badge" alt="npm"></a>
+					<a href="https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="GitHub license"></a>
+				<a href="https://travis-ci.org/stickyroll/react-stickyroll"><img src="https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge&logo=travis" alt="Travis branch"></a></p>
+				<!--
+[![node](https://img.shields.io/node/v/@stickyroll/stickyroll.svg?style=for-the-badge)](https://nodejs.org)
+
+[![Browserstack](https://img.shields.io/badge/browserstack-device_tests-brightgreen.svg?style=for-the-badge)](https://www.browserstack.com)
+[![Karma](https://img.shields.io/badge/karma-browser_tests-blue.svg?style=for-the-badge)](https://github.com/karma-runner/karma)
+[![Ava](https://img.shields.io/badge/ava-node_tests-4b4b77.svg?style=for-the-badge)](https://github.com/avajs/ava)
+
+[![Lerna](https://img.shields.io/badge/lerna-0.1.1-cd00ff.svg?style=for-the-badge)](https://github.com/avajs/ava)
+-->
+				<p><a href="https://david-dm.org/stickyroll/react-stickyroll"><img src="https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge" alt="David"></a>
+				<a href="https://david-dm.org/stickyroll/react-stickyroll?type=dev"><img src="https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge" alt="David"></a></p>
+				<h5 id="powered-by">Powered by</h5>
+				<!-- [![Webstorm](https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm)](https://www.jetbrains.com/buy/opensource/) -->
+				<p><a href="https://www.browserstack.com/open-source"><img src="https://img.shields.io/badge/browserstack-open_source-132434.svg?style=for-the-badge" alt="Browserstack"></a></p>
 				<!-- toc -->
 				<ul>
 					<li><a href="#intro">Intro</a></li>
+					<li><a href="#values">Values</a></li>
+					<li><a href="#browser-matrix">Browser matrix</a><ul>
+							<li><a href="#browserstack-remote-tests">Browserstack remote tests:</a></li>
+						</ul>
+					</li>
 					<li><a href="#render-prop-vs-children">Render prop vs children</a></li>
 					<li><a href="#event-listeners">Event listeners</a></li>
 					<li><a href="#decorators-context-based">Decorators (context based)</a></li>
@@ -81,33 +99,95 @@
 						</ul>
 					</li>
 					<li><a href="#examples">Examples</a><ul>
+							<li><a href="#codesandboxes">Codesandboxes</a></li>
 							<li><a href="#example-1">Example 1</a></li>
 							<li><a href="#example-2">Example 2</a></li>
 						</ul>
 					</li>
+					<li><a href="#development">Development</a></li>
 				</ul>
 				<!-- tocstop -->
 				<h2 id="intro">Intro</h2>
 				<p>Stickyroll is the successor of <a href="https://github.com/pixelass/react-over-scroll/">react-over-scroll</a>.</p>
-				<p>This project is maintained as a monorepo via <a href="https://github.com/lerna/lerna">lerna</a>.</p>
+				<h2 id="values">Values</h2>
 				<p>Stickyroll translates page scroll to paging and a progress timeline.
 				The view uses <code>position: sticky</code> to remain in-view.</p>
-				<h2 id="render-prop-vs-children">Render prop vs children</h2>
-				<p>Stickyroll accepts the same function as a render property or child function.<br><code>props.children</code> gives access to context based plugins and decorators
-				<code>props.render</code> is the lightweight version without context.</p>
-				<h2 id="event-listeners">Event listeners</h2>
-				<p>Stickyroll has 3 very basic listeners.</p>
+				<p><strong>Some reasons why you should give it a try</strong></p>
 				<ul>
-					<li><code>onStart(): void</code>: fired when the start has been reached (undocked)</li>
-					<li><code>onEnd(): void</code>: fired when the end has been reached (undocked)</li>
-					<li><code>onPage(currentPage: number): void</code>: fired every time a page changes. <code>currentPage</code> has a 0 based index. (docked)</li>
+					<li>Tested in all modern browsers.</li>
+					<li>Host multiple instances on one page.</li>
+					<li>Smooth transitions from docked to undocked states</li>
+					<li>No scroll-jacking</li>
+					<li>Fully Accessible</li>
+					<li>Allows deep links</li>
+					<li>Allows skipping the entire content</li>
+				</ul>
+				<p><strong>Use cases</strong></p>
+				<p>Stickyroll offers some very unique features to build views for different use cases. Here are some basic examples.</p>
+				<ul>
+					<li>fixed position Parallax views (e.g. for product landing pages)<ul>
+							<li><a href="https://stickyroll.netlify.com/#!/device-support/1">Parallax Example</a><br><img src="./doc/assets/stickyroll_2.gif" alt="Parallax Example"></li>
+						</ul>
+					</li>
+					<li>scrollable animation scenes (e.g. using <a href="https://github.com/airbnb/lottie-web">lottie-web</a>)<ul>
+							<li><a href="https://stickyroll.netlify.com/#!/bodymovin/1">Lottie Example</a><br><img src="./doc/assets/stickyroll.gif" alt="Parallax Example"></li>
+						</ul>
+					</li>
+				</ul>
+				<p><strong>In the wild</strong></p>
+				<p>If you are using stickyroll on your web page you can add it here via a pull request or by creating an issue.</p>
+				<ol>
+					<li><a href="https://stickyroll.netlify.com/">Stickyroll</a></li>
+				</ol>
+				<h2 id="browser-matrix">Browser matrix</h2>
+				<p>Stickyroll uses modern browser features and is therefore limited to these browsers. (Other browsers might work but are not being tested)</p>
+				<ul>
+					<li><strong>Chrome</strong>: last 2 versions</li>
+					<li><strong>Firefox</strong>: last 2 versions</li>
+					<li><strong>Safari</strong>: last 2 versions</li>
+					<li><strong>iOS</strong>: last 2 versions</li>
+					<li><strong>Opera</strong>: last 2 versions</li>
+					<li><strong>Edge</strong>: last 2 versions</li>
+				</ul>
+				<p>Stickyroll is tested in various environments.
+					With the help of <a href="https://www.browserstack.com">Browserstack</a> and <a href="https://github.com/karma-runner/karma">Karma</a>
+				tests are run on actual machines.</p>
+				<h3 id="browserstack-remote-tests-">Browserstack remote tests:</h3>
+				<p>Thanks to the Browserstack <a href="(https://www.browserstack.com/open-source)">open source offer</a>
+				we are able to test multiple browsers and platforms to ensure the best stability.</p>
+				<ul>
+					<li>windows 10<ul>
+							<li>chrome 68.0</li>
+							<li>firefox 61.0</li>
+							<li>edge 17</li>
+						</ul>
+					</li>
+					<li>os x High Sierra<ul>
+							<li>chrome 68.0</li>
+							<li>firefox 61.0</li>
+							<li>safari 11.1</li>
+						</ul>
+					</li>
+				</ul>
+				<h2 id="render-prop-vs-children">Render prop vs children</h2>
+				<p>Stickyroll accepts the same function as a render property or child function.</p>
+				<ul>
+					<li><code>props.children</code> gives access to context based plugins and decorators</li>
+					<li><code>props.render</code> is the lightweight version without context.</li>
+				</ul>
+				<h2 id="event-listeners">Event listeners</h2>
+				<p>Stickyroll has 3 very basic listeners. They all allow to be synchronous or asynchronous</p>
+				<ul>
+					<li><code>onStart(): void | Promise&lt;void&gt;</code>: fired when the start has been reached (undocked)</li>
+					<li><code>onEnd(): void | Promise&lt;void&gt;</code>: fired when the end has been reached (undocked)</li>
+					<li><code>onPage(currentPage: number): void | Promise&lt;void&gt;</code>: fired every time a page changes. <code>currentPage</code> has a 0 based index. (docked)</li>
 				</ul>
 				<p>More complex listeners can be implemented as Plugins using <code>@stickyroll/decorators</code> or <code>@stickyroll/context</code>
 				(<code>{Listener}</code> is also available from <code>@stickyroll/stickyroll</code>)</p>
 				<h2 id="decorators-context-based-">Decorators (context based)</h2>
 				<p>Stickyroll provides a set of decorators to allow injecting properties on-the-fly.</p>
 				<ul>
-					<li><code>@page</code>: injects <code>page: number</code> and <code>pages: number</code></li>
+					<li><code>@page</code>: injects <code>page: number</code>, <code>pageIndex: number</code> and <code>pages: number</code></li>
 					<li><code>@progress</code>: injects <code>progress: number</code></li>
 				</ul>
 				<p><strong>Example: page numbers</strong></p>
@@ -134,6 +214,11 @@
 					<li><code>@stickyroll/themes</code>: A set of themes to use with styled-components</li>
 				</ul>
 				<h2 id="examples">Examples</h2>
+				<h3 id="codesandboxes">Codesandboxes</h3>
+				<ul>
+					<li><a href="https://codesandbox.io/s/m1wxp21rx">Getting started</a></li>
+					<li><a href="https://codesandbox.io/s/843o0630z2">Using Components and themes</a></li>
+				</ul>
 				<h3 id="example-1">Example 1</h3>
 				<p><strong>roll.tsx</strong></p>
 				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
@@ -170,11 +255,14 @@
                 &lt;GlobalStyle/&gt;
                 &lt;Stickyroll pages={myContent} anchors={"!/examples"} onPage={p =&gt; {console.log(p)}}&gt;
                     {(context) =&gt; (
-                        &lt;Inner withPagers={true}&gt;
-                            &lt;Pagers useContext={true}/&gt;
+                        &lt;Inner withPagers="left"&gt;
+                            &lt;Pagers useContext={true} position="left"/&gt;
                             &lt;pre&gt;
                                 &lt;code&gt;
-                                    {JSON.stringify({...context, content: myContent[context.page]}, null, 2)}
+                                    {JSON.stringify({
+                                        ...context,
+                                        content: myContent[context.pageIndex]
+                                    }, null, 2)}
                                 &lt;/code&gt;
                             &lt;/pre&gt;
                             &lt;Skip useContext={true}/&gt;
@@ -185,6 +273,26 @@
         );
     }
 }</code></pre>
+				<h2 id="development">Development</h2>
+				<p>To help develop Stickyroll follow these steps.</p>
+				<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> git@github.com:stickyroll/react-stickyroll.git
+<span class="hljs-built_in">cd</span> react-stickyroll
+yarn</code></pre>
+				<p>For fast development use the <code>dev</code> script.<br>This will start a webpack dev-server on <code>port:3000</code> and watch all packages.</p>
+				<p><strong>Dev server (hot)</strong> (watches packages)</p>
+				<pre><code class="language-bash">yarn dev</code></pre>
+				<p><strong>Build (production)</strong></p>
+				<pre><code class="language-bash">yarn build</code></pre>
+				<p><strong>Build packages</strong></p>
+				<pre><code class="language-bash">yarn rollup</code></pre>
+				<p><strong>Watch packages</strong></p>
+				<pre><code class="language-bash">yarn rollup:watch</code></pre>
+				<p><strong>Testing</strong></p>
+				<p>Basic tests:</p>
+				<pre><code class="language-bash">yarn <span class="hljs-built_in">test</span></code></pre>
+				<p>Karma runner:</p>
+				<pre><code class="language-bash">yarn karma <span class="hljs-comment"># [--local [--watch] | --remote]  [--chrome --firefox --safari --edge]</span></code></pre>
+				<p>copyright © 2018 <a href="https://github.com/pixelass">Gregor Adams</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -192,6 +300,12 @@
 				<ul>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="modules/__global.html">__global</a>
+					</li>
+					<li class=" tsd-kind-module tsd-parent-kind-module tsd-is-not-exported">
+						<a href="modules/__global.nodejs.html">__global.<wbr>NodeJS</a>
 					</li>
 				</ul>
 			</nav>
@@ -253,6 +367,18 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#pagerprops" class="tsd-kind-icon">Pager<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter tsd-is-not-exported">
+						<a href="globals.html#partialprops" class="tsd-kind-icon">Partial<wbr>Props</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#positionsticky" class="tsd-kind-icon">Position<wbr>Sticky</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tasyncpagehandler" class="tsd-kind-icon">TAsync<wbr>Page<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tasyncprogresshandler" class="tsd-kind-icon">TAsync<wbr>Progress<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#tchild" class="tsd-kind-icon">TChild</a>
@@ -327,6 +453,9 @@
 						<a href="globals.html#assert" class="tsd-kind-icon">assert</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#initdom" class="tsd-kind-icon">initDOM</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#page" class="tsd-kind-icon">page</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -334,6 +463,12 @@
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#scrollto" class="tsd-kind-icon">scroll<wbr>To</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#vendoredsticky" class="tsd-kind-icon">vendored<wbr>Sticky</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#withpage" class="tsd-kind-icon">with<wbr>Page</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#default_context" class="tsd-kind-icon">DEFAULT_<wbr>CONTEXT</a>
