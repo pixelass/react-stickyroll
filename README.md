@@ -16,11 +16,10 @@
 [![Ava](https://img.shields.io/badge/ava-node_tests-4b4b77.svg?style=for-the-badge)](https://github.com/avajs/ava)
 
 [![Lerna](https://img.shields.io/badge/lerna-0.1.1-cd00ff.svg?style=for-the-badge)](https://github.com/avajs/ava)
--->
 
 [![David](https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://david-dm.org/stickyroll/react-stickyroll)
 [![David](https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://david-dm.org/stickyroll/react-stickyroll?type=dev)
-
+-->
 ##### Powered by
 
 <!-- [![Webstorm](https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm)](https://www.jetbrains.com/buy/opensource/) -->
