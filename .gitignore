@@ -66,3 +66,4 @@ typings/
 # deployment
 public
 **/dist
+**/lib

@@ -6,7 +6,7 @@ import {ITheme} from "./theme";
  */
 export const lime: ITheme = {
 	backgroundColor: "#CDDC39",
-	color: "white",
+	color: "black",
 	markerColor: "#827717",
 	markerWidth: "2px",
 	pagerBackgroundColor: "none",

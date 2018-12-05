@@ -37,7 +37,7 @@
 	"module": "dist/esm/index.js",
 	"typings": "index.d.ts",
 	"directories": {
-		"lib": "dist",
+		"../../lib": "dist",
 		"doc": "doc",
 		"test": "test"
 	},
@@ -45,6 +45,8 @@
 		"prebuild": "yarn clean",
 		"build": "rollup -c",
 		"clean": "imhotep clean",
+		"demo": "rimraf lib && tsc --module commonjs",
+		"demo:watch": "rimraf lib && tsc --watch",
 		"format": "imhotep format",
 		"lint": "imhotep lint",
 		"pretest": "yarn build",
@@ -58,7 +60,7 @@
 		"@types/styled-components": "^4.1.3",
 		"react": "^16.6.3",
 		"styled-components": "^4.1.2",
-		"ts-lib": "^0.0.5"
+		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.0",
@@ -68,8 +70,9 @@
 		"babel-plugin-styled-components": "1.9.2",
 		"cross-env": "5.2.0",
 		"enzyme": "3.7.0",
-		"imhotep": "1.1.3",
+		"imhotep": "1.1.5",
 		"react-dom": "16.6.3",
+		"rimraf": "^2.6.2",
 		"rollup": "0.67.4",
 		"rollup-plugin-babel": "4.0.3",
 		"rollup-plugin-typescript2": "0.18.0",
@@ -96,5 +99,8 @@
 		"last 2 ios versions",
 		"last 2 opera versions",
 		"last 2 Edge versions"
-	]
+	],
+	"patternplate": {
+		"displayName": "Styled Views"
+	}
 }

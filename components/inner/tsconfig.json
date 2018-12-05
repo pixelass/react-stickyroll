@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
 		"alwaysStrict": true,
-		"declaration": true,
+		"declaration": false,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"importHelpers": true,
@@ -10,8 +10,7 @@
 		"module": "es6",
 		"moduleResolution": "node",
 		"jsx": "react",
-		"outDir": "dist",
-		"declarationDir": "dist",
+		"outDir": "lib",
 		"sourceMap": true,
 		"strict": false,
 		"target": "es6"
