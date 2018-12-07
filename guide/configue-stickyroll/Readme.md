@@ -1,5 +1,5 @@
 ---
-displayName: "Guide: Configure Stickyroll"
+displayName: "Configure Stickyroll"
 description: "Modify the behavior of Stickyroll."
 tags: 
  - Guide
@@ -75,23 +75,7 @@ while scrolling
 <div className={`custom-trigger--${Math.round(progress * 3)}`}/>
 ```
 
-You can add these Styles to your stylesheet if you want to see some action:
-
-> :information_source: 
-> You can use [styled-components](https://www.styled-components.com/) or a similar library
-> to add these styles for you.  
-> To keep things simple we will just add them to the `document.head` manually
-
-```js
-Array(4).fill(Boolean).map((x, i) => `
-	.custom-trigger {
-		transition: background-color 0.3s ease-in-out;
-	}
-	.custom-trigger--${i} {
-		background-color: hsl(${i * 36}, 100%, 70%);
-	}
-`);
-```
+You can add styles to your stylesheet if you want to see some action.
 
 Open the file `my-app/src/App.css` in your text editor and add this
 css snippet

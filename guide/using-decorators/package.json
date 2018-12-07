@@ -42,6 +42,6 @@
 		"access": "private"
 	},
 	"patternplate": {
-		"displayName": "Example: Using Decorators"
+		"displayName": "03 - Using Decorators"
 	}
 }

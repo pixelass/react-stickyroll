@@ -1,5 +1,5 @@
 ---
-displayName: "Reference: Stickyroll"
+displayName: "Stickyroll"
 description: "Detailed API documentation of the Stickyroll component"
 tags:
     - Reference

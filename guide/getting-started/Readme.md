@@ -1,5 +1,5 @@
 ---
-displayName: "Guide: Getting Started"
+displayName: "Getting Started"
 description: "Stickyroll is easy to use and very intuitive."
 tags: 
  - Guide

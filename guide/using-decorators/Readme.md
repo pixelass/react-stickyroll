@@ -1,5 +1,5 @@
 ---
-displayName: "Guide: Using Decorators"
+displayName: "Using Decorators"
 description: "Get started with context aware plugins."
 tags: 
  - Guide

@@ -1,5 +1,5 @@
 ---
-displayName: "Guide: Creating Plugins"
+displayName: "Creating Plugins"
 description: "Plugins can interact with your Stickyroll."
 tags: 
  - Guide

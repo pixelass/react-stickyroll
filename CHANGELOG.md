@@ -10,7 +10,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * added new package for utils ([0718802](https://github.com/stickyroll/react-stickyroll/commit/0718802))
 
+### Fixes
 
+* fix anchor + factor issue  ([65cd17d](https://github.com/stickyroll/react-stickyroll/commit/65cd17d))
+
+65cd17d
 
 
 
