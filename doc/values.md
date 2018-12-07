@@ -1,5 +1,5 @@
 ---
-displayName: Value Proposition
+displayName: Why Stickyroll
 options:
   order: -5
 ---
@@ -25,8 +25,8 @@ Stickyroll offers some very unique features to build views for different use cas
 
 -   fixed position Parallax views (e.g. for product landing pages)
     -   [Parallax Example](https://stickyroll.netlify.com/#!/device-support/1)  
-        ![Parallax Example](stickyroll.github.com/react-stickyroll/api/static/stickyroll_2.gif)
+        ![Parallax Example](https://stickyroll.github.com/media/images/stickyroll_2.gif)
 -   scrollable animation scenes (e.g. using [lottie-web](https://github.com/airbnb/lottie-web))
     -   [Lottie Example](https://stickyroll.netlify.com/#!/bodymovin/1)  
-        ![Parallax Example](stickyroll.github.com/react-stickyroll/api/static/stickyroll.gif)
+        ![Parallax Example](https://stickyroll.github.com/media/images/stickyroll.gif)
 
