@@ -54,5 +54,5 @@ yarn patternplate:dev
 
 Copyright by [Gregor Adams](mailto:greg@pixelass.com). All `@stickyroll` packages are released under the MIT license.
 
-[site]: https://stickyroll.netlify.com/
+[site]: https://stickyroll.github.io/react-stickyroll/
 [getting-started]: https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true

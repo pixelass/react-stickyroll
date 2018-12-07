@@ -1,6 +1,7 @@
 module.exports = {
 	docs: ["{doc,guide}/**/*.md", "!**/CHANGELOG.md", "CHANGELOG.md"],
 	entry: ["guide/*/demo.js"],
+	cover: "./src/cover",
 	render: "@patternplate/render-styled-components/render",
 	mount: "@patternplate/render-styled-components/mount",
 	ui: {

@@ -1964,7 +1964,7 @@
   dependencies:
     "@patternplate/components" "^3.2.0"
 
-"@popmotion/easing@^1.0.1":
+"@popmotion/easing@1.0.1", "@popmotion/easing@^1.0.1":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@popmotion/easing/-/easing-1.0.1.tgz#48336aea29542113df10aeb81b4fd10f0b95f937"
   integrity sha512-NbIEz9mZAem0F0sjg2v57LbU9Y2Xc50QEX434jYrwEQzXJuJipyUV48Qz4hjHqbB/8xiUj0JMQfRvP8K9nUbxg==
