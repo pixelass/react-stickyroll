@@ -66,7 +66,7 @@ export interface IFrameDefaultProps {
  * @property {string} [className]
  * @property {number} [factor]
  * @property {TPageHandler} [onPage]
- * @property {number|Array<any>} [pages]
+ * @property {number|Array<any>} pages
  * @property {TRenderer} [render]
  * @property {number} [throttle]
  */
@@ -343,20 +343,20 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 */
 	private get anchors(): React.ReactElement<HTMLDivElement> | null {
 		const {anchors} = this.props;
-		if (!anchors) {
+		if (!(typeof anchors === "string")) {
 			return null;
 		}
 		const {factor} = this.props;
-		const vh = 100 * factor;
+		const glue = anchors.length ? "/" : "";
 		const triggers = Array(this.pageCount + 1)
 			.fill(Boolean)
 			.map((x, i) => (
 				<span
-					id={`${anchors}/${i + 1}`}
+					id={`${anchors}${glue}${i + 1}`}
 					key={`${anchors}:${i + 1}`}
 					style={{
 						display: "block",
-						height: `${vh}vh`
+						height: `${i === this.pageCount? 100 : 100 * factor}vh`
 					}}
 				/>
 			));
@@ -365,7 +365,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			<div style={anchorStyle}>
 				{triggers}
 				<span
-					id={`${anchors}/skip`}
+					id={`${anchors}${glue}skip`}
 					style={{
 						position: "absolute",
 						top: "100%"
