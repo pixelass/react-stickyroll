@@ -35,7 +35,7 @@
 		"karma:remote:edge": "yarn karma:remote --edge",
 		"lint": "lerna run lint",
 		"ocd": "npx sort-package-json; lerna exec npx sort-package-json",
-		"patternplate:build": "yarn clear:docs && patternplate build --out='docs/patterns' --base='/patterns/'",
+		"patternplate:build": "yarn clear:docs && patternplate build --out='docs' --base='/react-stickyroll/'",
 		"patternplate:dev": "yarn rollup && concurrently \"yarn rollup:watch\" \"yarn lerna run demo:watch\" \"patternplate start\"",
 		"pin": "pin components/inner/package.json  --yarn",
 		"refresh": "yarn clear:cache; yarn clean; lerna clean --yes",
