@@ -496,7 +496,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar tslib_1 = __webpack_require__(/*! tslib */ \"./node_modules/tslib/tslib.es6.js\");\nvar react_1 = tslib_1.__importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\nvar device_spport_1 = __webpack_require__(/*! ./device-spport */ \"./src/cover/dist/device-spport.js\");\nvar default_1 = /** @class */ (function (_super) {\n    tslib_1.__extends(default_1, _super);\n    function default_1() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    default_1.prototype.componentDidMount = function () {\n        // This is needed due to patternplate not rendering CSS injections correctly.\n        var body = document.body;\n        var style = document.createElement(\"style\");\n        style.innerHTML = \"\\n\\t\\t\\tbody {\\n\\t\\t\\t\\tmargin: 0;\\n\\t\\t\\t\\tfont-family: -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \\\"Helvetica Neue\\\", sans-serif;\\n\\t\\t\\t\\tbackground: #E0E0E0;\\n\\t\\t\\t\\tcolor: black;\\n\\t\\t\\t}\\n\\t\\t\\t* {\\n\\t\\t\\t\\tbox-sizing: border-box;\\n\\t\\t\\t}\\n\\t\\t\";\n        document.head.appendChild(style);\n        //body.style.margin = \"0\";\n        //body.style.fontFamily = \"-apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \\\"Helvetica Neue\\\", sans-serif\";\n    };\n    default_1.prototype.render = function () {\n        return react_1.default.createElement(device_spport_1.DeviceSupport, null);\n    };\n    return default_1;\n}(react_1.default.Component));\nexports.default = default_1;\n;\n//# sourceMappingURL=cover.js.map\n\n//# sourceURL=webpack://patternplate-%5Bname%5D/./src/cover/dist/cover.js?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar tslib_1 = __webpack_require__(/*! tslib */ \"./node_modules/tslib/tslib.es6.js\");\nvar react_1 = tslib_1.__importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\nvar device_spport_1 = __webpack_require__(/*! ./device-spport */ \"./src/cover/dist/device-spport.js\");\nvar styles_1 = __webpack_require__(/*! ./styles */ \"./src/cover/dist/styles.js\");\nexports.default = (function () { return (react_1.default.createElement(react_1.default.Fragment, null,\n    react_1.default.createElement(styles_1.GlobalStyle, null),\n    react_1.default.createElement(device_spport_1.DeviceSupport, null))); });\n//# sourceMappingURL=cover.js.map\n\n//# sourceURL=webpack://patternplate-%5Bname%5D/./src/cover/dist/cover.js?");
 
 /***/ }),
 
@@ -533,6 +533,18 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ts
 
 "use strict";
 eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar tslib_1 = __webpack_require__(/*! tslib */ \"./node_modules/tslib/tslib.es6.js\");\nvar react_1 = tslib_1.__importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\nexports.progressable = function (component, progress) {\n    return react_1.default.cloneElement(component, {\n        style: tslib_1.__assign({}, (component.props.style || {}), { \"--progress\": progress })\n    });\n};\n//# sourceMappingURL=progressable.js.map\n\n//# sourceURL=webpack://patternplate-%5Bname%5D/./src/cover/dist/progressable.js?");
+
+/***/ }),
+
+/***/ "./src/cover/dist/styles.js":
+/*!**********************************!*\
+  !*** ./src/cover/dist/styles.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar tslib_1 = __webpack_require__(/*! tslib */ \"./node_modules/tslib/tslib.es6.js\");\nvar styled_components_1 = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.esm.js\");\nexports.GlobalStyle = styled_components_1.createGlobalStyle(templateObject_1 || (templateObject_1 = tslib_1.__makeTemplateObject([\"\\n\\tbody {\\n\\t\\tmargin: 0;\\n\\t\\tfont-family: -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \\\"Helvetica Neue\\\", sans-serif;\\n\\t\\tbackground: #E0E0E0;\\n\\t\\tcolor: black;\\n\\t}\\n\\t* {\\n\\t\\tbox-sizing: border-box;\\n\\t}\\n\"], [\"\\n\\tbody {\\n\\t\\tmargin: 0;\\n\\t\\tfont-family: -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \\\"Helvetica Neue\\\", sans-serif;\\n\\t\\tbackground: #E0E0E0;\\n\\t\\tcolor: black;\\n\\t}\\n\\t* {\\n\\t\\tbox-sizing: border-box;\\n\\t}\\n\"])));\nvar templateObject_1;\n//# sourceMappingURL=styles.js.map\n\n//# sourceURL=webpack://patternplate-%5Bname%5D/./src/cover/dist/styles.js?");
 
 /***/ }),
 
