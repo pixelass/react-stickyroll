@@ -14,6 +14,10 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
+**Codesandbox**
+
+Here's a codesandbox that shows this issue: https://codesandbox.io/s/m1wxp21rx
+
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
