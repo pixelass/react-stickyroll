@@ -57,7 +57,7 @@
 		"rollup-plugin-babel": "4.0.3",
 		"rollup-plugin-typescript2": "^0.18.0",
 		"ts-node": "7.0.1",
-		"typescript": "3.2.1"
+		"typescript": "3.2.2"
 	},
 	"peerDependencies": {
 		"react": "^16.6.3"
