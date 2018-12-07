@@ -2286,6 +2286,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-helmet@5.0.7":
+  version "5.0.7"
+  resolved "https://registry.npmjs.org/@types/react-helmet/-/react-helmet-5.0.7.tgz#1cae65b2c37fe54cf56f40cd388836d4619dbc51"
+  integrity sha512-FbDibfkcGsD/N+3k47bfLcr5uAzSi64LJ2OOILz/P5vtBwT5A92KZAU5H9/7OjhUN6au5k+BbNplhVfp6IXDcQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@16.7.13", "@types/react@^16.7.13":
   version "16.7.13"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.7.13.tgz#d2369ae78377356d42fb54275d30218e84f2247a"
@@ -12210,7 +12217,7 @@ react-dom@16.6.3, react-dom@^16.6.3:
     prop-types "^15.6.2"
     scheduler "^0.11.2"
 
-react-helmet@^5.2.0:
+react-helmet@5.2.0, react-helmet@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/react-helmet/-/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
   integrity sha1-qBgR3yExOm1VxfBYxK66XW89l6c=

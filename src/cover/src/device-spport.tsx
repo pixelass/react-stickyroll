@@ -1,84 +1,13 @@
-import {easeIn, easeInOut, easeOut} from "@popmotion/easing";
-import {Content, Inner} from "@stickyroll/inner";
-import {Pagers, Skip} from "@stickyroll/pagers";
-import {Stickyroll} from "@stickyroll/stickyroll";
-import React, {CSSProperties} from "react";
-import styled, {StyledComponent, ThemeProvider} from "styled-components";
-import {dark, pink} from "@stickyroll/themes";
-import {progressable} from "./progressable";
-
-const Headline: StyledComponent<any, any> = styled.h3`
-	font-size: 2em;
-	margin: 0;
-	padding: 0 0 0.5em;
-	font-weight: bolder;
-	opacity: var(--progress);
-	transform: translate3d(calc(100% - 100% * var(--progress)), 0, 0);
-`;
-
-const Copy: StyledComponent<any, any> = styled.p`
-	font-size: 1em;
-	opacity: var(--progress);
-	transform: translate3d(0, calc(100% - 100% * var(--progress)), 0);
-`;
-
-const Button: StyledComponent<any, any> = styled.a`
-	display: flex;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-	font-size: 2rem;
-	padding: 0.75rem 1rem;
-	margin: 2rem 0;
-	line-height: 1.5rem;
-	text-decoration: none;
-	border: 1px solid ${props => props.theme.markerColor}
-	color: ${props => props.theme.color};
-	background: ${props => props.theme.backgroundColor};
-	
-	&:hover {
-		background: ${props => props.theme.color};
-		color: ${props => props.theme.backgroundColor};
-	}
-`;
-
-const Svg: StyledComponent<any, any> = styled.svg`
-	display: block;
-	margin: 0 auto;
-	width: 100%;
-`;
-
-const Figcaption: StyledComponent<any, any> = styled.figcaption`
-	font-size: 3vmin;
-`;
-
-const StyledContent = styled(Content)`
-	display: flex;
-	flex-direction: column;
-	font-size: 3vmin;
-	overflow: hidden;
-`;
-
-const Figure: StyledComponent<any, any> = styled.figure`
-	flex: 1;
-	margin: 0;
-	padding: 0;
-	display: grid;
-	align-items: center;
-	justify-items: center;
-
-	@media (orientation: landscape) {
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr;
-		grid-gap: 3rem;
-	}
-	@media (orientation: portrait) {
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr 1fr;
-		grid-gap: 1rem;
-	}
-`;
+import { easeIn, easeInOut, easeOut } from "@popmotion/easing";
+import { Inner } from "@stickyroll/inner";
+import { Pagers, Skip } from "@stickyroll/pagers";
+import { Stickyroll } from "@stickyroll/stickyroll";
+import React, { CSSProperties } from "react";
+import { css, ThemeProvider } from "styled-components";
+import { dark, pink } from "@stickyroll/themes";
+import { progressable } from "./progressable";
+import Pagenumber  from "./pagenumber";
+import { Button, Copy, Figcaption, Figure, Headline, StyledContent, Svg } from "./elements";
 
 export interface ICSSProgress extends CSSProperties {
 	"--progress"?: number;
@@ -276,11 +205,12 @@ export const DeviceSupport = () => (
 						</ThemeProvider>
 						<StyledContent>
 							{progressable(
-								<Headline>{headlines[context.pageIndex]}</Headline>,
+								<Headline farLeft={context.pageIndex > 0}>{headlines[context.pageIndex]}</Headline>,
 								1 - context.progress
 							)}
 							<Devices progress={context.progress} pageIndex={context.pageIndex} />
 						</StyledContent>
+						<Pagenumber/>
 						<Skip useContext={true} />
 					</Inner>
 				</ThemeProvider>
