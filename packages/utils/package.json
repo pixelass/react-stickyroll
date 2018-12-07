@@ -56,22 +56,22 @@
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.2.0",
-		"@stickyroll/testing-utils": "^1.1.0",
-		"@types/react": "^16.7.13",
+		"@babel/core": "7.2.0",
+		"@stickyroll/testing-utils": "1.1.0",
+		"@types/react": "16.7.13",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.0-rc.2",
 		"cross-env": "5.2.0",
 		"enzyme": "3.7.0",
 		"imhotep": "1.1.5",
-		"react": "^16.6.3",
+		"react": "16.6.3",
 		"react-dom": "16.6.3",
 		"rollup": "0.67.4",
 		"rollup-plugin-babel": "4.0.3",
-		"rollup-plugin-typescript2": "^0.18.0",
+		"rollup-plugin-typescript2": "0.18.0",
 		"ts-node": "7.0.1",
 		"tslib": "1.9.3",
-		"typescript": "3.2.1"
+		"typescript": "3.2.2"
 	},
 	"engines": {
 		"node": ">=8",

@@ -248,7 +248,12 @@ export const Devices = (props: any) => {
 						Add your own logic to define how to display the content on different screen
 						sizes
 						<ThemeProvider theme={pink}>
-							<Button href={"https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true"}>Show me how</Button>
+							<Button
+								href={
+									"https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true"
+								}>
+								Show me how
+							</Button>
 						</ThemeProvider>
 					</Copy>,
 					switchProgress(3, props.pageIndex, easeInOut(props.progress))

@@ -57,20 +57,20 @@
 		"webpack": "4.27.1"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.2.0",
-		"@types/node": "^10.12.12",
+		"@babel/core": "7.2.0",
+		"@types/node": "10.12.12",
 		"ava": "1.0.0-rc.2",
 		"cross-env": "5.2.0",
 		"imhotep": "1.1.5",
-		"react-dom": "^16.6.3",
+		"react-dom": "16.6.3",
 		"rollup": "0.67.4",
 		"rollup-plugin-babel": "4.0.3",
-		"rollup-plugin-typescript2": "^0.18.0",
+		"rollup-plugin-typescript2": "0.18.0",
 		"ts-node": "7.0.1",
-		"typescript": "3.2.1"
+		"typescript": "3.2.2"
 	},
 	"peerDependencies": {
-		"enzyme": "3.7.0"
+		"enzyme": "^3.7.0"
 	},
 	"engines": {
 		"node": ">=8",

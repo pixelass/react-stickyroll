@@ -22,17 +22,14 @@
 		"@stickyroll/decorators": "^1.1.0",
 		"@stickyroll/stickyroll": "^1.1.0",
 		"@types/react": "16.7.13",
-		"@types/react-dom": "16.0.11",
 		"react": "16.6.3",
-		"react-dom": "16.6.3",
 		"tslib": "1.9.3"
 	},
 	"devDependencies": {
+		"@types/react-dom": "16.0.11",
+		"react-dom": "16.6.3",
 		"rimraf": "2.6.2",
-		"typescript": "3.2.1"
-	},
-	"peerDependencies": {
-		"react": "^16.6.3"
+		"typescript": "3.2.2"
 	},
 	"engines": {
 		"node": ">=8",

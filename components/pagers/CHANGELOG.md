@@ -5,14 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.1.0](https://github.com/stickyroll/react-stickyroll/compare/v1.0.0...v1.1.0) (2018-12-07)
 
-
 ### Features
 
-* added new package for utils ([0718802](https://github.com/stickyroll/react-stickyroll/commit/0718802))
-
-
-
-
+-   added new package for utils ([0718802](https://github.com/stickyroll/react-stickyroll/commit/0718802))
 
 ## [0.1.1](https://github.com/stickyroll/react-stickyroll/compare/v0.1.0...v0.1.1) (2018-12-02)
 

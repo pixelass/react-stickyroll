@@ -4,7 +4,7 @@ import {GlobalStyle} from "./styles";
 
 export default () => (
 	<React.Fragment>
-		<GlobalStyle/>
-		<DeviceSupport/>
+		<GlobalStyle />
+		<DeviceSupport />
 	</React.Fragment>
 );

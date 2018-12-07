@@ -1,7 +1,7 @@
 ---
 displayName: Browser Matrix
 options:
-  order: -4 
+    order: -4
 ---
 
 # Browser matrix
@@ -24,11 +24,11 @@ tests are run on actual machines.
 Thanks to the Browserstack [open source offer](https://www.browserstack.com/open-source)
 we are able to test multiple browsers and platforms to ensure the best stability.
 
-- windows 10
-  - chrome 68.0
-  - firefox 61.0
-  - edge 17
+-   windows 10
+    -   chrome 68.0
+    -   firefox 61.0
+    -   edge 17
 -   os x High Sierra
-  - chrome 68.0
-  - firefox 61.0
-  - safari 11.1
+-   chrome 68.0
+-   firefox 61.0
+-   safari 11.1

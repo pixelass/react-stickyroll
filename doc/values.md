@@ -1,7 +1,7 @@
 ---
 displayName: Why Stickyroll
 options:
-  order: -5
+    order: -5
 ---
 
 # Value Proposition
@@ -29,4 +29,3 @@ Stickyroll offers some very unique features to build views for different use cas
 -   scrollable animation scenes (e.g. using [lottie-web](https://github.com/airbnb/lottie-web))
     -   [Lottie Example](https://stickyroll.netlify.com/#!/bodymovin/1)  
         ![Parallax Example](https://stickyroll.github.com/media/images/stickyroll.gif)
-
