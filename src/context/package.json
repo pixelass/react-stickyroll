@@ -37,6 +37,7 @@
 	},
 	"dependencies": {
 		"@types/react": "16.7.13",
+		"ava": "1.0.0-rc.2",
 		"react": "16.6.3",
 		"ts-lib": "0.0.5"
 	},

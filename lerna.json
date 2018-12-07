@@ -2,6 +2,7 @@
 	"npmClient": "yarn",
 	"packages": [
 		"components/*",
+		"guide/*",
 		"packages/*",
 		"src/*"
 	],

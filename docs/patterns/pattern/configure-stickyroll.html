@@ -1,0 +1,520 @@
+<!doctype html><html class="layouts__StyledDocument-fXYCYL kmCXTF"><head><title data-react-helmet="true">Example: Configure Stickyroll</title><meta data-react-helmet="true" name="description"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><link data-react-helmet="true" rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGc+PHBhdGggZD0iTTEyLjAwMiAyMC40MjZhMS4yNjQgMS4yNjQgMCAwIDEtLjY3NS0uMTg5bC05LjA1LTUuNjNhLjg2Ljg2IDAgMSAxIC45MDYtMS40NTVsOC44MTkgNS40OTQgOC44MTUtNS40OTRhLjg2Ljg2IDAgMSAxIC45MDYgMS40NTZsLTkuMDQ3IDUuNjQzYTEuMjY3IDEuMjY3IDAgMCAxLS42NzQuMTc1eiI+PC9wYXRoPjxwYXRoIGQ9Ik0xMiAxNy4wNTVhMS4yNDQgMS4yNDQgMCAwIDEtLjY1Ny0uMTg1bC04Ljg4Ni01LjU0NWExLjE5MyAxLjE5MyAwIDAgMSAwLTIuMDIzbDguODg2LTUuNTQyYTEuMjUgMS4yNSAwIDAgMSAxLjMxNCAwbDguODg2IDUuNTQyYTEuMTkzIDEuMTkzIDAgMCAxIDAgMi4wMjNsLTguODg2IDUuNTQxYTEuMjQgMS4yNCAwIDAgMS0uNjU3LjE5em0tNy45OS02Ljc0Mmw3Ljk5IDQuOTggNy45OS00Ljk4TDEyIDUuMzM0bC03Ljk5IDQuOTh6Ij48L3BhdGg+PC9nPjwvc3ZnPg==" type="image/svg+xml"/><script>/**
+ * This script is embedded into the <head>
+ * of all patternplate documents. It provides
+ * toggle functionality that should run before
+ * the main React application mounts on the
+ * Server Side Rendered HTML document.
+ *
+ *
+ */
+var query = parseQueryString(window.location.search);
+var SUPPORTED = supported();
+window.addEventListener("error", function () {
+  if (SUPPORTED && query["js-warning-enabled"] !== "false") {
+    var el = document.querySelector("[data-js-warning]");
+
+    if (el) {
+      el.style.display = "block";
+    }
+  }
+});
+var observer = new MutationObserver(function (mutations) {
+  for (var i = 0; i < mutations.length; i++) {
+    for (var j = 0; j < mutations[i].addedNodes.length; j++) {
+      var node = mutations[i].addedNodes[j];
+
+      if (node.nodeType !== 1) {
+        continue;
+      }
+
+      if (matches(node, "[data-toggle-name]")) {
+        // Force open all toggles if browser is unsupported
+        if (!SUPPORTED) {
+          node.setAttribute("data-toggle-enabled", true);
+        }
+
+        var name = node.getAttribute("data-toggle-name");
+        node.setAttribute("data-toggle-enabled", query[name + "-enabled"]);
+      }
+
+      if (matches(node, "[data-browser-warning]")) {
+        node.style.display = !SUPPORTED && query["browser-warning-enabled"] !== "false" ? "block" : "none";
+      }
+    }
+  }
+});
+observer.observe(document.documentElement, {
+  childList: true,
+  subtree: true
+});
+document.documentElement.addEventListener("click", function (e) {
+  if (document.body.getAttribute("data-mounted")) {
+    return;
+  }
+
+  var trigger = inside(e.target, "[data-trigger-name]");
+
+  if (trigger) {
+    e.preventDefault();
+    var name = trigger.getAttribute("data-trigger-name");
+    var q = JSON.parse(JSON.stringify(query));
+    q[name + "-enabled"] = q[name + "-enabled"] === "true" ? "false" : "true";
+    window.location.search = "?" + stringifyQuery(q);
+    return;
+  }
+
+  var link = inside(e.target, "a");
+
+  if (link) {
+    var href = link.getAttribute("href");
+
+    if (href.charAt(0) === "." || href.charAt(0) === "/") {
+      var lq = parseQueryString(link.search);
+      e.preventDefault();
+      window.location.href = link.pathname + "?" + stringifyQuery(merge(lq, query));
+    }
+  }
+});
+
+function matches(node, selector) {
+  if (typeof node.matches === "function") {
+    return node.matches(selector);
+  }
+
+  return node.msMatchesSelector(selector);
+}
+
+function merge(o, p) {
+  var r = {};
+
+  for (var attrname in o) {
+    r[attrname] = o[attrname];
+  }
+
+  for (var attrname in p) {
+    r[attrname] = p[attrname];
+  }
+
+  return r;
+}
+
+function supported() {
+  try {
+    eval("async () => {}");
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+function stringifyQuery(map) {
+  return Object.keys(map).map(function (key) {
+    return [key, map[key]].join("=");
+  }).join("&");
+}
+
+function parseQueryString(search) {
+  search = search.charAt(0) === "?" ? search.slice(1) : search;
+  return search.split("&").map(function (pair) {
+    return pair.split("=");
+  }).reduce(function (acc, entry) {
+    if (entry[1] === "false" || entry[1] === "true") {
+      acc[entry[0]] = entry[1];
+    }
+
+    return acc;
+  }, {});
+}
+
+function inside(el, selector) {
+  while (el) {
+    if (el.nodeType === 1 && matches(el, selector)) {
+      return el;
+    }
+
+    el = el.parentNode;
+  }
+
+  return null;
+}</script><style data-styled="jkyzBT dQEcNe gFMEEa cyEyEB gDQkRm dPRBES ecziUy OWdlT kmCXTF egiNlq dekEUU jKSIKe cWclDW fBCCYP gVqlnB fcBqkT bVZZVk gLRHic gSrBzO eyhZxm jskpbq iFoBwu fNqvsI epsFrx jFjatb kJGMVk iPdmPc ctjfAB fPsDah ijYrnT ghzBWn kpGMXM ckjzaW kGqhUx gayfSz fzmbYw gwWAtg jDIePh dlnLlz gwcGry iAxwsr kZBVBY eIYdOQ jHneYU cnXUfM iYJThj gpUTHQ jYEhrC evEGdS rAUZa iQMbd fDVTKL ekLppu cqDdRA eNxFjM kmukCg iARuZs nyWmQ iQhMOF bDexQE Sfspk gyPdUq llZKen eMsHMi cycBGB kuKnAU isKyYt dXmQaH hwGhTc" data-styled-version="4.1.1">
+/* sc-component-id: icon__StyledRegistry-ePOEAW */
+.cWclDW{position:fixed;height:0;width:0;overflow:hidden;padding:0;visibility:hidden;}
+/* sc-component-id: layouts__StyledDocument-fXYCYL */
+.kmCXTF{height:100%;overflow:hidden;}
+/* sc-component-id: layouts__StyledBody-uMNrz */
+.egiNlq{margin:0;height:100%;}
+/* sc-component-id: layouts__StyledContent-gTenrm */
+.dekEUU{height:100%;}
+/* sc-component-id: layouts__StyledState-kRnEcX */
+.jKSIKe{display:none;}</style><style data-styled="jkyzBT dQEcNe gFMEEa cyEyEB gDQkRm dPRBES ecziUy OWdlT kmCXTF egiNlq dekEUU jKSIKe cWclDW fBCCYP gVqlnB fcBqkT bVZZVk gLRHic gSrBzO eyhZxm jskpbq iFoBwu fNqvsI epsFrx jFjatb kJGMVk iPdmPc ctjfAB fPsDah ijYrnT ghzBWn kpGMXM ckjzaW kGqhUx gayfSz fzmbYw gwWAtg jDIePh dlnLlz gwcGry iAxwsr kZBVBY eIYdOQ jHneYU cnXUfM iYJThj gpUTHQ jYEhrC evEGdS rAUZa iQMbd fDVTKL ekLppu cqDdRA eNxFjM kmukCg iARuZs nyWmQ iQhMOF bDexQE Sfspk hwIEdt jTQeGK kjSpDc fkfLlt fOufkm cEoAFh iLqwyJ kTyiXb lcvmEX iOYHec kCYyZn bqdVuN bjjAUF bIyuKT cwzDGu jkLJTM kNRFHr bHypvJ dCQyIy ouVha BJdyP eMVHru ddlQiL gUFivy fWmofx lZLpM jWZzCy gRsLlP dKptkP fyLObY iEjvnw jRZbJS imSLbq ccyrId mhVkj giQbNS tGDQw dHxQPq jzyeXM gSZVZn eRcNKs ksDTrS gfRmEr ksgZZU dpEHJe bKaWPa fpvwRx earMfg fUItgF jwPlsU eGIrCp ldyRLS itHAQS iTqHm bojPMA exwvbf WJzBG ewQcYL eonBtR ehVokv bExPMw bEoBAw kREqhe llrKzs ljDsdo hKckBK dNGIrb hMQeMy isqNnB bcdMIW bKJfPq cCaPkD emqDTk GSyaW eWDusK gVImnd hnCFuW igLTBp cTyYvZ izZRJi YBpxr cFVNjp jmpBdR dZsECy NmjPH juKwFW elDSou kXSZQD cVaDsx cetsPR bQkbDz XonsE kDeQfI fXbBEf jyiUKe bCeAFl dIonEb cSvin jhaozz dTwvsz ipsQkQ" data-styled-version="4.1.1">
+/* sc-component-id: icon__StyledIcon-gaalNZ */
+.iOYHec{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:22px;height:22px;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:inherit;fill:currentColor;}.kCYyZn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:38px;height:38px;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:inherit;fill:currentColor;}.bqdVuN{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:.8em;height:.8em;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:inherit;fill:currentColor;}
+/* sc-component-id: icon__StyledRegistry-ePOEAW */
+.cWclDW{position:fixed;height:0;width:0;overflow:hidden;padding:0;visibility:hidden;}
+/* sc-component-id: link__StyledLinkContainer-gGcKKl */
+.fOufkm{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;} .fOufkm > span{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} .fOufkm > svg{margin-left:.25em;}.cEoAFh{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;} .cEoAFh > span{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:baseline;-webkit-box-align:baseline;-ms-flex-align:baseline;align-items:baseline;} .cEoAFh > svg{margin-left:.25em;}.iLqwyJ{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;} .iLqwyJ > span{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;} .iLqwyJ > svg{margin-left:.25em;}
+/* sc-component-id: link__StyledLinkLabel-bsXTVK */
+.kTyiXb{width:auto;}.lcvmEX{width:calc(100% - 40px);}
+/* sc-component-id: flag__StyledText-kxRjHf */
+.emqDTk{display:inline-block;padding:2px 4px;border:1px solid rgb(238,238,238);border-radius:3px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;border-color:rgb(244,67,54);color:rgb(244,67,54);}
+/* sc-component-id: text__StyledText-dhBuAI */
+.eRcNKs{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:rgb(255,255,255);}.ksDTrS{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:rgb(0,0,0);}
+/* sc-component-id: headline__exports-fWUCVD */
+.bExPMw{color:rgb(0,0,0);font-size:36px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;margin:60px 0 16px 0;font-weight:300;line-height:1.25;}.bEoBAw{color:rgb(0,0,0);font-size:23px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;margin:60px 0 16px 0;font-weight:300;line-height:1.25;}
+/* sc-component-id: code__StyledPre-hbRUtn */
+.dTwvsz{position:relative;white-space:pre-wrap;}
+/* sc-component-id: code__StyledCode-cQURYR */
+.kDeQfI{position:relative;z-index:2;display:block;padding:0.5em;color:#383a42;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;box-sizing:border-box;font-size:15.3px;line-height:23px;overflow:hidden;} .kDeQfI .token.comment,.kDeQfI .token.block-comment,.kDeQfI .token.prolog,.kDeQfI .token.doctype,.kDeQfI .token.cdata{color:#a0a1a7;} .kDeQfI .token.punctuation{color:#383a42;} .kDeQfI .token.tag,.kDeQfI .token.attr-name,.kDeQfI .token.namespace,.kDeQfI .token.deleted{color:#e45649;} .kDeQfI .token.function-name{color:#6196cc;} .kDeQfI .token.boolean,.kDeQfI .token.number,.kDeQfI .token.function{color:#c18401;} .kDeQfI .token.property,.kDeQfI .token.class-name,.kDeQfI .token.constant,.kDeQfI .token.symbol{color:#f08d49;} .kDeQfI .token.selector,.kDeQfI .token.important,.kDeQfI .token.atrule,.kDeQfI .token.keyword,.kDeQfI .token.builtin{color:#4078f2;} .kDeQfI .token.string,.kDeQfI .token.char,.kDeQfI .token.attr-value,.kDeQfI .token.regex,.kDeQfI .token.variable{color:#50a14f;} .kDeQfI .token.operator,.kDeQfI .token.entity,.kDeQfI .token.url{color:#e45649;} .kDeQfI .token.important,.kDeQfI .token.bold{font-weight:bold;} .kDeQfI .token.italic{font-style:italic;} .kDeQfI .token.entity{cursor:help;} .kDeQfI .token.inserted{color:green;}.fXbBEf{position:relative;z-index:2;display:block;padding:0.5em;color:#abb2bf;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";box-sizing:border-box;font-size:15.3px;line-height:23px;overflow:hidden;} .fXbBEf .token.comment,.fXbBEf .token.block-comment,.fXbBEf .token.prolog,.fXbBEf .token.doctype,.fXbBEf .token.cdata{color:#5c6370;} .fXbBEf .token.punctuation{color:#abb2bf;} .fXbBEf .token.tag,.fXbBEf .token.attr-name,.fXbBEf .token.namespace,.fXbBEf .token.deleted{color:#e2777a;} .fXbBEf .token.function-name{color:#6196cc;} .fXbBEf .token.boolean,.fXbBEf .token.number,.fXbBEf .token.function{color:#f08d49;} .fXbBEf .token.property,.fXbBEf .token.class-name,.fXbBEf .token.constant,.fXbBEf .token.symbol{color:#f8c555;} .fXbBEf .token.selector,.fXbBEf .token.important,.fXbBEf .token.atrule,.fXbBEf .token.keyword,.fXbBEf .token.builtin{color:#61aeee;} .fXbBEf .token.string,.fXbBEf .token.char,.fXbBEf .token.attr-value,.fXbBEf .token.regex,.fXbBEf .token.variable{color:#7ec699;} .fXbBEf .token.operator,.fXbBEf .token.entity,.fXbBEf .token.url{color:#e2777a;} .fXbBEf .token.important,.fXbBEf .token.bold{font-weight:bold;} .fXbBEf .token.italic{font-style:italic;} .fXbBEf .token.entity{cursor:help;} .fXbBEf .token.inserted{color:green;}
+/* sc-component-id: icon__StyledIcon-gbLjqS */
+.NmjPH{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:22px;height:22px;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:inherit;fill:currentColor;}
+/* sc-component-id: text__Text-hHAknR */
+.elDSou{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:rgb(0,0,0);}.kXSZQD{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";color:hsl(0,0%,95%);}
+/* sc-component-id: logo__StyledLink-knCrHO */
+.kNRFHr{display:block;margin:0 auto;} .kNRFHr:link,.kNRFHr:visited{color:rgb(255,111,0);}
+/* sc-component-id: logo__StyledLogo-fchPwL */
+.jkLJTM{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;fill:currentColor;stroke:currentColor;stroke-width:0;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:10px;background:rgb(17,17,17);}
+/* sc-component-id: navigation-label__StyledLabel-kDHWLW */
+.ddlQiL{box-sizing:border-box;padding:10px 10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:14px;color:rgb(255,255,255);background-color:rgb(34,34,34);border-style:solid;border-top-color:rgb(51,51,51);border-bottom-color:rgb(51,51,51);border-width:0px 0;width:100%;}.gUFivy{box-sizing:border-box;padding:10px 10px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:12.6px;color:rgb(255,255,255);background-color:rgb(34,34,34);border-style:solid;border-top-color:rgb(51,51,51);border-bottom-color:rgb(51,51,51);border-width:1px 0;width:100%;}
+/* sc-component-id: navigation-label__StyledLabelIcon-ckbIyn */
+.lZLpM{margin-right:10px;-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;-webkit-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}
+/* sc-component-id: navigation-label__StyledLabelContainer-iEgOZp */
+.eMVHru{display:block;position:-webkit-sticky;position:sticky;top:-1px;left:0;} .eMVHru[data-toggle-enabled="true"] .navigation-label__StyledLabel-kDHWLW{background-color:rgb(51,51,51);border-top-color:rgb(17,17,17);border-bottom-color:transparent;} .eMVHru[data-toggle-enabled="true"] .navigation-label__StyledLabelIcon-ckbIyn{-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);} .eMVHru[data-toggle-enabled="false"] .navigation-label__StyledLabel-kDHWLW{background-color:rgb(34,34,34);border-top-color:rgb(51,51,51);border-bottom-color:rgb(51,51,51);} .eMVHru[data-toggle-enabled="false"] .navigation-label__StyledLabelIcon-ckbIyn{-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);}
+/* sc-component-id: navigation-label__StyledLabelLink-tnqCY */
+.fWmofx{display:block;color:rgb(255,255,255);cursor:pointer;-webkit-text-decoration:none;text-decoration:none;width:100%;}
+/* sc-component-id: navigation-item__StyledName-icEgSc */
+.jRZbJS{box-sizing:border-box;-webkit-flex:1 1 100%;-ms-flex:1 1 100%;flex:1 1 100%;padding:10px;}
+/* sc-component-id: navigation-item__StyledMeta-foOWle */
+.imSLbq{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;margin:0 10px 0 auto;}.ccyrId{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto;margin:0 6px 0 auto;}
+/* sc-component-id: navigation-item__StyledNavigationItem-ikGuxv */
+.gRsLlP{width:100%;box-sizing:border-box;margin-left:1px;}
+/* sc-component-id: navigation-item__StyledNavigationLink-jmUraR */
+.dKptkP{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-text-decoration:none;text-decoration:none;font-size:14px;line-height:20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:100;padding-left:30px;} .dKptkP:link,.dKptkP:visited{color:rgb(255,255,255);}.fyLObY{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-text-decoration:none;text-decoration:none;font-size:14px;line-height:20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:100;padding-left:0px;} .fyLObY:link,.fyLObY:visited{color:rgb(255,255,255);color:rgb(255,111,0);}.iEjvnw{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-text-decoration:none;text-decoration:none;font-size:14px;line-height:20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:100;padding-left:0px;} .iEjvnw:link,.iEjvnw:visited{color:rgb(255,255,255);}
+/* sc-component-id: navigation-tree__StyledNavigationTree-jKhwV */
+.ouVha{display:block;} .ouVha[data-toggle-enabled="false"]{display:none;} .ouVha[data-toggle-enabled="true"]{display:block;}.BJdyP{display:none;} .BJdyP[data-toggle-enabled="false"]{display:none;} .BJdyP[data-toggle-enabled="true"]{display:block;}
+/* sc-component-id: navigation-tree__NavigationItemList-bQGWex */
+.jWZzCy{display:none;} .jWZzCy[data-toggle-enabled="false"]{display:none;} .jWZzCy[data-toggle-enabled="true"]{display:block;}
+/* sc-component-id: navigation-toolbar__StyledNavigationToolbar-dQJaly */
+.giQbNS{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;height:40px;padding:10px 15px;background-color:rgb(17,17,17);box-sizing:"border-box";}
+/* sc-component-id: main-navigation__StyledNavigatHeader-ilJPBl */
+.cwzDGu{box-sizing:border-box;min-height:60px;background:rgb(17,17,17);}
+/* sc-component-id: main-navigation__StyledNavigation-fxJBRE */
+.bIyuKT{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:100%;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;position:relative;background-color:rgb(34,34,34);}
+/* sc-component-id: main-navigation__StyledNavigationTree-eruwPi */
+.bHypvJ{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-shrink:1;-ms-flex-negative:1;flex-shrink:1;overflow-x:hidden;overflow-y:scroll;-webkit-scroll-behavior:smooth;-moz-scroll-behavior:smooth;-ms-scroll-behavior:smooth;scroll-behavior:smooth;-webkit-overflow-scroll:touch;-webkit-mask-image:linear-gradient( to top,rgba(0,0,0,0),rgba(0,0,0,1) 50px );mask-image:linear-gradient( to top,rgba(0,0,0,0),rgba(0,0,0,1) 50px );-webkit-mask-image:linear-gradient( to top,rgba(0,0,0,0),rgba(0,0,0,1) 50px );} .bHypvJ > *:last-child{margin-bottom:50px;} @media screen{.bHypvJ{-webkit-mask-image:none;mask-image:none;-webkit-mask-image:none;}}
+/* sc-component-id: main-navigation__StyledNavigationToolbar-kfxy */
+.mhVkj{-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}
+/* sc-component-id: main-navigation__StyledDocumentationTree-fboWmh */
+.dCQyIy{margin-bottom:5px;padding-bottom:5px;}
+/* sc-component-id: markdown-div__MarkdownDiv-cWfgQl */
+@media (min-width:480px){.hnCFuW{display:block;}}
+/* sc-component-id: sc-htpNat */
+.juKwFW{grid-column:first / span 12;margin:0 0 16px 0;font-size:18px;line-height:27px;padding-left:18px;border-left:4.5px solid rgb(68,68,68);color:rgb(68,68,68);}
+/* sc-component-id: sc-bxivhb */
+.ipsQkQ{box-sizing:border-box;padding:16px;margin-bottom:32px;background:rgb(3,169,244);} .ipsQkQ > :last-child{margin:0;} .ipsQkQ a,.ipsQkQ a:link,.ipsQkQ a:visited,.ipsQkQ a span,.ipsQkQ a:link span,.ipsQkQ a:visited span{color:inherit;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;}
+/* sc-component-id: markdown-code__MarkdownCode-dVosil */
+.bQkbDz{display:inline;padding:0;background:rgb(238,238,238);border-radius:3px;font-size:15.3px;line-height:23px;padding:3px;}.XonsE{display:inline;padding:0;background:hsl(210,50%,9%);border-radius:3px;font-size:15.3px;line-height:23px;padding:3px;}
+/* sc-component-id: markdown-code-block__StyledMarkdownCodeBlock-kVwPxu */
+.jhaozz{grid-column:first / span 12;border-radius:3px;font-size:15.3px;line-height:23px;padding:0 16px;margin-bottom:16px;background:rgb(238,238,238);overflow:hidden;}
+/* sc-component-id: markdown-copy__MarkdownCopy-fBVELe */
+.cVaDsx{grid-column:first / span 12;margin:0 0 16px 0;font-size:18px;line-height:27px;color:rgb(0,0,0);}.cetsPR{grid-column:first / span 12;margin:0 0 16px 0;font-size:18px;line-height:27px;color:hsl(0,0%,95%);}
+/* sc-component-id: markdown-headline__ThemedIcon-legfIo */
+.dZsECy{position:absolute;right:100%;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);padding-right:10px;fill:rgb(0,0,0);opacity:0;}
+/* sc-component-id: markdown-headline__StyledLink-bSlcGN */
+.cFVNjp{color:rgb(0,0,0);-webkit-text-decoration:none;text-decoration:none;} .cFVNjp:hover .markdown-headline__ThemedIcon-legfIo{opacity:1;}
+/* sc-component-id: markdown-headline__StyledTarget-eaqRed */
+.jmpBdR{width:0;height:0;}
+/* sc-component-id: markdown-headline__StyledHeadline-dUaqNx */
+.cTyYvZ{color:rgb(0,0,0);font-size:36px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;margin:60px 0 16px 0;font-weight:300;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}.izZRJi{color:rgb(0,0,0);font-size:27px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;margin:60px 0 16px 0;font-weight:300;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}.YBpxr{color:rgb(0,0,0);font-size:23px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;margin:60px 0 16px 0;font-weight:300;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+/* sc-component-id: markdown-headline__MarkdownHeadline-ftEHTp */
+.igLTBp{grid-column:first / span 12;position:relative;color:rgb(0,0,0);margin:60px 0 16px 0;font-weight:300;line-height:1.25;}
+/* sc-component-id: markdown-item__MarkdownItem-ijQjTZ */
+.bCeAFl{grid-column:first / span 12;font-size:18px;line-height:27px;color:rgb(0,0,0);margin-top:4.5px;}
+/* sc-component-id: markdown-list__MarkdownList-iPrskV */
+.jyiUKe{grid-column:first / span 12;margin:0 0 16px 0;padding-left:36px;white-space:nowrap;} .jyiUKe > *{white-space:normal;}
+/* sc-component-id: markdown-link__StyledLink-uZKFK */
+.dIonEb{font-size:18px;line-height:27px;color:rgb(0,0,0);-webkit-text-decoration:none;text-decoration:none;} .dIonEb:link,.dIonEb:visited{color:rgb(255,111,0);} .dIonEb:hover,.dIonEb:active{-webkit-text-decoration:underline;text-decoration:underline;}.cSvin{font-size:18px;line-height:27px;color:hsl(0,0%,95%);-webkit-text-decoration:none;text-decoration:none;} .cSvin:link,.cSvin:visited{color:rgb(51,153,255);} .cSvin:hover,.cSvin:active{-webkit-text-decoration:underline;text-decoration:underline;}
+/* sc-component-id: markdown__StyledMarkdown-cjoOMf */
+.gVImnd table{text-align:left;display:block;width:100%;overflow:auto;margin:0 0 16px 0;border-spacing:0;border-collapse:collapse;font-size:18px;line-height:24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";} .gVImnd tr{color:rgb(0,0,0);border-top:1px solid rgb(238,238,238);background:transparent;} .gVImnd tbody tr:nth-child(odd){background:rgb(238,238,238);} .gVImnd th{font-weight:600;} .gVImnd th,.gVImnd td{padding:20px 16px;border:1px solid rgb(238,238,238);vertical-align:top;}
+/* sc-component-id: favicon__StyledFavicon-kSoQLw */
+.jTQeGK{width:100%;height:auto;stroke:rgb(0,0,0);stroke-width:0;fill:rgb(0,0,0);}
+/* sc-component-id: indicator__StyledDot-eiaqOf */
+.gfRmEr{position:relative;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;height:7.5px;width:7.5px;margin-right:5px;border-radius:50%;background:rgb(255,111,0);-webkit-transition:background 0.4s ease-in-out,opacity 0.5s ease-in;transition:background 0.4s ease-in-out,opacity 0.5s ease-in;opacity:0;} .gfRmEr::before{content:'';position:absolute;top:50%;left:50%;height:12px;width:12px;-webkit-filter:blur(3px);filter:blur(3px);background:inherit;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);opacity:.6;}
+/* sc-component-id: indicator__StyledIndicator-jnpRni */
+.jzyeXM{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;position:relative;}
+/* sc-component-id: indicator__StyledLabel-eKACfC */
+.gSZVZn{position:absolute;right:20px;color:rgb(255,255,255);}
+/* sc-component-id: toggle-navigation__StyledToggleButton-cPdjej */
+.fkfLlt{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;font-size:0;line-height:0;width:60px;height:60px;cursor:pointer;color:inherit;}
+/* sc-component-id: toggle-search__StyledIcon-kssutB */
+.dHxQPq{fill:rgb(255,255,255);}
+/* sc-component-id: toggle-search__StyledLink-JtZaj */
+.tGDQw{font-size:0;}
+/* sc-component-id: application__StyledWarningLabel-foojdh */
+.fUItgF{font-weight:bold;margin-bottom:1.3em;}
+/* sc-component-id: application__StyledBrowserWarning-edSfyU */
+.bKaWPa{display:none;box-sizing:border-box;position:absolute;position:-webkit-sticky;position:sticky;top:0;z-index:4;right:0;left:0;width:100%;padding:15px 20px;padding-left:20px;background:rgb(255,152,0);}
+/* sc-component-id: application__StyledBrowserContainer-lkxTje */
+.fpvwRx{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;max-width:1240px;margin:0 auto;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+/* sc-component-id: application__StyledBrowserText-iNZEOv */
+.jwPlsU{margin-bottom:1.3em;}
+/* sc-component-id: application__StyledBrowserContainerClose-iDddqV */
+.eGIrCp{-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;margin-left:15px;} .eGIrCp:link,.eGIrCp:visited,.eGIrCp:active{color:rgb(0,0,0);}
+/* sc-component-id: application__StyledApplication-jImxdR */
+.hwIEdt{position:relative;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:100%;background:rgb(255,255,255);}
+/* sc-component-id: application__StyledNavigationBox-daTOsK */
+.bjjAUF{position:relative;z-index:2;height:100%;width:300px;-webkit-flex:0 0 300px;-ms-flex:0 0 300px;flex:0 0 300px;overflow:hidden;} .bjjAUF[data-toggle-enabled="true"]{display:block;} .bjjAUF[data-toggle-enabled="false"]{display:none;}
+/* sc-component-id: application__StyledContent-jSinoZ */
+.dpEHJe{-webkit-flex:1 1 100%;-ms-flex:1 1 100%;flex:1 1 100%;width:100%;}
+/* sc-component-id: application__StyledContentContainer-gxmRpK */
+.ksgZZU{-webkit-flex:1 1 calc(100% - 0px);-ms-flex:1 1 calc(100% - 0px);flex:1 1 calc(100% - 0px);width:calc(100% - 0px);-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;overflow:auto;position:relative;}
+/* sc-component-id: application__NavigationControl-dSPYwL */
+.kjSpDc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;position:absolute;z-index:5;top:0;left:300px;-webkit-transform:translate(-100%);-ms-transform:translate(-100%);transform:translate(-100%);color:rgb(255,255,255);width:60px;height:60px;background:rgb(17,17,17);} .kjSpDc[data-toggle-enabled="true"]{left:300;-webkit-transform:translate(-100%);-ms-transform:translate(-100%);transform:translate(-100%);color:rgb(255,255,255);background:rgb(17,17,17);} .kjSpDc[data-toggle-enabled="false"]{left:0;-webkit-transform:translate(0);-ms-transform:translate(0);transform:translate(0);color:rgb(34,34,34);background:#fff;} @media screen and (min-width:720px){.kjSpDc{background:transparent;}.kjSpDc::before{display:none;}}
+/* sc-component-id: pattern-demo__StyledDemo-bcrQQO */
+.exwvbf{width:100%;height:calc(100% - 30vh);border:0;}
+/* sc-component-id: trigger-fullscreen__StyledIcon-cNxNCv */
+.isqNnB{fill:hsl(210,50%,6%);}
+/* sc-component-id: trigger-fullscreen__StyledLink-gcxyTC */
+.hMQeMy{font-size:0;line-height:0;}
+/* sc-component-id: toggle-opacity__StyledIcon-KIwfO */
+.dNGIrb{fill:hsl(210,50%,6%);}
+/* sc-component-id: toggle-opacity__StyledToggleButton-iXLqgF */
+.hKckBK{font-size:0;line-height:0;}
+/* sc-component-id: pattern-sheet__StyledSearchTrigger-iAXMrv */
+.bKJfPq:not(:first-child){margin-left:10px;}
+/* sc-component-id: pattern-sheet__StyledLink-isTtZb */
+.cCaPkD{-webkit-text-decoration:none;text-decoration:none;}
+/* sc-component-id: pattern-sheet__StyledName-hEinmn */
+.ehVokv{margin:0 0 10px 0;}
+/* sc-component-id: pattern-sheet__StyledVersion-eZeqwn */
+.kREqhe{display:inline-block;color:rgb(0,0,0);margin:0;}
+/* sc-component-id: pattern-sheet__StyledPatternSheet-kRkkum */
+.WJzBG{position:relative;z-index:2;box-sizing:border-box;width:100%;min-height:30vh;margin-top:70vh;padding:30px 60px;border-top:1px solid rgb(238,238,238);background:rgb(255,255,255);}
+/* sc-component-id: pattern-sheet__StyledPatternSheetContainer-hLAyHX */
+.ewQcYL{margin:0 auto;max-width:740px;}
+/* sc-component-id: pattern-sheet__StyledControlsArea-flzeDo */
+.llrKzs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-left:auto;}
+/* sc-component-id: pattern-sheet__StyledControlsBox-cqmUBg */
+.eonBtR{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;position:relative;z-index:2;box-sizing:border-box;background:white;}
+/* sc-component-id: pattern-sheet__StyledControlsItem-kTpBW */
+.ljDsdo + .pattern-sheet__StyledControlsItem-kTpBW{padding-left:10px;}
+/* sc-component-id: pattern-sheet__StyledTagList-jjaSOw */
+.GSyaW{display:inline-block;margin-left:10px;padding:2px 10px;border-left:1px solid rgb(238,238,238);}
+/* sc-component-id: pattern-sheet__StyledBoxLine-direXR */
+.bcdMIW{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:32px;}
+/* sc-component-id: pattern-sheet__StyledMarkdownBox-ekkhZQ */
+.eWDusK{margin-top:30px;}
+/* sc-component-id: pattern__StyledPattern-eMFcww */
+.ldyRLS{position:fixed;width:calc(100% - 300px);top:0px;left:300px;right:0px;bottom:0px;box-sizing:border-box;height:100%;} .ldyRLS::before{content:"";display:none;position:absolute;z-index:1;top:0;right:0;bottom:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml;base64,Cjxzdmcgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlPSIjZjJmMmYyIiBmaWxsPSJub25lIiBkPSJNMTAgNnY4TTYgMTBoOCIvPgo8L3N2Zz4K");background-size:20px 20px;background-repeat:repeat;background-position:50% 50%;}
+/* sc-component-id: pattern__StyledPatternDemo-gwIlef */
+.iTqHm{position:relative;z-index:2;width:100%;height:100%;max-width:1920px;margin:0 auto;}
+/* sc-component-id: pattern__StyledPatternLoader-ApDwo */
+.itHAQS{position:absolute;z-index:3;top:0;right:0;left:0;height:3px;} .itHAQS::after{position:absolute;top:0;z-index:2;content:"";display:block;width:100%;height:100%;background:rgb(255,111,0);opacity:1;-webkit-transition:-webkit-transform 1s ease-in-out;-webkit-transition:transform 1s ease-in-out;transition:transform 1s ease-in-out;-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%);-webkit-transition:opacity .3s .25s ease-out;transition:opacity .3s .25s ease-out;}
+/* sc-component-id: pattern__PatternContainer-cilXSP */
+.bojPMA{height:100%;padding-left:0px;}
+/* sc-component-id: layouts__StyledDocument-fXYCYL */
+.kmCXTF{height:100%;overflow:hidden;}
+/* sc-component-id: layouts__StyledBody-uMNrz */
+.egiNlq{margin:0;height:100%;}
+/* sc-component-id: layouts__StyledContent-gTenrm */
+.dekEUU{height:100%;}
+/* sc-component-id: layouts__StyledState-kRnEcX */
+.jKSIKe{display:none;}</style><style data-styled="gyPdUq llZKen eMsHMi cycBGB kuKnAU isKyYt" data-styled-version="4.1.1"></style></head><body data-base="/patterns/" class="layouts__StyledBody-uMNrz egiNlq"><div data-icon-registry="true" style="display:none"><svg class="icon__StyledRegistry-ePOEAW cWclDW"><symbol id="arrow-right" viewBox="0 0 24 24"><path d="m 14.202,10.767 c 0.14,0.147 0.258,0.31 0.344,0.494 0.215,0.464 0.215,1.01 0,1.474 -0.085,0.185 -0.203,0.347 -0.343,0.494 L 10.66,16.775 9.6,15.715 c 1.183,-1.186 2.46,-2.285 3.55,-3.558 0.058,-0.075 0.073,-0.176 0.033,-0.262 -0.013,-0.03 -0.033,-0.055 -0.056,-0.08 L 9.601,8.29 l 1.06,-1.06 3.54,3.54 z"></path></symbol><symbol id="checkers-inverted" viewBox="0 0 24 24"><path d="M2,2h4v4h-4zM10,2h4v4h-4zM18,2h4v4h-4zM6,6h4v4h-4zM14,6h4v4h-4zM2,10h4v4h-4zM10,10h4v4h-4zM18,10h4v4h-4zM6,14h4v4h-4zM14,14h4v4h-4zM2,18h4v4h-4zM10,18h4v4h-4zM18,18h4v4h-4z"></path></symbol><symbol id="close" viewBox="0 0 24 24"><path d="M11.988 1.333C6.08 1.333 1.274 6.14 1.274 12.047c0 5.908 4.806 10.714 10.714 10.714s10.714-4.806 10.714-10.714c0-5.907-4.807-10.714-10.714-10.714zm0 19.78c-5 0-9.066-4.067-9.066-9.066s4.067-9.065 9.066-9.065 9.065 4.066 9.065 9.065-4.067 9.066-9.065 9.066z"></path><path d="M17.232 6.802a.824.824 0 0 0-1.165 0l-4.08 4.08-4.079-4.08a.824.824 0 1 0-1.165 1.166l4.08 4.08-4.08 4.079a.824.824 0 1 0 1.165 1.165l4.08-4.08 4.079 4.08a.82.82 0 0 0 1.165 0 .824.824 0 0 0 0-1.165l-4.08-4.08 4.08-4.079a.824.824 0 0 0 0-1.166z"></path></symbol><symbol id="external-link" viewBox="0 0 24 24"><path d="m20.35093,4.63239l-7.85822,7.85822a0.69591,0.69591 0 0 1 -0.98402,-0.98402l7.85822,-7.85822l-5.27918,0a0.69591,0.69591 0 0 1 0,-1.39182l6.9591,0a0.69591,0.69591 0 0 1 0.69591,0.69591l0,6.95911a0.69591,0.69591 0 0 1 -1.39182,0l0,-5.27918zm-12.52639,0.4078l-3.48095,0c-1.15243,0 -2.08634,0.93113 -2.08634,2.08216l0,12.53892c0,1.14825 0.94505,2.08216 2.09052,2.08216l12.51943,0a2.08773,2.08773 0 0 0 2.09051,-2.09052l0,-3.47677a0.69591,0.69591 0 0 0 -1.39182,0l0,3.47677a0.69591,0.69591 0 0 1 -0.69869,0.6987l-12.51943,0a0.70148,0.70148 0 0 1 -0.69869,-0.69035l0,-12.53892c0,-0.38136 0.31038,-0.69034 0.69452,-0.69034l3.48095,0a0.69591,0.69591 0 0 0 0,-1.39182z" fillmode="nonzero"></path></symbol><symbol id="fullscreen" viewBox="0 0 24 24"><path d="M9 3.75v-1.5l-5 .003c-.966 0-1.75.785-1.75 1.75V9h1.5V4.813L8.38 9.44l1.06-1.06-4.63-4.63H9zm-.62 10.81l-4.63 4.626V15h-1.5v4.997c0 .964.785 1.75 1.75 1.75l5 .002v-1.5l-4.19-.005 4.63-4.626-1.06-1.06zM20 2.25l-5-.005v1.5l4.194.003-4.634 4.63 1.06 1.06 4.63-4.624v4.18h1.5V4c0-.966-.785-1.75-1.75-1.75m.25 16.936l-4.63-4.626-1.06 1.06 4.634 4.63-4.194.005v1.5l5-.004c.965 0 1.75-.782 1.75-1.75v-4.993h-1.5v4.18z"></path></symbol><symbol id="hamburger" viewBox="0 0 24 24"><path d="M7.86 12.83V11.53c0-.24.193-.433.432-.433h12.12c.239 0 .433.194.433.433v1.299c0 .24-.194.433-.432.433H8.292a.433.433 0 0 1-.432-.433zm0 5.194v-1.299c0-.24.193-.433.432-.433h12.12c.239 0 .433.194.433.433v1.299c0 .24-.194.432-.432.432H8.292a.433.433 0 0 1-.432-.432zm0-10.388V6.337c0-.24.193-.432.432-.432h12.12c.239 0 .433.193.433.432v1.299c0 .24-.194.433-.432.433H8.292a.433.433 0 0 1-.432-.433zM3.315 13.05v-1.74a.43.43 0 0 1 .43-.428h1.738a.43.43 0 0 1 .43.429v1.74a.43.43 0 0 1-.43.428H3.744a.43.43 0 0 1-.429-.429zm0 5.194v-1.74a.43.43 0 0 1 .43-.428h1.738a.43.43 0 0 1 .43.429v1.74a.43.43 0 0 1-.43.428H3.744a.43.43 0 0 1-.429-.429zm0-10.388V6.117a.43.43 0 0 1 .43-.429h1.738a.43.43 0 0 1 .43.43v1.738a.43.43 0 0 1-.43.43H3.744a.43.43 0 0 1-.429-.43z"></path></symbol><symbol id="patternplate" viewBox="0 0 24 24"><path d="M12.002 20.426a1.264 1.264 0 0 1-.675-.189l-9.05-5.63a.86.86 0 1 1 .906-1.455l8.819 5.494 8.815-5.494a.86.86 0 1 1 .906 1.456l-9.047 5.643a1.267 1.267 0 0 1-.674.175z"></path><path d="M12 17.055a1.244 1.244 0 0 1-.657-.185l-8.886-5.545a1.193 1.193 0 0 1 0-2.023l8.886-5.542a1.25 1.25 0 0 1 1.314 0l8.886 5.542a1.193 1.193 0 0 1 0 2.023l-8.886 5.541a1.24 1.24 0 0 1-.657.19zm-7.99-6.742l7.99 4.98 7.99-4.98L12 5.334l-7.99 4.98z"></path></symbol><symbol id="search" viewBox="0 0 24 24"><path d="M8.65 14.248c-.376-.46-.697-.962-.955-1.496-.335-.695-.56-1.44-.668-2.205-.11-.787-.096-1.59.044-2.373.13-.726.37-1.432.71-2.09.75-1.448 1.96-2.636 3.43-3.343.64-.3 1.32-.52 2.02-.64.35-.05.69-.08 1.04-.09h.29c.35.01.7.03 1.04.09.7.11 1.39.32 2.03.62 1.53.717 2.8 1.95 3.55 3.466.32.63.54 1.31.67 2.006.14.78.16 1.584.05 2.37-.106.76-.332 1.51-.667 2.204-.393.81-.933 1.55-1.586 2.174-.675.643-1.472 1.16-2.34 1.515-.895.365-1.862.553-2.832.553s-1.933-.186-2.83-.553c-.684-.28-1.325-.66-1.9-1.13-2.09 2.21-4.294 4.307-6.437 6.464-.09.08-.186.15-.3.187-.1.034-.205.046-.31.035-.072-.01-.145-.03-.213-.058-.308-.13-.497-.455-.454-.79.02-.15.088-.28.184-.395 2.09-2.23 4.3-4.343 6.46-6.506zM14.377 3.5c-.28.006-.56.027-.836.07-.56.085-1.1.25-1.62.49-1.16.542-2.13 1.457-2.74 2.58-.28.518-.48 1.075-.6 1.65-.13.65-.15 1.318-.07 1.974.08.612.25 1.21.52 1.77.31.655.73 1.253 1.25 1.758.54.523 1.17.945 1.86 1.236.715.302 1.486.462 2.26.472.777.01 1.554-.13 2.277-.416.695-.275 1.34-.682 1.885-1.192.53-.492.97-1.08 1.29-1.726.276-.55.464-1.144.557-1.753.1-.63.09-1.273-.01-1.9-.094-.56-.266-1.103-.51-1.613-.58-1.197-1.555-2.185-2.744-2.776-.505-.252-1.047-.43-1.603-.53-.273-.05-.55-.077-.83-.09-.1-.003-.204-.004-.31-.004z"></path></symbol></svg></div><div data-application-el="patternplate" class="layouts__StyledContent-gTenrm dekEUU"><div class="application__StyledApplication-jImxdR hwIEdt"><div data-toggle-name="navigation" data-trigger-name="navigation" data-toggle-enabled="true" class="application__NavigationControl-dSPYwL kjSpDc"><a class="toggle-navigation__StyledToggleButton-cPdjej fkfLlt" href="/patterns/pattern/configure-stickyroll.html?navigation-enabled=false" title="Hide navigation [ctrl+alt+n]"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><svg class="icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#hamburger"></use></svg>[ctrl+alt+n]</span></span></a></div><div data-toggle-name="navigation" class="application__StyledNavigationBox-daTOsK bjjAUF"><div class="main-navigation__StyledNavigation-fxJBRE bIyuKT"><div class="main-navigation__StyledNavigatHeader-ilJPBl cwzDGu"><div class="logo__StyledLogo-fchPwL jkLJTM"><a target="_self" class="logo__StyledLink-knCrHO kNRFHr" href="/"><span class="link__StyledLinkContainer-gGcKKl cEoAFh"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><svg class="icon__StyledIcon-gaalNZ kCYyZn"><use xlink:href="#patternplate"></use></svg></span></span></a></div></div><div class="main-navigation__StyledNavigationTree-eruwPi bHypvJ"><div class="main-navigation__StyledDocumentationTree-fboWmh dCQyIy navigation-tree__StyledNavigationTree-jKhwV ouVha" data-toggle-enabled="true"><div data-toggle-name="guides" data-trigger-name="guides" data-toggle-enabled="false" class="navigation-label__StyledLabelContainer-iEgOZp eMVHru"><div class="navigation-label__StyledLabel-kDHWLW ddlQiL"><a class="navigation-label__StyledLabelLink-tnqCY fWmofx" href="/patterns/pattern/configure-stickyroll.html?guides-enabled=true" title="Expand Guides list"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><span class="navigation-label__StyledLabelIcon-ckbIyn lZLpM"><svg class="icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#arrow-right"></use></svg></span>Guides
+</span></span></a></div></div><div data-toggle-name="guides" data-toggle-enabled="false" class="navigation-tree__NavigationItemList-bQGWex jWZzCy"><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR dKptkP" href="/patterns/doc/guide/getting-started/Readme.html" title="Navigate to Guide: Getting Started item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Guide: Getting Started</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR dKptkP" href="/patterns/doc/guide/configue-stickyroll/Readme.html" title="Navigate to Guide: Configure Stickyroll item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Guide: Configure Stickyroll</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR dKptkP" href="/patterns/doc/guide/using-decorators/Readme.html" title="Navigate to Guide: Using Decorators item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Guide: Using Decorators</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR dKptkP" href="/patterns/doc/guide/creating-plugins/Readme.html" title="Navigate to Guide: Creating Plugins item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Guide: Creating Plugins</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div></div><div data-toggle-name="doc" data-trigger-name="doc" data-toggle-enabled="false" class="navigation-label__StyledLabelContainer-iEgOZp eMVHru"><div class="navigation-label__StyledLabel-kDHWLW ddlQiL"><a class="navigation-label__StyledLabelLink-tnqCY fWmofx" href="/patterns/pattern/configure-stickyroll.html?doc-enabled=true" title="Expand Reference list"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><span class="navigation-label__StyledLabelIcon-ckbIyn lZLpM"><svg class="icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#arrow-right"></use></svg></span>Reference
+</span></span></a></div></div><div data-toggle-name="doc" data-toggle-enabled="false" class="navigation-tree__NavigationItemList-bQGWex jWZzCy"><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR dKptkP" href="/patterns/doc/doc/stickyroll.html" title="Navigate to Reference: Stickyroll item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Reference: Stickyroll</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div></div></div><div data-toggle-name="components" data-trigger-name="components" data-toggle-enabled="false" class="navigation-label__StyledLabelContainer-iEgOZp eMVHru"><div class="navigation-label__StyledLabel-kDHWLW gUFivy"><a class="navigation-label__StyledLabelLink-tnqCY fWmofx" href="/patterns/pattern/configure-stickyroll.html?components-enabled=true" title="Expand Components list"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><span class="navigation-label__StyledLabelIcon-ckbIyn lZLpM"><svg class="icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#arrow-right"></use></svg></span>Components
+</span></span></a></div></div><div class="navigation-tree__StyledNavigationTree-jKhwV BJdyP" data-toggle-name="components" data-toggle-enabled="false"><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR fyLObY" href="/patterns/pattern/configure-stickyroll.html" title="Navigate to Example: Configure Stickyroll item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Example: Configure Stickyroll</div><div class="navigation-item__StyledMeta-foOWle ccyrId"></div></span></span></a></div><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR iEjvnw" href="/patterns/pattern/cretaing-plugins.html" title="Navigate to Example: Creating Plugins item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Example: Creating Plugins</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR iEjvnw" href="/patterns/pattern/getting-started.html" title="Navigate to Example: Getting Started item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Example: Getting Started</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div><div class="navigation-item__StyledNavigationItem-ikGuxv gRsLlP" type="item"><a class="navigation-item__StyledNavigationLink-jmUraR iEjvnw" href="/patterns/pattern/using-decorators.html" title="Navigate to Example: Using Decorators item"><span class="link__StyledLinkContainer-gGcKKl iLqwyJ"><span class="link__StyledLinkLabel-bsXTVK lcvmEX"><div class="navigation-item__StyledName-icEgSc jRZbJS">Example: Using Decorators</div><div class="navigation-item__StyledMeta-foOWle imSLbq"></div></span></span></a></div></div></div><div class="main-navigation__StyledNavigationToolbar-kfxy mhVkj"><div class="navigation-toolbar__StyledNavigationToolbar-dQJaly giQbNS"><div></div><a class="toggle-search__StyledLink-JtZaj tGDQw" href="/patterns/pattern/configure-stickyroll.html?search-enabled=true" title="Enable search [ctrl+alt+space]"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><svg class="toggle-search__StyledIcon-kssutB dHxQPq icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#search"></use></svg>Search</span></span></a><div title="" class="indicator__StyledIndicator-jnpRni jzyeXM"><div class="indicator__StyledLabel-eKACfC gSZVZn text__StyledText-dhBuAI eRcNKs"></div><div class="indicator__StyledDot-eiaqOf gfRmEr"></div></div></div></div></div></div><div class="application__StyledContentContainer-gxmRpK ksgZZU"><div class="application__StyledContent-jSinoZ dpEHJe"><div data-browser-warning="true" class="application__StyledBrowserWarning-edSfyU bKaWPa"><div class="application__StyledBrowserContainer-lkxTje fpvwRx"><div class="application__StyledBrowserContent-eAuxHC earMfg"><div class="application__StyledWarningLabel-foojdh fUItgF text__StyledText-dhBuAI ksDTrS">Nice browser. Is it antique?</div><div class="application__StyledBrowserText-iNZEOv jwPlsU text__StyledText-dhBuAI ksDTrS">No, seriously - your browser is so old that some features of patternplate don&#x27;t work as expected.</div><div class="application__StyledBrowserText-iNZEOv jwPlsU text__StyledText-dhBuAI ksDTrS">Don&#x27;t worry - you can either continue with a restricted version or install an up-to-date browser.</div></div><a class="application__StyledBrowserContainerClose-iDddqV eGIrCp" href="/patterns/pattern/configure-stickyroll.html?browser-warning-enabled=false" title="Close browser warning"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><svg class="icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#close"></use></svg></span></span></a></div></div><div data-js-warning="true" class="application__StyledBrowserWarning-edSfyU bKaWPa"><div class="application__StyledBrowserContainer-lkxTje fpvwRx"><div class="application__StyledBrowserContent-eAuxHC earMfg"><div class="application__StyledWarningLabel-foojdh fUItgF text__StyledText-dhBuAI ksDTrS">We messed up.</div><div class="application__StyledBrowserText-iNZEOv jwPlsU text__StyledText-dhBuAI ksDTrS">Sorry, but your user experience might be affected.</div><div class="text__StyledText-dhBuAI ksDTrS">- Try reloading the page</div><div class="text__StyledText-dhBuAI ksDTrS">- Report the problem at github.com/patternplate/patternplate</div></div><a class="application__StyledBrowserContainerClose-iDddqV eGIrCp" href="/patterns/pattern/configure-stickyroll.html?js-warning-enabled=false" title="Close browser warning"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><svg class="icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#close"></use></svg></span></span></a></div></div><div class="pattern__StyledPattern-eMFcww ldyRLS"><div class="pattern__StyledPatternLoader-ApDwo itHAQS"></div><div class="pattern__StyledPatternDemo-gwIlef iTqHm"><div class="pattern__PatternContainer-cilXSP bojPMA"><iframe src="/patterns/api/demo/configure-stickyroll.html" referrerPolicy="no-referrer" class="pattern-demo__StyledDemo-bcrQQO exwvbf"></iframe></div></div></div><div class="pattern-sheet__StyledPatternSheet-kRkkum WJzBG"><div class="pattern-sheet__StyledPatternSheetContainer-hLAyHX ewQcYL"><div class="pattern-sheet__StyledControlsBox-cqmUBg eonBtR"><h1 class="pattern-sheet__StyledName-hEinmn ehVokv headline__exports-fWUCVD bExPMw" order="1">Example: Configure Stickyroll<small class="pattern-sheet__StyledVersion-eZeqwn kREqhe headline__exports-fWUCVD bEoBAw" order="3">@<!-- -->1.0.0</small></h1><div orient="right" class="pattern-sheet__StyledControlsArea-flzeDo llrKzs"><div class="pattern-sheet__StyledControlsItem-kTpBW ljDsdo"><a class="toggle-opacity__StyledToggleButton-iXLqgF hKckBK" href="/patterns/pattern/configure-stickyroll.html?opacity=true" title="Show opacity indicators [ctrl+alt+o]"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><svg class="toggle-opacity__StyledIcon-KIwfO dNGIrb icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#checkers-inverted"></use></svg> <!-- -->[ctrl+alt+o]</span></span></a></div><div class="pattern-sheet__StyledControlsItem-kTpBW ljDsdo"><a target="_blank" rel="noopener noreferrer" class="trigger-fullscreen__StyledLink-gcxyTC hMQeMy" href="/patterns/api/demo/configure-stickyroll.html?reload=" title="Open pattern demo for &quot;configure-stickyroll&quot; in a new tab"><span class="link__StyledLinkContainer-gGcKKl cEoAFh"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><svg class="trigger-fullscreen__StyledIcon-cNxNCv isqNnB icon__StyledIcon-gaalNZ iOYHec"><use xlink:href="#fullscreen"></use></svg></span></span></a></div></div></div><div class="pattern-sheet__StyledBoxLine-direXR bcdMIW"><span class="pattern-sheet__StyledSearchTrigger-iAXMrv bKJfPq"><a class="pattern-sheet__StyledLink-isTtZb cCaPkD" href="/patterns/pattern/configure-stickyroll.html?search-enabled=true&amp;search=flag%3Dalpha" title="Search other patterns with flag &quot;alpha&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><span class="flag__StyledText-kxRjHf emqDTk">alpha</span></span></span></a></span><div class="pattern-sheet__StyledTagList-jjaSOw GSyaW"></div></div><div class="pattern-sheet__StyledMarkdownBox-ekkhZQ eWDusK"><div class="markdown__StyledMarkdown-cjoOMf gVImnd"><div class="markdown-div__MarkdownDiv-cWfgQl hnCFuW"><h2 order="1" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx cTyYvZ" id="when-the-default-behavior-is-not-enough."><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#when-the-default-behavior-is-not-enough." title="Link to &quot;When the default behavior is not enough.&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="when-the-default-behavior-is-not-enough." class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>When the default behavior is not enough.</span></span></a></h2>
+<blockquote class="sc-htpNat juKwFW text__Text-hHAknR elDSou">
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">⏲ <strong>Time invest</strong>: 5 Minutes ––– 👩‍🎓 <strong>Level</strong>: Beginner</p>
+</blockquote>
+<h3 order="2" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx izZRJi" id="what-to-expect"><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#what-to-expect" title="Link to &quot;What to expect&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="what-to-expect" class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>What to expect</span></span></a></h3>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Every application can have several use cases for Stickyroll. With some basic options we can modify
+the behavior of the scroll listener.
+In about 5 minutes we will explore the <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">factor</code>, <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">throttle</code> and <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">anchors</code> properties.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">We will …</p>
+<ul class="markdown-list__MarkdownList-iPrskV jyiUKe">
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">… Change the scroll factor</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">… Use throttle to improve performance</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">… Add anchors to allow deep linking to a page</div></li>
+</ul>
+<h3 order="2" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx izZRJi" id="you&#x27;ll-need"><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#you&#x27;ll-need" title="Link to &quot;You&#x27;ll need&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="you&#x27;ll-need" class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>You&#x27;ll need</span></span></a></h3>
+<ul class="markdown-list__MarkdownList-iPrskV jyiUKe">
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">💻 Terminal (MacOS: <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">Terminal.app</code> or <a target="_blank" rel="noopener noreferrer" class="markdown-link__StyledLink-uZKFK dIonEb" href="https://www.iterm2.com/"><span class="link__StyledLinkContainer-gGcKKl cEoAFh"><span class="link__StyledLinkLabel-bsXTVK kTyiXb">iTerm</span><svg class="icon__StyledIcon-gaalNZ bqdVuN"><use xlink:href="#external-link"></use></svg></span></a> | Windows: <a target="_blank" rel="noopener noreferrer" class="markdown-link__StyledLink-uZKFK dIonEb" href="http://cmder.net/"><span class="link__StyledLinkContainer-gGcKKl cEoAFh"><span class="link__StyledLinkLabel-bsXTVK kTyiXb">cmder</span><svg class="icon__StyledIcon-gaalNZ bqdVuN"><use xlink:href="#external-link"></use></svg></span></a>)</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">🐢 Node.js <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">&gt;=8</code> (<a target="_blank" rel="noopener noreferrer" class="markdown-link__StyledLink-uZKFK dIonEb" href="https://nodejs.org/en/"><span class="link__StyledLinkContainer-gGcKKl cEoAFh"><span class="link__StyledLinkLabel-bsXTVK kTyiXb">Install</span><svg class="icon__StyledIcon-gaalNZ bqdVuN"><use xlink:href="#external-link"></use></svg></span></a>)</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">👩‍🎓 The app from &quot;Getting started&quot;</div></li>
+</ul>
+<h3 order="2" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx izZRJi" id="using-options-to-modify-stickyroll"><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#using-options-to-modify-stickyroll" title="Link to &quot;Using Options to modify Stickyroll&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="using-options-to-modify-stickyroll" class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>Using Options to modify Stickyroll</span></span></a></h3>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Follow these 3 simple steps to learn all the possibilities.</p>
+<h4 order="3" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx YBpxr" id="1.-change-the-factor"><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#1.-change-the-factor" title="Link to &quot;1. Change the factor&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="1.-change-the-factor" class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>1. Change the factor</span></span></a></h4>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">To change the amount, a user has to scroll to progress though the view can be configured.
+In this example we want to double the amount so the timeline is longer.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">We have add an attribute to <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">Stickyroll</code>.</p>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Stickyroll</span> <span class="token attr-name">page</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>headlines<span class="token punctuation">}</span></span> <span class="token attr-name">factor</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre></div>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Play around with this option until you have the effect that suits you best.</p>
+<h4 order="3" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx YBpxr" id="2.-add-throttle"><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#2.-add-throttle" title="Link to &quot;2. Add throttle&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="2.-add-throttle" class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>2. Add throttle</span></span></a></h4>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Sometimes performance is more important than smooth animations.
+While Stickyroll already uses <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">requestAnimationFrame</code> internally on top of a
+passive <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">eventListener</code>, performance should not be an issue. Obviously the internal logic of your
+application has the most impact.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Let&#x27;s pretend to have a case where we can to throttle the scroll to <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">250ms</code>.<br/>
+<!-- -->If all we do on scroll is trigger a className at a certain progress, then <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">throttle</code>
+might do exactly what we want.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">We have add an attribute to <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">Stickyroll</code>.</p>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Stickyroll</span> <span class="token attr-name">page</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>headlines<span class="token punctuation">}</span></span> <span class="token attr-name">factor</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span></span> <span class="token attr-name">throttle</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">250</span><span class="token punctuation">}</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre></div>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">and change the className of our content container based on the progress.<br/>
+<!-- -->Lets add <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">custom-trigger--${Math.round(progress * 3)}</code> to add 3 classNames
+while scrolling</p>
+<ul class="markdown-list__MarkdownList-iPrskV jyiUKe">
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">&quot;custom-trigger--0&quot;  (Start of page)</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">&quot;custom-trigger--...&quot;</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou">&quot;custom-trigger--3&quot; (End of page)</div></li>
+</ul>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation">=</span>{`custom-trigger--${Math.round(progress</span> <span class="token attr-name">*</span> <span class="token attr-name">3)}`}</span><span class="token punctuation">/&gt;</span></span>
+</code></pre></div>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">You can add these Styles to your stylesheet if you want to see some action:</p>
+<div class="sc-bxivhb ipsQkQ">
+<p class="markdown-copy__MarkdownCopy-fBVELe cetsPR text__Text-hHAknR kXSZQD">
+You can use <a target="_blank" rel="noopener noreferrer" class="markdown-link__StyledLink-uZKFK cSvin" href="https://www.styled-components.com/"><span class="link__StyledLinkContainer-gGcKKl cEoAFh"><span class="link__StyledLinkLabel-bsXTVK kTyiXb">styled-components</span><svg class="icon__StyledIcon-gaalNZ bqdVuN"><use xlink:href="#external-link"></use></svg></span></a> or a similar library
+to add these styles for you.<br/>
+<!-- -->To keep things simple we will just add them to the <code class="markdown-code__MarkdownCode-dVosil XonsE code__StyledCode-cQURYR fXbBEf">document.head</code> manually</p>
+</div>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>Boolean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token string">`
+    .custom-trigger {
+        transition: background-color 0.3s ease-in-out;
+    }
+    .custom-trigger--</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> {
+        background-color: hsl(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i <span class="token operator">*</span> <span class="token number">36</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, 100%, 70%);
+    }
+`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Open the file <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">my-app/src/App.css</code> in your text editor and add this
+css snippet</p>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token selector">.custom-trigger</span> <span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> background-color 0.3s ease-in-out<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--0</span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>0,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--1</span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>120,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--2</span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>240,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--3</span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>360,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<div class="sc-bxivhb ipsQkQ">
+<p class="markdown-copy__MarkdownCopy-fBVELe cetsPR text__Text-hHAknR kXSZQD">
+Throttle will improve performance but return a stuttering <code class="markdown-code__MarkdownCode-dVosil XonsE code__StyledCode-cQURYR fXbBEf">progress</code>.</p>
+</div>
+<h4 order="3" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx YBpxr" id="3.-adding-deep-links"><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#3.-adding-deep-links" title="Link to &quot;3. Adding deep links&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="3.-adding-deep-links" class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>3. Adding deep links</span></span></a></h4>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">To allow linking directly to pages we can inject elements with target IDs.
+While you are free to build your own Logic for this, Stickyroll already provides
+a solution that nicely ties into the mechanism.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">We have to add an attribute to <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">Stickyroll</code>.</p>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Stickyroll</span> <span class="token attr-name">page</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>headlines<span class="token punctuation">}</span></span> <span class="token attr-name">anchors</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre></div>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Setting <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">anchors</code> injects elements with corresponding IDs to allow hash navigation.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou"><strong>Examples:</strong></p>
+<ul class="markdown-list__MarkdownList-iPrskV jyiUKe">
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou"><code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">&quot;&quot;</code> =&gt; &quot;example.com#1&quot;</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou"><code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">&quot;examples&quot;</code> =&gt; &quot;example.com#examples/1&quot;</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou"><code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">&quot;!&quot;</code> =&gt; &quot;example.com#!/1&quot;</div></li>
+<li class="markdown-item__MarkdownItem-ijQjTZ bCeAFl"><div class="text__Text-hHAknR elDSou"><code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">&quot;!/examples&quot;</code> =&gt; &quot;example.com#!/examples/1&quot;</div></li>
+</ul>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Your <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">App.js</code> should now look like this:</p>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&#x27;react&#x27;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>Stickyroll<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#x27;@stickyroll/stickyroll&#x27;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> headlines <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;Hello World!&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;Hello React!&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;Hello Stickyroll!&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;Let&#x27;s continue with the next lesson!&quot;</span>
+<span class="token punctuation">]</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">className</span> <span class="token operator">=</span> progress <span class="token operator">=&gt;</span>
+        <span class="token template-string"><span class="token string">`custom-trigger custom-trigger--</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>progress <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>Stickyroll
+            pages<span class="token operator">=</span><span class="token punctuation">{</span>headlines<span class="token punctuation">}</span>
+            factor<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span>
+            throttle<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">250</span>
+            anchors<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token operator">&gt;</span>
+            <span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">{</span>page<span class="token punctuation">,</span> pageIndex<span class="token punctuation">,</span> pages<span class="token punctuation">,</span> progress<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token punctuation">(</span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>
+                    <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token function">className</span><span class="token punctuation">(</span>progress<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">/&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>page<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span> <span class="token keyword">of</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>pages<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+                    Progress<span class="token punctuation">:</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>progress<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>headlines<span class="token punctuation">[</span>pageIndex<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Stickyroll</span><span class="token punctuation">&gt;</span></span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span>
+</code></pre></div>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Your <code class="markdown-code__MarkdownCode-dVosil bQkbDz code__StyledCode-cQURYR kDeQfI">App.css</code> should now look like this:</p>
+<div class="markdown-code-block__StyledMarkdownCodeBlock-kVwPxu jhaozz"><pre class="code__StyledPre-hbRUtn dTwvsz"><code class="code__StyledCode-cQURYR kDeQfI"><span class="token selector">.App</span> <span class="token punctuation">{</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.App-logo</span> <span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> App-logo-spin infinite 20s linear<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 40vmin<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.App-header</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #282c34<span class="token punctuation">;</span>
+  <span class="token property">min-height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>10px + 2vmin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.App-link</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #61dafb<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> App-logo-spin</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>0deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>360deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.custom-trigger</span> <span class="token punctuation">{</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> background-color 0.3s ease-in-out<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--0</span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>0,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--1</span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>120,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--2</span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>240,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.custom-trigger--3</span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span><span class="token function">hsl</span><span class="token punctuation">(</span>360,100%,70%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">Enjoy!</p>
+<h3 order="2" class="markdown-headline__MarkdownHeadline-ftEHTp igLTBp markdown-headline__StyledHeadline-dUaqNx izZRJi" id="next-steps"><a class="markdown-headline__StyledLink-bSlcGN cFVNjp" href="/patterns/pattern/configure-stickyroll.html#next-steps" title="Link to &quot;Next steps&quot;"><span class="link__StyledLinkContainer-gGcKKl fOufkm"><span class="link__StyledLinkLabel-bsXTVK kTyiXb"><div id="next-steps" class="markdown-headline__StyledTarget-eaqRed jmpBdR"></div><svg class="markdown-headline__ThemedIcon-legfIo dZsECy icon__StyledIcon-gbLjqS NmjPH" viewBox="0 0 24 24"><path d="M13.836 15.767h-.749c-.05 0-.105 0-.155-.01a3.425 3.425 0 0 1-.935-.151 3.772 3.772 0 0 1-1.918-1.346 3.146 3.146 0 0 1-.321-.502 2.998 2.998 0 0 1-.216-.502c-.146-.393-.222-.814-.222-1.256s.076-.864.222-1.256h1.37c.096 0 .186.01.277.03a2.264 2.264 0 0 0 0 2.45c.1.152.216.293.351.418.136.13.286.241.457.337.321.176.693.281 1.09.281h3.516c1.245 0 2.26-1.014 2.26-2.26s-1.015-2.26-2.26-2.26h-1.487a4.758 4.758 0 0 0-1.28-1.507h2.767a3.768 3.768 0 0 1 0 7.534h-2.767z"></path><path d="M12.46 10.358a2.156 2.156 0 0 0-.462-.336 2.198 2.198 0 0 0-1.085-.282H7.397c-1.245 0-2.26 1.014-2.26 2.26s1.015 2.26 2.26 2.26h1.492c.316.587.753 1.1 1.275 1.507H7.397a3.768 3.768 0 0 1 0-7.534h3.516c.055 0 .105 0 .156.01.321.005.632.06.929.15a3.73 3.73 0 0 1 1.918 1.347c.13.16.236.326.327.502.085.16.16.326.216.502.146.391.22.814.22 1.256s-.074.863-.22 1.255h-1.371a1.19 1.19 0 0 1-.276-.03c.23-.351.361-.773.361-1.225a2.223 2.223 0 0 0-.714-1.642z"></path></svg>Next steps</span></span></a></h3>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">These options are fully optional. It&#x27;s noe time to take a step to the next level
+and explore more internal features of Stickyroll.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou">If anything is missing or seems unclear feel free to open an issue
+in our <a target="_blank" rel="noopener noreferrer" class="markdown-link__StyledLink-uZKFK dIonEb" href="https://github.com/stickyroll/react-stickyroll/issues"><span class="link__StyledLinkContainer-gGcKKl cEoAFh"><span class="link__StyledLinkLabel-bsXTVK kTyiXb">github repo</span><svg class="icon__StyledIcon-gaalNZ bqdVuN"><use xlink:href="#external-link"></use></svg></span></a>.</p>
+<p class="markdown-copy__MarkdownCopy-fBVELe cVaDsx text__Text-hHAknR elDSou"><strong>Thank you</strong></p></div></div></div></div></div></div></div></div></div><textarea data-application-state="patternplate" readonly="" class="layouts__StyledState-kRnEcX jKSIKe">%5B%7B%22base%22%3A1%2C%22config%22%3A2%2C%22pattern%22%3A3%2C%22startBase%22%3A1%2C%22staticBase%22%3A4%2C%22isStatic%22%3A5%2C%22manifest%22%3A6%7D%2C%22%2Fpatterns%2F%22%2C%7B%22docs%22%3A7%2C%22entry%22%3A8%2C%22render%22%3A9%2C%22mount%22%3A10%2C%22ui%22%3A11%7D%2C%7B%22id%22%3A12%7D%2C%22%2Fpatterns%2F%2Fstatic%22%2Ctrue%2C%7B%22vendors~client.js%22%3A13%2C%22vendors~client.js.map%22%3A14%2C%22client.js%22%3A15%2C%22client.js.map%22%3A16%7D%2C%5B17%5D%2C%5B18%5D%2C%22%40patternplate%2Frender-styled-components%2Frender%22%2C%22%40patternplate%2Frender-styled-components%2Fmount%22%2C%7B%22logo%22%3A19%2C%22favicon%22%3A20%2C%22fontDefault%22%3A21%2C%22fontHeadline%22%3A21%2C%22fontCode%22%3A22%2C%22colorActive%22%3A23%2C%22colorError%22%3A24%2C%22colorWarning%22%3A25%2C%22colorInfo%22%3A26%2C%22colorSuccess%22%3A27%2C%22colorBackgroundDark%22%3A28%2C%22colorBackgroundSecondaryDark%22%3A29%2C%22colorBackgroundTertiaryDark%22%3A30%2C%22colorBorderDark%22%3A30%2C%22colorTextDark%22%3A31%2C%22colorRecessDark%22%3A32%2C%22colorBackgroundLight%22%3A31%2C%22colorBackgroundSecondaryLight%22%3A33%2C%22colorBackgroundTertiaryLight%22%3A33%2C%22colorBorderLight%22%3A33%2C%22colorTextLight%22%3A34%2C%22colorRecessLight%22%3A35%2C%22showComponents%22%3A5%7D%2C%22patterns%2Fpattern%2Fconfigure-stickyroll%22%2C%22vendors~client.be0634937a65846d0c72.js%22%2C%22vendors~client.be0634937a65846d0c72.js.map%22%2C%22client.fa35351d3319b6ab9f29.js%22%2C%22client.fa35351d3319b6ab9f29.js.map%22%2C%22%7Bdoc%2Cguide%7D%2F**%2F*.md%22%2C%22guide%2F*%2Fdemo.js%22%2C%22%5Cn%5Ct%5Ct%3Csvg%20width%3D%5C%2230%5C%22%20height%3D%5C%2230%5C%22%20viewBox%3D%5C%220%200%2030%2030%5C%22%3E%5Cn%5Ct%5Ct%5Ct%3Crect%20width%3D%5C%2230%5C%22%20height%3D%5C%2230%5C%22%20fill%3D%5C%22currentColor%5C%22%2F%3E%5Cn%5Ct%5Ct%3C%2Fsvg%3E%5Cn%5Ct%5Ct%22%2C%22%5Cn%5Ct%5Ct%3Csvg%20height%3D%5C%2230%5C%22%20width%3D%5C%2230%5C%22%3E%5Cn%5Ct%5Ct%5Ct%3Ccircle%20cx%3D%5C%2215%5C%22%20cy%3D%5C%2215%5C%22%20r%3D%5C%2215%5C%22%2F%3E%5Cn%5Ct%5Ct%3C%2Fsvg%3E%5Cn%5Ct%5Ct%22%2C%22-apple-system%2C%20BlinkMacSystemFont%2C%20%5C%22Segoe%20UI%5C%22%2C%20Helvetica%2C%20Arial%2C%20sans-serif%22%2C%22SFMono-Regular%2C%20Consolas%2C%20Liberation%20Mono%2C%20Menlo%2C%20Courier%2C%20monospace%22%2C%22%23FF6F00%22%2C%22%23F44336%22%2C%22%23FF9800%22%2C%22%2303A9F4%22%2C%22%238BC34A%22%2C%22%23222%22%2C%22%23111%22%2C%22%23333%22%2C%22%23fff%22%2C%22%23ddd%22%2C%22%23eee%22%2C%22%23000%22%2C%22%23444%22%5D</textarea><script src="/patterns//static/vendors~client.be0634937a65846d0c72.js"></script><script src="/patterns//static/client.fa35351d3319b6ab9f29.js"></script></body></html>
