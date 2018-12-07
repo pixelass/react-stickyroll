@@ -1,6 +1,6 @@
 {
 	"name": "@stickyroll/utils",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"keywords": [
 		"animation",
 		"canvas",
@@ -57,7 +57,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.0",
-		"@stickyroll/testing-utils": "^1.0.0",
+		"@stickyroll/testing-utils": "^1.1.0",
 		"@types/react": "^16.7.13",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.0-rc.2",
@@ -73,7 +73,6 @@
 		"tslib": "1.9.3",
 		"typescript": "3.2.1"
 	},
-	"peerDependencies": {},
 	"engines": {
 		"node": ">=8",
 		"npm": ">=6"

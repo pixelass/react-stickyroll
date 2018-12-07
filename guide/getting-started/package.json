@@ -1,6 +1,6 @@
 {
 	"name": "getting-started",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"private": true,
 	"homepage": "https://github.com/stickyroll/react-stickyroll#readme",
 	"bugs": {
@@ -18,7 +18,7 @@
 		"demo:watch": "rimraf lib && tsc --watch"
 	},
 	"dependencies": {
-		"@stickyroll/stickyroll": "1.0.0",
+		"@stickyroll/stickyroll": "^1.1.0",
 		"@types/react": "16.7.13",
 		"@types/react-dom": "16.0.11",
 		"react": "16.6.3",
