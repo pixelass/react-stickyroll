@@ -37,8 +37,8 @@
 	"module": "dist/esm/index.js",
 	"typings": "index.d.ts",
 	"directories": {
-		"../../lib": "dist",
 		"doc": "doc",
+		"../../lib": "dist",
 		"test": "test"
 	},
 	"scripts": {

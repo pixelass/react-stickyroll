@@ -356,7 +356,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 					key={`${anchors}:${i + 1}`}
 					style={{
 						display: "block",
-						height: `${i === this.pageCount? 100 : 100 * factor}vh`
+						height: `${i === this.pageCount ? 100 : 100 * factor}vh`
 					}}
 				/>
 			));

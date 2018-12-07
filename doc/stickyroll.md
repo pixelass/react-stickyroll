@@ -1,10 +1,10 @@
 ---
 displayName: "Reference: Stickyroll"
 description: "Detailed API documentation of the Stickyroll component"
-tags: 
- - Reference
+tags:
+    - Reference
 options:
-  order: 0
+    order: 0
 ---
 
 # Stickyroll
@@ -24,7 +24,7 @@ import {Stickyroll} from "@stickyroll/stickyroll";
 ## Types
 
 `Stickyroll` is an alias of `Frame`. They therefore use the same types.
- 
+
 **Properties**
 
 ```typescript
@@ -41,23 +41,23 @@ import {Stickyroll} from "@stickyroll/stickyroll";
  * @property {number} [throttle]
  */
 export interface IFrameProps {
-    anchors?: string;
-    children?: TChild;
-    className?: string;
-    factor?: number;
-    onEnd?: TProgressHandler | TAsyncProgressHandler;
-    onPage?: TPageHandler | TAsyncPageHandler;
-    onStart?: TProgressHandler | TAsyncProgressHandler;
-    pages: number | Array<any>;
-    render?: TRenderer;
-    throttle?: number;
+	anchors?: string;
+	children?: TChild;
+	className?: string;
+	factor?: number;
+	onEnd?: TProgressHandler | TAsyncProgressHandler;
+	onPage?: TPageHandler | TAsyncPageHandler;
+	onStart?: TProgressHandler | TAsyncProgressHandler;
+	pages: number | Array<any>;
+	render?: TRenderer;
+	throttle?: number;
 }
 ```
 
 **Declarations**
 
 ```typescript
-import { IContext } from "@stickyroll/context";
+import {IContext} from "@stickyroll/context";
 /**
  * @typedef {function} TRender<T>
  * @param {IContext} context
@@ -103,7 +103,6 @@ export declare type TAsyncProgressHandler = () => Promise<void>;
  * @property {number} factor
  */
 export interface IFrameDefaultProps {
-    factor: number;
+	factor: number;
 }
 ```
-

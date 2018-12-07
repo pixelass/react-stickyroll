@@ -14,7 +14,11 @@ export interface IScrollToOptions {
  * @param {IScrollToOptions} [options={}]
  * @return {void}
  */
-export const scrollTo = (hash: string, target: HTMLElement, options: IScrollToOptions = {}): void => {
+export const scrollTo = (
+	hash: string,
+	target: HTMLElement,
+	options: IScrollToOptions = {}
+): void => {
 	if (!options.noHash) {
 		window.location.hash = hash;
 	}

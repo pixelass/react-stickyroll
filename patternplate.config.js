@@ -17,7 +17,7 @@ module.exports = {
 		// Fonts
 		fontDefault: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
 		fontHeadline: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
-		fontCode: 'SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace',
+		fontCode: "SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace",
 
 		// Global colors
 		colorActive: "#FF6F00",

@@ -1,9 +1,9 @@
 import React from "react";
-import styled, { css, StyledComponent } from "styled-components";
-import { ScrollConsumer } from "@stickyroll/context";
-import { ITheme, light } from "@stickyroll/themes";
-import { scrollTo } from "@stickyroll/utils";
-import { assert } from "@stickyroll/utils";
+import styled, {css, StyledComponent} from "styled-components";
+import {ScrollConsumer} from "@stickyroll/context";
+import {ITheme, light} from "@stickyroll/themes";
+import {scrollTo} from "@stickyroll/utils";
+import {assert} from "@stickyroll/utils";
 
 /**
  * @extends React.HTMLAttributes<HTMLAnchorElement>

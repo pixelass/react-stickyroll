@@ -21,15 +21,26 @@ const createMarkup = ({
 	factor = DEFAULT_OPTIONS.factor,
 	pages = DEFAULT_OPTIONS.pages
 } = DEFAULT_OPTIONS) =>
-	`<div${
-		className !== "" ? ` class="${className}"` : ""
-	} style="height:${100 + 100 * factor * pages}vh;margin:0;position:relative">${anchors}<div style="height:100vh;position:${vendoredSticky()};top:0;width:100%">${content}</div></div>`;
+	`<div${className !== "" ? ` class="${className}"` : ""} style="height:${100 +
+		100 *
+			factor *
+			pages}vh;margin:0;position:relative">${anchors}<div style="height:100vh;position:${vendoredSticky()};top:0;width:100%">${content}</div></div>`;
 
-const createAnchors = (prefix = "", pages = DEFAULT_OPTIONS.pages, factor = DEFAULT_OPTIONS.factor) =>
+const createAnchors = (
+	prefix = "",
+	pages = DEFAULT_OPTIONS.pages,
+	factor = DEFAULT_OPTIONS.factor
+) =>
 	`<div style="bottom:0;left:0;position:absolute;right:0;top:0">${Array(pages + 1)
 		.fill(Boolean)
-		.map((x, i) => `<span id="${prefix}${prefix === "" ? "" : "/"}${i + 1}" style="display:block;height:${i === pages ? 100 : 100 * factor}vh"></span>`)
-		.join("")}<span id="${prefix}${prefix === "" ? "" : "/"}skip" style="position:absolute;top:100%"></span></div>`;
+		.map(
+			(x, i) =>
+				`<span id="${prefix}${prefix === "" ? "" : "/"}${i +
+					1}" style="display:block;height:${i === pages ? 100 : 100 * factor}vh"></span>`
+		)
+		.join("")}<span id="${prefix}${
+		prefix === "" ? "" : "/"
+	}skip" style="position:absolute;top:100%"></span></div>`;
 
 test("Renders the correct markup ", t => {
 	const expected = createMarkup();
@@ -52,37 +63,35 @@ test("Renders the correct height (10 pages)", t => {
 });
 
 test("Allow adding anchor targets", t => {
-	const actual = renderToString(
-		<StickyFrame pages={1} render={() => null} anchors="" />
-	);
+	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors="" />);
 	const expected = createMarkup({anchors: createAnchors()});
 	t.is(expected, actual);
 });
 
-test("Allow defining anchor prefix with \"\"", t => {
+test('Allow defining anchor prefix with ""', t => {
 	const anchors = "";
-	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors}/>);
+	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors} />);
 	const expected = createMarkup({anchors: createAnchors(anchors)});
 	t.is(expected, actual);
 });
 
-test("Allow defining anchor prefix with \"example\"", t => {
+test('Allow defining anchor prefix with "example"', t => {
 	const anchors = "example";
-	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors}/>);
+	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors} />);
 	const expected = createMarkup({anchors: createAnchors(anchors)});
 	t.is(expected, actual);
 });
 
-test("Allow defining anchor prefix with \"!\"", t => {
+test('Allow defining anchor prefix with "!"', t => {
 	const anchors = "!";
-	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors}/>);
+	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors} />);
 	const expected = createMarkup({anchors: createAnchors(anchors)});
 	t.is(expected, actual);
 });
 
-test("Allow defining anchor prefix with \"!/example\"", t => {
+test('Allow defining anchor prefix with "!/example"', t => {
 	const anchors = "!/example";
-	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors}/>);
+	const actual = renderToString(<StickyFrame pages={1} render={() => null} anchors={anchors} />);
 	const expected = createMarkup({anchors: createAnchors(anchors)});
 	t.is(expected, actual);
 });

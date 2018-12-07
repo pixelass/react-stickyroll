@@ -242,7 +242,7 @@ export const DeviceSupport = () => (
 			<ThemeProvider theme={dark}>
 				<Inner withPagers="left">
 					<ThemeProvider theme={pink}>
-						<Pagers useContext={true}/>
+						<Pagers useContext={true} />
 					</ThemeProvider>
 					<StyledContent>
 						{progressable(

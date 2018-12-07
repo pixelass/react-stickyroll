@@ -30,15 +30,13 @@ const Headline = styled.h2`
 	background: white;
 `;
 
-const Demo =  () => (
+const Demo = () => (
 	<React.Fragment>
 		<Headline>Inner</Headline>
 		{Object.entries(themes).map(([name, theme]) => (
 			<Box key={name}>
 				<ThemeProvider theme={theme}>
-					<Inner>
-						{name}
-					</Inner>
+					<Inner>{name}</Inner>
 				</ThemeProvider>
 			</Box>
 		))}
@@ -46,9 +44,7 @@ const Demo =  () => (
 		{Object.entries(themes).map(([name, theme]) => (
 			<Box key={name}>
 				<ThemeProvider theme={theme}>
-					<Content>
-						{name}
-					</Content>
+					<Content>{name}</Content>
 				</ThemeProvider>
 			</Box>
 		))}
@@ -57,16 +53,16 @@ const Demo =  () => (
 			<Box key={name}>
 				<ThemeProvider theme={theme}>
 					<Inner>
-						<Content>
-							{name}
-						</Content>
+						<Content>{name}</Content>
 					</Inner>
 				</ThemeProvider>
 			</Box>
 		))}
 		<Headline>Combining themes</Headline>
 		{Object.entries(themes).map(([name, theme], i) => {
-			const contentThemes = Object.entries(themes).map(([name, theme]) => ({name, theme})).reverse();
+			const contentThemes = Object.entries(themes)
+				.map(([name, theme]) => ({name, theme}))
+				.reverse();
 			return (
 				<Box key={name}>
 					<ThemeProvider theme={theme}>
@@ -84,10 +80,9 @@ const Demo =  () => (
 	</React.Fragment>
 );
 
-
 export default () => (
 	<React.Fragment>
-		<GlobalStyle/>
-		<Demo/>
+		<GlobalStyle />
+		<Demo />
 	</React.Fragment>
-)
+);

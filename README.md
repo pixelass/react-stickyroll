@@ -20,6 +20,7 @@
 [![David](https://img.shields.io/david/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://david-dm.org/stickyroll/react-stickyroll)
 [![David](https://img.shields.io/david/dev/stickyroll/react-stickyroll.svg?style=for-the-badge)](https://david-dm.org/stickyroll/react-stickyroll?type=dev)
 -->
+
 ##### Powered by
 
 <!-- [![Webstorm](https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm)](https://www.jetbrains.com/buy/opensource/) -->
@@ -28,21 +29,21 @@
 
 <!-- toc -->
 
-- [Intro](#intro)
-- [Values](#values)
-- [Browser matrix](#browser-matrix)
-  * [Browserstack remote tests:](#browserstack-remote-tests)
-- [Render prop vs children](#render-prop-vs-children)
-- [Event listeners](#event-listeners)
-- [Decorators (context based)](#decorators-context-based)
-- [Plugins](#plugins)
-- [Styled components](#styled-components)
-  * [Available components](#available-components)
-- [Examples](#examples)
-  * [Codesandboxes](#codesandboxes)
-  * [Example 1](#example-1)
-  * [Example 2](#example-2)
-- [Development](#development)
+-   [Intro](#intro)
+-   [Values](#values)
+-   [Browser matrix](#browser-matrix)
+    -   [Browserstack remote tests:](#browserstack-remote-tests)
+-   [Render prop vs children](#render-prop-vs-children)
+-   [Event listeners](#event-listeners)
+-   [Decorators (context based)](#decorators-context-based)
+-   [Plugins](#plugins)
+-   [Styled components](#styled-components)
+    -   [Available components](#available-components)
+-   [Examples](#examples)
+    -   [Codesandboxes](#codesandboxes)
+    -   [Example 1](#example-1)
+    -   [Example 2](#example-2)
+-   [Development](#development)
 
 <!-- tocstop -->
 
@@ -99,7 +100,7 @@ tests are run on actual machines.
 
 ### Browserstack remote tests:
 
-Thanks to the Browserstack [open source offer]((https://www.browserstack.com/open-source))
+Thanks to the Browserstack [open source offer](<(https://www.browserstack.com/open-source)>)
 we are able to test multiple browsers and platforms to ensure the best stability.
 
 -   windows 10

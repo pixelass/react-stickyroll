@@ -21,6 +21,7 @@ module.exports = {
 		path: "src"
 	},
 	ignore: [
+		".yarnrc",
 		"package.json",
 		"**/CHANGELOG.md",
 		"lib/**",
