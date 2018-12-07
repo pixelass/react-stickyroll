@@ -40,18 +40,6 @@ const Debugger = (props: any) =>
 		</pre>
 	);
 
-const handlePage = (currentPage: number) => {
-	console.log(`Page: ${currentPage + 1} of ${rolls.length}`);
-};
-
-const handleStart = () => {
-	console.log(`Hit the start`);
-};
-
-const handleEnd = () => {
-	console.log(`Hit the end`);
-};
-
 class App extends React.Component {
 	public render() {
 		return (
