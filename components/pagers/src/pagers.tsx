@@ -225,13 +225,14 @@ export interface ISkipBaseProps {
  * @return {React.ReactHTMLElement<HTMLAnchorElement>}
  */
 export const SkipBase: React.FunctionComponent<ISkipBaseProps> = props => {
+	const glue = props.prefix === "" ? "" : "/";
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
 		e.preventDefault();
-		scrollTo(`${props.prefix}/skip`, e.target as HTMLElement, {noFocus: true, noHash: true});
+		scrollTo(`${props.prefix}${glue}skip`, e.target as HTMLElement, {noFocus: true, noHash: true});
 	};
 
 	return (
-		<SkipLink href={`#${props.prefix}/skip`} onClick={handleClick}>
+		<SkipLink href={`#${props.prefix}${glue}skip`} onClick={handleClick}>
 			Skip
 		</SkipLink>
 	);
