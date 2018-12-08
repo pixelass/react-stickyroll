@@ -25,9 +25,11 @@ We will …
 
 ## You'll need
 
-* :computer: Terminal (MacOS: `Terminal.app` or [iTerm](https://www.iterm2.com/) | Windows: [cmder](http://cmder.net/))
-* :turtle: Node.js `>=8` ([Install](https://nodejs.org/en/))
-* :woman_student: The app from "Using Decorators"
+You should have finished the second or third course course.
+
+* [Getting started](https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true)
+* [Configure Stickyroll](https://stickyroll.github.io/react-stickyroll/doc/guide/configue-stickyroll/Readme.html?guides-enabled=true)
+* [Using Decorators](https://stickyroll.github.io/react-stickyroll/doc/guide/using-decorators/Readme.html?guides-enabled=true)
 
 ## Building plugins with context and utils
 
@@ -180,6 +182,12 @@ Enjoy!
 You can now repeat the same process with for all other pages to allow users to jump 
 directly to each page. The anchor targets are already set up. Using the same `scrollTo` function,
 you can build complex navigation components.
+
+We already built a pager component with styled-components. We will look at the cosmetic
+components in the next step.
+
+* [Styled Components](https://stickyroll.github.io/react-stickyroll/doc/guide/styled-components/Readme.html?guides-enabled=true)
+
 
 You should now be able to do this on your own.
 

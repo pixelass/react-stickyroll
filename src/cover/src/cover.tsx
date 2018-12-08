@@ -3,10 +3,21 @@ import Helmet from "react-helmet";
 import {DeviceSupport} from "./device-spport";
 import {GlobalStyle} from "./styles";
 import styled, {ThemeProvider} from "styled-components";
-import { Card, Copy, Footer, FooterContent, GhostTile, Header, HeaderContent, Headline, Tile, Tiles } from "./elements";
+import {
+	Card,
+	Copy,
+	Footer,
+	FooterContent,
+	GhostTile,
+	Header,
+	HeaderContent,
+	Headline,
+	Tile,
+	Tiles
+} from "./elements";
 import {GithubCorner} from "./github-corner";
 import Favicon from "./favicon";
-import { light, dark, deepOrange, deepPurple, pink, teal } from "@stickyroll/themes";
+import {light, dark, deepOrange, deepPurple, pink, teal} from "@stickyroll/themes";
 
 const Heart = props => (
 	<svg className={props.className} viewBox="0 0 24 24">
@@ -47,7 +58,7 @@ export default () => (
 				/>
 				<link rel="icon" type="text/svg" href={Favicon.svg} />
 			</Helmet>
-			<GlobalStyle dark={teal}/>
+			<GlobalStyle dark={teal} />
 			<ThemeProvider theme={teal}>
 				<Header>
 					<HeaderContent>
@@ -65,79 +76,82 @@ export default () => (
 						<Copy>
 							Stickyroll provides a fullscreen view with a progression listener.
 							<br />
-							While the view stays in place, scrolling is translated to pages, each with a
-							progressing timeline while the user scrolls. Building amazing parallax landing
-							pages has never been this easy.
+							While the view stays in place, scrolling is translated to pages, each
+							with a progressing timeline while the user scrolls. Building amazing
+							parallax landing pages has never been this easy.
 						</Copy>
 					</Tile>
 				</Tiles>
 			</ThemeProvider>
 
-		<DeviceSupport />
+			<DeviceSupport />
 			<ThemeProvider theme={teal}>
-			<Tiles>
-				<Tile>
-					<Headline as="h3">A11y</Headline>
-					<Copy>
-						Stickyroll is fully accessible.
-						<br />
-						It relies on simple event listeners and therefore allow the power of native
-						accessibility features.
-					</Copy>
-				</Tile>
-				<Tile>
-					<Headline as="h3">Low dependency tree</Headline>
-					<Copy>
-						Stickyroll only has React as a dependency. All other packages are part of
-						the Stickyroll monorepo and only use React as a dependency. or none at all.
-						<br />
-						Having control over dependencies can greatly improve debugging and deciding where
-						to look for help.
-						<br/>
-						On top of the basic features Stickyroll provides some useful components via
-						"Styled Components". The use of these components is fully optional.
-					</Copy>
-				</Tile>
-				<Tile>
-					<Headline as="h3">Amazing API</Headline>
-					<Copy>
-						Stickyroll is very easy to use and always a joy to work with.
-						<br />
-						It follows the best practices provided by the React team and other amazing developers.
-						Rendering is either done via a render prop or a child function as seen in many popular libraries.
-					</Copy>
-				</Tile>
-				<Tile>
-					<Headline as="h3">Typescript</Headline>
-					<Copy>
-						Stickyroll is fully typed. Types come with stickyroll. There is no need to install them from another
-						repository.
-					</Copy>
-				</Tile>
-				<Tile>
-					<Headline as="h3">Browser support</Headline>
-					<Copy>
-						We test Stickyroll in various browsers on multiple platforms to ensure a stable
-						build. All modern browsers should return the same behavior. Older browsers might
-						be supported by the core Components but the styled elements use css variables
-						and can therefore not work in IE.
-						<br />
-						We do our best to support Edge as long as it has market share.
-					</Copy>
-				</Tile>
-				<Tile>
-					<Headline as="h3">Documentation</Headline>
-					<Copy>
-						We put a lot of work into documentation. Take a look at our Guides to learn
-						about Stickyroll in small courses.
-						<br />
-						Most courses are small enough to do them in a few minutes and written for beginners.
-					</Copy>
-				</Tile>
-				<GhostTile/>
-				<GhostTile/>
-				<GhostTile/>
-			</Tiles>
+				<Tiles>
+					<Tile>
+						<Headline as="h3">A11y</Headline>
+						<Copy>
+							Stickyroll is fully accessible.
+							<br />
+							It relies on simple event listeners and therefore allow the power of
+							native accessibility features.
+						</Copy>
+					</Tile>
+					<Tile>
+						<Headline as="h3">Low dependency tree</Headline>
+						<Copy>
+							Stickyroll only has React as a dependency. All other packages are part
+							of the Stickyroll monorepo and only use React as a dependency. or none
+							at all.
+							<br />
+							Having control over dependencies can greatly improve debugging and
+							deciding where to look for help.
+							<br />
+							On top of the basic features Stickyroll provides some useful components
+							via "Styled Components". The use of these components is fully optional.
+						</Copy>
+					</Tile>
+					<Tile>
+						<Headline as="h3">Amazing API</Headline>
+						<Copy>
+							Stickyroll is very easy to use and always a joy to work with.
+							<br />
+							It follows the best practices provided by the React team and other
+							amazing developers. Rendering is either done via a render prop or a
+							child function as seen in many popular libraries.
+						</Copy>
+					</Tile>
+					<Tile>
+						<Headline as="h3">Typescript</Headline>
+						<Copy>
+							Stickyroll is fully typed. Types come with stickyroll. There is no need
+							to install them from another repository.
+						</Copy>
+					</Tile>
+					<Tile>
+						<Headline as="h3">Browser support</Headline>
+						<Copy>
+							We test Stickyroll in various browsers on multiple platforms to ensure a
+							stable build. All modern browsers should return the same behavior. Older
+							browsers might be supported by the core Components but the styled
+							elements use css variables and can therefore not work in IE.
+							<br />
+							We do our best to support Edge as long as it has market share.
+						</Copy>
+					</Tile>
+					<Tile>
+						<Headline as="h3">Documentation</Headline>
+						<Copy>
+							We put a lot of work into documentation. Take a look at our Guides to
+							learn about Stickyroll in small courses.
+							<br />
+							Most courses are small enough to do them in a few minutes and written
+							for beginners.
+						</Copy>
+					</Tile>
+					<GhostTile />
+					<GhostTile />
+					<GhostTile />
+				</Tiles>
 			</ThemeProvider>
 			<ThemeProvider theme={deepOrange}>
 				<Footer>
@@ -148,7 +162,6 @@ export default () => (
 					</FooterContent>
 				</Footer>
 			</ThemeProvider>
-
 		</React.Fragment>
 	</ThemeProvider>
 );

@@ -18,7 +18,7 @@
 		"svg",
 		"timeline"
 	],
-	"homepage": "https://github.com/stickyroll/react-stickyroll#readme",
+	"homepage": "https://stickyroll.github.io/react-stickyroll",
 	"bugs": {
 		"url": "https://github.com/stickyroll/react-stickyroll/issues"
 	},
@@ -68,7 +68,6 @@
 		"cross-env": "5.2.0",
 		"enzyme": "3.7.0",
 		"imhotep": "1.1.5",
-		"lodash.throttle": "4.1.1",
 		"react-dom": "16.6.3",
 		"rollup": "0.67.4",
 		"rollup-plugin-babel": "4.0.3",

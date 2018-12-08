@@ -145,6 +145,11 @@ Stickyroll allows a lot more than just writing numbers on the screen. If you are
 familiar with React.js or are comfortable with your demo app and want
 to add custom behaviour you can take a look at the next steps in this guide.
 
+## Next steps
+
+* [Configure Stickyroll](https://stickyroll.github.io/react-stickyroll/doc/guide/configue-stickyroll/Readme.html?guides-enabled=true)
+* [Using Decorators](https://stickyroll.github.io/react-stickyroll/doc/guide/using-decorators/Readme.html?guides-enabled=true)
+
 If anything is missing or seems unclear feel free to open an issue 
 in our [github repo](https://github.com/stickyroll/react-stickyroll/issues).
 

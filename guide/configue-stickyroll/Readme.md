@@ -25,9 +25,8 @@ We will …
 
 ## You'll need
 
-* :computer: Terminal (MacOS: `Terminal.app` or [iTerm](https://www.iterm2.com/) | Windows: [cmder](http://cmder.net/))
-* :turtle: Node.js `>=8` ([Install](https://nodejs.org/en/))
-* :woman_student: The app from "Getting started"
+* [Getting started](https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true)
+
 
 ## Using Options to modify Stickyroll
 
@@ -143,7 +142,7 @@ const App = () => {
 		<Stickyroll
 			pages={headlines}
 			factor={2}
-			throttle={250
+			throttle={250}
 			anchors="">
 			{({page, pageIndex, pages, progress}) => {
 				return (
@@ -222,6 +221,8 @@ Enjoy!
 
 These options are fully optional. It's now time to take a step to the next level
 and explore more internal features of Stickyroll.
+
+* [Using Decorators](https://stickyroll.github.io/react-stickyroll/doc/guide/using-decorators/Readme.html?guides-enabled=true)
 
 
 If anything is missing or seems unclear feel free to open an issue 

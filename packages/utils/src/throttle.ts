@@ -1,21 +1,11 @@
-
-
 export type ICallbackFunction = (...any) => any;
 export interface ICallbackOptions {
 	leading?: boolean;
-	trailing?: boolean
+	trailing?: boolean;
 }
-export type IThrottleFunction<T> = (
-	callback: T,
-	wait: number,
-	options?: ICallbackOptions
-) => T;
+export type IThrottleFunction<T> = (callback: T, wait: number, options?: ICallbackOptions) => T;
 
-export const throttle: IThrottleFunction<ICallbackFunction> = (
-	callback,
-	wait,
-	options = {}
-	) => {
+export const throttle: IThrottleFunction<ICallbackFunction> = (callback, wait, options = {}) => {
 	let context, args, result;
 	let timeout = null;
 	let previous = 0;
@@ -24,8 +14,8 @@ export const throttle: IThrottleFunction<ICallbackFunction> = (
 		timeout = null;
 		result = callback.apply(context, args);
 		if (!timeout) {
-			context = args = null
-		};
+			context = args = null;
+		}
 	};
 	return function() {
 		const now = Date.now();

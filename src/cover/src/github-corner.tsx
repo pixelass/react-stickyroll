@@ -16,8 +16,8 @@ const StyledCorner: StyledComponent<"svg", any> = styled.svg.attrs({
 	height: 100%;
 
 	a {
-	color: ${(p: any) => p.theme.backgroundColor};
-	text-decoration: none;
+		color: ${(p: any) => p.theme.backgroundColor};
+		text-decoration: none;
 		&:hover {
 			color: ${(p: any) => p.theme.color};
 			${Corner} {

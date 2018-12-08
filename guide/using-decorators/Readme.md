@@ -7,7 +7,7 @@ options:
   order: 2
 ---
 
-# You are ready for advanced features of  Stickyroll
+# You are ready for advanced features of Stickyroll
 
 > :timer_clock: **Time invest**: 5 Minutes ––– :woman_student: **Level**: Intermediate
 
@@ -25,9 +25,10 @@ We will …
 
 ## You'll need
 
-* :computer: Terminal (MacOS: `Terminal.app` or [iTerm](https://www.iterm2.com/) | Windows: [cmder](http://cmder.net/))
-* :turtle: Node.js `>=8` ([Install](https://nodejs.org/en/))
-* :woman_student: The app from "Getting Started" or "Configure Stickyroll"
+You should have finished at least the first course.
+
+* [Getting started](https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true)
+* [Configure Stickyroll](https://stickyroll.github.io/react-stickyroll/doc/guide/configure-stickyroll/Readme.html?guides-enabled=true)
 
 ## Building plugins with decorators
 
@@ -139,6 +140,11 @@ with this new snippet
 ```
 
 You should now be able to do this on your own.
+
+You can now continue with this course.
+
+* [Creating Plugins](https://stickyroll.github.io/react-stickyroll/doc/guide/creating-plugins/Readme.html?guides-enabled=true)
+
 
 If anything is missing or seems unclear feel free to open an issue 
 in our [github repo](https://github.com/stickyroll/react-stickyroll/issues).

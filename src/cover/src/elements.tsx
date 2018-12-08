@@ -177,11 +177,9 @@ export const Tile: StyledComponent<any, any> = styled.div`
 	color: ${(p: any) => p.theme.color};
 `;
 
-
 Tile.defaultProps = {
 	theme: light
 };
-
 
 export const GhostTile: StyledComponent<any, any> = styled.div`
 	margin: 0 0.5rem;
