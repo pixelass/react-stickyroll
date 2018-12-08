@@ -204,7 +204,7 @@ export const DeviceSupport = () => (
 	<React.Fragment>
 		<Stickyroll pages={5} anchors="!/device-support">
 			{context => (
-				<ThemeProvider theme={{...teal, pagerSize: "2rem"}}>
+				<ThemeProvider theme={{...teal, pagerSize: "2rem", backgroundColor: "transparent"}}>
 					<Inner withPagers="left">
 						<ThemeProvider
 							theme={{

@@ -85,16 +85,16 @@ css snippet
 	transition: background-color 0.3s ease-in-out;
 }
 .custom-trigger--0{
-	background-color:hsl(0,100%,70%);
+	background-color: hsl(0,100%,70%);
 }
 .custom-trigger--1{
-	background-color:hsl(120,100%,70%);
+	background-color: hsl(120,100%,70%);
 }
 .custom-trigger--2{
-	background-color:hsl(240,100%,70%);
+	background-color: hsl(240,100%,70%);
 }
 .custom-trigger--3{
-	background-color:hsl(360,100%,70%);
+	background-color: hsl(360,100%,70%);
 }
 ```
 
@@ -203,16 +203,16 @@ Your `App.css` should now look like this:
   transition: background-color 0.3s ease-in-out;
 }
 .custom-trigger--0{
-  background-color:hsl(0,100%,70%);
+  background-color: hsl(0,100%,70%);
 }
 .custom-trigger--1{
-  background-color:hsl(120,100%,70%);
+  background-color: hsl(120,100%,70%);
 }
 .custom-trigger--2{
-  background-color:hsl(240,100%,70%);
+  background-color: hsl(240,100%,70%);
 }
 .custom-trigger--3{
-  background-color:hsl(360,100%,70%);
+  background-color: hsl(360,100%,70%);
 }
 ```
 
@@ -220,7 +220,7 @@ Enjoy!
 
 ## Next steps
 
-These options are fully optional. It's noe time to take a step to the next level
+These options are fully optional. It's now time to take a step to the next level
 and explore more internal features of Stickyroll.
 
 
