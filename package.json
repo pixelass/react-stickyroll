@@ -42,7 +42,7 @@
 		"refresh": "yarn clear:cache; yarn clean:lerna",
 		"reinstall": "yarn clear:yarn && lerna clean --yes && yarn clear:modules && yarn",
 		"prerelease": "yarn rollup",
-		"release": "lerna publish --conventional-commits --force-publish=*",
+		"release": "lerna publish --conventional-commits",
 		"reset": "yarn refresh && yarn reinstall",
 		"rollup": "lerna run build",
 		"rollup:watch": "lerna run watch --parallel",
