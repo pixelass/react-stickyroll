@@ -1,7 +1,6 @@
 import React from "react";
 import {IContext, ScrollConsumer, ScrollProvider} from "@stickyroll/context";
 import {Tracker} from "@stickyroll/tracker";
-import {Globals} from "csstype";
 
 /**
  * @typedef {function} TRender<T>
@@ -84,6 +83,11 @@ export interface IFrameProps {
 }
 
 /**
+ * @typedef {"-webkit-sticky"|"sticky"} PositionSticky
+ */
+export type PositionSticky = "-webkit-sticky" | "sticky";
+
+/**
  * @typedef {object} IFrameState
  * @property {number} page
  * @property {number} scrollOffset
@@ -93,12 +97,8 @@ export interface IFrameState {
 	page: number;
 	scrollOffset: number;
 	scrollY: number;
+	position: PositionSticky;
 }
-
-/**
- * @typedef {Globals|"-webkit-sticky"|"sticky"} PositionSticky
- */
-export type PositionSticky = Globals | "-webkit-sticky" | "sticky";
 
 /**
  * Check for sticky support to fix webkit issues.
@@ -123,7 +123,7 @@ export const vendoredSticky = (): PositionSticky => {
  */
 const overlayStyle: React.CSSProperties = {
 	height: "100vh",
-	position: vendoredSticky(),
+	position: "sticky",
 	top: 0,
 	width: "100%"
 };
@@ -148,8 +148,9 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 * @public
 	 * @type {IFrameState}
 	 */
-	public state = {
+	public state: IFrameState = {
 		page: 0,
+		position: "sticky",
 		scrollOffset: 0,
 		scrollY: 0
 	};
@@ -177,7 +178,8 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 */
 	public componentDidMount() {
 		this.setState({
-			scrollY: window.scrollY
+			scrollY: window.scrollY,
+			position: vendoredSticky()
 		});
 	}
 
@@ -280,7 +282,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			<Tracker onUpdate={this.handleUpdate} throttle={this.props.throttle} />
 			<div className={this.props.className} style={this.wrapperStyle} ref={this.tracker}>
 				{this.anchors}
-				<div style={overlayStyle}>{children}</div>
+				<div style={{...overlayStyle, position: this.state.position}}>{children}</div>
 			</div>
 		</React.Fragment>
 	);
