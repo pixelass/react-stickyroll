@@ -17,7 +17,8 @@ import {
 } from "./elements";
 import {GithubCorner} from "./github-corner";
 import Favicon from "./favicon";
-import {light, dark, deepOrange, deepPurple, pink, teal} from "@stickyroll/themes";
+import { light, dark, deepOrange, deepPurple, pink, teal, amber, indigo, green } from "@stickyroll/themes";
+import { Logo } from "./logo";
 
 const Heart = props => (
 	<svg className={props.className} viewBox="0 0 24 24">
@@ -37,6 +38,24 @@ const StyledHeart = styled(Heart)`
 	stroke: ${pink.color};
 	stroke-width: 1;
 `;
+
+const themeScale = {
+	primary: deepPurple,
+	secondary: deepOrange,
+	tertiary: deepPurple
+};
+
+const siteTheme = {
+	dark: themeScale.primary,
+	light: themeScale.secondary,
+	header: themeScale.primary,
+	github: themeScale.primary,
+	tiles: themeScale.primary,
+	footer: themeScale.secondary,
+	wrapper: {...themeScale.tertiary, backgroundColor: "transparent"},
+	pagers: {...dark, pagerColor: themeScale.primary.backgroundColor, pagerColorActive: themeScale.secondary.backgroundColor},
+	button: themeScale.tertiary
+}
 
 export default () => (
 	<ThemeProvider theme={light}>
@@ -58,18 +77,18 @@ export default () => (
 				/>
 				<link rel="icon" type="text/svg" href={Favicon.svg} />
 			</Helmet>
-			<GlobalStyle dark={teal} />
-			<ThemeProvider theme={teal}>
+			<GlobalStyle dark={siteTheme.dark} light={siteTheme.light} />
+			<ThemeProvider theme={siteTheme.header}>
 				<Header>
 					<HeaderContent>
-						<Headline as="h1">React Stickyroll</Headline>
+						<Headline as="h1"><Logo size="1em"/> React Stickyroll</Headline>
 					</HeaderContent>
-					<ThemeProvider theme={teal}>
+					<ThemeProvider theme={siteTheme.github}>
 						<GithubCorner href="https://github.com/stickyroll/react-stickyroll" />
 					</ThemeProvider>
 				</Header>
 			</ThemeProvider>
-			<ThemeProvider theme={teal}>
+			<ThemeProvider theme={siteTheme.tiles}>
 				<Tiles>
 					<Tile>
 						<Headline as="h3">What is stickyroll?</Headline>
@@ -84,8 +103,8 @@ export default () => (
 				</Tiles>
 			</ThemeProvider>
 
-			<DeviceSupport />
-			<ThemeProvider theme={teal}>
+			<DeviceSupport wrapperTheme={siteTheme.wrapper} pagerTheme={siteTheme.pagers} buttonTheme={siteTheme.button} />
+			<ThemeProvider theme={siteTheme.tiles}>
 				<Tiles>
 					<Tile>
 						<Headline as="h3">A11y</Headline>
@@ -153,7 +172,7 @@ export default () => (
 					<GhostTile />
 				</Tiles>
 			</ThemeProvider>
-			<ThemeProvider theme={deepOrange}>
+			<ThemeProvider theme={siteTheme.footer}>
 				<Footer>
 					<FooterContent>
 						<Copy>
