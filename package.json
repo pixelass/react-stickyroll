@@ -38,7 +38,7 @@
 		"ocd": "npx sort-package-json; lerna exec npx sort-package-json",
 		"patternplate:build": "yarn clear:docs && patternplate build --out='docs' --base='/'",
 		"patternplate:dev": "yarn rollup && concurrently 'yarn rollup:watch' 'yarn lerna run demo:watch' 'patternplate start'",
-		"patternplate:github": "yarn clear:docs && patternplate build --out='docs' --base='/react-stickyroll/'",
+		"patternplate:github": "cross-env NODE_ENV=production yarn rollup && yarn clear:docs && patternplate build --out='docs' --base='/react-stickyroll/'",
 		"refresh": "yarn clear:cache; yarn clean:lerna",
 		"reinstall": "yarn clear:yarn && lerna clean --yes && yarn clear:modules && yarn",
 		"prerelease": "yarn rollup",

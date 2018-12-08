@@ -8,13 +8,13 @@ const move = keyframes`
   }
 
   to {
-    stroke-dashoffset: ${dLength * -2};
+    stroke-dashoffset: ${dLength * -3};
   }
 `;
 
 const Path = styled.path`
-	stroke-dasharray: ${dLength}, ${dLength};
-	animation: ${move} 2s cubic-bezier(1,.22,.97,.76) infinite;
+	stroke-dasharray: ${dLength * 2}, ${dLength};
+	animation: ${move} 3s cubic-bezier(0.7, 0.35, 0.91, 0.51) infinite;
 	fill: none;
 	stroke: currentColor;
 `;

@@ -1,6 +1,6 @@
 import styled, {css, StyledComponent} from "styled-components";
 import {Content} from "@stickyroll/inner";
-import {deepPurple, indigo, light} from "@stickyroll/themes";
+import {light} from "@stickyroll/themes";
 
 export const Header: StyledComponent<any, any> = styled.header`
 	position: relative;
@@ -99,7 +99,7 @@ export const Button: StyledComponent<any, any> = styled.a`
 `;
 
 Button.defaultProps = {
-	theme: indigo
+	theme: light
 };
 export const Svg: StyledComponent<any, any> = styled.svg`
 	display: block;
@@ -186,3 +186,17 @@ export const GhostTile: StyledComponent<any, any> = styled.div`
 	padding: 0 1rem;
 	flex: 0 0 calc(100% / 3 - 1rem);
 `;
+
+
+export const Background: StyledComponent<any, any> = styled.div`
+		position: fixed;
+		z-index: -1;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: ${(p: any) => p.dark.backgroundColor}
+			linear-gradient(-155deg, ${(p: any) => p.dark.backgroundColor} 25%, ${(p: any) =>
+	p.light.backgroundColor} 75%);
+		background-size: 100vw 100%;
+`

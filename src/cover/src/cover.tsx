@@ -4,7 +4,7 @@ import {DeviceSupport} from "./device-spport";
 import {GlobalStyle} from "./styles";
 import styled, {ThemeProvider} from "styled-components";
 import {
-	Card,
+	Background,
 	Copy,
 	Footer,
 	FooterContent,
@@ -16,8 +16,7 @@ import {
 	Tiles
 } from "./elements";
 import {GithubCorner} from "./github-corner";
-import Favicon from "./favicon";
-import { light, dark, deepOrange, deepPurple, pink, teal, amber, indigo, green } from "@stickyroll/themes";
+import { light, dark, deepOrange, deepPurple, pink, red, indigo, purple, amber, yellow } from "@stickyroll/themes";
 import { Logo } from "./logo";
 
 const Heart = props => (
@@ -34,16 +33,26 @@ const StyledHeart = styled(Heart)`
 	height: 1.5rem;
 	width: 1.5rem;
 	margin: -0.5rem 0.5rem;
-	color: ${pink.backgroundColor};
-	stroke: ${pink.color};
-	stroke-width: 1;
+	color: ${(p: any) => p.theme.backgroundColor};
+	stroke: ${(p: any) => p.theme.color};
+	stroke-width: 2;
 `;
 
-const themeScale = {
-	primary: deepPurple,
-	secondary: deepOrange,
-	tertiary: deepPurple
+const pagerTheme = {
+	pagerSize: "1.5rem",
+	pagerGap: "2vh",
+	markerSize: "2px",
+	strokeWidth: "2px"
 };
+
+const themeScale = {
+	primary: {...deepPurple, ...pagerTheme},
+	secondary: {...deepOrange, ...pagerTheme},
+	tertiary: {...pink, ...pagerTheme},
+	controls: {...dark, ...pagerTheme}
+};
+
+
 
 const siteTheme = {
 	dark: themeScale.primary,
@@ -52,32 +61,34 @@ const siteTheme = {
 	github: themeScale.primary,
 	tiles: themeScale.primary,
 	footer: themeScale.secondary,
+	heart: themeScale.tertiary,
 	wrapper: {...themeScale.tertiary, backgroundColor: "transparent"},
-	pagers: {...dark, pagerColor: themeScale.primary.backgroundColor, pagerColorActive: themeScale.secondary.backgroundColor},
-	button: themeScale.tertiary
-}
+	pagers: {
+		...themeScale.controls,
+		pagerColor: themeScale.controls.markerColor,
+		pagerColorActive: themeScale.secondary.backgroundColor
+	},
+	button: themeScale.controls
+};
 
+const head = (
+	<Helmet>
+		<meta charSet="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes"
+		/>
+		<title>Stickyroll</title>
+		<link rel="canonical" href="https://stickyroll.github.io/reac-stickyroll"/>
+		<link rel="icon" type="text/svg" href="https://stickyroll.github.io/media/images/favicon.png" />
+	</Helmet>
+);
 export default () => (
 	<ThemeProvider theme={light}>
 		<React.Fragment>
-			<Helmet>
-				<meta charSet="utf-8" />
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes"
-				/>
-				<title>Stickyroll</title>
-				<link
-					rel="canonical"
-					href={
-						process.env.NODE_ENV === "production"
-							? "https://stickyroll.github.io/reac-stickyroll"
-							: "https://localhost:1337"
-					}
-				/>
-				<link rel="icon" type="text/svg" href={Favicon.svg} />
-			</Helmet>
-			<GlobalStyle dark={siteTheme.dark} light={siteTheme.light} />
+			{head}
+			<GlobalStyle />
+			<Background dark={siteTheme.dark} light={siteTheme.light}/>
 			<ThemeProvider theme={siteTheme.header}>
 				<Header>
 					<HeaderContent>
@@ -176,7 +187,7 @@ export default () => (
 				<Footer>
 					<FooterContent>
 						<Copy>
-							© 2018 | Coded with <StyledHeart /> by Gregor Adams.
+							© 2018 | Coded with <ThemeProvider theme={siteTheme.heart}><StyledHeart /></ThemeProvider> by Gregor Adams.
 						</Copy>
 					</FooterContent>
 				</Footer>
