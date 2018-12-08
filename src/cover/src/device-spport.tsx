@@ -176,7 +176,7 @@ export const Devices = (props: any) => {
 						<br />
 						Add your own logic to define how to display the content on different screen
 						sizes
-						<ThemeProvider theme={teal}>
+						<ThemeProvider theme={props.buttonTheme}>
 							<Button
 								href={
 									"https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true"
@@ -200,22 +200,14 @@ const headlines = [
 	"Built for all devices"
 ];
 
-export const DeviceSupport = () => (
+export const DeviceSupport = (props: any) => (
 	<React.Fragment>
 		<Stickyroll pages={5} anchors="!/device-support">
 			{context => (
-				<ThemeProvider theme={{...teal, pagerSize: "2rem", backgroundColor: "transparent"}}>
+				<ThemeProvider theme={props.wrapperTheme}>
 					<Inner withPagers="left">
 						<ThemeProvider
-							theme={{
-								...deepOrange,
-								pagerSize: "2rem",
-								pagerGap: "2vh",
-								pagerColor: deepOrange.markerColor,
-								pagerColorActive: teal.backgroundColor,
-								strokeWidth: "2px",
-								markerWidth: "2px"
-							}}>
+							theme={props.pagerTheme}>
 							<Pagers useContext={true} />
 						</ThemeProvider>
 						<StyledContent>
@@ -225,7 +217,7 @@ export const DeviceSupport = () => (
 								</Headline>,
 								1 - context.progress
 							)}
-							<Devices progress={context.progress} pageIndex={context.pageIndex} />
+							<Devices progress={context.progress} pageIndex={context.pageIndex} buttonTheme={props.buttonTheme} />
 						</StyledContent>
 						<Pagenumber />
 						<Skip useContext={true} />

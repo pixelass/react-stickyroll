@@ -1,8 +1,6 @@
 const logo = (size = 24) => `
 <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-	<g fill="none" stroke="currentColor" stroke-width="10">
-		<path d="M10 15h80M15 15v20M10 35h80M85 35v20M10 55h80M11.8 55L90 85"/>
-	</g>
+	<path d="M55 15H15v20h70v20H55l30 30" fill="none" stroke="currentColor" stroke-width="10"/>
 </svg>`;
 module.exports = {
 	docs: ["{doc,guide}/**/*.md", "!**/CHANGELOG.md", "CHANGELOG.md"],
