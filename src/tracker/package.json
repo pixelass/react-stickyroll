@@ -36,9 +36,9 @@
 		"watch": "rollup -cw"
 	},
 	"dependencies": {
+		"@stickyroll/utils": "1.1.0",
 		"@types/lodash.throttle": "4.1.4",
 		"@types/react": "16.7.13",
-		"lodash.throttle": "4.1.1",
 		"react": "16.6.3",
 		"ts-lib": "0.0.5"
 	},
@@ -58,7 +58,6 @@
 		"typescript": "3.2.2"
 	},
 	"peerDependencies": {
-		"lodash.throttle": "^4.1.1",
 		"react": "^16.6.3"
 	},
 	"engines": {

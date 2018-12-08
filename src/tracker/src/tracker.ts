@@ -1,4 +1,4 @@
-import throttle from "lodash.throttle";
+import {throttle} from "@stickyroll/utils";
 import {PureComponent} from "react";
 
 /**
