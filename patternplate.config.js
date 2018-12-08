@@ -1,3 +1,9 @@
+const logo = (size = 24) => `
+<svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+	<g fill="none" stroke="currentColor" stroke-width="10">
+		<path d="M10 15h80M15 15v20M10 35h80M85 35v20M10 55h80M11.8 55L90 85"/>
+	</g>
+</svg>`;
 module.exports = {
 	docs: ["{doc,guide}/**/*.md", "!**/CHANGELOG.md", "CHANGELOG.md"],
 	entry: ["guide/*/demo.js"],
@@ -5,16 +11,8 @@ module.exports = {
 	render: "@patternplate/render-styled-components/render",
 	mount: "@patternplate/render-styled-components/mount",
 	ui: {
-		logo: `
-		<svg width="30" height="30" viewBox="0 0 30 30">
-			<rect width="30" height="30" fill="currentColor"/>
-		</svg>
-		`,
-		favicon: `
-		<svg height="30" width="30">
-			<circle cx="15" cy="15" r="15"/>
-		</svg>
-		`,
+		logo: logo(30),
+		favicon: logo(24),
 		// Fonts
 		fontDefault: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
 		fontHeadline: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',

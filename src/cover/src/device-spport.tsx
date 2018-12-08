@@ -1,13 +1,13 @@
-import { easeIn, easeInOut, easeOut } from "@popmotion/easing";
-import { Inner } from "@stickyroll/inner";
-import { Pagers, Skip } from "@stickyroll/pagers";
-import { Stickyroll } from "@stickyroll/stickyroll";
-import React, { CSSProperties } from "react";
-import { css, ThemeProvider } from "styled-components";
-import { dark, pink } from "@stickyroll/themes";
-import { progressable } from "./progressable";
-import Pagenumber  from "./pagenumber";
-import { Button, Copy, Figcaption, Figure, Headline, StyledContent, Svg } from "./elements";
+import {easeIn, easeInOut, easeOut} from "@popmotion/easing";
+import {Inner} from "@stickyroll/inner";
+import {Pagers, Skip} from "@stickyroll/pagers";
+import {Stickyroll} from "@stickyroll/stickyroll";
+import React, {CSSProperties} from "react";
+import {ThemeProvider} from "styled-components";
+import {dark, deepOrange, teal} from "@stickyroll/themes";
+import {progressable} from "./progressable";
+import Pagenumber from "./pagenumber";
+import {Button, Copy, Figcaption, Figure, Headline, StyledContent, Svg} from "./elements";
 
 export interface ICSSProgress extends CSSProperties {
 	"--progress"?: number;
@@ -176,7 +176,7 @@ export const Devices = (props: any) => {
 						<br />
 						Add your own logic to define how to display the content on different screen
 						sizes
-						<ThemeProvider theme={pink}>
+						<ThemeProvider theme={teal}>
 							<Button
 								href={
 									"https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true"
@@ -192,25 +192,42 @@ export const Devices = (props: any) => {
 	);
 };
 
-const headlines = ["Stickyroll", "Mobile devices", "Tablets", "Desktops", "Built for all devices"];
+const headlines = [
+	"Stickyroll, it's time to scroll",
+	"Mobile devices",
+	"Tablets",
+	"Desktops",
+	"Built for all devices"
+];
 
 export const DeviceSupport = () => (
 	<React.Fragment>
 		<Stickyroll pages={5} anchors="!/device-support">
 			{context => (
-				<ThemeProvider theme={dark}>
+				<ThemeProvider theme={{...teal, pagerSize: "2rem"}}>
 					<Inner withPagers="left">
-						<ThemeProvider theme={pink}>
+						<ThemeProvider
+							theme={{
+								...deepOrange,
+								pagerSize: "2rem",
+								pagerGap: "2vh",
+								pagerColor: deepOrange.markerColor,
+								pagerColorActive: teal.backgroundColor,
+								strokeWidth: "2px",
+								markerWidth: "2px"
+							}}>
 							<Pagers useContext={true} />
 						</ThemeProvider>
 						<StyledContent>
 							{progressable(
-								<Headline farLeft={context.pageIndex > 0}>{headlines[context.pageIndex]}</Headline>,
+								<Headline farLeft={context.pageIndex > 0}>
+									{headlines[context.pageIndex]}
+								</Headline>,
 								1 - context.progress
 							)}
 							<Devices progress={context.progress} pageIndex={context.pageIndex} />
 						</StyledContent>
-						<Pagenumber/>
+						<Pagenumber />
 						<Skip useContext={true} />
 					</Inner>
 				</ThemeProvider>

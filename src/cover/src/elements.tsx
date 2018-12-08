@@ -1,6 +1,6 @@
-import styled, { css, StyledComponent } from "styled-components";
-import { Content } from "@stickyroll/inner";
-import { dark, light } from "@stickyroll/themes";
+import styled, {css, StyledComponent} from "styled-components";
+import {Content} from "@stickyroll/inner";
+import {deepPurple, indigo, light} from "@stickyroll/themes";
 
 export const Header: StyledComponent<any, any> = styled.header`
 	position: relative;
@@ -8,9 +8,12 @@ export const Header: StyledComponent<any, any> = styled.header`
 	align-items: center;
 	align-content: center;
 	height: 4rem;
-	background: ${dark.backgroundColor};
-	color: ${dark.color};
+	color: ${(p: any) => p.theme.color};
 `;
+
+Header.defaultProps = {
+	theme: light
+};
 
 export const HeaderContent: StyledComponent<any, any> = styled.div`
 	margin: 2rem auto;
@@ -18,26 +21,29 @@ export const HeaderContent: StyledComponent<any, any> = styled.div`
 	max-width: 60rem;
 	width: 100%;
 	border-radius: 2px;
-	
+
 	@media (max-width: 60rem) {
 		max-width: calc(100% - 3rem);
 	}
 `;
 
-export const Footer: StyledComponent<any, any> = styled.footer`
+export const Footer = styled.footer`
 	position: relative;
 	display: flex;
 	padding: 1rem 0;
-	background: ${light.backgroundColor};
-	color: ${light.color};
+	color: ${(p: any) => p.theme.color};
 `;
+
+Footer.defaultProps = {
+	theme: light
+};
 
 export const FooterContent: StyledComponent<any, any> = styled.div`
 	margin: 0 auto;
 	padding: 1.5rem 1rem;
 	width: 100%;
 	border-radius: 2px;
-	
+
 	@media (max-width: 60rem) {
 		max-width: calc(100% - 3rem);
 	}
@@ -50,8 +56,13 @@ export const Headline: StyledComponent<any, any> = styled.h3`
 	font-weight: lighter;
 	opacity: var(--progress);
 	${(props: any) => css`
-		opacity: calc( ${props.farLeft ? "3" : "1"} * var(--progress));
-		transform: translate3d(calc(${props.farLeft ? "100% - 200%" : "100% - 100%"} * var(--progress)), 0, 0);
+		opacity: calc(${props.farLeft ? "1 - 1" : "1"} * var(--progress));
+		text-align: ${props.farLeft ? "right" : "left"};
+		transform: translate3d(
+			calc(${props.farLeft ? "-100%" : "100% - 100%"} * var(--progress)),
+			0,
+			0
+		);
 	`}
 `;
 
@@ -72,9 +83,9 @@ export const Button: StyledComponent<any, any> = styled.a`
 	margin: 4rem 0 0;
 	line-height: 1.5;
 	text-decoration: none;
-	border: 1px solid ${props => props.theme.markerColor}
+	border: 1px solid ${props => props.theme.color}
 	color: ${props => props.theme.color};
-	background: ${props => props.theme.backgroundColor};
+	background: none;
 	
 	&:hover {
 		background: ${props => props.theme.color};
@@ -86,6 +97,10 @@ export const Button: StyledComponent<any, any> = styled.a`
 		padding: 0.75rem 1rem;
 	}
 `;
+
+Button.defaultProps = {
+	theme: indigo
+};
 export const Svg: StyledComponent<any, any> = styled.svg`
 	display: block;
 	margin: 0 auto;
@@ -126,12 +141,50 @@ export const Card: StyledComponent<any, any> = styled.div`
 	max-width: 60rem;
 	width: 100%;
 	border-radius: 2px;
-	background: white;
-	color: black;
+	background: ${(p: any) => p.theme.backgroundColor};
+	color: ${(p: any) => p.theme.color};
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-	
 	@media (max-width: 60rem) {
 		max-width: calc(100% - 3rem);
 	}
+`;
+
+Card.defaultProps = {
+	theme: light
+};
+
+export const Tiles: StyledComponent<any, any> = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	padding: 2rem 1rem;
+	max-width: 60rem;
+	width: 100%;
+	border-radius: 2px;
+
+	@media (max-width: 60rem) {
+		max-width: calc(100% - 3rem);
+	}
+`;
+
+export const Tile: StyledComponent<any, any> = styled.div`
+	margin: 1rem 0.5rem;
+	padding: 1.5rem 1rem;
+	flex: 1 1 18rem;
+	box-shadow: 0 0 0 1px ${(p: any) => p.theme.color};
+	background: none;
+	color: ${(p: any) => p.theme.color};
+`;
+
+
+Tile.defaultProps = {
+	theme: light
+};
+
+
+export const GhostTile: StyledComponent<any, any> = styled.div`
+	margin: 0 0.5rem;
+	padding: 0 1rem;
+	flex: 0 0 calc(100% / 3 - 1rem);
 `;

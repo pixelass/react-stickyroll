@@ -1,6 +1,6 @@
 import {page} from "@stickyroll/decorators";
 import React from "react";
-import styled, { StyledComponent } from "styled-components";
+import styled, {StyledComponent} from "styled-components";
 
 export const StyledPagenumber: StyledComponent<any, any> = styled.div`
 	position: absolute;
