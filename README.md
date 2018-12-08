@@ -49,7 +49,7 @@ Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released u
 
 [site]: https://stickyroll.github.io/react-stickyroll/
 [getting-started]: https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true
-[live-support]: https://gitter.im/stickyroll/Lobby
+[live-support]: https://spectrum.chat/stickyroll
 
 <!-- Badges -->
 
