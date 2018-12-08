@@ -1,6 +1,6 @@
 {
 	"name": "configure-stickyroll",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"private": true,
 	"homepage": "https://stickyroll.github.io/react-stickyroll",
 	"bugs": {
@@ -19,7 +19,7 @@
 		"rollup": "tsc"
 	},
 	"dependencies": {
-		"@stickyroll/stickyroll": "1.1.0",
+		"@stickyroll/stickyroll": "^1.1.1",
 		"@types/react": "16.7.13",
 		"react": "16.6.3",
 		"tslib": "1.9.3"
