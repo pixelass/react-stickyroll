@@ -3,6 +3,7 @@
 # Stickyroll
 
 <p align="center"><img width="200" src="https://stickyroll.github.io/media/images/logo.svg" alt="Stickyroll logo"></p>
+
 ## [Site][site] | [Getting started][getting-started] | [Live support][live-support]
 
 [![npm][npm-badge]][npm]
