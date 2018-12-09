@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import {DeviceSupport} from "./device-support";
 import {GlobalStyle} from "./styles";
 import styled, {ThemeProvider} from "styled-components";
@@ -16,8 +15,19 @@ import {
 	Tiles
 } from "./elements";
 import {GithubCorner} from "./github-corner";
-import { light, dark, deepOrange, deepPurple, pink, red, indigo, purple, amber, yellow } from "@stickyroll/themes";
-import { Logo } from "./logo";
+import {
+	light,
+	dark,
+	deepOrange,
+	deepPurple,
+	pink,
+	red,
+	indigo,
+	purple,
+	amber,
+	yellow
+} from "@stickyroll/themes";
+import {Logo} from "./logo";
 
 const Heart = props => (
 	<svg className={props.className} viewBox="0 0 24 24">
@@ -52,8 +62,6 @@ const themeScale = {
 	controls: {...dark, ...pagerTheme}
 };
 
-
-
 const siteTheme = {
 	dark: themeScale.primary,
 	light: themeScale.secondary,
@@ -71,28 +79,17 @@ const siteTheme = {
 	button: themeScale.controls
 };
 
-const head = (
-	<Helmet>
-		<meta charSet="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes"
-		/>
-		<title>Stickyroll</title>
-		<link rel="canonical" href="https://stickyroll.github.io/reac-stickyroll"/>
-		<link rel="icon" type="text/svg" href="https://stickyroll.github.io/media/images/favicon.png" />
-	</Helmet>
-);
 export default () => (
 	<ThemeProvider theme={light}>
 		<React.Fragment>
-			{head}
 			<GlobalStyle />
-			<Background dark={siteTheme.dark} light={siteTheme.light}/>
+			<Background dark={siteTheme.dark} light={siteTheme.light} />
 			<ThemeProvider theme={siteTheme.header}>
 				<Header>
 					<HeaderContent>
-						<Headline as="h1"><Logo size="1em"/> React Stickyroll</Headline>
+						<Headline as="h1">
+							<Logo size="1em" /> React Stickyroll
+						</Headline>
 					</HeaderContent>
 					<ThemeProvider theme={siteTheme.github}>
 						<GithubCorner href="https://github.com/stickyroll/react-stickyroll" />
@@ -114,7 +111,11 @@ export default () => (
 				</Tiles>
 			</ThemeProvider>
 
-			<DeviceSupport wrapperTheme={siteTheme.wrapper} pagerTheme={siteTheme.pagers} buttonTheme={siteTheme.button} />
+			<DeviceSupport
+				wrapperTheme={siteTheme.wrapper}
+				pagerTheme={siteTheme.pagers}
+				buttonTheme={siteTheme.button}
+			/>
 			<ThemeProvider theme={siteTheme.tiles}>
 				<Tiles>
 					<Tile>
@@ -187,7 +188,11 @@ export default () => (
 				<Footer>
 					<FooterContent>
 						<Copy>
-							© 2018 | Coded with <ThemeProvider theme={siteTheme.heart}><StyledHeart /></ThemeProvider> by Gregor Adams.
+							© 2018 | Coded with{" "}
+							<ThemeProvider theme={siteTheme.heart}>
+								<StyledHeart />
+							</ThemeProvider>{" "}
+							by Gregor Adams.
 						</Copy>
 					</FooterContent>
 				</Footer>

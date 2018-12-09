@@ -105,14 +105,15 @@ export const Svg: StyledComponent<any, any> = styled.svg`
 	display: block;
 	margin: 0 auto;
 	width: 100%;
+	max-height: 38vh;
 `;
 export const Figcaption: StyledComponent<any, any> = styled.figcaption`
-	font-size: 3vmin;
+	font-size: 2.5vmin;
 `;
 export const StyledContent = styled(Content)`
 	display: flex;
 	flex-direction: column;
-	font-size: 3vmin;
+	font-size: 2.53vmin;
 	overflow: hidden;
 `;
 export const Figure: StyledComponent<any, any> = styled.figure`
@@ -187,16 +188,18 @@ export const GhostTile: StyledComponent<any, any> = styled.div`
 	flex: 0 0 calc(100% / 3 - 1rem);
 `;
 
-
 export const Background: StyledComponent<any, any> = styled.div`
-		position: fixed;
-		z-index: -1;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		background: ${(p: any) => p.dark.backgroundColor}
-			linear-gradient(-155deg, ${(p: any) => p.dark.backgroundColor} 25%, ${(p: any) =>
-	p.light.backgroundColor} 75%);
-		background-size: 100vw 100%;
-`
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: ${(p: any) => p.dark.backgroundColor}
+		linear-gradient(
+			-155deg,
+			${(p: any) => p.dark.backgroundColor} 25%,
+			${(p: any) => p.light.backgroundColor} 75%
+		);
+	background-size: 100vw 100%;
+`;
