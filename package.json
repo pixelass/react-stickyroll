@@ -67,7 +67,7 @@
 		"@asspixel/karma-browserstack-launcher": "1.5.1",
 		"@babel/core": "7.2.0",
 		"@patternplate/cli": "3.2.3",
-		"@patternplate/render-default": "3.1.1",
+		"@patternplate/render-default": "3.2.4",
 		"@patternplate/render-react": "3.1.1",
 		"@patternplate/render-styled-components": "3.1.1",
 		"@patternplate/widgets": "^3.2.3",
