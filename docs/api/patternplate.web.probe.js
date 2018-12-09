@@ -1,4 +1,4 @@
-window["patternplate-prope"] =
+window["patternplate-probe"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
