@@ -1,8 +1,8 @@
 import React from "react";
-import {IContext, ScrollConsumer, ScrollProvider} from "@stickyroll/context";
-import {Tracker} from "@stickyroll/tracker";
-import {hashCode} from "@stickyroll/utils";
-import {version} from "../package.json";
+import { IContext, ScrollConsumer, ScrollProvider } from "@stickyroll/context";
+import { Tracker } from "@stickyroll/tracker";
+import { classNames, hashCode } from "@stickyroll/utils";
+import { version } from "../package.json";
 
 /**
  * @typedef {function} TRender<T>
@@ -141,8 +141,13 @@ const hashNSSelectors = {
 	skip: `sr-${hashCode(hashSelectors.skip)}`
 };
 
-const classNames = (...arr: Array<string | undefined | null>): string =>
-	arr.filter(Boolean).join(" ");
+export const hashClassNames = {
+	wrapper: classNames(hashNSSelectors.wrapper, hashSelectors.wrapper),
+	overlay: classNames(hashNSSelectors.overlay, hashSelectors.overlay),
+	targets: classNames(hashNSSelectors.targets, hashSelectors.targets),
+	target: classNames(hashNSSelectors.target, hashSelectors.target),
+	skip: classNames(hashNSSelectors.skip, hashSelectors.skip),
+}
 
 const CORE_STYLE = `
 	body {
@@ -333,14 +338,13 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			<Tracker onUpdate={this.handleUpdate} throttle={this.props.throttle} />
 			<div
 				className={classNames(
-					hashNSSelectors.wrapper,
-					hashSelectors.wrapper,
+					hashClassNames.wrapper,
 					this.props.className
 				)}
 				ref={this.tracker}
 				style={this.wrapperStyle}>
 				{this.anchors}
-				<div className={classNames(hashNSSelectors.overlay, hashSelectors.overlay)}>
+				<div className={hashClassNames.overlay}>
 					{children}
 				</div>
 			</div>
@@ -414,7 +418,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 				<span
 					id={`${anchors}${glue}${i + 1}`}
 					key={`${anchors}:${i + 1}`}
-					className={classNames(hashNSSelectors.target, hashSelectors.target)}
+					className={hashClassNames.target}
 					style={{
 						height: `${100 * factor}vh`
 					}}
@@ -422,15 +426,15 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			));
 
 		return (
-			<div className={classNames(hashNSSelectors.targets, hashSelectors.targets)}>
+			<div className={hashClassNames.targets}>
 				{targets}
 				<span
 					id={`${anchors}${glue}${this.pageCount + 1}`}
-					className={classNames(hashNSSelectors.target, hashSelectors.target)}
+					className={hashClassNames.target}
 				/>
 				<span
 					id={`${anchors}${glue}skip`}
-					className={classNames(hashNSSelectors.skip, hashSelectors.skip)}
+					className={hashClassNames.skip}
 				/>
 			</div>
 		);

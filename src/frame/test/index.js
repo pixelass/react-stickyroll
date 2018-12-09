@@ -1,5 +1,6 @@
-import {Frame as StickyFrame, vendoredSticky} from "@stickyroll/frame";
+import {Frame as StickyFrame, hashClassNames} from "@stickyroll/frame";
 import {mount, initDOM} from "@stickyroll/testing-utils";
+import {classNames} from "@stickyroll/utils";
 import test from "ava";
 import React from "react";
 import {renderToString} from "react-dom/server";
@@ -21,26 +22,26 @@ const createMarkup = ({
 	factor = DEFAULT_OPTIONS.factor,
 	pages = DEFAULT_OPTIONS.pages
 } = DEFAULT_OPTIONS) =>
-	`<div${className !== "" ? ` class="${className}"` : ""} style="height:${100 +
-		100 *
-			factor *
-			pages}vh;margin:0;position:relative">${anchors}<div style="height:100vh;position:${vendoredSticky()};top:0;width:100%">${content}</div></div>`;
+	`<div class="${classNames(hashClassNames.wrapper, className)}" `
+	+ `style="height:${100 + 100 * factor * pages}vh">${anchors}<div class="${hashClassNames.overlay}">${content}</div></div>`;
 
 const createAnchors = (
 	prefix = "",
 	pages = DEFAULT_OPTIONS.pages,
 	factor = DEFAULT_OPTIONS.factor
 ) =>
-	`<div style="bottom:0;left:0;position:absolute;right:0;top:0">${Array(pages + 1)
+	`<div class="${hashClassNames.targets}">${Array(pages)
 		.fill(Boolean)
 		.map(
 			(x, i) =>
 				`<span id="${prefix}${prefix === "" ? "" : "/"}${i +
-					1}" style="display:block;height:${i === pages ? 100 : 100 * factor}vh"></span>`
+					1}" class="${hashClassNames.target}" style="height:${100 * factor}vh"></span>`
 		)
 		.join("")}<span id="${prefix}${
 		prefix === "" ? "" : "/"
-	}skip" style="position:absolute;top:100%"></span></div>`;
+		}${pages + 1}" class="${hashClassNames.target}"></span><span id="${prefix}${
+		prefix === "" ? "" : "/"
+		}skip" class="${hashClassNames.skip}"></span></div>`;
 
 test("Renders the correct markup ", t => {
 	const expected = createMarkup();
