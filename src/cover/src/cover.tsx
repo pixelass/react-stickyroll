@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import {DeviceSupport} from "./device-spport";
+import {DeviceSupport} from "./device-support";
 import {GlobalStyle} from "./styles";
 import styled, {ThemeProvider} from "styled-components";
 import {
