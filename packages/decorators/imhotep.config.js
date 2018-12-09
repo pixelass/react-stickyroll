@@ -7,5 +7,6 @@ module.exports = {
 	},
 	src: {
 		path: "src"
-	}
+	},
+	ignore: ["CHANGELOG.md", "package.json"]
 };

@@ -53,16 +53,16 @@
 		"watch": "rollup -cw"
 	},
 	"dependencies": {
-		"@stickyroll/context": "^1.1.1",
-		"@stickyroll/frame": "^1.1.2",
-		"@stickyroll/tracker": "^1.1.1",
-		"@types/react": "^16.7.13",
-		"react": "^16.6.3",
+		"@stickyroll/context": "1.1.1",
+		"@stickyroll/frame": "1.1.2",
+		"@stickyroll/tracker": "1.1.1",
+		"@types/react": "16.7.13",
+		"react": "16.6.3",
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
 		"@babel/core": "7.2.0",
-		"@stickyroll/testing-utils": "^1.1.1",
+		"@stickyroll/testing-utils": "1.1.1",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.0-rc.2",
 		"cross-env": "5.2.0",

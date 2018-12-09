@@ -1,5 +1,6 @@
-const logo = (size = 24) => `
-<svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+const logo = (
+	size = 24
+) => `<svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 	<path d="M55 15H15v20h70v20H55l30 30" fill="none" stroke="currentColor" stroke-width="10"/>
 </svg>`;
 module.exports = {

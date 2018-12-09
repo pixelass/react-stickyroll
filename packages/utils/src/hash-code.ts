@@ -54,5 +54,4 @@ function generateAlphabeticName(code: number): string {
 	return getAlphabeticChar(x % charsLength) + name;
 }
 
-export const hashCode = (str: string): string =>
-	generateAlphabeticName(murmurhash(str));
+export const hashCode = (str: string): string => generateAlphabeticName(murmurhash(str));

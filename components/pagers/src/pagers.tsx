@@ -2,8 +2,8 @@ import React from "react";
 import styled, {css, StyledComponent} from "styled-components";
 import {ScrollConsumer} from "@stickyroll/context";
 import {ITheme, light} from "@stickyroll/themes";
-import {scrollTo} from "@stickyroll/utils";
-import {assert} from "@stickyroll/utils";
+import {assert, scrollTo} from "@stickyroll/utils";
+import {Marker} from "./marker";
 
 /**
  * @extends React.HTMLAttributes<HTMLAnchorElement>
@@ -117,70 +117,6 @@ PagerWrapper.defaultProps = {
 };
 
 /**
- * @type {StyledComponent<"div", {}>}
- * @return {React.ReactHTMLElement<HTMLElement>}
- */
-export const StyledMarker: StyledComponent<"div", {}> = styled.div`
-	position: absolute;
-	z-index: 1;
-	top: calc((var(--pager-size) / 2) + var(--pager-gap));
-	left: calc(0.5rem + (var(--pager-size) - var(--marker-width)) / 2);
-	width: var(--marker-width);
-	background: var(--marker-color);
-	visibility: visible;
-
-	&::before,
-	&::after {
-		position: absolute;
-		content: "";
-		display: block;
-		height: calc(var(--marker-width) / 2);
-		width: var(--marker-width);
-		left: 0;
-		background: inherit;
-	}
-
-	&::before {
-		bottom: 100%;
-		border-radius: calc(var(--marker-width) / 2) calc(var(--marker-width) / 2) 0 0;
-	}
-
-	&::after {
-		top: 100%;
-		border-radius: 0 0 calc(var(--marker-width) / 2) calc(var(--marker-width) / 2);
-	}
-`;
-
-/**
- * @typedef {object} IMarkerProps
- * @property {number} page
- * @property {number} progress
- */
-export interface IMarkerProps {
-	page: number;
-	progress: number;
-}
-
-/**
- * @type {StyledComponent<"nav", {}>}
- * @param {IMarkerProps} props
- * @param {number} props.page
- * @param {number} props.progress
- * @return {React.ReactHTMLElement<HTMLElement>}
- */
-export const Marker: React.FunctionComponent<IMarkerProps> = props => {
-	return (
-		<StyledMarker
-			style={{
-				height: `calc(${props.progress} * (var(--pager-gap) * 2 + var(--pager-size)) + ${
-					props.page
-				} * (var(--pager-gap) * 2 + var(--pager-size)))`
-			}}
-		/>
-	);
-};
-
-/**
  * @type {StyledComponent<"svg", {}>}
  * @return {React.ReactSVGElement<SVGSVGElement>}
  */
@@ -191,52 +127,6 @@ export const Icon: StyledComponent<"svg", {}> = styled.svg.attrs({
 	height: 1.5rem;
 	fill: currentColor;
 `;
-
-/**
- * @type {StyledComponent<"a", {}>}
- * @return {React.ReactHTMLElement<HTMLAnchorElement>}
- */
-export const SkipLink: StyledComponent<"a", {}> = styled.a`
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	padding: 0.5rem 1rem;
-	color: currentColor;
-	font-size: 1rem;
-	line-height: 1.5rem;
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
-`;
-
-/**
- * @typedef {object} ISkipBaseProps
- * @property {string} prefix
- */
-export interface ISkipBaseProps {
-	prefix: string;
-}
-
-/**
- * @type {React.FunctionComponent<ISkipBaseProps>}
- * @param {ISkipBaseProps} props
- * @param {string} props.prefix
- * @return {React.ReactHTMLElement<HTMLAnchorElement>}
- */
-export const SkipBase: React.FunctionComponent<ISkipBaseProps> = props => {
-	const glue = props.prefix === "" ? "" : "/";
-	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
-		e.preventDefault();
-		scrollTo(`${props.prefix}${glue}skip`, e.target as HTMLElement, {noFocus: true, noHash: true});
-	};
-
-	return (
-		<SkipLink href={`#${props.prefix}${glue}skip`} onClick={handleClick}>
-			Skip
-		</SkipLink>
-	);
-};
 
 /**
  * @extends IPagerWrapperProps
@@ -274,6 +164,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 		const id = target.getAttribute("href").replace(/^#/, "");
 		scrollTo(id, target);
 	};
+	const glue = props.prefix === "" ? "" : "/";
 
 	return (
 		<React.Fragment>
@@ -283,7 +174,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 					{Array(props.pages)
 						.fill(Boolean)
 						.map((x, i) => {
-							const id = `${props.prefix}/${i + 1}`;
+							const id = `${props.prefix}${glue}${i + 1}`;
 							return (
 								<Pager
 									key={id}
@@ -296,7 +187,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 							);
 						})}
 					<Pager
-						href={`#${props.prefix}/${props.pages + 1}`}
+						href={`#${props.prefix}${glue}${props.pages + 1}`}
 						selected={props.page === props.pages && props.progress === 1}
 						active={props.page === props.pages && props.progress === 1}
 						onClick={handleClick}>
@@ -370,30 +261,4 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 
 Pagers.defaultProps = {
 	position: "left"
-};
-
-/**
- * @extends IPagerWrapperProps
- * @typedef {object} ISkipProps
- * @property {string} prefix
- * @property {boolean} [useContext]
- */
-export interface ISkipProps extends IPagerWrapperProps {
-	useContext?: boolean;
-	prefix?: string;
-}
-
-/**
- * @type {React.FunctionComponent<IPagersProps>}
- * @param {ISkipBaseProps} props
- * @param {string} [props.prefix]
- * @param {boolean} [props.useContext]
- * @return {React.ReactHTMLElement<HTMLElement>}
- */
-export const Skip: React.FunctionComponent<ISkipProps> = props => {
-	if (props.useContext) {
-		return <ScrollConsumer>{context => <SkipBase prefix={context.anchors} />}</ScrollConsumer>;
-	}
-	assert(props.prefix, "string");
-	return <SkipBase prefix={props.prefix} />;
 };
