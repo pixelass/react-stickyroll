@@ -1,5 +1,6 @@
 import babel from "rollup-plugin-babel";
 import typescript from "rollup-plugin-typescript2";
+import json from "rollup-plugin-json";
 import pkg from "./package.json";
 
 export default [
@@ -20,6 +21,6 @@ export default [
 				format: "es"
 			}
 		],
-		plugins: [babel(), typescript()]
+		plugins: [json(), babel(), typescript()]
 	}
 ];

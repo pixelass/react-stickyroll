@@ -1,6 +1,8 @@
 import React from "react";
 import {IContext, ScrollConsumer, ScrollProvider} from "@stickyroll/context";
 import {Tracker} from "@stickyroll/tracker";
+import {hashCode} from "@stickyroll/utils";
+import {version} from "../package.json";
 
 /**
  * @typedef {function} TRender<T>
@@ -83,11 +85,6 @@ export interface IFrameProps {
 }
 
 /**
- * @typedef {"-webkit-sticky"|"sticky"} PositionSticky
- */
-export type PositionSticky = "-webkit-sticky" | "sticky";
-
-/**
  * @typedef {object} IFrameState
  * @property {number} page
  * @property {number} scrollOffset
@@ -97,50 +94,92 @@ export interface IFrameState {
 	page: number;
 	scrollOffset: number;
 	scrollY: number;
-	position: PositionSticky;
 }
 
-/**
- * Check for sticky support to fix webkit issues.
- * @returns {PositionSticky}
- */
-export const vendoredSticky = (): PositionSticky => {
-	if ("window" in global) {
-		if (CSS.supports("position", "sticky")) {
-			return "sticky";
-		}
-		return "-webkit-sticky";
+const styles = {
+	wrapper: `
+		position: relative;
+		margin: 0;
+	`,
+	overlay: `
+		height: 100vh;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		width: 100%;
+	`,
+	targets: `
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	`,
+	target: `
+		display: block; 
+		height: 100vh;
+	`,
+	skip: `
+		position: absolute; 
+		top: 100%;
+	`
+};
+
+const hashSelectors = {
+	wrapper: hashCode(`/* stickyroll-version: ${version} */\n${styles.wrapper}`),
+	overlay: hashCode(`/* stickyroll-version: ${version} */\n${styles.overlay}`),
+	targets: hashCode(`/* stickyroll-version: ${version} */\n${styles.targets}`),
+	target: hashCode(`/* stickyroll-version: ${version} */\n${styles.target}`),
+	skip: hashCode(`/* stickyroll-version: ${version} */\n${styles.skip}`)
+};
+
+const hashNSSelectors = {
+	wrapper: `sr-${hashCode(hashSelectors.wrapper)}`,
+	overlay: `sr-${hashCode(hashSelectors.overlay)}`,
+	targets: `sr-${hashCode(hashSelectors.targets)}`,
+	target: `sr-${hashCode(hashSelectors.target)}`,
+	skip: `sr-${hashCode(hashSelectors.skip)}`
+};
+
+const classNames = (...arr: Array<string | undefined | null>): string =>
+	arr.filter(Boolean).join(" ");
+
+const CORE_STYLE = `
+	body {
+		margin-top: 0;
+		margin-bottom: 0;
 	}
-	return "sticky";
-};
+	.${hashSelectors.wrapper}{${styles.wrapper}}
+	.${hashSelectors.overlay}{${styles.overlay}}
+	.${hashSelectors.targets}{${styles.targets}}
+	.${hashSelectors.target}{${styles.target}}
+	.${hashSelectors.skip}{${styles.skip}}
+	.${hashSelectors.wrapper}{${styles.wrapper}}
+`
+	.replace(/\s+/g, "")
+	.replace(/;}/g, "}");
+
+const CORE_STYLETAG = `<style data-stickyroll data-stickyroll-version="${version}">${CORE_STYLE}</style>`;
 
 /**
- * @type {React.CSSProperties}
- * @property {string|number} height
- * @property {string} position
- * @property {string|number} top
- * @property {string|number} width
+ * Injects core styles for Stickyroll. This is the client side version.
+ * Stickyroll will inject these styles to ensure the correct behavior.
+ * @constructor
  */
-const overlayStyle: React.CSSProperties = {
-	height: "100vh",
-	position: "sticky",
-	top: 0,
-	width: "100%"
-};
-
-/**
- * @type {React.CSSProperties}
- * @property {string|number} bottom
- * @property {string|number} left
- * @property {string} position
- * @property {string|number} top
- */
-const anchorStyle: React.CSSProperties = {
-	bottom: 0,
-	left: 0,
-	position: "absolute",
-	right: 0,
-	top: 0
+const INJECT_CORE_STYLE = () => {
+	const existingStyle = document.head.querySelector("[data-stickyroll]");
+	if (Boolean(existingStyle)) {
+		const styleVersion = existingStyle.getAttribute("data-stickyroll-version");
+		if (styleVersion === version) {
+			document.head.appendChild(existingStyle);
+			return;
+		}
+	}
+	const style = document.createElement("style");
+	style.setAttribute("data-stickyroll", "");
+	style.setAttribute("data-stickyroll-version", `${version}`);
+	style.innerHTML = CORE_STYLE;
+	document.head.appendChild(style);
 };
 
 export class Frame extends React.Component<IFrameProps, IFrameState> {
@@ -150,7 +189,6 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 */
 	public state: IFrameState = {
 		page: 0,
-		position: "sticky",
 		scrollOffset: 0,
 		scrollY: 0
 	};
@@ -177,9 +215,9 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 * @public
 	 */
 	public componentDidMount() {
+		Frame.injectStyle();
 		this.setState({
-			scrollY: window.scrollY,
-			position: vendoredSticky()
+			scrollY: window.scrollY
 		});
 	}
 
@@ -216,7 +254,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 * @public
 	 */
 	public render() {
-		const {render, children, anchors, pages} = this.props;
+		const {render, children, anchors} = this.props;
 		// Test for either the render property or children to be defined as function.
 		// Render wins over children if both are defined. If neither is defined as function, a TypeError is thrown.
 		if (typeof render !== "function" && typeof children !== "function") {
@@ -264,10 +302,23 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		}
 	}
 
+	public static injectStyle() {
+		INJECT_CORE_STYLE();
+	}
+
+	public static getStyleTag() {
+		return CORE_STYLETAG;
+	}
+
+	public static getStyle() {
+		return CORE_STYLE;
+	}
+
 	private get pageCount(): number {
 		const {pages} = this.props;
 		return Array.isArray(pages) ? (pages as Array<any>).length : (pages as number);
 	}
+
 	/**
 	 * A Wrapper around the content to ensure the correct behavior during interaction.
 	 * Renders a sticky container, an event-tracker and optionally anchor targets to allow deep-links.
@@ -280,9 +331,18 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	private Wrapper: React.FunctionComponent = ({children}) => (
 		<React.Fragment>
 			<Tracker onUpdate={this.handleUpdate} throttle={this.props.throttle} />
-			<div className={this.props.className} style={this.wrapperStyle} ref={this.tracker}>
+			<div
+				className={classNames(
+					hashNSSelectors.wrapper,
+					hashSelectors.wrapper,
+					this.props.className
+				)}
+				ref={this.tracker}
+				style={this.wrapperStyle}>
 				{this.anchors}
-				<div style={{...overlayStyle, position: this.state.position}}>{children}</div>
+				<div className={classNames(hashNSSelectors.overlay, hashSelectors.overlay)}>
+					{children}
+				</div>
 			</div>
 		</React.Fragment>
 	);
@@ -332,9 +392,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		const {factor} = this.props;
 		const vh = this.pageCount * 100 * factor + 100;
 		return {
-			height: `${vh}vh`,
-			margin: 0,
-			position: "relative"
+			height: `${vh}vh`
 		};
 	}
 
@@ -350,28 +408,29 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		}
 		const {factor} = this.props;
 		const glue = anchors.length ? "/" : "";
-		const triggers = Array(this.pageCount + 1)
+		const targets = Array(this.pageCount)
 			.fill(Boolean)
 			.map((x, i) => (
 				<span
 					id={`${anchors}${glue}${i + 1}`}
 					key={`${anchors}:${i + 1}`}
+					className={classNames(hashNSSelectors.target, hashSelectors.target)}
 					style={{
-						display: "block",
-						height: `${i === this.pageCount ? 100 : 100 * factor}vh`
+						height: `${100 * factor}vh`
 					}}
 				/>
 			));
 
 		return (
-			<div style={anchorStyle}>
-				{triggers}
+			<div className={classNames(hashNSSelectors.targets, hashSelectors.targets)}>
+				{targets}
+				<span
+					id={`${anchors}${glue}${this.pageCount + 1}`}
+					className={classNames(hashNSSelectors.target, hashSelectors.target)}
+				/>
 				<span
 					id={`${anchors}${glue}skip`}
-					style={{
-						position: "absolute",
-						top: "100%"
-					}}
+					className={classNames(hashNSSelectors.skip, hashSelectors.skip)}
 				/>
 			</div>
 		);

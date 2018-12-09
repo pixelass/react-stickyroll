@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @stickyroll/utils
 
-
-
-
-
 # [1.1.0](https://github.com/stickyroll/react-stickyroll/compare/v1.0.0...v1.1.0) (2018-12-07)
 
 ### Features
