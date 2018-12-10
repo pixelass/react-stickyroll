@@ -62,7 +62,7 @@
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.0-rc.2",
 		"cross-env": "5.2.0",
-		"enzyme": "3.7.0",
+		"enzyme": "3.8.0",
 		"imhotep": "1.1.5",
 		"react": "16.6.3",
 		"react-dom": "16.6.3",
