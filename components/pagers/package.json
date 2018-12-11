@@ -67,7 +67,7 @@
 		"@stickyroll/testing-utils": "^1.1.1",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.0-rc.2",
-		"babel-plugin-styled-components": "1.9.2",
+		"babel-plugin-styled-components": "1.9.4",
 		"cross-env": "5.2.0",
 		"enzyme": "3.8.0",
 		"imhotep": "1.1.5",
