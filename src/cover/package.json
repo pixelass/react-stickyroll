@@ -61,7 +61,7 @@
 		"imhotep": "1.1.5",
 		"react-dom": "16.6.3",
 		"rollup": "0.67.4",
-		"rollup-plugin-babel": "4.0.3",
+		"rollup-plugin-babel": "4.1.0",
 		"rollup-plugin-typescript2": "0.18.1",
 		"ts-node": "7.0.1",
 		"typescript": "3.2.2"
