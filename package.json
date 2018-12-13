@@ -54,7 +54,7 @@
 		"toc": "npx markdown-toc README.md -i"
 	},
 	"dependencies": {
-		"@types/react": "16.7.13",
+		"@types/react": "16.7.17",
 		"@types/react-dom": "16.0.11",
 		"@types/styled-components": "4.1.4",
 		"lottie-web": "5.4.2",
