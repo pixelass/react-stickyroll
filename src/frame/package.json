@@ -46,7 +46,7 @@
 	"devDependencies": {
 		"@babel/core": "7.2.0",
 		"@stickyroll/testing-utils": "1.1.1",
-		"@types/node": "10.12.14",
+		"@types/node": "10.12.15",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.0-rc.2",
 		"cross-env": "5.2.0",

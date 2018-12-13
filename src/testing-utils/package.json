@@ -58,7 +58,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.2.0",
-		"@types/node": "10.12.14",
+		"@types/node": "10.12.15",
 		"ava": "1.0.0-rc.2",
 		"cross-env": "5.2.0",
 		"imhotep": "1.1.5",
