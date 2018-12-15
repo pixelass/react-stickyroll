@@ -56,11 +56,11 @@
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
-		"@babel/core": "7.2.0",
+		"@babel/core": "7.2.2",
 		"@stickyroll/testing-utils": "1.1.1",
 		"@types/react": "16.7.17",
 		"@types/react-dom": "16.0.11",
-		"ava": "1.0.0-rc.2",
+		"ava": "1.0.1",
 		"cross-env": "5.2.0",
 		"enzyme": "3.8.0",
 		"imhotep": "1.1.5",
