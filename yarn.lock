@@ -2169,10 +2169,10 @@
   resolved "https://registry.npmjs.org/@types/iframe-resizer/-/iframe-resizer-3.5.7.tgz#a30de6f049fe2475fe9288e783f814e8c3b627ca"
   integrity sha512-SMDeDi0c5HdAtfgJ/UVMCllJyYLWpnnCrufl/E7BOfG2KQvRAmWTE7xK3u6xJHeOlHTpOHo3Ps7tQzsHUSyoWQ==
 
-"@types/jasmine@3.3.2":
-  version "3.3.2"
-  resolved "https://registry.npmjs.org/@types/jasmine/-/jasmine-3.3.2.tgz#a5a0ac81ed914e252790d2f362c07150577f9bcc"
-  integrity sha512-UvfHixeV1SHl/HgHOL7NWbL7Ye7+zfszMUQFNU9MlOD/9g2yEG/F3XcdFqVM7jjD4MbgTPwYgnQwuaUVgW2YzQ==
+"@types/jasmine@3.3.4":
+  version "3.3.4"
+  resolved "https://registry.npmjs.org/@types/jasmine/-/jasmine-3.3.4.tgz#492cc70364f6dee047887b4fa2135bedd41fb143"
+  integrity sha512-543S+ZCJfN4jKWzRkptbJqTY2vc4h7+lPVqU2hXb1XFofDcUxNANAimdZPYaH6/yhezVAsNeujoZjAFU06bfmA==
 
 "@types/jsdom@12.2.0":
   version "12.2.0"
