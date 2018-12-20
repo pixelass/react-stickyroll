@@ -52,7 +52,6 @@
 		"rollup": "0.68.1",
 		"rollup-plugin-babel": "4.1.0",
 		"rollup-plugin-typescript2": "0.18.1",
-		"sinon": "7.2.2",
 		"ts-node": "7.0.1",
 		"typescript": "3.2.2"
 	},

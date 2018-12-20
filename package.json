@@ -111,7 +111,6 @@
 		"puppeteer": "1.11.0",
 		"rimraf": "2.6.2",
 		"serve": "10.1.1",
-		"source-map-support": "0.5.9",
 		"stylelint-config-styled-components": "0.1.1",
 		"stylelint-processor-styled-components": "1.5.1",
 		"ts-node": "7.0.1",
