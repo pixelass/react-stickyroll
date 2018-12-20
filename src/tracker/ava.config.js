@@ -2,7 +2,7 @@ export default {
 	compileEnhancements: false,
 	require: [],
 	babel: {
-		extensions: ["js", "jsx"]
+		extensions: ["ts", "tsx"]
 	},
-	files: ["test/**/*.js"]
+	files: ["test/**/*.ts"]
 };

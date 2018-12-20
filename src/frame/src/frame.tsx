@@ -147,9 +147,9 @@ export const hashClassNames = {
 	targets: classNames(hashNSSelectors.targets, hashSelectors.targets),
 	target: classNames(hashNSSelectors.target, hashSelectors.target),
 	skip: classNames(hashNSSelectors.skip, hashSelectors.skip),
-}
+};
 
-const CORE_STYLE = `
+export const CORE_STYLE = `
 	body {
 		margin-top: 0;
 		margin-bottom: 0;
@@ -164,7 +164,7 @@ const CORE_STYLE = `
 	.replace(/\s+/g, "")
 	.replace(/;}/g, "}");
 
-const CORE_STYLETAG = `<style data-stickyroll data-stickyroll-version="${version}">${CORE_STYLE}</style>`;
+export const CORE_STYLETAG = `<style data-stickyroll data-stickyroll-version="${version}">${CORE_STYLE}</style>`;
 
 /**
  * Injects core styles for Stickyroll. This is the client side version.
@@ -226,6 +226,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		});
 	}
 
+	/* istanbul ignore next */
 	/**
 	 * Call the onPage handler if it is defined every time the page changes.
 	 * No initial call!
@@ -351,6 +352,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		</React.Fragment>
 	);
 
+	/* istanbul ignore next */
 	/**
 	 * Scroll handler to parse the page and progress from the scroll position.
 	 * @private

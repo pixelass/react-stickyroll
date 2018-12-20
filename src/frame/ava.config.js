@@ -1,8 +1,6 @@
 export default {
 	compileEnhancements: false,
-	require: [],
-	babel: {
-		extensions: ["js", "jsx"]
-	},
-	files: ["test/**/*.js"]
+	require: ["ts-node/register/transpile-only"],
+	extensions: ["ts", "tsx"],
+	files: ["test/**/*.ts", "test/**/*.tsx", "!test/**/*.d.ts", "!test/**/base.tsx"]
 };

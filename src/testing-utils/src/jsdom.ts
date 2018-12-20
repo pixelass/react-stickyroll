@@ -13,8 +13,11 @@ declare global {
 	}
 }
 
-export const initDOM = () => {
-	const jsdom = new JSDOM("<!doctype html><html><body></body></html>");
+interface DomOptions {
+	head?: string;
+}
+export const initDOM = ({head = ""}: DomOptions = {}) => {
+	const jsdom = new JSDOM(`<!doctype html><html><head>${head}</head></head><body></body></html>`);
 	const {window} = jsdom;
 
 	function copyProps(src, target) {

@@ -1,49 +1,45 @@
-import {Frame as StickyFrame, hashClassNames} from "@stickyroll/frame";
+import { Frame as StickyFrame, CORE_STYLE, CORE_STYLETAG } from "../src";
 import {mount, initDOM} from "@stickyroll/testing-utils";
-import {classNames} from "@stickyroll/utils";
 import test from "ava";
 import React from "react";
 import {renderToString} from "react-dom/server";
+import {version} from "../package.json";
+import {createAnchors, createMarkup} from "./base";
 
 initDOM();
 
-const DEFAULT_OPTIONS = {
-	anchors: "",
-	className: "",
-	content: "",
-	factor: 1,
-	pages: 1
-};
+test("Expects a callback", t => {
+	t.throws(() => renderToString(<StickyFrame pages={1}/>));
+	t.notThrows(() => renderToString(<StickyFrame pages={1} render={() => null}/>));
+	t.notThrows(() => renderToString(<StickyFrame pages={1}>{() => null}</StickyFrame>));
+});
 
-const createMarkup = ({
-	anchors = DEFAULT_OPTIONS.anchors,
-	className = DEFAULT_OPTIONS.className,
-	content = DEFAULT_OPTIONS.content,
-	factor = DEFAULT_OPTIONS.factor,
-	pages = DEFAULT_OPTIONS.pages
-} = DEFAULT_OPTIONS) =>
-	`<div class="${classNames(hashClassNames.wrapper, className)}" `
-	+ `style="height:${100 + 100 * factor * pages}vh">${anchors}<div class="${hashClassNames.overlay}">${content}</div></div>`;
+test("Has a static method to get the styles", t => {
+	const expected = CORE_STYLE;
+	const actual = StickyFrame.getStyle();
+	t.is(expected, actual);
+});
 
-const createAnchors = (
-	prefix = "",
-	pages = DEFAULT_OPTIONS.pages,
-	factor = DEFAULT_OPTIONS.factor
-) =>
-	`<div class="${hashClassNames.targets}">${Array(pages)
-		.fill(Boolean)
-		.map(
-			(x, i) =>
-				`<span id="${prefix}${prefix === "" ? "" : "/"}${i +
-					1}" class="${hashClassNames.target}" style="height:${100 * factor}vh"></span>`
-		)
-		.join("")}<span id="${prefix}${
-		prefix === "" ? "" : "/"
-		}${pages + 1}" class="${hashClassNames.target}"></span><span id="${prefix}${
-		prefix === "" ? "" : "/"
-		}skip" class="${hashClassNames.skip}"></span></div>`;
+test("Has a static method to get the style tag (SSR)", t => {
+	const expected = CORE_STYLETAG;
+	const actual = StickyFrame.getStyleTag();
+	t.is(expected, actual);
+});
 
-test("Renders the correct markup ", t => {
+test("styles are scoped by version", t => {
+	const pass = StickyFrame.getStyleTag().match(`data-stickyroll-version="${version}"`);
+	t.truthy(pass);
+});
+
+test("Allows pages as number", t => {
+	t.notThrows(() => renderToString(<StickyFrame pages={1} render={() => null} />));
+});
+
+test("Allows pages as array", t => {
+	t.notThrows(() => renderToString(<StickyFrame pages={[1]} render={() => null} />));
+});
+
+test("Renders the correct markup", t => {
 	const expected = createMarkup();
 	const actual = renderToString(<StickyFrame pages={1} render={() => null} />);
 	t.is(expected, actual);

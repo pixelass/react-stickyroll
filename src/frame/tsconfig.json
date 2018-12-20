@@ -8,7 +8,7 @@
 		"resolveJsonModule": true,
 		"importHelpers": true,
 		"lib": ["dom", "es2015", "es2017.object", "es6", "es7"],
-		"module": "es6",
+		"module": "commonjs",
 		"moduleResolution": "node",
 		"jsx": "react",
 		"outDir": "dist",
@@ -17,5 +17,5 @@
 		"strict": false,
 		"target": "es6"
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*", "test/**/*"]
 }

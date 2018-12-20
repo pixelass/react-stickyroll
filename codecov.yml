@@ -1,0 +1,6 @@
+ignore:
+    - "components"
+    - "packages/stickyroll"
+    - "packages/decorators"
+    - "src/tracker"
+    - "src/context"

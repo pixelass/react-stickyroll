@@ -19,7 +19,7 @@ charset = utf-8
 max_line_length = 100
 
 # Set indents
-[*.{yml,json,md}]
+[{*.{yml,json,md}}]
 max_line_length = 100
 indent_size = 2
 
@@ -27,4 +27,8 @@ indent_size = 2
 [*.{yml,md}]
 max_line_length = 100
 indent_style = space
+
+[.nycrc]
+indent_style = space
+indent_size = 2
 

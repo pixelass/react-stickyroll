@@ -30,7 +30,6 @@
 		"clean": "imhotep clean",
 		"format": "imhotep format",
 		"lint": "imhotep lint",
-		"pretest": "yarn build",
 		"test": "ava",
 		"upgrade-all": "yarn-upgrade-all",
 		"watch": "rollup -cw"

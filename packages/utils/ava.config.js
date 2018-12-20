@@ -1,8 +1,6 @@
 export default {
 	compileEnhancements: false,
-	require: [],
-	babel: {
-		extensions: ["js", "jsx"]
-	},
-	files: ["test/**/*.js"]
+	require: ["ts-node/register"],
+	extensions: ["ts", "tsx"],
+	files: ["test/**/*.ts"]
 };
