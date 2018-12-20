@@ -18,7 +18,7 @@ export interface IContext {
 /**
  * @type {IContext}
  */
-export const DEFAULT_CONTEXT: IContext = {page: 1, pageIndex: 0, progress: 0, pages: 1};
+export const DEFAULT_CONTEXT: IContext = {page: 1, pageIndex: 0, pages: 1, progress: 0};
 
 /**
  * @type {Context<IContext>}
