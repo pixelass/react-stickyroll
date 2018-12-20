@@ -22,7 +22,7 @@
 		"@stickyroll/decorators": "^1.1.1",
 		"@stickyroll/stickyroll": "^1.1.2",
 		"@types/react": "16.7.17",
-		"react": "16.6.3",
+		"react": "16.7.0",
 		"tslib": "1.9.3"
 	},
 	"devDependencies": {

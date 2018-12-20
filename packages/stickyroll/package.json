@@ -57,7 +57,7 @@
 		"@stickyroll/frame": "1.1.2",
 		"@stickyroll/tracker": "1.1.1",
 		"@types/react": "16.7.17",
-		"react": "16.6.3",
+		"react": "16.7.0",
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {

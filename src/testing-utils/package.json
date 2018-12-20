@@ -52,7 +52,7 @@
 		"karma-viewport": "1.0.2",
 		"karma-webpack": "4.0.0-rc.5",
 		"puppeteer": "1.11.0",
-		"react": "16.6.3",
+		"react": "16.7.0",
 		"ts-lib": "0.0.5",
 		"webpack": "4.28.0"
 	},
