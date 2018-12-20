@@ -20,7 +20,7 @@
 		"clear:cache": "rimraf '**/.rpt2_cache'",
 		"clear:docs": "rimraf docs",
 		"clear:log": "rimraf '**/*.log' '*.log'",
-		"clear:coverage": "rimraf coverage coverage.lcov '**/coverage' '**/coverage.lcov'",
+		"clear:coverage": "rimraf coverage coverage.lcov",
 		"clear:modules": "rimraf node_modules",
 		"clear:yarn": "rimraf yarn.lock yarn-error.log",
 		"coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t $CODECOV_TOKEN",
