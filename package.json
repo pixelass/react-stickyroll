@@ -95,7 +95,7 @@
 		"karma-safari-launcher": "1.0.0",
 		"karma-viewport": "1.0.2",
 		"karma-webpack": "4.0.0-rc.5",
-		"lerna": "3.6.0",
+		"lerna": "3.7.1",
 		"lodash.merge": "^4.6.1",
 		"meow": "5.0.0",
 		"os": "0.1.1",
