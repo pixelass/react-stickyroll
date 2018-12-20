@@ -1,8 +1,8 @@
 import React from "react";
-import { IContext, ScrollConsumer, ScrollProvider } from "@stickyroll/context";
-import { Tracker } from "@stickyroll/tracker";
-import { classNames, hashCode } from "@stickyroll/utils";
-import { version } from "../package.json";
+import {IContext, ScrollConsumer, ScrollProvider} from "@stickyroll/context";
+import {Tracker} from "@stickyroll/tracker";
+import {classNames, hashCode} from "@stickyroll/utils";
+import {version} from "../package.json";
 
 /**
  * @typedef {function} TRender<T>
@@ -66,7 +66,9 @@ export interface IFrameDefaultProps {
  * @property {TChild} [children]
  * @property {string} [className]
  * @property {number} [factor]
- * @property {TPageHandler} [onPage]
+ * @property {TProgressHandler | TAsyncProgressHandler} [onEnd]
+ * @property {TPageHandler | TAsyncPageHandler} [onPage]
+ * @property {TProgressHandler | TAsyncProgressHandler} [onStart]
  * @property {number|Array<any>} pages
  * @property {TRenderer} [render]
  * @property {number} [throttle]
@@ -96,17 +98,32 @@ export interface IFrameState {
 	scrollY: number;
 }
 
-const styles = {
-	wrapper: `
-		position: relative;
-		margin: 0;
-	`,
+export interface ISelectors {
+	wrapper: string;
+	overlay: string;
+	target: string;
+	targets: string;
+	skip: string;
+}
+
+/**
+ * Styles for the core frame
+ */
+const styles: ISelectors = {
 	overlay: `
 		height: 100vh;
 		position: -webkit-sticky;
 		position: sticky;
 		top: 0;
 		width: 100%;
+	`,
+	skip: `
+		position: absolute; 
+		top: 100%;
+	`,
+	target: `
+		display: block; 
+		height: 100vh;
 	`,
 	targets: `
 		position: absolute;
@@ -115,17 +132,16 @@ const styles = {
 		bottom: 0;
 		left: 0;
 	`,
-	target: `
-		display: block; 
-		height: 100vh;
-	`,
-	skip: `
-		position: absolute; 
-		top: 100%;
+	wrapper: `
+		position: relative;
+		margin: 0;
 	`
 };
 
-const hashSelectors = {
+/**
+ * Hashed classNames for styling
+ */
+const hashSelectors: ISelectors = {
 	wrapper: hashCode(`/* stickyroll-version: ${version} */\n${styles.wrapper}`),
 	overlay: hashCode(`/* stickyroll-version: ${version} */\n${styles.overlay}`),
 	targets: hashCode(`/* stickyroll-version: ${version} */\n${styles.targets}`),
@@ -133,7 +149,11 @@ const hashSelectors = {
 	skip: hashCode(`/* stickyroll-version: ${version} */\n${styles.skip}`)
 };
 
-const hashNSSelectors = {
+/**
+ * Hashed and prefixed classNames for styling
+ * (currently not in use, keep for future scope safety)
+ */
+const hashNSSelectors: ISelectors = {
 	wrapper: `sr-${hashCode(hashSelectors.wrapper)}`,
 	overlay: `sr-${hashCode(hashSelectors.overlay)}`,
 	targets: `sr-${hashCode(hashSelectors.targets)}`,
@@ -141,15 +161,21 @@ const hashNSSelectors = {
 	skip: `sr-${hashCode(hashSelectors.skip)}`
 };
 
-export const hashClassNames = {
+/**
+ * Hashed and hash-prefixed classNames combined
+ */
+export const hashClassNames: ISelectors = {
 	wrapper: classNames(hashNSSelectors.wrapper, hashSelectors.wrapper),
 	overlay: classNames(hashNSSelectors.overlay, hashSelectors.overlay),
 	targets: classNames(hashNSSelectors.targets, hashSelectors.targets),
 	target: classNames(hashNSSelectors.target, hashSelectors.target),
-	skip: classNames(hashNSSelectors.skip, hashSelectors.skip),
+	skip: classNames(hashNSSelectors.skip, hashSelectors.skip)
 };
 
-export const CORE_STYLE = `
+/**
+ * Core styling required to display the component correctly
+ */
+export const CORE_STYLE: string = `
 	body {
 		margin-top: 0;
 		margin-bottom: 0;
@@ -164,14 +190,18 @@ export const CORE_STYLE = `
 	.replace(/\s+/g, "")
 	.replace(/;}/g, "}");
 
-export const CORE_STYLETAG = `<style data-stickyroll data-stickyroll-version="${version}">${CORE_STYLE}</style>`;
+/**
+ * The style tag needed to display the component correctly
+ */
+export const CORE_STYLE_TAG: string = `<style data-stickyroll data-stickyroll-version="${version}">${CORE_STYLE}</style>`;
 
+export type InjectCoreStyle = () => void;
 /**
  * Injects core styles for Stickyroll. This is the client side version.
  * Stickyroll will inject these styles to ensure the correct behavior.
  * @constructor
  */
-const INJECT_CORE_STYLE = () => {
+const INJECT_CORE_STYLE: InjectCoreStyle = () => {
 	const existingStyle = document.head.querySelector("[data-stickyroll]");
 	if (Boolean(existingStyle)) {
 		const styleVersion = existingStyle.getAttribute("data-stickyroll-version");
@@ -313,7 +343,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	}
 
 	public static getStyleTag() {
-		return CORE_STYLETAG;
+		return CORE_STYLE_TAG;
 	}
 
 	public static getStyle() {
@@ -338,16 +368,11 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 		<React.Fragment>
 			<Tracker onUpdate={this.handleUpdate} throttle={this.props.throttle} />
 			<div
-				className={classNames(
-					hashClassNames.wrapper,
-					this.props.className
-				)}
+				className={classNames(hashClassNames.wrapper, this.props.className)}
 				ref={this.tracker}
 				style={this.wrapperStyle}>
 				{this.anchors}
-				<div className={hashClassNames.overlay}>
-					{children}
-				</div>
+				<div className={hashClassNames.overlay}>{children}</div>
 			</div>
 		</React.Fragment>
 	);
@@ -434,10 +459,7 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 					id={`${anchors}${glue}${this.pageCount + 1}`}
 					className={hashClassNames.target}
 				/>
-				<span
-					id={`${anchors}${glue}skip`}
-					className={hashClassNames.skip}
-				/>
+				<span id={`${anchors}${glue}skip`} className={hashClassNames.skip} />
 			</div>
 		);
 	}

@@ -1,4 +1,4 @@
-import { Frame as StickyFrame, CORE_STYLE, CORE_STYLETAG } from "../src";
+import {Frame as StickyFrame, CORE_STYLE, CORE_STYLE_TAG} from "../src";
 import {mount, initDOM} from "@stickyroll/testing-utils";
 import test from "ava";
 import React from "react";
@@ -9,8 +9,8 @@ import {createAnchors, createMarkup} from "./base";
 initDOM();
 
 test("Expects a callback", t => {
-	t.throws(() => renderToString(<StickyFrame pages={1}/>));
-	t.notThrows(() => renderToString(<StickyFrame pages={1} render={() => null}/>));
+	t.throws(() => renderToString(<StickyFrame pages={1} />));
+	t.notThrows(() => renderToString(<StickyFrame pages={1} render={() => null} />));
 	t.notThrows(() => renderToString(<StickyFrame pages={1}>{() => null}</StickyFrame>));
 });
 
@@ -21,7 +21,7 @@ test("Has a static method to get the styles", t => {
 });
 
 test("Has a static method to get the style tag (SSR)", t => {
-	const expected = CORE_STYLETAG;
+	const expected = CORE_STYLE_TAG;
 	const actual = StickyFrame.getStyleTag();
 	t.is(expected, actual);
 });

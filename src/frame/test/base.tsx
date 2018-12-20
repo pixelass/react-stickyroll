@@ -24,8 +24,10 @@ export const createMarkup = ({
 	factor = DEFAULT_OPTIONS.factor,
 	pages = DEFAULT_OPTIONS.pages
 }: MarkupOptions = DEFAULT_OPTIONS): string =>
-	`<div class="${classNames(hashClassNames.wrapper, className)}" `
-	+ `style="height:${100 + 100 * factor * pages}vh">${anchors}<div class="${hashClassNames.overlay}">${content}</div></div>`;
+	`<div class="${classNames(hashClassNames.wrapper, className)}" ` +
+	`style="height:${100 + 100 * factor * pages}vh">${anchors}<div class="${
+		hashClassNames.overlay
+	}">${content}</div></div>`;
 
 export const createAnchors = (
 	prefix: string = "",
@@ -36,11 +38,12 @@ export const createAnchors = (
 		.fill(Boolean)
 		.map(
 			(x, i) =>
-				`<span id="${prefix}${prefix === "" ? "" : "/"}${i +
-					1}" class="${hashClassNames.target}" style="height:${100 * factor}vh"></span>`
+				`<span id="${prefix}${prefix === "" ? "" : "/"}${i + 1}" class="${
+					hashClassNames.target
+				}" style="height:${100 * factor}vh"></span>`
 		)
-		.join("")}<span id="${prefix}${
-		prefix === "" ? "" : "/"
-		}${pages + 1}" class="${hashClassNames.target}"></span><span id="${prefix}${
-		prefix === "" ? "" : "/"
-		}skip" class="${hashClassNames.skip}"></span></div>`;
+		.join("")}<span id="${prefix}${prefix === "" ? "" : "/"}${pages + 1}" class="${
+		hashClassNames.target
+	}"></span><span id="${prefix}${prefix === "" ? "" : "/"}skip" class="${
+		hashClassNames.skip
+	}"></span></div>`;

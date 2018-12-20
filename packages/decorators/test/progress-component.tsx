@@ -1,5 +1,5 @@
-import { progress } from "../src";
-import { IContext } from "@stickyroll/stickyroll";
+import {progress} from "../src";
+import {IContext} from "@stickyroll/stickyroll";
 import React from "react";
 
 @progress

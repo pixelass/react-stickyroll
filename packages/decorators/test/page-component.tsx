@@ -1,5 +1,5 @@
-import { page } from "../src";
-import { IContext } from "@stickyroll/stickyroll";
+import {page} from "../src";
+import {IContext} from "@stickyroll/stickyroll";
 import React from "react";
 
 @page

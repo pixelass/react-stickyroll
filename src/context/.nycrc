@@ -1,23 +1,9 @@
 {
 	"check-coverage": true,
 	"all": true,
-	"extension": [
-		".js",
-		".jsx",
-		".ts",
-		".tsx"
-	],
-	"include": [
-		"src/**/*.ts?(x)"
-	],
-	"exclude": [
-		"**/*.d.ts"
-	],
-	"reporter": [
-		"html",
-		"lcov",
-		"text",
-		"text-summary"
-	],
+	"extension": [".js", ".jsx", ".ts", ".tsx"],
+	"include": ["src/**/*.ts?(x)"],
+	"exclude": ["**/*.d.ts"],
+	"reporter": ["html", "lcov", "text", "text-summary"],
 	"report-dir": "coverage"
 }

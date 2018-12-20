@@ -60,5 +60,3 @@ test("assert checks undefined", t => {
 	t.throws(() => assert({}, "undefined"));
 	t.notThrows(() => assert(undefined, "undefined"));
 });
-
-

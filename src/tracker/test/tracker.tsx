@@ -6,11 +6,11 @@ import React from "react";
 initDOM();
 
 test("Tracker allows changing the throttle value", t => {
-	const wrapper = mount(<Tracker/>);
+	const wrapper = mount(<Tracker />);
 	t.is(undefined, wrapper.props().throttle);
-	wrapper.setProps({ throttle: 300 });
+	wrapper.setProps({throttle: 300});
 	t.is(300, wrapper.props().throttle);
-	wrapper.setProps({ onUpdate: () => {} });
+	wrapper.setProps({onUpdate: () => {}});
 	t.is(300, wrapper.props().throttle);
 });
 

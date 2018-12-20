@@ -1,6 +1,6 @@
 module.exports = {
 	extends: require.resolve("imhotep/config/.babelrc"),
-	"plugins": ["istanbul"],
+	plugins: ["istanbul"],
 	env: {
 		development: {
 			plugins: [
