@@ -56,7 +56,7 @@
 		"@stickyroll/frame": "1.1.2",
 		"@stickyroll/tracker": "1.1.1",
 		"@types/react": "16.7.17",
-		"react": "16.6.3",
+		"react": "16.7.0",
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
@@ -67,8 +67,8 @@
 		"cross-env": "5.2.0",
 		"enzyme": "3.8.0",
 		"imhotep": "1.1.5",
-		"react-dom": "16.6.3",
-		"rollup": "0.68.0",
+		"react-dom": "16.7.0",
+		"rollup": "0.68.1",
 		"rollup-plugin-babel": "4.1.0",
 		"rollup-plugin-typescript2": "0.18.1",
 		"ts-node": "7.0.1",
