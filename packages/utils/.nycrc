@@ -12,7 +12,6 @@
 	],
 	"exclude": [
 		"**/*.d.ts",
-		"src/hash-code.ts",
 		"src/scroll-to.ts",
 		"src/throttle.ts"
 	],
