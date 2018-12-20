@@ -4,7 +4,7 @@
 
 <p align="center"><img width="200" src="https://stickyroll.github.io/media/images/logo_deepPurple.svg" alt="Stickyroll logo"></p>
 
-## [Site][site] | [Getting started][getting-started] | [Live support][live-support]
+## [Site][site] | [Getting started][getting-started] | [Live support][live-support] | [Typedoc][typedoc]
 
 [![npm][npm-badge]][npm]
 [![GitHub license][license-badge]][license]
@@ -51,6 +51,7 @@ Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released u
 [site]: https://stickyroll.github.io/react-stickyroll/
 [getting-started]: https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true
 [live-support]: https://spectrum.chat/stickyroll
+[typedoc]: https://stickyroll.github.io/react-stickyroll/typedoc/
 
 <!-- Badges -->
 
@@ -66,6 +67,7 @@ Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released u
 [webstorm]: https://www.jetbrains.com/buy/opensource/
 [codecov-badge]: https://img.shields.io/codecov/c/github/stickyroll/react-stickyroll.svg?style=for-the-badge
 [codecov]: https://codecov.io/gh/stickyroll/react-stickyroll
+
 <!-- Misc Links -->
 
 [contribute]: https://github.com/stickyroll/react-stickyroll/blob/master/.github/CONTRIBUTING.md
