@@ -8,7 +8,8 @@
 
 [![npm][npm-badge]][npm]
 [![GitHub license][license-badge]][license]
-[![Travis branch][build-badge]][build]
+[![Travis build][build-badge]][build]
+[![Codecov][codecov-badge]][codecov]
 
 ##### Powered by
 
@@ -63,7 +64,8 @@ Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released u
 [browserstack]: https://www.browserstack.com/open-source
 [webstorm-badge]: https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm
 [webstorm]: https://www.jetbrains.com/buy/opensource/
-
+[codecov-badge]: https://img.shields.io/codecov/c/github/stickyroll/react-stickyroll.svg?style=for-the-badge
+[codecov]: https://codecov.io/gh/stickyroll/react-stickyroll
 <!-- Misc Links -->
 
 [contribute]: https://github.com/stickyroll/react-stickyroll/blob/master/.github/CONTRIBUTING.md
