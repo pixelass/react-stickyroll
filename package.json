@@ -52,7 +52,7 @@
 		"serve:public": "serve public",
 		"pretest": "yarn clear:coverage && yarn rollup && lerna run test --parallel",
 		"test": "yarn karma:headless --local --chrome",
-		"posttest": "lerna run lint --parallel && yarn coverage",
+		"posttest": "lerna run lint --parallel",
 		"toc": "npx markdown-toc README.md -i"
 	},
 	"dependencies": {
