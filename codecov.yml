@@ -4,6 +4,5 @@ ignore:
   - "packages/decorators"
   - "packages/utils/src/scroll-to.ts"
   - "packages/utils/src/throttle.ts"
-  - "src/tracker"
   - "src/context"
   - "**/test"

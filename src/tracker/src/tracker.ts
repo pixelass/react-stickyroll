@@ -71,6 +71,7 @@ export class Tracker extends PureComponent<IEventTrackerProps> {
 		return null;
 	}
 
+	/* istanbul ignore next */
 	/**
 	 * Tracks the page scroll and calls the updateFunction
 	 * @protected
