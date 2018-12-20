@@ -32,7 +32,7 @@ yarn dev
 
 # Test your changes
 yarn test
-# scpoped tests
+# scoped tests
 yarn lerna run test --scope @stickyroll/<package_name>
 ```
 
