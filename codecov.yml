@@ -4,3 +4,4 @@ ignore:
     - "packages/decorators"
     - "src/tracker"
     - "src/context"
+    - "**/test"
