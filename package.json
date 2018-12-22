@@ -118,7 +118,7 @@
 		"typedoc": "0.13.0",
 		"typescript": "3.2.2",
 		"webpack": "4.28.0",
-		"webpack-dev-server": "3.1.10",
+		"webpack-dev-server": "3.1.13",
 		"yarn-upgrade-all": "0.5.0"
 	},
 	"engines": {
