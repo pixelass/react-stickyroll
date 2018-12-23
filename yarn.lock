@@ -972,11 +972,6 @@
   resolved "https://registry.npmjs.org/@emotion/unitless/-/unitless-0.7.3.tgz#6310a047f12d21a1036fb031317219892440416f"
   integrity sha512-4zAPlpDEh2VwXswwr/t8xGNDGg8RQiPxtxZ3qQEXyQsBV39ptTdESCjuBvGze1nLMVrxmTIKmnO/nAV8Tqjjzg==
 
-"@istanbuljs/nyc-config-babel@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@istanbuljs/nyc-config-babel/-/nyc-config-babel-2.0.0.tgz#f180f5b41d92055c7f41f0785c402a74bef7f544"
-  integrity sha512-vIlNB0gwQDXuXxb7BaJvps0piSTun8qnsevcKNxKSCn8Q6iQznsNwlcNnQQKk1ehOPfq9sJwo8BnHY9wbcw+1Q==
-
 "@lerna/add@^3.7.2":
   version "3.7.2"
   resolved "https://registry.npmjs.org/@lerna/add/-/add-3.7.2.tgz#209c8d00e08baeae9c97e9b2e667ad92a39d3907"
@@ -2023,7 +2018,7 @@
   resolved "https://registry.npmjs.org/@patternplate/websocket-client/-/websocket-client-3.2.4.tgz#edc05c2947919b3c13b7d525e37190dd404b2bf1"
   integrity sha512-fdmXHOTZEXNDtDLQOjpuOKEPqR37AnCAR1CLOv5RJbT2Gdv8iG6/yhIdofy7nzF1N20isp7vDBmmQDgpKn/BnQ==
 
-"@patternplate/widgets@^3.2.4":
+"@patternplate/widgets@3.2.4":
   version "3.2.4"
   resolved "https://registry.npmjs.org/@patternplate/widgets/-/widgets-3.2.4.tgz#ec287f4680c8a09b68a670761cbcee9165f28d5a"
   integrity sha512-w5VRQmA20oV/PBGOvQz+H2KbVFasXKXsUJwMBp9qf4ALVpDg1NHz17Umfo3JuwesBakC+EqQDo7I1XtId194Bw==

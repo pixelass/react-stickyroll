@@ -11,6 +11,7 @@
 [![Travis build][build-badge]][build]
 [![Codecov][codecov-badge]][codecov]
 [![Codeclimate][codeclimate-badge]][codeclimate]
+[![Snyk][snyk-badge]][snyk]
 
 **Powered by**
 
@@ -87,6 +88,8 @@ Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released u
 [codecov]: https://codecov.io/gh/stickyroll/react-stickyroll
 [codeclimate-badge]: https://img.shields.io/codeclimate/maintainability/stickyroll/react-stickyroll.svg?style=for-the-badge
 [codeclimate]: https://codeclimate.com/github/stickyroll/react-stickyroll/
+[snyk-badge]: https://img.shields.io/snyk/vulnerabilities/github/stickyroll/react-stickyroll.svg?style=for-the-badge
+[snyk]: https://snyk.io/test/github/stickyroll/react-stickyroll
 
 [stickyroll-badge]: https://img.shields.io/badge/dynamic/json.svg?label=npm&url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fpackages%2Fstickyroll%2Fpackage.json&query=version&&colorB=555555&prefix=@stickyroll/stickyroll@&style=for-the-badge&logo=npm
 [stickyroll]: https://www.npmjs.com/package/@stickyroll/stickyroll
