@@ -1,0 +1,40 @@
+version: "2"
+exclude_patterns:
+  - "guide"
+  - "config"
+  - "app"
+  - "components"
+  - "src/cover"
+  - "src/testing-utils"
+  - "karma.*.js"
+  - "*.lock"
+  - "*.log"
+  - "*.json"
+  - "*.yml"
+  - "**/*.d.ts"
+  - "**/*.config.js"
+  - "**/.*rc"
+  - "**/.*rc.js"
+  - "**/.nyc-output"
+  - "**/.rpt2_cache"
+  - "**/node_modules"
+  - "**/test"
+  - "**/lib"
+  - "**/dist"
+  - "**/public"
+  - "**/coverage"
+  - "**/docs"
+checks:
+  method-lines:
+    config:
+      threshold: 35
+  file-lines:
+    config:
+      threshold: 300
+plugins:
+  editorconfig:
+    enabled: true
+  fixme:
+    enabled: true
+  git-legal:
+    enabled: true

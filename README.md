@@ -10,6 +10,7 @@
 [![GitHub license][license-badge]][license]
 [![Travis build][build-badge]][build]
 [![Codecov][codecov-badge]][codecov]
+[![Codeclimate][codeclimate-badge]][codeclimate]
 
 ##### Powered by
 
@@ -59,15 +60,16 @@ Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released u
 [npm]: https://www.npmjs.com/org/stickyroll
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge
 [license]: https://raw.githubusercontent.com/sinnerschrader/dekk/master/LICENSE
-[build-badge]: https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge&logo=travis
+[build-badge]: https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge&logo=travis&logoColor=white
 [build]: https://travis-ci.org/stickyroll/react-stickyroll
 [browserstack-badge]: https://img.shields.io/badge/browserstack-open_source-132434.svg?style=for-the-badge
 [browserstack]: https://www.browserstack.com/open-source
 [webstorm-badge]: https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm
 [webstorm]: https://www.jetbrains.com/buy/opensource/
-[codecov-badge]: https://img.shields.io/codecov/c/github/stickyroll/react-stickyroll.svg?style=for-the-badge
+[codecov-badge]: https://img.shields.io/codecov/c/github/stickyroll/react-stickyroll.svg?style=for-the-badge&logo=codecov&logoColor=white
 [codecov]: https://codecov.io/gh/stickyroll/react-stickyroll
-
+[codeclimate-badge]: https://img.shields.io/codeclimate/maintainability/stickyroll/react-stickyroll.svg?style=for-the-badge
+[codeclimate]: https://codeclimate.com/github/stickyroll/react-stickyroll/
 <!-- Misc Links -->
 
 [contribute]: https://github.com/stickyroll/react-stickyroll/blob/master/.github/CONTRIBUTING.md
