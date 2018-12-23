@@ -9,11 +9,9 @@ export const assert = (value: any, type: string): void => {
 	if (type === "object") {
 		if (Array.isArray(value)) {
 			throw new TypeError(`Expected "object" but "array" was received`);
-		}
-		if (value === null) {
+		} else if (value === null) {
 			throw new TypeError(`Expected "object" but "null" was received`);
-		}
-		if (valueType !== type) {
+		} else if (valueType !== type) {
 			throw new TypeError(`Expected "${type}" but "${valueType}" was received`);
 		}
 	} else if (type === "array") {
