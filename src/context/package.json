@@ -35,7 +35,7 @@
 		"watch": "rollup -cw"
 	},
 	"dependencies": {
-		"@types/react": "16.7.17",
+		"@types/react": "16.7.18",
 		"react": "16.7.0",
 		"ts-lib": "0.0.5"
 	},
@@ -48,7 +48,7 @@
 		"enzyme": "3.8.0",
 		"imhotep": "1.1.5",
 		"react-dom": "16.7.0",
-		"rollup": "0.68.1",
+		"rollup": "0.68.2",
 		"rollup-plugin-babel": "4.1.0",
 		"rollup-plugin-typescript2": "0.18.1",
 		"typescript": "3.2.2"
