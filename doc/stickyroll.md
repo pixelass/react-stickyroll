@@ -41,16 +41,16 @@ import {Stickyroll} from "@stickyroll/stickyroll";
  * @property {number} [throttle]
  */
 export interface IFrameProps {
-	anchors?: string;
-	children?: TChild;
-	className?: string;
-	factor?: number;
-	onEnd?: TProgressHandler | TAsyncProgressHandler;
-	onPage?: TPageHandler | TAsyncPageHandler;
-	onStart?: TProgressHandler | TAsyncProgressHandler;
-	pages: number | Array<any>;
-	render?: TRenderer;
-	throttle?: number;
+  anchors?: string;
+  children?: TChild;
+  className?: string;
+  factor?: number;
+  onEnd?: TProgressHandler | TAsyncProgressHandler;
+  onPage?: TPageHandler | TAsyncPageHandler;
+  onStart?: TProgressHandler | TAsyncProgressHandler;
+  pages: number | Array<any>;
+  render?: TRenderer;
+  throttle?: number;
 }
 ```
 
@@ -103,6 +103,6 @@ export declare type TAsyncProgressHandler = () => Promise<void>;
  * @property {number} factor
  */
 export interface IFrameDefaultProps {
-	factor: number;
+  factor: number;
 }
 ```

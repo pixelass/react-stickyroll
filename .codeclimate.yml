@@ -1,5 +1,6 @@
 version: "2"
 exclude_patterns:
+  - ".*"
   - "guide"
   - "config"
   - "app"
@@ -27,7 +28,7 @@ exclude_patterns:
 checks:
   method-lines:
     config:
-      threshold: 35
+      threshold: 40
   file-lines:
     config:
       threshold: 300

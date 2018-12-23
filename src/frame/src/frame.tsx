@@ -268,12 +268,12 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 			this.props.onPage(this.state.page);
 		}
 		if (oldState.scrollOffset !== scrollOffset) {
-			const zero = (scrollOffset === 0);
-			const one = (scrollOffset === 1);
-			const start = (zero && (page === 0));
-			const end = (one && (page === this.pageCount - 1));
+			const zero = scrollOffset === 0;
+			const one = scrollOffset === 1;
+			const start = zero && page === 0;
+			const end = one && page === this.pageCount - 1;
 			if (start && this.props.onStart) {
-				 this.props.onStart();
+				this.props.onStart();
 			} else if (end && this.props.onEnd) {
 				this.props.onEnd();
 			}
