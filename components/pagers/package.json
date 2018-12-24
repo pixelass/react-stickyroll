@@ -1,6 +1,6 @@
 {
 	"name": "@stickyroll/pagers",
-	"version": "1.1.3",
+	"version": "1.1.4",
 	"keywords": [
 		"animation",
 		"canvas",
@@ -51,9 +51,9 @@
 		"watch": "rollup -cw"
 	},
 	"dependencies": {
-		"@stickyroll/context": "^1.1.3",
-		"@stickyroll/themes": "^1.1.3",
-		"@stickyroll/utils": "^1.1.3",
+		"@stickyroll/context": "^1.1.4",
+		"@stickyroll/themes": "^1.1.4",
+		"@stickyroll/utils": "^1.1.4",
 		"@types/react": "16.7.18",
 		"@types/styled-components": "4.1.4",
 		"react": "16.7.0",
@@ -62,7 +62,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.2.2",
-		"@stickyroll/testing-utils": "^1.1.3",
+		"@stickyroll/testing-utils": "^1.1.4",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.1",
 		"babel-plugin-styled-components": "1.10.0",

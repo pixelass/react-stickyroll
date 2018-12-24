@@ -1,6 +1,6 @@
 {
 	"name": "@stickyroll/context",
-	"version": "1.1.3",
+	"version": "1.1.4",
 	"homepage": "https://stickyroll.github.io/react-stickyroll",
 	"bugs": {
 		"url": "https://github.com/stickyroll/react-stickyroll/issues"
@@ -41,7 +41,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.2.2",
-		"@stickyroll/testing-utils": "^1.1.3",
+		"@stickyroll/testing-utils": "^1.1.4",
 		"@types/react-dom": "16.0.11",
 		"ava": "1.0.1",
 		"cross-env": "5.2.0",
