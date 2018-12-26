@@ -2229,13 +2229,14 @@
     "@types/tough-cookie" "*"
     parse5 "^4.0.0"
 
-"@types/karma@^1.7.3":
-  version "1.7.7"
-  resolved "https://registry.npmjs.org/@types/karma/-/karma-1.7.7.tgz#447f38edf7c171bef9f2b9b641121d54a34b8810"
-  integrity sha512-99qZWJ+4Cwn+H49i2y8FjIGXJt3secyGJfmG+ixzStvdSE7f13FeMnV9ube8Yq48UgKI1pYeBmYwIgzr4Keckw==
+"@types/karma@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/@types/karma/-/karma-3.0.1.tgz#98ebc5cc626d5d8e0a06bbb9ef1ee0a46859d246"
+  integrity sha512-rhG6SCZEMbfkuvCBFsT9D7//X3wH2HlRwisZOayx/Jcd86Kg8UBv62/0T3C934CGiCE5Uupd+5FyEXkxOhxeYg==
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
+    log4js "^3.0.0"
 
 "@types/loader-utils@^1.1.3":
   version "1.1.3"
@@ -9347,7 +9348,7 @@ jsonparse@^1.2.0:
   resolved "https://registry.npmjs.org/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=
 
-jsonschema@^1.1.1:
+jsonschema@^1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/jsonschema/-/jsonschema-1.2.4.tgz#a46bac5d3506a254465bc548876e267c6d0d6464"
   integrity sha512-lz1nOH69GbsVHeVgEdvyavc/33oymY1AZwtePMiMj4HZPMbP5OIKK3zT9INMWjwua/V4Z4yq7wSlBbSG+g4AEw==
@@ -9394,13 +9395,13 @@ karma-safari-launcher@1.0.0:
   resolved "https://registry.npmjs.org/karma-safari-launcher/-/karma-safari-launcher-1.0.0.tgz#96982a2cc47d066aae71c553babb28319115a2ce"
   integrity sha1-lpgqLMR9BmquccVTursoMZEVos4=
 
-karma-viewport@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.2.tgz#61ffde670b6395fa3dd213526e5f382656d775f1"
-  integrity sha512-rvzY9UTVXHPt9QRwawyh1D50qzqtxRsoPe5svgOY5kvV7eigv8e5dcW3RSmPZ6m/3Hx+QwJEMY+kLhCmamKJ6A==
+karma-viewport@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.3.tgz#dbc04ee841559d64675a9d017e4650aea14a3931"
+  integrity sha512-hU6AFNej2UdTEExacz3kShdTD1cx+wszGyn5GytKGpkzmGrYSmxO6pZUbynbw9KDT7bzyDYkD1/LmKpRoHVWdA==
   dependencies:
-    "@types/karma" "^1.7.3"
-    jsonschema "^1.1.1"
+    "@types/karma" "^3.0.1"
+    jsonschema "^1.2.4"
 
 karma-webpack@4.0.0-rc.5:
   version "4.0.0-rc.5"
