@@ -107,7 +107,7 @@
 		"karma-ie-launcher": "1.0.0",
 		"karma-jasmine": "2.0.1",
 		"karma-safari-launcher": "1.0.0",
-		"karma-viewport": "1.0.2",
+		"karma-viewport": "1.0.3",
 		"karma-webpack": "4.0.0-rc.5",
 		"lerna": "3.8.0",
 		"meow": "5.0.0",
@@ -123,7 +123,7 @@
 		"typedoc": "0.13.0",
 		"typescript": "3.2.2",
 		"webpack": "4.28.2",
-		"webpack-dev-server": "3.1.13"
+		"webpack-dev-server": "3.1.14"
 	},
 	"engines": {
 		"node": ">=8",
