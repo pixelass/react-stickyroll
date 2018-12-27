@@ -8,15 +8,15 @@
 
 
 <!-- [![npm][npm-badge]][npm] -->
-[![GitHub license][license-badge]][license]
-[![How to guide][patternplate-badge]][coc]
+[![MIT license][license-badge]][license]
+[![Getting started][patternplate-badge]][getting-started]
 [![Code of Conduct][coc-badge]][coc]
 [![Say Thanks][say-thanks-badge]][say-thanks]
 
-[![Travis build][build-badge]][build]
-[![Codecov][codecov-badge]][codecov]
-[![Codeclimate][codeclimate-badge]][codeclimate]
-[![Snyk][snyk-badge]][snyk]
+[![Build status][build-badge]][build]
+[![Test Coverage][codecov-badge]][codecov]
+[![Code Quality][codeclimate-badge]][codeclimate]
+[![Vulnerabilities][snyk-badge]][snyk]
 
 **Powered by**
 
