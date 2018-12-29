@@ -2220,22 +2220,23 @@
   resolved "https://registry.npmjs.org/@types/jasmine/-/jasmine-3.3.5.tgz#3738ffbf34dffae9ecaac4503d7d969744f0e1d7"
   integrity sha512-LJtc52O1PNUffMvH6Q3fS0BOhQWYlkh3SVu/Jc4GoPgJkUytk5Y6YPbw+6lZK2mWWvG62BtVyOFw0ih7r8STsw==
 
-"@types/jsdom@12.2.0":
-  version "12.2.0"
-  resolved "https://registry.npmjs.org/@types/jsdom/-/jsdom-12.2.0.tgz#e898ec448a8f9a7418f0456d57b72b6dd51599b4"
-  integrity sha512-8LQPkE7S3IuuJyHOIghXf+AjpcfhleEG63z9pveKFJ+Aqu9h/PXefU4gF6PSvCyOeNzlfFjMWO1Vtctowq2jRg==
+"@types/jsdom@12.2.1":
+  version "12.2.1"
+  resolved "https://registry.npmjs.org/@types/jsdom/-/jsdom-12.2.1.tgz#0525dc8621cfbf235bca298b0f9c96bd0c6b2e5a"
+  integrity sha512-VnLP1qW70OkzpMVuFsJPhxeIzEW1y+t91Fa2rE+b3UZ3ZiTwB28pYrdNj58wa0AQ+dV7eIBcdMFl3ql9C+cc9g==
   dependencies:
     "@types/node" "*"
     "@types/tough-cookie" "*"
     parse5 "^4.0.0"
 
-"@types/karma@^1.7.3":
-  version "1.7.7"
-  resolved "https://registry.npmjs.org/@types/karma/-/karma-1.7.7.tgz#447f38edf7c171bef9f2b9b641121d54a34b8810"
-  integrity sha512-99qZWJ+4Cwn+H49i2y8FjIGXJt3secyGJfmG+ixzStvdSE7f13FeMnV9ube8Yq48UgKI1pYeBmYwIgzr4Keckw==
+"@types/karma@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/@types/karma/-/karma-3.0.1.tgz#98ebc5cc626d5d8e0a06bbb9ef1ee0a46859d246"
+  integrity sha512-rhG6SCZEMbfkuvCBFsT9D7//X3wH2HlRwisZOayx/Jcd86Kg8UBv62/0T3C934CGiCE5Uupd+5FyEXkxOhxeYg==
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
+    log4js "^3.0.0"
 
 "@types/loader-utils@^1.1.3":
   version "1.1.3"
@@ -9347,7 +9348,7 @@ jsonparse@^1.2.0:
   resolved "https://registry.npmjs.org/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=
 
-jsonschema@^1.1.1:
+jsonschema@^1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/jsonschema/-/jsonschema-1.2.4.tgz#a46bac5d3506a254465bc548876e267c6d0d6464"
   integrity sha512-lz1nOH69GbsVHeVgEdvyavc/33oymY1AZwtePMiMj4HZPMbP5OIKK3zT9INMWjwua/V4Z4yq7wSlBbSG+g4AEw==
@@ -9394,13 +9395,13 @@ karma-safari-launcher@1.0.0:
   resolved "https://registry.npmjs.org/karma-safari-launcher/-/karma-safari-launcher-1.0.0.tgz#96982a2cc47d066aae71c553babb28319115a2ce"
   integrity sha1-lpgqLMR9BmquccVTursoMZEVos4=
 
-karma-viewport@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.2.tgz#61ffde670b6395fa3dd213526e5f382656d775f1"
-  integrity sha512-rvzY9UTVXHPt9QRwawyh1D50qzqtxRsoPe5svgOY5kvV7eigv8e5dcW3RSmPZ6m/3Hx+QwJEMY+kLhCmamKJ6A==
+karma-viewport@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.3.tgz#dbc04ee841559d64675a9d017e4650aea14a3931"
+  integrity sha512-hU6AFNej2UdTEExacz3kShdTD1cx+wszGyn5GytKGpkzmGrYSmxO6pZUbynbw9KDT7bzyDYkD1/LmKpRoHVWdA==
   dependencies:
-    "@types/karma" "^1.7.3"
-    jsonschema "^1.1.1"
+    "@types/karma" "^3.0.1"
+    jsonschema "^1.2.4"
 
 karma-webpack@4.0.0-rc.5:
   version "4.0.0-rc.5"
@@ -13692,10 +13693,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-babel@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/rollup-plugin-babel/-/rollup-plugin-babel-4.1.0.tgz#c97f50c82aa8e89ddaa116cdc5c832b8ba74db17"
-  integrity sha512-4IYv/yTNyH4P/Cma1mWdqy42gc051i1mTe/6oe8F055WzJGSb2qs1mSDwZTo93wA6kMBgHBIR/OcBk7JMnL59Q==
+rollup-plugin-babel@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.npmjs.org/rollup-plugin-babel/-/rollup-plugin-babel-4.2.0.tgz#9a2c119b5c923928842783ec2abd306fa733054f"
+  integrity sha512-DBZbItGcru3iZM8aqVOS6+9GgIE+u0eX1HHN2iUIOjeXKMN8MK9/DaCOmQEt/le0sxqQOLIG+rPIhhm8uhJA7Q==
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     rollup-pluginutils "^2.3.0"
@@ -16116,10 +16117,10 @@ webpack-dev-server@3.1.10:
     webpack-log "^2.0.0"
     yargs "12.0.2"
 
-webpack-dev-server@3.1.13:
-  version "3.1.13"
-  resolved "https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-3.1.13.tgz#72ebc8dab4551f8a8e1fdf6357da97571aee6a23"
-  integrity sha512-o+crjlyTDCAnkZe1CGlP2XLGCgnMN6oSotYdB+r5OGbnf52Dl9T/fCOdKObvanl1jEnMuLBVDnjTXEmCMMksww==
+webpack-dev-server@3.1.14:
+  version "3.1.14"
+  resolved "https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-3.1.14.tgz#60fb229b997fc5a0a1fc6237421030180959d469"
+  integrity sha512-mGXDgz5SlTxcF3hUpfC8hrQ11yhAttuUQWf1Wmb+6zo3x6rb7b9mIfuQvAPLdfDRCGRGvakBWHdHOa0I9p/EVQ==
   dependencies:
     ansi-html "0.0.7"
     bonjour "^3.5.0"
