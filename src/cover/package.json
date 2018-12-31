@@ -42,7 +42,7 @@
 		"@stickyroll/stickyroll": "^1.1.4",
 		"@stickyroll/themes": "^1.1.4",
 		"@types/react": "16.7.18",
-		"@types/react-helmet": "5.0.7",
+		"@types/react-helmet": "5.0.8",
 		"@types/styled-components": "4.1.4",
 		"react": "16.7.0",
 		"react-helmet": "5.2.0",
