@@ -115,7 +115,7 @@
 		"os": "0.1.1",
 		"prettier": "1.15.3",
 		"puppeteer": "1.11.0",
-		"rimraf": "2.6.2",
+		"rimraf": "2.6.3",
 		"serve": "10.1.1",
 		"stylelint-config-styled-components": "0.1.1",
 		"stylelint-processor-styled-components": "1.5.1",
