@@ -1945,7 +1945,14 @@
     arson "^0.2.6"
     iframe-resizer "^3.5.16"
 
-"@patternplate/render-default@3.2.4", "@patternplate/render-default@^3.2.4":
+"@patternplate/render-default@3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/render-default/-/render-default-3.2.5.tgz#ca2481982c94f472ec31992fdb2ed289fc036711"
+  integrity sha512-+Cg79VbVlhZBbOOS1ohwhDEHF6X+mB7yKHj0pTwL0uDCpW8Ip8ziLvzaUKoRIpgR/b+6C1lMNfKXRQ2raVV9ZA==
+  dependencies:
+    lodash "^4.17.5"
+
+"@patternplate/render-default@^3.2.4":
   version "3.2.4"
   resolved "https://registry.npmjs.org/@patternplate/render-default/-/render-default-3.2.4.tgz#525f39830f350f6afc023bf6f627dc3710de95e5"
   integrity sha512-v3zWutOcwSx4VmP8B2LRcHuhvPUIWmpfWhENwa4/ZwDihWGbOoygpe8aQ5x7CYLbYOd/xIyz8zNPD84b63A5zg==
