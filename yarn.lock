@@ -1952,7 +1952,24 @@
   dependencies:
     lodash "^4.17.5"
 
-"@patternplate/render-react@3.2.4", "@patternplate/render-react@^3.2.4":
+"@patternplate/render-default@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/render-default/-/render-default-3.2.5.tgz#ca2481982c94f472ec31992fdb2ed289fc036711"
+  integrity sha512-+Cg79VbVlhZBbOOS1ohwhDEHF6X+mB7yKHj0pTwL0uDCpW8Ip8ziLvzaUKoRIpgR/b+6C1lMNfKXRQ2raVV9ZA==
+  dependencies:
+    lodash "^4.17.5"
+
+"@patternplate/render-react@3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/render-react/-/render-react-3.2.5.tgz#88d2fede5d42bf10ad69979314157c1b7a3c5a62"
+  integrity sha512-jRloTysLNvjKBc3Y7jKPDN2BkjwFPp4WnbksLkufSf9Ol4UucHzbaSnlkKQwEgI11MAlC4xwynoe6fIc3AS/sw==
+  dependencies:
+    "@patternplate/render-default" "^3.2.5"
+    lodash "^4.17.5"
+    react "16.6.3"
+    react-dom "16.6.3"
+
+"@patternplate/render-react@^3.2.4":
   version "3.2.4"
   resolved "https://registry.npmjs.org/@patternplate/render-react/-/render-react-3.2.4.tgz#6a2fedba8af87817049cb127296c24d29f475f44"
   integrity sha512-qTZ6BWxxlrPGqJCWnHIAJr56XzWg2cUicVcRnAp1PGVUJzH9+7jb+woiBz8Z452cP7XfD/Qe2QxGnrVwpze55g==

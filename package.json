@@ -79,7 +79,7 @@
 		"@babel/register": "^7.0.0",
 		"@patternplate/cli": "3.2.4",
 		"@patternplate/render-default": "3.2.4",
-		"@patternplate/render-react": "3.2.4",
+		"@patternplate/render-react": "3.2.5",
 		"@patternplate/render-styled-components": "3.2.4",
 		"@patternplate/widgets": "3.2.4",
 		"@stickyroll/testing-utils": "^1.1.4",
