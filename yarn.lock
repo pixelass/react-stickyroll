@@ -1708,66 +1708,93 @@
     webpack "^4.5.0"
     webpack-node-externals "^1.6.0"
 
-"@patternplate/component-code@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@patternplate/component-code/-/component-code-3.1.1.tgz#c01bbebbf48789b669853d43379b78a6b37e3a94"
-  integrity sha512-sLtbf/vlU05m8Y0IgYiYxGnJBDrHaIH+JYMvVP59w5qayPmvLxL2Eu8yZCDFrh7Ft2q+Yr1fll6O+osY4nVmdA==
+"@patternplate/component-button@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-button/-/component-button-3.2.5.tgz#ebb2d7370559515851a3ea556d8425939d96fcf2"
+  integrity sha512-NSuzSDHrT/VHlaZheSyetS9EYoRgFzgdA6r3qnsVLxovbHFwaxxJX0bXw8I87ijOg+/zLEvDRaWvcP15Z+t/0Q==
   dependencies:
-    "@patternplate/component-utility" "^3.1.1"
+    "@patternplate/component-icon" "^3.2.5"
+    "@patternplate/component-link" "^3.2.5"
+    "@patternplate/component-utility" "^3.2.5"
     "@types/react" "16.7.7"
     "@types/styled-components" "^4.1.1"
     react "16.6.3"
     react-dom "16.6.3"
     styled-components "^4.1.1"
 
-"@patternplate/component-headline@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@patternplate/component-headline/-/component-headline-3.1.1.tgz#842701ed5f355b15d5f29882df942f5404651e8e"
-  integrity sha512-5q0NflUjOkIcKTEX1LXlgHjFReu5qtRUQ7kLPMfurUXfWBcaepn2SyIHsBOda28mgtM65LLicotLQzgyFGrlPg==
+"@patternplate/component-code@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-code/-/component-code-3.2.5.tgz#b0dcd7ed9a2fa0e1b4d7dccb1ee285f8cb181c8c"
+  integrity sha512-O2X4ed/3iEJbBLicuCA3+WpZHobYiYytc0kY95s7c46DR9ftXM3B7C0O3nTu2aL4l9sawwjpGTtWmsXElfT5Tg==
   dependencies:
-    "@patternplate/component-text" "^3.1.1"
-    "@patternplate/component-utility" "^3.1.1"
+    "@patternplate/component-utility" "^3.2.5"
     "@types/react" "16.7.7"
     "@types/styled-components" "^4.1.1"
     react "16.6.3"
     react-dom "16.6.3"
     styled-components "^4.1.1"
 
-"@patternplate/component-icon@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@patternplate/component-icon/-/component-icon-3.1.1.tgz#e74ba04d7d9cb952d98e51da6d0e3689233f23da"
-  integrity sha512-cKJ8nUAn+HCv2+8s6e6TnQvaYQMeuhLeP3QidDxCgaV4Qvp+f0Odklj/Ji8qHtXt75mq3u6lLKwaJEdQQvsxsQ==
+"@patternplate/component-flag@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-flag/-/component-flag-3.2.5.tgz#efaee5e4a21963143d4d5e817137e5a885a6c68f"
+  integrity sha512-0xJI/DyoHuDGqugp9mgD6dFkf5DyO/UZlSM9sF/SjgBK+R0wl7kIvLSYBCQqyePryiUaAAKe2MqiPEvQxxQuow==
   dependencies:
-    "@patternplate/component-utility" "^3.1.1"
+    "@patternplate/component-utility" "^3.2.5"
+    "@types/react" "16.7.7"
+    "@types/styled-components" "^4.1.1"
+    react "16.6.3"
+    react-addons-text-content "^0.0.4"
+    react-dom "16.6.3"
+    styled-components "^4.1.1"
+
+"@patternplate/component-headline@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-headline/-/component-headline-3.2.5.tgz#6715fdf736b9a8e50abc18c2104fd10d70d3119e"
+  integrity sha512-CLM04f4vkgM60Kts8189g6gG8rTYRZTyH5wJU8GVAG1Ejw9cpFaAAxkHIFX7FGd90qB7UxTV4sNvuDf0GHYwzA==
+  dependencies:
+    "@patternplate/component-text" "^3.2.5"
+    "@patternplate/component-utility" "^3.2.5"
     "@types/react" "16.7.7"
     "@types/styled-components" "^4.1.1"
     react "16.6.3"
     react-dom "16.6.3"
     styled-components "^4.1.1"
 
-"@patternplate/component-link@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@patternplate/component-link/-/component-link-3.1.1.tgz#5c077cbd4517a14fa491d383429c309cdd815995"
-  integrity sha512-JvDFwxMxIvauSGFmliyiZTw08G5Ct3cL2sr5ugeGlve2aQ4jnWA67Br7OwuPQwvKlvpGPppjsg4DrfGjChZ25w==
+"@patternplate/component-icon@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-icon/-/component-icon-3.2.5.tgz#9cd12919dacd539afd7afbd966ad538a0ad6179d"
+  integrity sha512-FE9KleMFf2EFeIRbnHnZeyNBNfB480Z+y6Je2+p1Z2DK53zlIIAlCI64/xvyUKmDMXerQogRPqZX5deNugAhpw==
   dependencies:
-    "@patternplate/component-utility" "^3.1.1"
+    "@patternplate/component-utility" "^3.2.5"
     "@types/react" "16.7.7"
     "@types/styled-components" "^4.1.1"
     react "16.6.3"
     react-dom "16.6.3"
     styled-components "^4.1.1"
 
-"@patternplate/component-markdown@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.npmjs.org/@patternplate/component-markdown/-/component-markdown-3.2.4.tgz#777f926f0d29132b0253bb086055bf940473919b"
-  integrity sha512-dECvk+pxH5XS9TklchhxxuUgAdH1eOmLsPB+fS+nE6sQi0UOAhjRF1hfxeHTO1wn8oZSHJaOz7sQ91c7cHxCiQ==
+"@patternplate/component-link@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-link/-/component-link-3.2.5.tgz#c9b448e5d625a98643fad884910b1b9c99f0923b"
+  integrity sha512-1LBlAbUJ3EnqNIIL9YKNfCad861RkTHSx1Pa3msD+5RpuhsCBzbbAjH+SPnEiU1T7R9hWKKpiPfGgw70Nf8oBQ==
   dependencies:
-    "@patternplate/component-code" "^3.1.1"
-    "@patternplate/component-headline" "^3.1.1"
-    "@patternplate/component-icon" "^3.1.1"
-    "@patternplate/component-text" "^3.1.1"
-    "@patternplate/component-themes" "^3.1.1"
-    "@patternplate/component-utility" "^3.1.1"
+    "@patternplate/component-utility" "^3.2.5"
+    "@types/react" "16.7.7"
+    "@types/styled-components" "^4.1.1"
+    react "16.6.3"
+    react-dom "16.6.3"
+    styled-components "^4.1.1"
+
+"@patternplate/component-markdown@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-markdown/-/component-markdown-3.2.5.tgz#9eef50bd12d3004fa4734f1213e9ede8acdcc878"
+  integrity sha512-FR5dnj60gtenuU9J+XAa2GCNI8HmPMcXQEVx9p4l6KEsNfQuldxUA/6ef0lRYwKJYeUulCpajxaEE/qR82MzWQ==
+  dependencies:
+    "@patternplate/component-code" "^3.2.5"
+    "@patternplate/component-headline" "^3.2.5"
+    "@patternplate/component-icon" "^3.2.5"
+    "@patternplate/component-text" "^3.2.5"
+    "@patternplate/component-themes" "^3.2.5"
+    "@patternplate/component-utility" "^3.2.5"
     "@types/iframe-resizer" "^3.5.6"
     "@types/react" "16.7.7"
     "@types/styled-components" "^4.1.1"
@@ -1790,23 +1817,39 @@
     tag-hoc "^1.0.0"
     unist-util-select "^2.0.0"
 
-"@patternplate/component-text@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@patternplate/component-text/-/component-text-3.1.1.tgz#17e50e08f58c277f928682a4fc5560e427381236"
-  integrity sha512-O9VELk3DhvMpSgu/E2nfuQ1dvYVKAIsRurdosRrMyxVJCWDALMe9ukagUdnghh9GMcpoTPiyRhMEbq6k7KlARg==
+"@patternplate/component-svg@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-svg/-/component-svg-3.2.5.tgz#d0a58ad24a6aff14b9e01e38f1ccaacaf9fc727b"
+  integrity sha512-ghy/zIQ2iiJ18/ljwargOk7uUBGHo9D7sL7ch4d8lUCnG6hoojBXoUHUyG7cK0dbtocQi7Vax+EOf6QJPpKljw==
   dependencies:
-    "@patternplate/component-utility" "^3.1.1"
+    "@patternplate/component-utility" "^3.2.5"
+    "@types/btoa" "^1.2.0"
+    "@types/react" "16.7.7"
+    "@types/styled-components" "^4.1.1"
+    lodash "^4.17.11"
+    react "16.6.3"
+    react-dom "16.6.3"
+    styled-components "^4.1.1"
+    xmldom "^0.1.27"
+
+"@patternplate/component-text@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-text/-/component-text-3.2.5.tgz#115c0d5b37cb62580ba339d3871833ba6caa1426"
+  integrity sha512-SsMPq7unvVjh/xiheEo5rC4MkO1/RQdodIAjlyGGtu9NTTFdGw6QU3jhjisBJ/WEd/qCcLkK0aoxfLOD7NDf0Q==
+  dependencies:
+    "@patternplate/component-utility" "^3.2.5"
     "@types/react" "16.7.7"
     "@types/styled-components" "^4.1.1"
     react "16.6.3"
     react-dom "16.6.3"
     styled-components "^4.1.1"
 
-"@patternplate/component-themes@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@patternplate/component-themes/-/component-themes-3.1.1.tgz#29eff4504227240d63e0f8c73171299638af529f"
-  integrity sha512-nPyB3RkYltWxEWk0mETUIlDpyWsSonEwv4b18JxG5To8+UyBWbFlvLbVbwKTypO9mSlSYdB26F+v0GkqjuKwog==
+"@patternplate/component-themes@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-themes/-/component-themes-3.2.5.tgz#4784ac2c32094a23d02e9bb31ce21262b877d637"
+  integrity sha512-WrQ3h8QUTB/k0pzHpekhVKpH/sT8MI4SyDD6iFYRv+BJ+9dfhLRuUK3u0mPHO39Ol6uRYTpowO8UKG/wFumqVg==
   dependencies:
+    "@patternplate/components" "^3.2.5"
     "@patternplate/types" "^3.1.1"
     "@types/color" "^3.0.0"
     lodash "^4.17.11"
@@ -1814,12 +1857,12 @@
     react-dom "16.6.3"
     styled-components "^4.1.1"
 
-"@patternplate/component-utility@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/@patternplate/component-utility/-/component-utility-3.1.1.tgz#72df24ec96ecea256f7b1ac29a0130d92dd129a6"
-  integrity sha512-BYEgoOuZf+jFyJ8k/l+m/by8McIARmNmSKCtD3ksA09M1QBHVkv87RIHa4Hqi7ilYjuSMcqlokFUh1z66CEEGA==
+"@patternplate/component-utility@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/component-utility/-/component-utility-3.2.5.tgz#a545efd5c60265e8266769e8a79e494f63abfdba"
+  integrity sha512-av3MexXGgMsDbj4KPTS52K/iKx2KPlWeJ44eMRFt+CR0CVrLnATMKKbbB6X9lkGZHKDpWZ+3a+u+w+fPZlil4Q==
   dependencies:
-    "@patternplate/component-themes" "^3.1.1"
+    "@patternplate/component-themes" "^3.2.5"
     "@types/prop-types" "^15.5.6"
     "@types/react" "16.7.7"
     prop-types "^15.6.2"
@@ -1827,14 +1870,18 @@
     react-dom "16.6.3"
     styled-components "^4.1.1"
 
-"@patternplate/components@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.npmjs.org/@patternplate/components/-/components-3.2.4.tgz#312dee9037e6e29970578e3c5f1d2c07332127ba"
-  integrity sha512-rEtvkwuXI+s7zq7EDcNRLY9El8j8uOjoWtLU3BAc1rBetV/KaOgk99Tm8xf1d3yAdzpPPC2PPNUF6hE76glRTA==
+"@patternplate/components@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/components/-/components-3.2.5.tgz#fcb393e6ff5213ca4ed50627dc04cd5caaaa62fc"
+  integrity sha512-As/khxCabIwpABB31kr5Gq4nnxWJOQR1Zs/A142/qXcz/HuLsOaW7rsSMJTmN7aw+vwzAVQjGHqK9iju3EPriQ==
   dependencies:
-    "@patternplate/component-link" "^3.1.1"
-    "@patternplate/component-markdown" "^3.2.4"
-    "@patternplate/component-text" "^3.1.1"
+    "@patternplate/component-button" "^3.2.5"
+    "@patternplate/component-flag" "^3.2.5"
+    "@patternplate/component-link" "^3.2.5"
+    "@patternplate/component-markdown" "^3.2.5"
+    "@patternplate/component-svg" "^3.2.5"
+    "@patternplate/component-text" "^3.2.5"
+    "@patternplate/component-themes" "^3.2.5"
     btoa "^1.1.2"
     codemirror "^5.36.0"
     color "^2.0.0"
@@ -2017,12 +2064,12 @@
   resolved "https://registry.npmjs.org/@patternplate/websocket-client/-/websocket-client-3.2.4.tgz#edc05c2947919b3c13b7d525e37190dd404b2bf1"
   integrity sha512-fdmXHOTZEXNDtDLQOjpuOKEPqR37AnCAR1CLOv5RJbT2Gdv8iG6/yhIdofy7nzF1N20isp7vDBmmQDgpKn/BnQ==
 
-"@patternplate/widgets@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.npmjs.org/@patternplate/widgets/-/widgets-3.2.4.tgz#ec287f4680c8a09b68a670761cbcee9165f28d5a"
-  integrity sha512-w5VRQmA20oV/PBGOvQz+H2KbVFasXKXsUJwMBp9qf4ALVpDg1NHz17Umfo3JuwesBakC+EqQDo7I1XtId194Bw==
+"@patternplate/widgets@3.2.5":
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/@patternplate/widgets/-/widgets-3.2.5.tgz#0f034b653c318b112e720ce9b75a9333ceccdfa1"
+  integrity sha512-zv4KSNZbfD1oO8j3YSxFgjo0n8KuKiXO6Oy11tpwyNOFT1B5WoNMsownbY8rI+qFtShYK6HPUlMgZF9m9sD0Bw==
   dependencies:
-    "@patternplate/components" "^3.2.4"
+    "@patternplate/components" "^3.2.5"
 
 "@popmotion/easing@1.0.1":
   version "1.0.1"
@@ -2051,6 +2098,11 @@
   version "2.3.0"
   resolved "https://registry.npmjs.org/@types/braces/-/braces-2.3.0.tgz#d00ec0a76562b2acb6f29330be33a093e33ed25c"
   integrity sha512-A3MV5EsLHgShHoJ/XES/fQAnwNISKLrFuH9eNBZY5OkTQB7JPIwbRoExvRpDsNABvkMojnKqKWS8x0m2rLYi+A==
+
+"@types/btoa@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@types/btoa/-/btoa-1.2.0.tgz#b7c477f0b0171b0e0d6ccad0ddd9376a9e734d0d"
+  integrity sha512-mRkSzBQqmikda80QjYWhsM7beHu2zo6jqkbqn6YH3XpOeUiw+7qhRuKtDRKLR4/rPAt7KEV9Iy40NeY5KKUVmA==
 
 "@types/cheerio@*":
   version "0.22.10"
