@@ -9406,10 +9406,10 @@ karma-safari-launcher@1.0.0:
   resolved "https://registry.npmjs.org/karma-safari-launcher/-/karma-safari-launcher-1.0.0.tgz#96982a2cc47d066aae71c553babb28319115a2ce"
   integrity sha1-lpgqLMR9BmquccVTursoMZEVos4=
 
-karma-viewport@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.3.tgz#dbc04ee841559d64675a9d017e4650aea14a3931"
-  integrity sha512-hU6AFNej2UdTEExacz3kShdTD1cx+wszGyn5GytKGpkzmGrYSmxO6pZUbynbw9KDT7bzyDYkD1/LmKpRoHVWdA==
+karma-viewport@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.4.tgz#893d9788b0222601eafe4b08b828fc6de56819a0"
+  integrity sha512-fHmmIHuhlqt0bGsUjgxQrjIxbMmrJPo41TGqR5AClbmc6D+mgDQtvpR5AFoReOWx5sGsnYJOI1BX0PgTq1HIzA==
   dependencies:
     "@types/karma" "^3.0.1"
     jsonschema "^1.2.4"
