@@ -75,7 +75,7 @@
 		"rollup-plugin-babel": "4.2.0",
 		"rollup-plugin-typescript2": "0.18.1",
 		"stylelint-config-styled-components": "0.1.1",
-		"stylelint-processor-styled-components": "1.5.1",
+		"stylelint-processor-styled-components": "1.5.2",
 		"ts-node": "7.0.1",
 		"typescript": "3.2.2"
 	},
