@@ -72,7 +72,7 @@
 		"react-dom": "16.7.0",
 		"rollup": "1.0.1",
 		"rollup-plugin-babel": "4.2.0",
-		"rollup-plugin-typescript2": "0.18.1",
+		"rollup-plugin-typescript2": "0.19.2",
 		"stylelint-config-styled-components": "0.1.1",
 		"stylelint-processor-styled-components": "1.5.1",
 		"ts-node": "7.0.1",
