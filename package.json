@@ -89,7 +89,7 @@
 		"babel-plugin-istanbul": "^5.1.0",
 		"babel-plugin-styled-components": "1.10.0",
 		"codecov": "3.1.0",
-		"commitlint": "7.2.1",
+		"commitlint": "7.5.0",
 		"concurrently": "4.1.0",
 		"copy-webpack-plugin": "4.6.0",
 		"cross-env": "5.2.0",
