@@ -84,7 +84,7 @@
 		"@patternplate/widgets": "3.2.4",
 		"@stickyroll/testing-utils": "^1.1.4",
 		"@types/jasmine": "3.3.5",
-		"ava": "1.0.1",
+		"ava": "1.2.1",
 		"babel-loader": "8.0.4",
 		"babel-plugin-istanbul": "^5.1.0",
 		"babel-plugin-styled-components": "1.10.0",

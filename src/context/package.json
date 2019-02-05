@@ -43,7 +43,7 @@
 		"@babel/core": "7.2.2",
 		"@stickyroll/testing-utils": "^1.1.4",
 		"@types/react-dom": "16.0.11",
-		"ava": "1.0.1",
+		"ava": "1.2.1",
 		"cross-env": "5.2.0",
 		"enzyme": "3.8.0",
 		"imhotep": "1.1.5",
