@@ -65,11 +65,11 @@
 		"@stickyroll/themes": "^1.1.4",
 		"@stickyroll/utils": "^1.1.4",
 		"@types/react": "16.7.18",
-		"@types/react-dom": "16.0.11",
+		"@types/react-dom": "16.8.0",
 		"@types/styled-components": "4.1.4",
 		"lottie-web": "5.4.3",
 		"react": "16.7.0",
-		"react-dom": "16.7.0",
+		"react-dom": "16.8.1",
 		"styled-components": "4.1.3",
 		"tslib": "1.9.3"
 	},

@@ -26,8 +26,8 @@
 		"tslib": "1.9.3"
 	},
 	"devDependencies": {
-		"@types/react-dom": "16.0.11",
-		"react-dom": "16.7.0",
+		"@types/react-dom": "16.8.0",
+		"react-dom": "16.8.1",
 		"rimraf": "2.6.3",
 		"typescript": "3.2.2"
 	},
