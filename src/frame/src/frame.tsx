@@ -264,8 +264,9 @@ export class Frame extends React.Component<IFrameProps, IFrameState> {
 	 */
 	public componentDidUpdate(oldProps, oldState) {
 		const {page, scrollOffset} = this.state;
-		if (oldState.page !== page && this.props.onPage) {
-			this.props.onPage(this.state.page);
+
+		if (oldState.page !== page) {
+			this.props.onPage && this.props.onPage(this.state.page);
 		}
 		if (oldState.scrollOffset !== scrollOffset) {
 			const zero = scrollOffset === 0;

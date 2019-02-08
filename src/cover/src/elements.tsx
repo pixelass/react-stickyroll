@@ -66,6 +66,16 @@ export const Headline: StyledComponent<any, any> = styled.h3`
 	`}
 `;
 
+export const Nav: StyledComponent<any, any> = styled.nav`
+	font-size: 1em;
+`;
+
+export const Link: StyledComponent<any, any> = styled.a`
+	font-size: 1em;
+	color: currentColor;
+	text-decoration: none;
+`;
+
 export const Copy: StyledComponent<any, any> = styled.p`
 	font-size: 1em;
 	opacity: var(--progress);

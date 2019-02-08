@@ -12,7 +12,9 @@ import {
 	HeaderContent,
 	Headline,
 	Tile,
-	Tiles
+	Tiles,
+	Nav,
+	Link
 } from "./elements";
 import {GithubCorner} from "./github-corner";
 import {
@@ -90,6 +92,14 @@ export default () => (
 						<Headline as="h1">
 							<Logo size="1em" /> React Stickyroll
 						</Headline>
+						<Nav>
+							<Link href="https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true">
+								Docs
+							</Link>
+							<Link href="https://github.com/stickyroll/react-stickyroll">
+								Github
+							</Link>
+						</Nav>
 					</HeaderContent>
 					<ThemeProvider theme={siteTheme.github}>
 						<GithubCorner href="https://github.com/stickyroll/react-stickyroll" />
