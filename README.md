@@ -6,8 +6,11 @@
 
 ## [Site][site] | [Getting started][getting-started] | [Live support][live-support] | [Typedoc][typedoc]
 
+> Are you looking for a Vue.js version?  
+> Check out [Vue Stickyroll][vue-stickyroll].
 
 <!-- [![npm][npm-badge]][npm] -->
+
 [![MIT license][license-badge]][license]
 [![Getting started][patternplate-badge]][getting-started]
 [![Code of Conduct][coc-badge]][coc]
@@ -29,18 +32,18 @@ For user docs see [Getting started][getting-started]
 
 ## Core Packages
 
-| version                                                  | description |
-|:---------------------------------------------------------|:------------|
-| [![stickyroll][stickyroll-badge]][stickyroll]            | The core component and listener |
+| version                                                  | description                                 |
+| :------------------------------------------------------- | :------------------------------------------ |
+| [![stickyroll][stickyroll-badge]][stickyroll]            | The core component and listener             |
 | [![stickyroll decorators][decorators-badge]][decorators] | Decorators for plugins and smart components |
-| [![stickyroll utils][utils-badge]][utils]                | Utilities to build plugins |
+| [![stickyroll utils][utils-badge]][utils]                | Utilities to build plugins                  |
 
 ## Styled Components
 
-| version                                      | description |
-|:---------------------------------------------|:------------|
-| [![stickyroll inner][inner-badge]][inner]    | A themed inner frame (made for pagers) |
-| [![stickyroll pagers][pagers-badge]][pagers] | Themed pagers (made for inner) |
+| version                                      | description                                  |
+| :------------------------------------------- | :------------------------------------------- |
+| [![stickyroll inner][inner-badge]][inner]    | A themed inner frame (made for pagers)       |
+| [![stickyroll pagers][pagers-badge]][pagers] | Themed pagers (made for inner)               |
 | [![stickyroll themes][themes-badge]][themes] | A collection of themes to select and combine |
 
 ## Contribute to Stickyroll
@@ -114,3 +117,4 @@ Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released u
 
 [contribute]: https://github.com/stickyroll/react-stickyroll/blob/master/.github/CONTRIBUTING.md
 [pixelass]: mailto:greg@pixelass.com
+[vue-stickyroll]: https://github.com/stickyroll/vue-stickyroll
