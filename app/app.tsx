@@ -2,16 +2,31 @@ import {hot} from "imhotep";
 import styled, {ThemeProvider} from "styled-components";
 import React from "react";
 import {Stickyroll, Listener} from "@stickyroll/stickyroll";
-import {dark, indigo, yellow, deepOrange} from "@stickyroll/themes";
+import {
+	dark,
+	indigo,
+	yellow,
+	deepOrange,
+	teal,
+	pink,
+	blue,
+	green,
+	light,
+	red,
+	deepPurple,
+	cyan,
+	lime,
+	purple,
+	orange,
+	amber
+} from "@stickyroll/themes";
 import {Pagers, Skip} from "@stickyroll/pagers";
 import {Inner, Content} from "@stickyroll/inner";
 import Pagenumber from "./pagenumber";
 import {GlobalStyle} from "./style";
 import Markus from "./markus";
 import {GithubCorner} from "./github-corner";
-import {DeviceSupport} from "./device-support";
-import {Content as ContentEl, Copy, Header, Headline, Title} from "./elements";
-import {Examples} from "./examples";
+import {Copy, Header, Headline, Title} from "./elements";
 
 const Card = styled.section`
 	max-width: 60rem;
@@ -23,7 +38,51 @@ const Card = styled.section`
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 `;
 
-const rolls = [1, 2, 3];
+const themeSwitcher = [
+	dark,
+	light,
+	blue,
+	teal,
+	cyan,
+	green,
+	lime,
+	yellow,
+	amber,
+	orange,
+	deepOrange,
+	red,
+	pink,
+	purple,
+	deepPurple,
+	indigo
+];
+
+const themeNames = [
+	"dark",
+	"light",
+	"blue",
+	"teal",
+	"cyan",
+	"green",
+	"lime",
+	"yellow",
+	"amber",
+	"orange",
+	"deepOrange",
+	"red",
+	"pink",
+	"purple",
+	"deepPurple",
+	"indigo"
+];
+
+const rolls = themeSwitcher.map((x, i) => ({children}) => (
+	<React.Fragment>
+		<Headline as={"h2"}>
+			{children} {themeNames[i]}
+		</Headline>
+	</React.Fragment>
+));
 
 const Debugger = (props: any) =>
 	props.useContext ? (
@@ -49,24 +108,23 @@ class App extends React.Component {
 					<Title>Sickyroll</Title>
 					<GithubCorner />
 				</Header>
-				<DeviceSupport />
 				<Card>
-					<h2>Using Bodymovin (a.k.a. lottie)</h2>
+					<Headline as={"h2"}>Using 3rd party libraries</Headline>
 					<p>
-						The next example uses the animation from{" "}
-						<a href="https://codepen.io/airnan/pen/MPmQQB">airnan@codepen</a> via{" "}
+						This example uses the animation from{" "}
+						<a href="https://codepen.io/airnan/pen/JmOqbN">airnan@codepen</a> via{" "}
 						<a href="https://github.com/airbnb/lottie-web">lottie-web</a>
 					</p>
 					<p>
 						The animation was made by{" "}
-						<a href="https://twitter.com/MotionMarkus">Markus Magnusson</a>. You can
-						support him on <a href="https://www.patreon.com/motionmarkus">patreon</a>
+						<a href="https://twitter.com/MotionMarkus">Markus Magnusson</a>.
 					</p>
 				</Card>
-				<Stickyroll pages={1} factor={8} anchors={"!/bodymovin"}>
+				<Stickyroll pages={4} factor={2} anchors={"!/lottie-web"}>
 					{() => (
 						<ThemeProvider theme={dark}>
-							<Inner>
+							<Inner withPagers={"left"}>
+								<Pagers useContext={true} />
 								<Markus />
 								<Skip useContext={true} />
 							</Inner>
@@ -74,79 +132,50 @@ class App extends React.Component {
 					)}
 				</Stickyroll>
 				<Card>
-					<Headline>Themes</Headline>
+					<Headline as={"h2"}>Themes</Headline>
 					<Copy>The next examples use themes and styled-components</Copy>
 					<Copy>Themes can be combined or inherited to nested components.</Copy>
 				</Card>
-				<Stickyroll pages={rolls} anchors={"!/dark"}>
-					{context => (
-						<ThemeProvider theme={dark}>
-							<Inner withPagers={"left"}>
-								<Pagers useContext={true} />
-								<Content>
-									<Pagenumber />
-									<br />
-									{context.progress}
-								</Content>
-								<Skip useContext={true} />
-							</Inner>
-						</ThemeProvider>
-					)}
+				<Stickyroll pages={Math.ceil(rolls.length / 3)} anchors={"!/themes"}>
+					{context => {
+						const {anchors, page, pageIndex, pages, progress} = context;
+						const themeA = themeSwitcher[pageIndex];
+						const pageIndexB = (pageIndex + Math.floor(pages / 3)) % pages;
+						const pageIndexC = (pageIndex + Math.floor((pages / 3) * 2)) % pages;
+						const themeB = themeSwitcher[pageIndexB];
+						const themeC = themeSwitcher[pageIndexC];
+						return (
+							<ThemeProvider theme={themeA}>
+								<Inner withPagers={"left"}>
+									<ThemeProvider theme={themeC}>
+										<Pagers useContext={true} />
+									</ThemeProvider>
+									<ThemeProvider theme={themeB}>
+										<Content>
+											<Pagenumber />
+											<Debugger {...context} />
+											<Headline as="h4">
+												Deep link: #{anchors}/{page + Math.floor(progress)}
+											</Headline>
+											{React.createElement(rolls[pageIndex], null, "Inner:")}
+											{React.createElement(
+												rolls[pageIndexC],
+												null,
+												"Pagers:"
+											)}
+											{React.createElement(
+												rolls[pageIndexB],
+												null,
+												"Content:"
+											)}
+										</Content>
+									</ThemeProvider>
+									<Skip useContext={true} />
+								</Inner>
+							</ThemeProvider>
+						);
+					}}
 				</Stickyroll>
-				<Stickyroll pages={rolls} anchors={"!/indigo"}>
-					{context => (
-						<ThemeProvider theme={indigo}>
-							<Inner withPagers={"right"}>
-								<Pagers useContext={true} position={"right"} />
-								<Content>
-									<Pagenumber />
-									<br />
-									{context.progress}
-								</Content>
-								<Skip useContext={true} />
-							</Inner>
-						</ThemeProvider>
-					)}
-				</Stickyroll>
-				<Stickyroll pages={rolls} anchors={"!/mixed"}>
-					{context => (
-						<ThemeProvider theme={yellow}>
-							<Inner withPagers={"left"}>
-								<ThemeProvider theme={deepOrange}>
-									<Pagers useContext={true} />
-								</ThemeProvider>
-								<ThemeProvider theme={dark}>
-									<Content>
-										<Pagenumber />
-										<br />
-										{context.progress}
-									</Content>
-								</ThemeProvider>
-								<Skip useContext={true} />
-							</Inner>
-						</ThemeProvider>
-					)}
-				</Stickyroll>
-				{/* Optional examples
-				<Card>
-					<Headline>Config</Headline>
-					<Copy>
-						Stickyroll allows various options to configure the behavior.
-					</Copy>
-					<Copy>
-						Stickyroll always has a height of 100vh but the width can vary.
-						This allows multiple instances to be displayed next to each other.
-					</Copy>
-					<Copy>
-						Scroll through the different examples to see how different settings change the
-						behavior of the Stickyroll instance.
-					</Copy>
-					<Copy>
-						Some examples have pagers or links to allow skipping or jumping to specific pages.
-					</Copy>
-				</Card>
-				<Examples />
-				*/}
 			</React.Fragment>
 		);
 	}

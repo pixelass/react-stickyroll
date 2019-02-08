@@ -1,34 +1,73 @@
-import {progress} from "@stickyroll/decorators";
+import {page, progress} from "@stickyroll/decorators";
 import lottie from "lottie-web";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import React from "react";
+import {Content} from "@stickyroll/inner";
 
 const path =
 	process.env.NODE_ENV === "production"
 		? "./data/markus.json"
-		: "https://labs.nearpod.com/bodymovin/demo/markus/halloween/markus.json";
+		: "https://labs.nearpod.com/bodymovin/demo/markus/isometric/markus2.json";
 
-const Container = styled.section`
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: black;
+const Headline = styled.h3`
+	margin: 0;
+	text-align: center;
 `;
 
-class Markus extends React.Component<{progress?: number}, {}> {
+const loading = keyframes`
+	to {
+		transform: rotate(1turn);
+	}
+`;
+
+const Loading = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 20rem;
+	width: 20rem;
+	margin: -10rem;
+	display: flex;
+	flex-direction: column;
+`;
+
+const Spinner = styled.div`
+	height: 10rem;
+	width: 10rem;
+	margin: auto;
+	border-radius: 50% 0;
+	animation: ${loading} 1s ease-in-out infinite;
+	border: 2px solid ${props => props.theme.borderColor};
+`;
+
+export interface MarkusProps {
+	progress?: number;
+	page?: number;
+	pages: number;
+}
+export interface MarkusState {
+	isLoaded?: boolean;
+}
+
+class Markus extends React.Component<MarkusProps, MarkusState> {
+	state = {
+		isLoaded: false
+	};
 	ref: React.RefObject<HTMLDivElement> = React.createRef();
 	scene: any;
-	shouldComponentUpdate() {
-		return true;
-	}
 	componentDidUpdate(oldProps) {
-		if (oldProps.progress !== this.props.progress) {
-			const {totalFrames, isLoaded} = this.scene;
-			if (isLoaded) {
-				this.scene.goToAndStop(Math.round(this.props.progress * totalFrames), true);
-			}
+		if (oldProps.progress !== this.props.progress || oldProps.page !== this.props.page) {
+			this.update();
+		}
+	}
+	update() {
+		const progress = (this.props.page + this.props.progress) / (this.props.pages + 1);
+		const {totalFrames, isLoaded} = this.scene;
+		if (isLoaded) {
+			this.scene.goToAndStop(
+				Math.min(totalFrames - 1, Math.floor(progress * totalFrames)),
+				true
+			);
 		}
 	}
 	componentDidMount() {
@@ -39,10 +78,26 @@ class Markus extends React.Component<{progress?: number}, {}> {
 			path,
 			wrapper: this.ref.current
 		});
+		this.scene.addEventListener("DOMLoaded", this.handleLoad);
 	}
+	handleLoad = () => {
+		this.setState({isLoaded: true}, () => {
+			this.update();
+		});
+	};
 	public render() {
-		return <Container ref={this.ref} />;
+		return (
+			<React.Fragment>
+				<Content ref={this.ref} />
+				{!this.state.isLoaded && (
+					<Loading>
+						<Spinner />
+						<Headline>Loading</Headline>
+					</Loading>
+				)}
+			</React.Fragment>
+		);
 	}
 }
 
-export default progress(Markus);
+export default page(progress(Markus));
