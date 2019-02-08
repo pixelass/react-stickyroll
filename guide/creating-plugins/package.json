@@ -21,15 +21,15 @@
 	"dependencies": {
 		"@stickyroll/decorators": "^1.1.4",
 		"@stickyroll/stickyroll": "^1.1.4",
-		"@types/react": "16.7.18",
-		"react": "16.7.0",
+		"@types/react": "16.8.2",
+		"react": "16.8.1",
 		"tslib": "1.9.3"
 	},
 	"devDependencies": {
-		"@types/react-dom": "16.0.11",
-		"react-dom": "16.7.0",
+		"@types/react-dom": "16.8.0",
+		"react-dom": "16.8.1",
 		"rimraf": "2.6.3",
-		"typescript": "3.2.2"
+		"typescript": "3.3.3"
 	},
 	"engines": {
 		"node": ">=8",

@@ -52,9 +52,9 @@ While Stickyroll already uses `requestAnimationFrame` internally on top of a
 passive `eventListener`, performance should not be an issue. Obviously the internal logic of your
 application has the most impact.
 
-Let's pretend to have a case where we can to throttle the scroll to `250ms`.  
-If all we do on scroll is trigger a className at a certain progress, then `throttle`
-might do exactly what we want.
+Let's assume a case where we can throttle the scroll to `250ms`.  
+We want to trigger a className at a certain progress, so `throttle`
+will help prevent unneeded computations.
 
 We have add an attribute to `Stickyroll`.
 
@@ -62,16 +62,16 @@ We have add an attribute to `Stickyroll`.
 <Stickyroll page={headlines} factor={2} throttle={250}/>
 ```
 
-and change the className of our content container based on the progress.  
-Lets add `custom-trigger--${Math.round(progress * 3)}` to add 3 classNames
+Now we can the className of our content container based on the progress.  
+Lets add `custom-trigger custom-trigger--${Math.round(progress * 3)}` to add 3 classNames
 while scrolling
 
-* "custom-trigger--0"  (Start of page)
-* "custom-trigger--..."
-* "custom-trigger--3" (End of page)
+* "custom-trigger custom-trigger--0"  (Start of page)
+* "custom-trigger custom-trigger--..."
+* "custom-trigger custom-trigger--3" (End of page)
 
 ```html
-<div className={`custom-trigger--${Math.round(progress * 3)}`}/>
+<div className={`custom-trigger custom-trigger--${Math.round(progress * 3)}`}/>
 ```
 
 You can add styles to your stylesheet if you want to see some action.
