@@ -40,12 +40,6 @@ const create: Create<HTMLElement> = (tagName, attributes = null, children?) => {
 	return el;
 };
 
-const getContext = (rootEl: HTMLElement): IContext => {
-	const el = rootEl.querySelector("[data-stickyroll-context");
-	const {textContent} = el;
-	return JSON.parse(textContent) as IContext;
-};
-
 const setup = (
 	props: IFrameProps,
 	log: (context: IContext) => void,
