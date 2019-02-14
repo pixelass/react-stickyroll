@@ -41,10 +41,10 @@
 		"@stickyroll/pagers": "^1.1.4",
 		"@stickyroll/stickyroll": "^1.1.4",
 		"@stickyroll/themes": "^1.1.4",
-		"@types/react": "16.8.2",
+		"@types/react": "16.8.3",
 		"@types/react-helmet": "5.0.8",
 		"@types/styled-components": "4.1.8",
-		"react": "16.8.1",
+		"react": "16.8.2",
 		"react-helmet": "5.2.0",
 		"styled-components": "4.1.3",
 		"ts-lib": "0.0.5"
