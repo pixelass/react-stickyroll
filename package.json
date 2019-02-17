@@ -94,7 +94,7 @@
 		"copy-webpack-plugin": "4.6.0",
 		"cross-env": "5.2.0",
 		"dotenv": "6.2.0",
-		"enzyme": "3.8.0",
+		"enzyme": "3.9.0",
 		"enzyme-adapter-react-16": "1.9.1",
 		"execa": "1.0.0",
 		"globby": "9.0.0",

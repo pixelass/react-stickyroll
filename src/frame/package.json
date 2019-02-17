@@ -50,7 +50,7 @@
 		"@types/react-dom": "16.8.0",
 		"ava": "1.2.1",
 		"cross-env": "5.2.0",
-		"enzyme": "3.8.0",
+		"enzyme": "3.9.0",
 		"imhotep": "1.1.5",
 		"react-dom": "16.8.1",
 		"rollup": "1.1.2",
