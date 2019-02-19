@@ -58,7 +58,7 @@
 	},
 	"dependencies": {
 		"@popmotion/easing": "1.0.1",
-		"@stickyroll/decorators": "1.1.4",
+		"@stickyroll/decorators": "1.1.5",
 		"@stickyroll/inner": "1.1.4",
 		"@stickyroll/pagers": "1.1.4",
 		"@stickyroll/stickyroll": "1.1.4",
