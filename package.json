@@ -82,7 +82,7 @@
 		"@patternplate/render-react": "3.2.5",
 		"@patternplate/render-styled-components": "3.2.5",
 		"@patternplate/widgets": "3.2.5",
-		"@stickyroll/testing-utils": "1.1.4",
+		"@stickyroll/testing-utils": "1.1.5",
 		"@types/jasmine": "3.3.9",
 		"ava": "1.2.1",
 		"babel-loader": "8.0.5",
