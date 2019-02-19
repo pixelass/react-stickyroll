@@ -1,6 +1,6 @@
 {
 	"name": "@stickyroll/stickyroll",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"keywords": [
 		"animation",
 		"canvas",
@@ -52,16 +52,16 @@
 		"watch": "rollup -cw"
 	},
 	"dependencies": {
-		"@stickyroll/context": "^1.1.4",
-		"@stickyroll/frame": "^1.1.4",
-		"@stickyroll/tracker": "^1.1.4",
+		"@stickyroll/context": "^1.1.5",
+		"@stickyroll/frame": "^1.1.5",
+		"@stickyroll/tracker": "^1.1.5",
 		"@types/react": "16.8.3",
 		"react": "16.8.2",
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
 		"@babel/core": "7.3.3",
-		"@stickyroll/testing-utils": "^1.1.4",
+		"@stickyroll/testing-utils": "^1.1.5",
 		"@types/react-dom": "16.8.2",
 		"ava": "1.2.1",
 		"cross-env": "5.2.0",

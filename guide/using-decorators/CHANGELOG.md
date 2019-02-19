@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/stickyroll/react-stickyroll/compare/v1.1.4...v1.1.5) (2019-02-19)
+
+**Note:** Version bump only for package using-decorators
+
+
+
+
+
 ## [1.1.4](https://github.com/stickyroll/react-stickyroll/compare/v1.1.3...v1.1.4) (2018-12-24)
 
 **Note:** Version bump only for package using-decorators

@@ -1,6 +1,6 @@
 {
 	"name": "@stickyroll/themes",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"keywords": [
 		"animation",
 		"canvas",
@@ -57,7 +57,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.3.3",
-		"@stickyroll/testing-utils": "^1.1.4",
+		"@stickyroll/testing-utils": "^1.1.5",
 		"@types/react-dom": "16.8.2",
 		"ava": "1.2.1",
 		"cross-env": "5.2.0",
