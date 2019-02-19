@@ -60,7 +60,7 @@
 		"@popmotion/easing": "1.0.1",
 		"@stickyroll/decorators": "1.1.4",
 		"@stickyroll/inner": "1.1.4",
-		"@stickyroll/pagers": "1.1.4",
+		"@stickyroll/pagers": "1.1.5",
 		"@stickyroll/stickyroll": "1.1.4",
 		"@stickyroll/themes": "1.1.4",
 		"@stickyroll/utils": "1.1.4",
