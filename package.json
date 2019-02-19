@@ -62,7 +62,7 @@
 		"@stickyroll/inner": "1.1.4",
 		"@stickyroll/pagers": "1.1.4",
 		"@stickyroll/stickyroll": "1.1.4",
-		"@stickyroll/themes": "1.1.4",
+		"@stickyroll/themes": "1.1.5",
 		"@stickyroll/utils": "1.1.4",
 		"@types/react": "16.8.3",
 		"@types/react-dom": "16.8.2",
