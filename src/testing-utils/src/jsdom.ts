@@ -6,7 +6,7 @@ declare global {
 			document: Document;
 			window: Window;
 			navigator: Navigator | {userAgent: string};
-			requestAnimationFrame: (callback: any) => Timeout;
+			requestAnimationFrame: (callback: any) => number;
 			cancelAnimationFrame: (id: any) => void;
 			CSS: {supports: (property: string, value: string) => boolean};
 		}

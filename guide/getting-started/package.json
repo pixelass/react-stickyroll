@@ -13,19 +13,21 @@
 	"main": "demo.js",
 	"scripts": {
 		"prebuild": "rimraf lib",
-		"build": "tsc",
-		"demo": "rimraf lib && tsc --module commonjs",
-		"demo:watch": "rimraf lib && tsc --watch"
+		"build": "imhotep babel",
+		"demo": "rimraf lib && imhotep babel",
+		"demo:watch": "rimraf lib && imhotep babel --watch"
 	},
 	"dependencies": {
 		"@stickyroll/stickyroll": "^1.1.4",
-		"@types/react": "16.8.2",
-		"react": "16.8.1",
+		"@types/react": "16.8.3",
+		"react": "16.8.2",
 		"tslib": "1.9.3"
 	},
 	"devDependencies": {
-		"@types/react-dom": "16.8.0",
-		"react-dom": "16.8.1",
+		"@babel/core": "7.3.3",
+		"@types/react-dom": "16.8.2",
+		"imhotep": "1.1.5",
+		"react-dom": "16.8.2",
 		"rimraf": "2.6.3",
 		"typescript": "3.3.3"
 	},
