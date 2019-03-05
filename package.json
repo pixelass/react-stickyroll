@@ -57,7 +57,7 @@
 		"toc": "npx markdown-toc README.md -i"
 	},
 	"dependencies": {
-		"@popmotion/easing": "1.0.1",
+		"@popmotion/easing": "1.0.2",
 		"@stickyroll/decorators": "1.1.4",
 		"@stickyroll/inner": "1.1.4",
 		"@stickyroll/pagers": "1.1.4",

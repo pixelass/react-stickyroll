@@ -36,7 +36,7 @@
 		"watch": "tsc --watch"
 	},
 	"dependencies": {
-		"@popmotion/easing": "1.0.1",
+		"@popmotion/easing": "1.0.2",
 		"@stickyroll/inner": "^1.1.5",
 		"@stickyroll/pagers": "^1.1.5",
 		"@stickyroll/stickyroll": "^1.1.5",
