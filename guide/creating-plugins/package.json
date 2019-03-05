@@ -27,7 +27,7 @@
 		"@babel/core": "7.3.3",
 		"@types/react-dom": "16.8.2",
 		"imhotep": "1.1.5",
-		"react-dom": "16.8.2",
+		"react-dom": "16.8.4",
 		"rimraf": "2.6.3",
 		"typescript": "3.3.3"
 	},
