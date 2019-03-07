@@ -119,7 +119,7 @@
 		"serve": "10.1.2",
 		"stylelint-config-styled-components": "0.1.1",
 		"stylelint-processor-styled-components": "1.5.2",
-		"ts-node": "8.0.2",
+		"ts-node": "8.0.3",
 		"typedoc": "0.14.2",
 		"typescript": "3.3.3",
 		"webpack": "4.29.5",
