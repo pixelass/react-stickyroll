@@ -108,7 +108,7 @@
 		"karma-jasmine": "2.0.1",
 		"karma-safari-launcher": "1.0.0",
 		"karma-viewport": "1.0.4",
-		"karma-webpack": "4.0.0-rc.5",
+		"karma-webpack": "4.0.0-rc.6",
 		"lerna": "3.13.1",
 		"meow": "5.0.0",
 		"nyc": "13.3.0",
