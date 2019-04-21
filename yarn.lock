@@ -10316,10 +10316,10 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-lottie-web@5.4.4:
-  version "5.4.4"
-  resolved "https://registry.npmjs.org/lottie-web/-/lottie-web-5.4.4.tgz#722ab69d5fcd4a28fa78c36999544b77701bc791"
-  integrity sha512-jq43DwoDSdLfjWitgIY5erp4iUE3oJ13H3BQ/q/o8wl0hD9IPD/sfetUtauJM+Lfj/VK/3VeoJOA/nGxsstkkA==
+lottie-web@5.5.2:
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/lottie-web/-/lottie-web-5.5.2.tgz#55d4d02ab2b55e49f581f6ebf4d734df92bc41e8"
+  integrity sha512-xdDcpggjdRrGiToyw2Y1lrQ6l0nuyGS5KwzhdJeHjbbl/JF1/A4ztQD7Fey9TJYdNGuArmbAV2DjuZ05LTLSXA==
 
 loud-rejection@^1.0.0, loud-rejection@^1.2.0:
   version "1.6.0"

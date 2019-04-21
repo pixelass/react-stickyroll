@@ -67,7 +67,7 @@
 		"@types/react": "16.8.7",
 		"@types/react-dom": "16.8.2",
 		"@types/styled-components": "4.1.12",
-		"lottie-web": "5.4.4",
+		"lottie-web": "5.5.2",
 		"react": "16.8.4",
 		"react-dom": "16.8.4",
 		"styled-components": "4.1.3",
