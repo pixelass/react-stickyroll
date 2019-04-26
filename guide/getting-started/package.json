@@ -24,7 +24,7 @@
 		"tslib": "1.9.3"
 	},
 	"devDependencies": {
-		"@babel/core": "7.3.4",
+		"@babel/core": "7.4.4",
 		"@types/react-dom": "16.8.2",
 		"imhotep": "1.1.5",
 		"react-dom": "16.8.4",

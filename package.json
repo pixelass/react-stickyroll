@@ -75,7 +75,7 @@
 	},
 	"devDependencies": {
 		"@asspixel/karma-browserstack-launcher": "1.5.1",
-		"@babel/core": "7.3.4",
+		"@babel/core": "7.4.4",
 		"@babel/register": "7.0.0",
 		"@patternplate/cli": "3.2.6",
 		"@patternplate/render-default": "3.2.5",
