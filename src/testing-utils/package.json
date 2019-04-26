@@ -51,7 +51,7 @@
 		"karma-safari-launcher": "1.0.0",
 		"karma-viewport": "1.0.4",
 		"karma-webpack": "4.0.0-rc.5",
-		"puppeteer": "1.13.0",
+		"puppeteer": "1.15.0",
 		"react": "16.8.4",
 		"ts-lib": "0.0.5",
 		"webpack": "4.29.6"
