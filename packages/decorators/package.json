@@ -53,8 +53,8 @@
 	},
 	"dependencies": {
 		"@stickyroll/context": "^1.1.5",
-		"@types/react": "16.8.7",
-		"react": "16.8.4",
+		"@types/react": "16.8.17",
+		"react": "16.8.6",
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
