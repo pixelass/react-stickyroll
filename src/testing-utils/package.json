@@ -54,7 +54,7 @@
 		"puppeteer": "1.13.0",
 		"react": "16.8.4",
 		"ts-lib": "0.0.5",
-		"webpack": "4.29.6"
+		"webpack": "4.31.0"
 	},
 	"devDependencies": {
 		"@babel/core": "7.3.4",
