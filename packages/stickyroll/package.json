@@ -60,7 +60,7 @@
 		"ts-lib": "0.0.5"
 	},
 	"devDependencies": {
-		"@babel/core": "7.4.4",
+		"@babel/core": "7.4.5",
 		"@stickyroll/testing-utils": "^1.1.5",
 		"@types/react-dom": "16.8.4",
 		"ava": "1.4.1",
