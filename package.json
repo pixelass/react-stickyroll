@@ -83,7 +83,7 @@
 		"@patternplate/render-styled-components": "3.2.5",
 		"@patternplate/widgets": "3.2.5",
 		"@stickyroll/testing-utils": "1.1.5",
-		"@types/jasmine": "3.3.12",
+		"@types/jasmine": "3.3.13",
 		"ava": "1.4.1",
 		"babel-loader": "8.0.6",
 		"babel-plugin-istanbul": "5.1.4",
