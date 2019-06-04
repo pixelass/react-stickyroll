@@ -67,7 +67,7 @@
 		"ava": "1.4.1",
 		"babel-plugin-styled-components": "1.10.0",
 		"cross-env": "5.2.0",
-		"enzyme": "3.9.0",
+		"enzyme": "3.10.0",
 		"imhotep": "1.1.5",
 		"react-dom": "16.8.6",
 		"rimraf": "2.6.3",

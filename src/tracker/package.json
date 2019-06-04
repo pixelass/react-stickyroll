@@ -46,7 +46,7 @@
 		"@types/react-dom": "16.8.4",
 		"ava": "1.4.1",
 		"cross-env": "5.2.0",
-		"enzyme": "3.9.0",
+		"enzyme": "3.10.0",
 		"imhotep": "1.1.5",
 		"react-dom": "16.8.6",
 		"rollup": "1.12.0",
