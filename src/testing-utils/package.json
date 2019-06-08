@@ -50,7 +50,7 @@
 		"karma-jasmine": "2.0.1",
 		"karma-safari-launcher": "1.0.0",
 		"karma-viewport": "1.0.4",
-		"karma-webpack": "4.0.0-rc.6",
+		"karma-webpack": "4.0.2",
 		"puppeteer": "1.16.0",
 		"react": "16.8.6",
 		"ts-lib": "0.0.5",
