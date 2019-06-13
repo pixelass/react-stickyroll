@@ -54,7 +54,7 @@
 	},
 	"dependencies": {
 		"@stickyroll/themes": "^1.1.5",
-		"@types/react": "16.8.17",
+		"@types/react": "16.8.20",
 		"@types/styled-components": "4.1.15",
 		"react": "16.8.6",
 		"styled-components": "4.2.0",
