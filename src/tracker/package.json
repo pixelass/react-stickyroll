@@ -47,7 +47,7 @@
 		"ava": "2.1.0",
 		"cross-env": "5.2.0",
 		"enzyme": "3.10.0",
-		"imhotep": "1.1.5",
+		"imhotep": "1.1.7",
 		"react-dom": "16.8.6",
 		"rollup": "1.15.6",
 		"rollup-plugin-babel": "4.3.2",
