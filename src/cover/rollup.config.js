@@ -20,6 +20,16 @@ export default [
 				format: "es"
 			}
 		],
-		plugins: [babel(), typescript()]
+		plugins: [
+			babel(),
+			typescript({
+				tsconfig: "tsconfig.json",
+				tsconfigOverride: {
+					compilerOptions: {
+						module: "es6"
+					}
+				}
+			})
+		]
 	}
 ];
