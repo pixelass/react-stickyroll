@@ -70,7 +70,7 @@
 		"lottie-web": "5.5.5",
 		"react": "16.8.6",
 		"react-dom": "16.8.6",
-		"styled-components": "4.3.1",
+		"styled-components": "4.3.2",
 		"tslib": "1.10.0"
 	},
 	"devDependencies": {
