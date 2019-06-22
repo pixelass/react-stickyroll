@@ -49,7 +49,7 @@
 		"imhotep": "1.1.5",
 		"react-dom": "16.8.6",
 		"rollup": "1.15.6",
-		"rollup-plugin-babel": "4.3.2",
+		"rollup-plugin-babel": "4.3.3",
 		"rollup-plugin-typescript2": "0.21.1",
 		"typescript": "3.5.2"
 	},
