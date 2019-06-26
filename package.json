@@ -98,7 +98,7 @@
 		"enzyme-adapter-react-16": "1.14.0",
 		"execa": "1.0.0",
 		"globby": "9.2.0",
-		"husky": "2.4.1",
+		"husky": "2.6.0",
 		"imhotep": "1.1.5",
 		"jasmine-core": "3.4.0",
 		"karma": "4.1.0",
