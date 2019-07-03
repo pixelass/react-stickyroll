@@ -41,7 +41,7 @@
 		"@stickyroll/pagers": "^1.1.5",
 		"@stickyroll/stickyroll": "^1.1.5",
 		"@stickyroll/themes": "^1.1.5",
-		"@types/react": "16.8.20",
+		"@types/react": "16.8.23",
 		"@types/react-helmet": "5.0.8",
 		"@types/styled-components": "4.1.16",
 		"react": "16.8.6",
