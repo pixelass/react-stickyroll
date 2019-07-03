@@ -1,82 +1,86 @@
 {
-	"name": "cover",
-	"version": "1.1.5",
-	"private": true,
-	"homepage": "https://stickyroll.github.io/react-stickyroll",
-	"bugs": {
-		"url": "https://github.com/stickyroll/react-stickyroll/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/stickyroll/react-stickyroll.git"
-	},
-	"license": "MIT",
-	"author": "Gregor Adams <greg@pixelass.com>",
-	"files": [
-		"dist",
-		"index.js",
-		"index.d.ts"
-	],
-	"main": "index.js",
-	"module": "dist/esm/index.js",
-	"typings": "index.d.ts",
-	"directories": {
-		"lib": "dist",
-		"doc": "doc",
-		"test": "test"
-	},
-	"scripts": {
-		"prebuild": "yarn clean",
-		"build": "imhotep babel",
-		"clean": "imhotep clean",
-		"format": "imhotep format",
-		"lint": "imhotep lint",
-		"pretest": "yarn build",
-		"upgrade-all": "yarn-upgrade-all",
-		"watch": "tsc --watch"
-	},
-	"dependencies": {
-		"@popmotion/easing": "1.0.2",
-		"@stickyroll/inner": "^1.1.5",
-		"@stickyroll/pagers": "^1.1.5",
-		"@stickyroll/stickyroll": "^1.1.5",
-		"@stickyroll/themes": "^1.1.5",
-		"@types/react": "16.8.20",
-		"@types/react-helmet": "5.0.8",
-		"@types/styled-components": "4.1.16",
-		"react": "16.8.6",
-		"react-helmet": "5.2.1",
-		"styled-components": "4.3.1",
-		"ts-lib": "0.0.5"
-	},
-	"devDependencies": {
-		"@babel/core": "7.4.5",
-		"@stickyroll/testing-utils": "^1.1.5",
-		"@types/react-dom": "16.8.4",
-		"ava": "2.1.0",
-		"cross-env": "5.2.0",
-		"enzyme": "3.10.0",
-		"imhotep": "1.1.5",
-		"react-dom": "16.8.6",
-		"rollup": "1.15.6",
-		"rollup-plugin-babel": "4.3.2",
-		"rollup-plugin-typescript2": "0.21.1",
-		"ts-node": "8.3.0",
-		"typescript": "3.5.2"
-	},
-	"engines": {
-		"node": ">=8",
-		"npm": ">=6"
-	},
-	"publishConfig": {
-		"access": "private"
-	},
-	"browserslist": [
-		"last 2 Chrome versions",
-		"last 2 Firefox versions",
-		"last 2 Safari versions",
-		"last 2 ios versions",
-		"last 2 opera versions",
-		"last 2 Edge versions"
-	]
+  "name": "cover",
+  "version": "1.1.5",
+  "private": true,
+  "homepage": "https://stickyroll.github.io/react-stickyroll",
+  "bugs": {
+    "url": "https://github.com/stickyroll/react-stickyroll/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stickyroll/react-stickyroll.git"
+  },
+  "license": "MIT",
+  "author": "Gregor Adams <greg@pixelass.com>",
+  "files": [
+    "dist",
+    "index.js",
+    "index.d.ts"
+  ],
+  "main": "index.js",
+  "module": "dist/esm/index.js",
+  "typings": "index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "prebuild": "yarn clean",
+    "build": "imhotep babel",
+    "clean": "imhotep clean",
+    "format": "imhotep format",
+    "lint": "imhotep lint",
+    "pretest": "yarn build",
+    "upgrade-all": "yarn-upgrade-all",
+    "watch": "tsc --watch",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "dependencies": {
+    "@popmotion/easing": "1.0.2",
+    "@stickyroll/inner": "^1.1.5",
+    "@stickyroll/pagers": "^1.1.5",
+    "@stickyroll/stickyroll": "^1.1.5",
+    "@stickyroll/themes": "^1.1.5",
+    "@types/react": "16.8.20",
+    "@types/react-helmet": "5.0.8",
+    "@types/styled-components": "4.1.16",
+    "react": "16.8.6",
+    "react-helmet": "5.2.1",
+    "styled-components": "4.3.1",
+    "ts-lib": "0.0.5",
+    "snyk": "^1.189.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@stickyroll/testing-utils": "^1.1.5",
+    "@types/react-dom": "16.8.4",
+    "ava": "2.1.0",
+    "cross-env": "5.2.0",
+    "enzyme": "3.10.0",
+    "imhotep": "1.1.5",
+    "react-dom": "16.8.6",
+    "rollup": "1.15.6",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-typescript2": "0.21.1",
+    "ts-node": "8.3.0",
+    "typescript": "3.5.2"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=6"
+  },
+  "publishConfig": {
+    "access": "private"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 ios versions",
+    "last 2 opera versions",
+    "last 2 Edge versions"
+  ],
+  "snyk": true
 }
