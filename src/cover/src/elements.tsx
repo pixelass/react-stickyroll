@@ -93,7 +93,7 @@ export const Button: StyledComponent<any, any> = styled.a`
 	margin: 4rem 0 0;
 	line-height: 1.5;
 	text-decoration: none;
-	border: 1px solid ${props => props.theme.color}
+	border: 1px solid ${props => props.theme.color};
 	color: ${props => props.theme.color};
 	background: none;
 	

@@ -3,9 +3,10 @@ import styled, {createGlobalStyle, ThemeProvider} from "styled-components";
 import * as themes from "@stickyroll/themes";
 import {Content, Inner} from "./";
 
+/* stylelint-disable */
 const GlobalStyle = createGlobalStyle`
 	body {
-		margin 0;
+		margin: 0;
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 		background: #E0E0E0;
 		color: black;
@@ -14,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 		box-sizing: border-box;
 	}
 `;
-
+/* stylelint-enable */
 const Box = styled.div`
 	display: inline-flex;
 	height: 7rem;
