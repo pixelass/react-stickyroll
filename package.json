@@ -96,7 +96,7 @@
 		"dotenv": "8.0.0",
 		"enzyme": "3.10.0",
 		"enzyme-adapter-react-16": "1.14.0",
-		"execa": "2.0.2",
+		"execa": "2.0.3",
 		"globby": "10.0.0",
 		"husky": "3.0.0",
 		"imhotep": "1.1.7",
