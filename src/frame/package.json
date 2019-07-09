@@ -52,7 +52,7 @@
 		"enzyme": "3.10.0",
 		"imhotep": "1.1.7",
 		"react-dom": "16.8.6",
-		"rollup": "1.16.4",
+		"rollup": "1.16.7",
 		"rollup-plugin-babel": "4.3.3",
 		"rollup-plugin-json": "^4.0.0",
 		"rollup-plugin-typescript2": "0.21.2",
