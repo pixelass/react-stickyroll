@@ -57,7 +57,7 @@
 		"webpack": "4.35.2"
 	},
 	"devDependencies": {
-		"@babel/core": "7.4.5",
+		"@babel/core": "7.5.4",
 		"ava": "2.1.0",
 		"cross-env": "5.2.0",
 		"imhotep": "1.1.7",
