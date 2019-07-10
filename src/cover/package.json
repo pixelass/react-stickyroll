@@ -43,7 +43,7 @@
 		"@stickyroll/themes": "^1.1.5",
 		"@types/react": "16.8.23",
 		"@types/react-helmet": "5.0.8",
-		"@types/styled-components": "4.1.16",
+		"@types/styled-components": "4.1.18",
 		"react": "16.8.6",
 		"react-helmet": "5.2.1",
 		"styled-components": "4.3.2",
