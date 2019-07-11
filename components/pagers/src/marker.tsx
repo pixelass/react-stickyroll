@@ -57,9 +57,7 @@ export const Marker: React.FunctionComponent<IMarkerProps> = props => {
 	return (
 		<StyledMarker
 			style={{
-				height: `calc(${props.progress} * (var(--pager-gap) * 2 + var(--pager-size)) + ${
-					props.page
-				} * (var(--pager-gap) * 2 + var(--pager-size)))`
+				height: `calc(${props.progress} * (var(--pager-gap) * 2 + var(--pager-size)) + ${props.page} * (var(--pager-gap) * 2 + var(--pager-size)))`
 			}}
 		/>
 	);

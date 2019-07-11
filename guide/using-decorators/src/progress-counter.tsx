@@ -2,8 +2,7 @@ import { progress } from "@stickyroll/decorators";
 import { IContext } from "@stickyroll/stickyroll";
 import React from "react";
 
-@progress
-export default class ProgressCounter extends React.Component<Partial<IContext>> {
+class ProgressCounter extends React.Component<Partial<IContext>> {
 	render() {
 		return (
 			<React.Fragment>
@@ -12,3 +11,5 @@ export default class ProgressCounter extends React.Component<Partial<IContext>> 
 		);
 	}
 }
+
+export default progress(ProgressCounter);

@@ -96,12 +96,12 @@ export const Button: StyledComponent<any, any> = styled.a`
 	border: 1px solid ${props => props.theme.color};
 	color: ${props => props.theme.color};
 	background: none;
-	
+
 	&:hover {
 		background: ${props => props.theme.color};
 		color: ${props => props.theme.backgroundColor};
 	}
-	
+
 	@media (max-width: 30rem) {
 		font-size: 1.5rem;
 		padding: 0.75rem 1rem;

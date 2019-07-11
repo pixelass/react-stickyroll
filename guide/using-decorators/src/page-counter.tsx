@@ -2,8 +2,7 @@ import { page } from "@stickyroll/decorators";
 import { IContext } from "@stickyroll/stickyroll";
 import React from "react";
 
-@page
-export default class PageCounter extends React.Component<Partial<IContext>> {
+class PageCounter extends React.Component<Partial<IContext>> {
 	render() {
 		return (
 			<React.Fragment>
@@ -14,3 +13,4 @@ export default class PageCounter extends React.Component<Partial<IContext>> {
 		);
 	}
 }
+export default page(PageCounter)

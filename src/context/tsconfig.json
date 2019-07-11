@@ -4,7 +4,6 @@
 		"alwaysStrict": true,
 		"declaration": true,
 		"esModuleInterop": true,
-		"experimentalDecorators": true,
 		"importHelpers": true,
 		"lib": ["dom", "es2015", "es2017.object", "es6", "es7"],
 		"module": "commonjs",

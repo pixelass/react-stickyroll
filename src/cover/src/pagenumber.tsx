@@ -11,7 +11,6 @@ export const StyledPagenumber: StyledComponent<any, any> = styled.div`
 	font-size: 1rem;
 `;
 
-@page
 class Pagenumber extends React.Component<any, {}> {
 	render() {
 		return (
@@ -22,4 +21,4 @@ class Pagenumber extends React.Component<any, {}> {
 	}
 }
 
-export default Pagenumber;
+export default page(Pagenumber);

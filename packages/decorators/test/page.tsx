@@ -1,8 +1,8 @@
-import Page from "./page-component";
+import {DEFAULT_CONTEXT} from "@stickyroll/context";
 import {initDOM, mount} from "@stickyroll/testing-utils";
 import test from "ava";
 import React from "react";
-import {DEFAULT_CONTEXT} from "@stickyroll/context";
+import Page from "./page-component";
 import {Wrapper} from "./wrapper-component";
 
 initDOM();

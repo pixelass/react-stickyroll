@@ -1,23 +1,23 @@
 {
-	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"alwaysStrict": true,
-		"declaration": true,
-		"esModuleInterop": true,
-		"experimentalDecorators": true,
-		"importHelpers": true,
-		"jsx": "react",
-		"lib": ["dom", "es2015", "es2017.object", "es6", "es7"],
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"pretty": true,
-		"removeComments": true,
-		"rootDir": "",
-		"outDir": "lib",
-		"sourceMap": true,
-		"strict": false,
-		"target": "es5"
-	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": ["dom", "es2015", "es2017.object", "es6", "es7"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "removeComments": true,
+    "rootDir": "",
+    "outDir": "lib",
+    "sourceMap": true,
+    "strict": false,
+    "target": "es5"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

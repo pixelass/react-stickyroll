@@ -1,100 +1,100 @@
 {
-	"name": "@stickyroll/pagers",
-	"version": "1.1.5",
-	"keywords": [
-		"animation",
-		"canvas",
-		"content",
-		"fullscreen",
-		"paging",
-		"parallax",
-		"position sticky",
-		"presentation",
-		"react",
-		"scrollview",
-		"slider",
-		"slideshow",
-		"styled-components",
-		"svg",
-		"timeline"
-	],
-	"homepage": "https://stickyroll.github.io/react-stickyroll",
-	"bugs": {
-		"url": "https://github.com/stickyroll/react-stickyroll/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/stickyroll/react-stickyroll.git"
-	},
-	"license": "MIT",
-	"author": "Gregor Adams <greg@pixelass.com>",
-	"files": [
-		"dist",
-		"index.js",
-		"index.d.ts"
-	],
-	"main": "index.js",
-	"module": "dist/esm/index.js",
-	"typings": "index.d.ts",
-	"directories": {
-		"lib": "dist",
-		"doc": "doc",
-		"test": "test"
-	},
-	"scripts": {
-		"prebuild": "yarn clean",
-		"build": "rollup -c",
-		"clean": "imhotep clean",
-		"format": "imhotep format",
-		"lint": "imhotep lint",
-		"upgrade-all": "yarn-upgrade-all",
-		"watch": "rollup -cw"
-	},
-	"dependencies": {
-		"@stickyroll/context": "^1.1.5",
-		"@stickyroll/themes": "^1.1.5",
-		"@stickyroll/utils": "^1.1.5",
-		"@types/react": "16.8.23",
-		"@types/styled-components": "4.1.16",
-		"react": "16.8.6",
-		"styled-components": "4.3.2",
-		"ts-lib": "0.0.5"
-	},
-	"devDependencies": {
-		"@babel/core": "7.4.5",
-		"@stickyroll/testing-utils": "^1.1.5",
-		"@types/react-dom": "16.8.4",
-		"ava": "2.1.0",
-		"babel-plugin-styled-components": "1.10.6",
-		"cross-env": "5.2.0",
-		"enzyme": "3.10.0",
-		"imhotep": "1.1.7",
-		"react-dom": "16.8.6",
-		"rollup": "1.16.4",
-		"rollup-plugin-babel": "4.3.3",
-		"rollup-plugin-typescript2": "0.21.2",
-		"stylelint-config-styled-components": "0.1.1",
-		"stylelint-processor-styled-components": "1.8.0",
-		"ts-node": "8.3.0",
-		"typescript": "3.5.2"
-	},
-	"peerDependencies": {
-		"react": "^16.6.3",
-		"styled-components": "^4.1.1"
-	},
-	"engines": {
-		"node": ">=8",
-		"npm": ">=6"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"browserslist": [
-		"last 2 Chrome versions",
-		"last 2 Firefox versions",
-		"last 2 Safari versions",
-		"last 2 ios versions",
-		"last 2 opera versions",
-		"last 2 Edge versions"
-	]
+  "name": "@stickyroll/pagers",
+  "version": "1.1.5",
+  "keywords": [
+    "animation",
+    "canvas",
+    "content",
+    "fullscreen",
+    "paging",
+    "parallax",
+    "position sticky",
+    "presentation",
+    "react",
+    "scrollview",
+    "slider",
+    "slideshow",
+    "styled-components",
+    "svg",
+    "timeline"
+  ],
+  "homepage": "https://stickyroll.github.io/react-stickyroll",
+  "bugs": {
+    "url": "https://github.com/stickyroll/react-stickyroll/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stickyroll/react-stickyroll.git"
+  },
+  "license": "MIT",
+  "author": "Gregor Adams <greg@pixelass.com>",
+  "files": [
+    "dist",
+    "index.js",
+    "index.d.ts"
+  ],
+  "main": "index.js",
+  "module": "dist/esm/index.js",
+  "typings": "index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "prebuild": "yarn clean",
+    "build": "rollup -c",
+    "clean": "imhotep clean",
+    "format": "imhotep format",
+    "lint": "imhotep lint",
+    "upgrade-all": "yarn-upgrade-all",
+    "watch": "rollup -cw"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 ios versions",
+    "last 2 opera versions",
+    "last 2 Edge versions"
+  ],
+  "dependencies": {
+    "@stickyroll/context": "^1.1.5",
+    "@stickyroll/themes": "^1.1.5",
+    "@stickyroll/utils": "^1.1.5",
+    "@types/react": "16.8.23",
+    "@types/styled-components": "4.1.18",
+    "react": "16.8.6",
+    "styled-components": "4.3.2",
+    "ts-lib": "0.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.4",
+    "@stickyroll/testing-utils": "^1.1.5",
+    "@types/react-dom": "16.8.4",
+    "ava": "2.1.0",
+    "babel-plugin-styled-components": "1.10.6",
+    "cross-env": "5.2.0",
+    "enzyme": "3.10.0",
+    "imhotep": "1.1.7",
+    "react-dom": "16.8.6",
+    "rollup": "1.16.7",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-typescript2": "0.21.2",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.8.0",
+    "ts-node": "8.3.0",
+    "typescript": "3.5.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "styled-components": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

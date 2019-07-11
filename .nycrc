@@ -1,9 +1,9 @@
 {
-	"check-coverage": true,
-	"all": true,
-	"extension": [".js", ".jsx", ".ts", ".tsx"],
-	"include": ["{components,packages,src}/**/*.ts?(x)"],
-	"exclude": ["**/*.d.ts", "src/cover/*", "src/testing-utils/*"],
-	"reporter": ["html", "lcov", "text", "text-summary"],
-	"report-dir": "coverage"
+  "check-coverage": true,
+  "all": true,
+  "extension": [".js", ".jsx", ".ts", ".tsx"],
+  "include": ["{components,packages,src}/**/*.ts?(x)"],
+  "exclude": ["**/*.d.ts", "src/cover/*", "src/testing-utils/*"],
+  "reporter": ["html", "lcov", "text", "text-summary"],
+  "report-dir": "coverage"
 }

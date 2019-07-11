@@ -1,7 +1,6 @@
 import {progress} from "@stickyroll/decorators";
 import React from "react";
 
-@progress
 class Progressbar extends React.Component<any, {}> {
 	render() {
 		return (
@@ -16,4 +15,4 @@ class Progressbar extends React.Component<any, {}> {
 	}
 }
 
-export default Progressbar;
+export default progress(Progressbar);

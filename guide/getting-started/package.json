@@ -1,44 +1,44 @@
 {
-	"name": "getting-started",
-	"version": "1.1.5",
-	"private": true,
-	"homepage": "https://stickyroll.github.io/react-stickyroll",
-	"bugs": {
-		"url": "https://github.com/stickyroll/react-stickyroll/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/stickyroll/react-stickyroll.git"
-	},
-	"main": "demo.js",
-	"scripts": {
-		"prebuild": "rimraf lib",
-		"build": "imhotep babel",
-		"demo": "rimraf lib && imhotep babel",
-		"demo:watch": "rimraf lib && imhotep babel --watch"
-	},
-	"dependencies": {
-		"@stickyroll/stickyroll": "^1.1.5",
-		"@types/react": "16.8.23",
-		"react": "16.8.6",
-		"tslib": "1.10.0"
-	},
-	"devDependencies": {
-		"@babel/core": "7.4.5",
-		"@types/react-dom": "16.8.4",
-		"imhotep": "1.1.7",
-		"react-dom": "16.8.6",
-		"rimraf": "2.6.3",
-		"typescript": "3.5.2"
-	},
-	"engines": {
-		"node": ">=8",
-		"npm": ">=6"
-	},
-	"publishConfig": {
-		"access": "private"
-	},
-	"patternplate": {
-		"displayName": "01 - Getting Started"
-	}
+  "name": "getting-started",
+  "version": "1.1.5",
+  "private": true,
+  "homepage": "https://stickyroll.github.io/react-stickyroll",
+  "bugs": {
+    "url": "https://github.com/stickyroll/react-stickyroll/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stickyroll/react-stickyroll.git"
+  },
+  "main": "demo.js",
+  "scripts": {
+    "prebuild": "rimraf lib",
+    "build": "imhotep babel",
+    "demo": "rimraf lib && imhotep babel",
+    "demo:watch": "rimraf lib && imhotep babel --watch"
+  },
+  "dependencies": {
+    "@stickyroll/stickyroll": "^1.1.5",
+    "@types/react": "16.8.23",
+    "react": "16.8.6",
+    "tslib": "1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.4",
+    "@types/react-dom": "16.8.4",
+    "imhotep": "1.1.7",
+    "react-dom": "16.8.6",
+    "rimraf": "2.6.3",
+    "typescript": "3.5.3"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=6"
+  },
+  "publishConfig": {
+    "access": "private"
+  },
+  "patternplate": {
+    "displayName": "01 - Getting Started"
+  }
 }

@@ -1,11 +1,11 @@
 {
-	"npmClient": "yarn",
-	"packages": [
-		"components/*",
-		"guide/*",
-		"packages/*",
-		"src/*"
-	],
-	"useWorkspaces": true,
-	"version": "1.1.5"
+  "npmClient": "yarn",
+  "packages": [
+    "components/*",
+    "guide/*",
+    "packages/*",
+    "src/*"
+  ],
+  "useWorkspaces": true,
+  "version": "1.1.5"
 }
