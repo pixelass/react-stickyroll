@@ -92,7 +92,7 @@
     "@patternplate/widgets": "3.2.5",
     "@stickyroll/testing-utils": "1.1.5",
     "@types/jasmine": "3.3.13",
-    "ava": "2.1.0",
+    "ava": "2.2.0",
     "babel-loader": "8.0.6",
     "babel-plugin-istanbul": "5.1.4",
     "babel-plugin-styled-components": "1.10.6",
