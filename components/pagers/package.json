@@ -1,6 +1,6 @@
 {
   "name": "@stickyroll/pagers",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "keywords": [
     "animation",
     "canvas",
@@ -59,9 +59,9 @@
     "last 2 Edge versions"
   ],
   "dependencies": {
-    "@stickyroll/context": "^1.1.5",
-    "@stickyroll/themes": "^1.1.5",
-    "@stickyroll/utils": "^1.1.5",
+    "@stickyroll/context": "^1.1.6",
+    "@stickyroll/themes": "^1.1.6",
+    "@stickyroll/utils": "^1.1.6",
     "@types/react": "16.8.23",
     "@types/styled-components": "4.1.18",
     "react": "16.8.6",
@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.5.4",
-    "@stickyroll/testing-utils": "^1.1.5",
+    "@stickyroll/testing-utils": "^1.1.6",
     "@types/react-dom": "16.8.4",
     "ava": "2.1.0",
     "babel-plugin-styled-components": "1.10.6",
