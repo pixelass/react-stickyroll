@@ -68,7 +68,7 @@
     "ts-lib": "0.0.5"
   },
   "devDependencies": {
-    "@babel/core": "7.5.4",
+    "@babel/core": "7.5.5",
     "@stickyroll/testing-utils": "^1.1.6",
     "@types/react-dom": "16.8.4",
     "ava": "2.1.0",
