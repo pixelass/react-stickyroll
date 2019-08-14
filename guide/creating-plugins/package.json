@@ -28,7 +28,7 @@
     "@types/react-dom": "16.8.4",
     "imhotep": "1.1.7",
     "react-dom": "16.8.6",
-    "rimraf": "2.6.3",
+    "rimraf": "2.7.1",
     "typescript": "3.5.3"
   },
   "engines": {
