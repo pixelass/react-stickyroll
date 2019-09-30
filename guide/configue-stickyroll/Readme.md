@@ -127,6 +127,7 @@ Your `App.js` should now look like this:
 ```jsx
 import React from 'react';
 import {Stickyroll} from '@stickyroll/stickyroll';
+import './App.css';
 
 const headlines = [
 	"Hello World!",
@@ -147,7 +148,7 @@ const App = () => {
 			{({page, pageIndex, pages, progress}) => {
 				return (
 				<div
-					className={className(progress)}/>
+					className={className(progress)}>
 					<strong>{page}</strong> of <strong>{pages}</strong>
 					<br/>
 					Progress: <strong>{progress}</strong>
