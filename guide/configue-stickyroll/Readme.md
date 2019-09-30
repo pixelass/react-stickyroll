@@ -40,7 +40,7 @@ In this example we want to double the amount so the timeline is longer.
 We have add an attribute to `Stickyroll`.
 
 ```jsx
-<Stickyroll page={headlines} factor={2}/>
+<Stickyroll pages={headlines} factor={2}/>
 ```
 
 Play around with this option until you have the effect that suits you best.
@@ -59,7 +59,7 @@ will help prevent unneeded computations.
 We have add an attribute to `Stickyroll`.
 
 ```jsx
-<Stickyroll page={headlines} factor={2} throttle={250}/>
+<Stickyroll pages={headlines} factor={2} throttle={250}/>
 ```
 
 Now we can the className of our content container based on the progress.  
@@ -109,7 +109,7 @@ a solution that nicely ties into the mechanism.
 We have to add an attribute to `Stickyroll`.
 
 ```jsx
-<Stickyroll page={headlines} anchors=""/>
+<Stickyroll pages={headlines} anchors=""/>
 ```
 
 Setting `anchors` injects elements with corresponding IDs to allow hash navigation.

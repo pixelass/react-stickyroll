@@ -126,7 +126,7 @@ and add this new snippet
 Now we have to add an attribute to `Stickyroll`. 
 
 ```jsx
-<Stickyroll page={headlines} anchors=""/>
+<Stickyroll pages={headlines} anchors=""/>
 ```
 
 Setting `anchors` injects elements with corresponding IDs to allow hash navigation.
