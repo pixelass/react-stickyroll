@@ -108,7 +108,7 @@
     "globby": "10.0.1",
     "husky": "3.0.0",
     "imhotep": "1.1.7",
-    "jasmine-core": "3.4.0",
+    "jasmine-core": "3.5.0",
     "karma": "4.1.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-firefox-launcher": "1.1.0",
