@@ -32,7 +32,9 @@
     "lint": "imhotep lint",
     "pretest": "yarn build",
     "upgrade-all": "yarn-upgrade-all",
-    "watch": "rollup -cw"
+    "watch": "rollup -cw",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -62,7 +64,8 @@
     "puppeteer": "1.18.1",
     "react": "16.8.6",
     "ts-lib": "0.0.5",
-    "webpack": "4.35.3"
+    "webpack": "4.35.3",
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "@babel/core": "7.5.4",
@@ -85,5 +88,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "snyk": true
 }
