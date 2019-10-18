@@ -109,7 +109,7 @@
     "husky": "3.0.0",
     "imhotep": "1.1.7",
     "jasmine-core": "3.4.0",
-    "karma": "4.1.0",
+    "karma": "4.4.1",
     "karma-chrome-launcher": "2.2.0",
     "karma-firefox-launcher": "1.1.0",
     "karma-ie-launcher": "1.0.0",
