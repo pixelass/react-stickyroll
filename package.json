@@ -130,7 +130,7 @@
     "stylelint-processor-styled-components": "1.8.0",
     "ts-node": "8.3.0",
     "typedoc": "0.14.2",
-    "typescript": "3.5.3",
+    "typescript": "3.7.2",
     "webpack": "4.35.3",
     "webpack-dev-server": "3.7.2"
   },
