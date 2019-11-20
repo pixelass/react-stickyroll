@@ -117,7 +117,7 @@
     "karma-safari-launcher": "1.0.0",
     "karma-viewport": "1.0.4",
     "karma-webpack": "4.0.2",
-    "lerna": "3.15.0",
+    "lerna": "3.19.0",
     "meow": "5.0.0",
     "npm-check-updates": "3.1.18",
     "nyc": "14.1.1",
