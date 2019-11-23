@@ -44,7 +44,7 @@
   ],
   "dependencies": {
     "@types/jsdom": "12.2.4",
-    "@types/react": "16.8.23",
+    "@types/react": "16.9.13",
     "@types/react-dom": "16.8.4",
     "ava": "2.1.0",
     "enzyme": "3.10.0",
@@ -60,7 +60,7 @@
     "karma-viewport": "1.0.4",
     "karma-webpack": "4.0.2",
     "puppeteer": "1.18.1",
-    "react": "16.8.6",
+    "react": "16.12.0",
     "ts-lib": "0.0.5",
     "webpack": "4.35.3"
   },
