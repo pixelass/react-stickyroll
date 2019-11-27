@@ -112,8 +112,7 @@ const PagerWrapper: StyledComponent<"div", {}, IPagerWrapperProps> = styled.div`
 `;
 
 PagerWrapper.defaultProps = {
-	position: "left",
-	theme: light
+	position: "left"
 };
 
 /**
@@ -168,7 +167,7 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 
 	return (
 		<React.Fragment>
-			<PagerWrapper position={props.position}>
+			<PagerWrapper theme={props.theme} position={props.position}>
 				<StyledPagers>
 					<Marker progress={props.progress} page={props.pageIndex} />
 					{Array(props.pages)
@@ -236,6 +235,7 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 						prefix={context.anchors}
 						progress={context.progress}
 						showLabels={props.showLabels}
+						theme={props.theme}
 					/>
 				)}
 			</ScrollConsumer>
@@ -255,10 +255,12 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 			prefix={props.prefix}
 			progress={props.progress}
 			showLabels={props.showLabels}
+			theme={props.theme}
 		/>
 	);
 };
 
 Pagers.defaultProps = {
-	position: "left"
+	position: "left",
+	theme: light
 };
