@@ -28,7 +28,7 @@ export type PagerProps = IPagerProps<{}>;
  * @param {boolean} [props.selected]
  * @return {React.ReactHTMLElement<HTMLAnchorElement>}
  */
-export const Pager: StyledComponent<"a", {}, PagerProps> = styled.a`
+export const Pager = styled.a<PagerProps>`
 	position: relative;
 	z-index: 2;
 	height: var(--pager-size);
@@ -65,7 +65,7 @@ export const Pager: StyledComponent<"a", {}, PagerProps> = styled.a`
  * @type {StyledComponent<"nav", {}>}
  * @return {React.ReactHTMLElement<HTMLElement>}
  */
-const StyledPagers: StyledComponent<"nav", {}> = styled.nav`
+const StyledPagers = styled.nav`
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -89,7 +89,7 @@ export interface IPagerWrapperProps {
  * @param {ITheme} [props.theme]
  * @return {React.ReactHTMLElement<HTMLElement>}
  */
-const PagerWrapper: StyledComponent<"div", {}, IPagerWrapperProps> = styled.div`
+const PagerWrapper = styled.div<IPagerWrapperProps>`
 	${(props: IPagerWrapperProps) => css`
 		--marker-color: ${props.theme.markerColor};
 		--marker-width: ${props.theme.markerWidth};
@@ -119,7 +119,7 @@ PagerWrapper.defaultProps = {
  * @type {StyledComponent<"svg", {}>}
  * @return {React.ReactSVGElement<SVGSVGElement>}
  */
-export const Icon: StyledComponent<"svg", {}> = styled.svg.attrs({
+export const Icon = styled.svg.attrs({
 	viewBox: "0 0 24 24"
 })`
 	width: 1.5rem;
@@ -166,9 +166,8 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 	const glue = props.prefix === "" ? "" : "/";
 
 	return (
-		<React.Fragment>
 			<PagerWrapper theme={props.theme} position={props.position}>
-				<StyledPagers>
+				<StyledPagers {...props}>
 					<Marker progress={props.progress} page={props.pageIndex} />
 					{Array(props.pages)
 						.fill(Boolean)
@@ -198,7 +197,6 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 					</Pager>
 				</StyledPagers>
 			</PagerWrapper>
-		</React.Fragment>
 	);
 };
 

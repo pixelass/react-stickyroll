@@ -8,7 +8,7 @@ import {IPagerWrapperProps} from "./pagers";
  * @type {StyledComponent<"a", {}>}
  * @return {React.ReactHTMLElement<HTMLAnchorElement>}
  */
-export const SkipLink: StyledComponent<"a", {}> = styled.a`
+export const SkipLink = styled.a`
 	position: absolute;
 	bottom: 0;
 	right: 0;

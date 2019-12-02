@@ -5,7 +5,7 @@ import styled, {css, StyledComponent} from "styled-components";
  * @type {StyledComponent<"div", {}>}
  * @return {React.ReactHTMLElement<HTMLElement>}
  */
-export const StyledMarker: StyledComponent<"div", {}> = styled.div`
+export const StyledMarker = styled.div`
 	position: absolute;
 	z-index: 1;
 	top: calc((var(--pager-size) / 2) + var(--pager-gap));

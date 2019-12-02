@@ -2,7 +2,7 @@ import styled, {css, StyledComponent} from "styled-components";
 import {Content} from "@stickyroll/inner";
 import {light} from "@stickyroll/themes";
 
-export const Header: StyledComponent<any, any> = styled.header`
+export const Header = styled.header<any>`
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -15,7 +15,7 @@ Header.defaultProps = {
 	theme: light
 };
 
-export const HeaderContent: StyledComponent<any, any> = styled.div`
+export const HeaderContent = styled.div<any>`
 	margin: 2rem auto;
 	padding: 1.5rem 1rem;
 	max-width: 60rem;
@@ -27,7 +27,7 @@ export const HeaderContent: StyledComponent<any, any> = styled.div`
 	}
 `;
 
-export const Footer = styled.footer`
+export const Footer = styled.footer<any>`
 	position: relative;
 	display: flex;
 	padding: 1rem 0;
@@ -38,7 +38,7 @@ Footer.defaultProps = {
 	theme: light
 };
 
-export const FooterContent: StyledComponent<any, any> = styled.div`
+export const FooterContent = styled.div<any>`
 	margin: 0 auto;
 	padding: 1.5rem 1rem;
 	width: 100%;
@@ -49,7 +49,7 @@ export const FooterContent: StyledComponent<any, any> = styled.div`
 	}
 `;
 
-export const Headline: StyledComponent<any, any> = styled.h3`
+export const Headline = styled.h3<any>`
 	font-size: 2em;
 	margin: 0;
 	padding: 0.5rem 0;
@@ -66,23 +66,23 @@ export const Headline: StyledComponent<any, any> = styled.h3`
 	`}
 `;
 
-export const Nav: StyledComponent<any, any> = styled.nav`
+export const Nav = styled.nav<any>`
 	font-size: 1em;
 `;
 
-export const Link: StyledComponent<any, any> = styled.a`
+export const Link = styled.a<any>`
 	font-size: 1em;
 	color: currentColor;
 	text-decoration: none;
 `;
 
-export const Copy: StyledComponent<any, any> = styled.p`
+export const Copy = styled.p<any>`
 	font-size: 1em;
 	opacity: var(--progress);
 	transform: translate3d(0, calc(100% - 100% * var(--progress)), 0);
 `;
 
-export const Button: StyledComponent<any, any> = styled.a`
+export const Button = styled.a<any>`
 	display: flex;
 	text-align: center;
 	justify-content: center;
@@ -111,22 +111,23 @@ export const Button: StyledComponent<any, any> = styled.a`
 Button.defaultProps = {
 	theme: light
 };
-export const Svg: StyledComponent<any, any> = styled.svg`
+
+export const Svg = styled.svg<any>`
 	display: block;
 	margin: 0 auto;
 	width: 100%;
 	max-height: 38vh;
 `;
-export const Figcaption: StyledComponent<any, any> = styled.figcaption`
+export const Figcaption = styled.figcaption<any>`
 	font-size: 2.5vmin;
 `;
-export const StyledContent = styled(Content)`
+export const StyledContent = styled(Content)<any>`
 	display: flex;
 	flex-direction: column;
 	font-size: 2.53vmin;
 	overflow: hidden;
 `;
-export const Figure: StyledComponent<any, any> = styled.figure`
+export const Figure = styled.figure<any>`
 	flex: 1;
 	margin: 0;
 	padding: 0;
@@ -146,7 +147,7 @@ export const Figure: StyledComponent<any, any> = styled.figure`
 	}
 `;
 
-export const Card: StyledComponent<any, any> = styled.div`
+export const Card = styled.div<any>`
 	margin: 2rem auto;
 	padding: 1.5rem 1rem;
 	max-width: 60rem;
@@ -165,7 +166,7 @@ Card.defaultProps = {
 	theme: light
 };
 
-export const Tiles: StyledComponent<any, any> = styled.div`
+export const Tiles = styled.div<any>`
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 auto;
@@ -179,7 +180,7 @@ export const Tiles: StyledComponent<any, any> = styled.div`
 	}
 `;
 
-export const Tile: StyledComponent<any, any> = styled.div`
+export const Tile = styled.div<any>`
 	margin: 1rem 0.5rem;
 	padding: 1.5rem 1rem;
 	flex: 1 1 18rem;
@@ -192,13 +193,13 @@ Tile.defaultProps = {
 	theme: light
 };
 
-export const GhostTile: StyledComponent<any, any> = styled.div`
+export const GhostTile = styled.div<any>`
 	margin: 0 0.5rem;
 	padding: 0 1rem;
 	flex: 0 0 calc(100% / 3 - 1rem);
 `;
 
-export const Background: StyledComponent<any, any> = styled.div`
+export const Background = styled.div<any>`
 	position: fixed;
 	z-index: -1;
 	top: 0;

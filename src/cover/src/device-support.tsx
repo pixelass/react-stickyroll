@@ -25,12 +25,10 @@ const switchStyle = (
 	[name]: switchProgress(targetPage, page, progress)
 });
 
-const Group = (props: any) => <g {...props} />;
-
 const ProgressDevices = (props: any) => (
 	<Svg viewBox="0 0 897 452">
 		<g fill="none" fillRule="evenodd" stroke="#444">
-			<Group
+			<g
 				transform="translate(681 55)"
 				style={{
 					...switchStyle("--progress", 2, props.pageIndex, easeIn(props.progress)),
@@ -81,8 +79,8 @@ const ProgressDevices = (props: any) => (
 							18.307579040527344
 					}
 				/>
-			</Group>
-			<Group
+			</g>
+			<g
 				transform="translate(1 1)"
 				style={{
 					...switchStyle("--progress", 3, props.pageIndex, easeIn(props.progress)),
@@ -152,8 +150,8 @@ const ProgressDevices = (props: any) => (
 							158.46690368652344
 					}
 				/>
-			</Group>
-			<Group
+			</g>
+			<g
 				transform="translate(576 177)"
 				style={{
 					...switchStyle("--progress", 0, props.pageIndex, easeIn(props.progress)),
@@ -215,7 +213,7 @@ const ProgressDevices = (props: any) => (
 							62.5550422668457
 					}
 				/>
-			</Group>
+			</g>
 		</g>
 	</Svg>
 );

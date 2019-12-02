@@ -6,7 +6,7 @@ const Corner = styled.path`
 	fill: ${(p: any) => p.theme.color};
 `;
 
-const StyledCorner: StyledComponent<"svg", any> = styled.svg.attrs({
+const StyledCorner = styled.svg.attrs({
 	"aria-hidden": "true",
 	viewBox: "0 0 250 250"
 })`
@@ -27,7 +27,7 @@ const StyledCorner: StyledComponent<"svg", any> = styled.svg.attrs({
 	}
 `;
 
-export const GithubCorner = (props: {href: string; theme?: ITheme}) => (
+export const GithubCorner = (props) => (
 	<StyledCorner>
 		<a href={props.href} aria-label="View source on GitHub">
 			<Corner d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />

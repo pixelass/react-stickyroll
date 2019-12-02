@@ -34,7 +34,7 @@ export interface IInnerProps {
  * @param {boolean} [props.withPagers]
  * @return {React.ReactHTMLElement<HTMLElement>}
  */
-export const Inner: StyledComponent<"section", ITheme, IInnerProps> = styled.section`
+export const Inner = styled.section<IInnerProps>`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -59,7 +59,7 @@ export interface IContentProps {
 	theme?: ITheme;
 }
 
-export const Content: StyledComponent<"div", ITheme, IContentProps> = styled.div`
+export const Content = styled.div<IContentProps>`
 	flex: 1 1 1%;
 	${(props: IContentProps) => css`
 		padding: 1rem;
