@@ -2264,33 +2264,12 @@
     arson "^0.2.6"
     iframe-resizer "^3.5.16"
 
-"@patternplate/render-default@3.2.5", "@patternplate/render-default@^3.2.5":
+"@patternplate/render-default@^3.2.5":
   version "3.2.5"
   resolved "https://registry.npmjs.org/@patternplate/render-default/-/render-default-3.2.5.tgz#ca2481982c94f472ec31992fdb2ed289fc036711"
   integrity sha512-+Cg79VbVlhZBbOOS1ohwhDEHF6X+mB7yKHj0pTwL0uDCpW8Ip8ziLvzaUKoRIpgR/b+6C1lMNfKXRQ2raVV9ZA==
   dependencies:
     lodash "^4.17.5"
-
-"@patternplate/render-react@3.2.5", "@patternplate/render-react@^3.2.5":
-  version "3.2.5"
-  resolved "https://registry.npmjs.org/@patternplate/render-react/-/render-react-3.2.5.tgz#88d2fede5d42bf10ad69979314157c1b7a3c5a62"
-  integrity sha512-jRloTysLNvjKBc3Y7jKPDN2BkjwFPp4WnbksLkufSf9Ol4UucHzbaSnlkKQwEgI11MAlC4xwynoe6fIc3AS/sw==
-  dependencies:
-    "@patternplate/render-default" "^3.2.5"
-    lodash "^4.17.5"
-    react "16.6.3"
-    react-dom "16.6.3"
-
-"@patternplate/render-styled-components@3.2.5":
-  version "3.2.5"
-  resolved "https://registry.npmjs.org/@patternplate/render-styled-components/-/render-styled-components-3.2.5.tgz#5f4bb547d32812d6236a8da9905f88d14b620f5c"
-  integrity sha512-cGSVZJmzQXyvGvQgExewUdoFrkMjyNpgnPUwYa3sQ4g8SXeKoygNjEFWCbfvPz2XNR3GqfYHtvwirUcRmv4hGw==
-  dependencies:
-    "@patternplate/render-react" "^3.2.5"
-    lodash "^4.17.5"
-    react "16.6.3"
-    react-dom "16.6.3"
-    styled-components "^4.1.1"
 
 "@patternplate/types@^3.1.1":
   version "3.1.1"
