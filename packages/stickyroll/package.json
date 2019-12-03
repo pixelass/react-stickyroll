@@ -62,8 +62,7 @@
   "dependencies": {
     "@stickyroll/context": "^1.1.6",
     "@stickyroll/frame": "^1.1.6",
-    "@stickyroll/tracker": "^1.1.6",
-    "ts-lib": "^0.0.5"
+    "@stickyroll/tracker": "^1.1.6"
   },
   "devDependencies": {
     "@babel/core": "7.7.4",
