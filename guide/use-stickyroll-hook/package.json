@@ -38,6 +38,6 @@
     "access": "private"
   },
   "patternplate": {
-    "displayName": "02 - Configure Stickyroll"
+    "displayName": "05 - Stickyroll hook"
   }
 }
