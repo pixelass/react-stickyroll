@@ -1,0 +1,90 @@
+{
+  "name": "@stickyroll/hooks",
+  "version": "1.1.6",
+  "keywords": [
+    "animation",
+    "canvas",
+    "content",
+    "fullscreen",
+    "paging",
+    "parallax",
+    "position sticky",
+    "presentation",
+    "react",
+    "scrollview",
+    "slider",
+    "slideshow",
+    "styled-components",
+    "svg",
+    "timeline"
+  ],
+  "homepage": "https://stickyroll.github.io/react-stickyroll",
+  "bugs": {
+    "url": "https://github.com/stickyroll/react-stickyroll/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stickyroll/react-stickyroll.git"
+  },
+  "license": "MIT",
+  "author": "Gregor Adams <greg@pixelass.com>",
+  "files": [
+    "dist",
+    "index.js",
+    "index.d.ts"
+  ],
+  "main": "index.js",
+  "module": "dist/esm/index.js",
+  "typings": "index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "prebuild": "yarn clean",
+    "build": "rollup -c",
+    "clean": "imhotep clean",
+    "format": "imhotep format",
+    "lint": "imhotep lint",
+    "test": "ava",
+    "upgrade-all": "yarn-upgrade-all",
+    "watch": "rollup -cw"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 ios versions",
+    "last 2 opera versions",
+    "last 2 Edge versions"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "7.7.4",
+    "@stickyroll/testing-utils": "1.1.6",
+    "@types/react": "16.9.13",
+    "@types/react-dom": "16.9.4",
+    "ava": "2.4.0",
+    "cross-env": "6.0.3",
+    "enzyme": "3.10.0",
+    "imhotep": "1.1.7",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "rollup": "1.27.5",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-typescript2": "0.25.2",
+    "ts-node": "8.5.4",
+    "typescript": "3.7.2"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
