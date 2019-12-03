@@ -44,7 +44,7 @@
   ],
   "dependencies": {
     "@types/jsdom": "12.2.4",
-    "@types/react": "16.9.13",
+    "@types/react": "16.9.14",
     "@types/react-dom": "16.9.4",
     "ava": "2.4.0",
     "enzyme": "3.10.0",
@@ -69,9 +69,9 @@
     "@babel/core": "7.7.4",
     "cross-env": "6.0.3",
     "imhotep": "1.1.7",
-    "rollup": "1.27.5",
+    "rollup": "1.27.8",
     "rollup-plugin-babel": "4.3.3",
-    "rollup-plugin-typescript2": "0.25.2",
+    "rollup-plugin-typescript2": "0.25.3",
     "ts-node": "8.5.4"
   },
   "peerDependencies": {
