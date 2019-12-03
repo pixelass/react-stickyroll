@@ -90,7 +90,8 @@ export interface IPagerWrapperProps {
  * @return {React.ReactHTMLElement<HTMLElement>}
  */
 const PagerWrapper = styled.div<IPagerWrapperProps>`
-	${(props: IPagerWrapperProps) => css`
+	${(props: IPagerWrapperProps) => {
+		return css`
 		--marker-color: ${props.theme.markerColor};
 		--marker-width: ${props.theme.markerWidth};
 		--pager-background-color: ${props.theme.pagerBackgroundColor};
@@ -100,7 +101,7 @@ const PagerWrapper = styled.div<IPagerWrapperProps>`
 		--pager-size: ${props.theme.pagerSize};
 		--stroke-width: ${props.theme.strokeWidth};
 		${props.position}: 0;
-	`};
+	`}};
 
 	position: absolute;
 	z-index: 2;
@@ -166,37 +167,37 @@ export const PagerBase: React.FunctionComponent<IPagerBaseProps> = props => {
 	const glue = props.prefix === "" ? "" : "/";
 
 	return (
-			<PagerWrapper theme={props.theme} position={props.position}>
-				<StyledPagers {...props}>
-					<Marker progress={props.progress} page={props.pageIndex} />
-					{Array(props.pages)
-						.fill(Boolean)
-						.map((x, i) => {
-							const id = `${props.prefix}${glue}${i + 1}`;
-							return (
-								<Pager
-									key={id}
-									active={i <= props.pageIndex}
-									selected={i === props.pageIndex && props.progress < 1}
-									href={`#${id}`}
-									onClick={handleClick}>
-									{props.showLabels && i + 1}
-								</Pager>
-							);
-						})}
-					<Pager
-						href={`#${props.prefix}${glue}${props.pages + 1}`}
-						selected={props.page === props.pages && props.progress === 1}
-						active={props.page === props.pages && props.progress === 1}
-						onClick={handleClick}>
-						{props.showLabels && (
-							<Icon>
-								<path d="M4,5V19L11,12M18,5V19H20V5M11,5V19L18,12" />
-							</Icon>
-						)}
-					</Pager>
-				</StyledPagers>
-			</PagerWrapper>
+		<PagerWrapper theme={props.theme} position={props.position}>
+			<StyledPagers>
+				<Marker progress={props.progress} page={props.pageIndex} />
+				{Array(props.pages)
+					.fill(Boolean)
+					.map((x, i) => {
+						const id = `${props.prefix}${glue}${i + 1}`;
+						return (
+							<Pager
+								key={id}
+								active={i <= props.pageIndex}
+								selected={i === props.pageIndex && props.progress < 1}
+								href={`#${id}`}
+								onClick={handleClick}>
+								{props.showLabels && i + 1}
+							</Pager>
+						);
+					})}
+				<Pager
+					href={`#${props.prefix}${glue}${props.pages + 1}`}
+					selected={props.page === props.pages && props.progress === 1}
+					active={props.page === props.pages && props.progress === 1}
+					onClick={handleClick}>
+					{props.showLabels && (
+						<Icon>
+							<path d="M4,5V19L11,12M18,5V19H20V5M11,5V19L18,12" />
+						</Icon>
+					)}
+				</Pager>
+			</StyledPagers>
+		</PagerWrapper>
 	);
 };
 
@@ -220,7 +221,7 @@ export interface IPagersProps extends Partial<IPagerBaseProps> {
  * @param {boolean} [props.useContext]
  * @return {React.ReactHTMLElement<HTMLElement>}
  */
-export const Pagers: React.FunctionComponent<IPagersProps> = props => {
+export const RawPagers: React.FunctionComponent<IPagersProps> = props => {
 	if (props.useContext) {
 		return (
 			<ScrollConsumer>
@@ -258,7 +259,8 @@ export const Pagers: React.FunctionComponent<IPagersProps> = props => {
 	);
 };
 
-Pagers.defaultProps = {
-	position: "left",
-	theme: light
+RawPagers.defaultProps = {
+	position: "left"
 };
+
+export const Pagers = styled(RawPagers)``;
