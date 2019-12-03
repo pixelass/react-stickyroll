@@ -77,6 +77,18 @@ npm install --save @stickyroll/stickyroll
 
 ### 2. Creating a Stickyroll
 
+Open the file `my-app/src/App.css` in your text editor and replace
+the entire content with this code.
+
+```css
+body {
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+```
+
 Open the file `my-app/src/App.js` in your text editor and replace
 the entire content with this code.
 
