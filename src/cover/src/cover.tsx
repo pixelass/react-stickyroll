@@ -40,6 +40,13 @@ const Heart = props => (
 	</svg>
 );
 
+const StyledLink = styled(Link)`
+	padding: 0.5rem;
+	&:hover {
+		text-decoration: underline;
+	}
+`;
+
 const StyledHeart = styled(Heart)`
 	display: inline-flex;
 	height: 1.5rem;
@@ -93,12 +100,12 @@ export default () => (
 							<Logo size="1em" /> React Stickyroll
 						</Headline>
 						<Nav>
-							<Link href="https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true">
+							<StyledLink href="https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true">
 								Docs
-							</Link>
-							<Link href="https://github.com/stickyroll/react-stickyroll">
+							</StyledLink>
+							<StyledLink href="https://github.com/stickyroll/react-stickyroll">
 								Github
-							</Link>
+							</StyledLink>
 						</Nav>
 					</HeaderContent>
 					<ThemeProvider theme={siteTheme.github}>
