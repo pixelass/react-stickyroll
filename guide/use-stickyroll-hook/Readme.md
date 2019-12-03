@@ -9,13 +9,12 @@ options:
 
 # Simple and lightweight with react hooks.
 
-> :timer_clock: **Time invest**: 5 Minutes ––– :woman_student: **Level**: Beginner
+> :timer_clock: **Time invest**: 10 Minutes ––– :woman_student: **Level**: Intermediate
 
 ## What to expect
 
 When React introduced hooks many libraries were able to simplify their usage by providing hooks.
 We decided to do the same and want to show how to use the stickyroll hook.
-In about 5 minutes we will explore the `factor`, `throttle` and `anchors` properties.
 
 We will …
 
