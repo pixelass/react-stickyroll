@@ -1,6 +1,6 @@
 {
   "name": "@stickyroll/decorators",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "keywords": [
     "animation",
     "canvas",
@@ -60,11 +60,11 @@
     "last 2 Edge versions"
   ],
   "dependencies": {
-    "@stickyroll/context": "^1.1.6"
+    "@stickyroll/context": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.7.4",
-    "@stickyroll/testing-utils": "1.1.6",
+    "@stickyroll/testing-utils": "^1.2.0",
     "@types/react": "16.9.14",
     "@types/react-dom": "16.9.4",
     "ava": "2.4.0",

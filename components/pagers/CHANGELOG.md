@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/stickyroll/react-stickyroll/compare/v1.1.6...v1.2.0) (2019-12-03)
+
+
+### Bug Fixes
+
+* **pagers:** pass theme correctly ([49a16fe](https://github.com/stickyroll/react-stickyroll/commit/49a16feb8d115c3c54e9a4b436f3956d65d75993))
+* dependency management was wrong ([7ac536e](https://github.com/stickyroll/react-stickyroll/commit/7ac536ee12739f3507f95dd854b25e86298f9d42))
+
+
+### Features
+
+* **pagers:** allow setting theme without provider ([97765a5](https://github.com/stickyroll/react-stickyroll/commit/97765a54596cd6e506d82a84d3c1761f983f2ad3)), closes [#270](https://github.com/stickyroll/react-stickyroll/issues/270)
+
+
+
+
+
 ## [1.1.6](https://github.com/stickyroll/react-stickyroll/compare/v1.1.5...v1.1.6) (2019-07-11)
 
 **Note:** Version bump only for package @stickyroll/pagers

@@ -1,6 +1,6 @@
 {
   "name": "using-decorators",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "private": true,
   "homepage": "https://stickyroll.github.io/react-stickyroll",
   "bugs": {
@@ -18,7 +18,7 @@
     "demo:watch": "rimraf lib && imhotep babel --watch"
   },
   "dependencies": {
-    "@stickyroll/stickyroll": "^1.1.6",
+    "@stickyroll/stickyroll": "^1.2.0",
     "@types/react": "16.9.14",
     "react": "16.12.0"
   },

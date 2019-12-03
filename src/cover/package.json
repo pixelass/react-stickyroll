@@ -1,6 +1,6 @@
 {
   "name": "cover",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "private": true,
   "homepage": "https://stickyroll.github.io/react-stickyroll",
   "bugs": {
@@ -45,10 +45,10 @@
   ],
   "dependencies": {
     "@popmotion/easing": "1.0.2",
-    "@stickyroll/inner": "^1.1.6",
-    "@stickyroll/pagers": "^1.1.6",
-    "@stickyroll/stickyroll": "^1.1.6",
-    "@stickyroll/themes": "^1.1.6",
+    "@stickyroll/inner": "^1.2.0",
+    "@stickyroll/pagers": "^1.2.0",
+    "@stickyroll/stickyroll": "^1.2.0",
+    "@stickyroll/themes": "^1.2.0",
     "@types/react": "^16.9.14",
     "@types/react-helmet": "^5.0.14",
     "@types/styled-components": "^4.4.0",
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.7.4",
-    "@stickyroll/testing-utils": "1.1.6",
+    "@stickyroll/testing-utils": "^1.2.0",
     "@types/react-dom": "16.9.4",
     "ava": "2.4.0",
     "cross-env": "6.0.3",

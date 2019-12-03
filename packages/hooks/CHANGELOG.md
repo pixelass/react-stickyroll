@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/stickyroll/react-stickyroll/compare/v1.1.6...v1.2.0) (2019-12-03)
+
+
+### Features
+
+* **hooks:** added hook useStickyroll ([1a885df](https://github.com/stickyroll/react-stickyroll/commit/1a885df05138984d0a90315f7ab4d4baa5738dba)), closes [#272](https://github.com/stickyroll/react-stickyroll/issues/272)
+
+
+
+
+
 ## [1.1.6](https://github.com/stickyroll/react-stickyroll/compare/v1.1.5...v1.1.6) (2019-07-11)
 
 **Note:** Version bump only for package @stickyroll/utils
