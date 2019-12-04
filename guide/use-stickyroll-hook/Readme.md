@@ -87,7 +87,7 @@ const App = () => {
 	});
 	return (
 		<div ref={wrapper} style={{height}}>
-			<div className="stickyroll-content"}>
+			<div className="stickyroll-content">
 				<strong>{currentPage}</strong> of <strong>{pageCount}</strong>
 				<br />
 				Progress: <strong>{progress}</strong>
@@ -118,7 +118,7 @@ const App = () => {
 	});
 	return (
 		<div ref={wrapper} style={{height}}>
-			<div className="stickyroll-content"}>
+			<div className="stickyroll-content">
 				<strong>{currentPage}</strong> of <strong>{pageCount}</strong>
 				<br />
 				Progress: <strong>{progress}</strong>
