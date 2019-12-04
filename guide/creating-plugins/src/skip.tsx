@@ -3,16 +3,17 @@ import { assert, scrollTo } from "@stickyroll/utils";
 import React from "react";
 
 export const SkipBase = props => {
+	const glue = props.prefix === "" ? "" : "/";
 	const handleClick = (e): void => {
 		e.preventDefault();
-		scrollTo(`${props.prefix}/skip`, e.target as HTMLAnchorElement, {
+		scrollTo(`${props.prefix}${glue}skip`, e.target as HTMLAnchorElement, {
 			noFocus: true,
 			noHash: true
 		});
 	};
 
 	return (
-		<a href={`#${props.prefix}/skip`} onClick={handleClick}>
+		<a href={`#${props.prefix}${glue}skip`} onClick={handleClick}>
 			Skip
 		</a>
 	);

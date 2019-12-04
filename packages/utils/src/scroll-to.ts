@@ -19,26 +19,24 @@ export const scrollTo = (
 	target: HTMLElement,
 	options: IScrollToOptions = {}
 ): void => {
-	if (!options.noHash) {
-		window.location.hash = hash;
-	}
+	const {hash: currentHash} = window.location
+	const currentHashTarget = currentHash.split("/").reverse()[0];
+
 	const el = document.getElementById(hash);
 	if (!options.noFocus) {
 		target.focus();
 	}
 
-	// Attempted to implement smooth scrolling if the page changes by one position.
-	// The page jumps in several state changes
-	// @todo Fix unless a browser bug exists.
-	// const index = parseInt(hash.split("/").reverse()[0], 10) - 1;
-	// const diff = Math.abs(index - page);
-	// document.documentElement.style["scroll-behavior"] = diff > 1 ? "auto" : "smooth";
-
+	const hashTarget = hash.split("/").reverse()[0];
+	const wasSkip = currentHashTarget === "skip";
+	const isSkip = hashTarget === "skip";
+	const index = isSkip ? -1 : parseInt(hashTarget, 10);
+	const currentIndex = wasSkip ? -1 : parseInt(currentHashTarget, 10);
+	const diff = index > 0 && currentIndex > 0 ? Math.abs(index - currentIndex) : -1;
+	const shouldJump = isSkip || (diff !== 1);
+	document.documentElement.style["scroll-behavior"] = shouldJump ? "auto" : "smooth";
 	el.scrollIntoView(true);
-
-	// Optionally if Element.scrollIntoView does not return the expected result.
-	// const {top: tEl} = el.getBoundingClientRect();
-	// const {top: tBody} = document.body.getBoundingClientRect();
-	// const offset = tEl - tBody;
-	// window.scrollTo(0, offset);
+	if (!options.noHash) {
+		window.location.hash = hash;
+	}
 };
