@@ -45,6 +45,7 @@
     "refresh": "yarn clear:cache; yarn clean:lerna",
     "reinstall": "yarn clear:yarn && lerna clean --yes && yarn clear:modules && yarn",
     "prerelease": "yarn rollup",
+    "prepublish": "yarn rollup",
     "release": "lerna publish --conventional-commits",
     "reset": "yarn refresh && yarn reinstall",
     "rollup": "lerna run build",
