@@ -176,10 +176,6 @@ export const hashClassNames: ISelectors = {
  * Core styling required to display the component correctly
  */
 export const CORE_STYLE: string = `
-	body {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
 	.${hashSelectors.wrapper}{${styles.wrapper}}
 	.${hashSelectors.overlay}{${styles.overlay}}
 	.${hashSelectors.targets}{${styles.targets}}
