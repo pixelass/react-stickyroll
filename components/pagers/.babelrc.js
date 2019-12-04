@@ -11,6 +11,17 @@ module.exports = {
 					}
 				]
 			]
+		},
+		production: {
+			plugins: [
+				[
+					"styled-components",
+					{
+						ssr: true,
+						displayName: false
+					}
+				]
+			]
 		}
 	}
 };
