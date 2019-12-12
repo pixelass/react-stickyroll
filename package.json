@@ -97,7 +97,7 @@
     "codecov": "3.6.1",
     "commitlint": "8.2.0",
     "concurrently": "^5.0.0",
-    "copy-webpack-plugin": "5.0.5",
+    "copy-webpack-plugin": "5.1.1",
     "cross-env": "6.0.3",
     "dotenv": "8.2.0",
     "enzyme": "3.10.0",
