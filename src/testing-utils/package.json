@@ -48,7 +48,7 @@
     "@types/react-dom": "16.9.4",
     "ava": "2.4.0",
     "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.15.1",
+    "enzyme-adapter-react-16": "1.15.2",
     "jasmine-core": "3.5.0",
     "jsdom": "15.2.1",
     "karma": "4.4.1",

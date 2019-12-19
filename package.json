@@ -101,7 +101,7 @@
     "cross-env": "6.0.3",
     "dotenv": "8.2.0",
     "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.15.1",
+    "enzyme-adapter-react-16": "1.15.2",
     "execa": "3.4.0",
     "globby": "10.0.1",
     "husky": "3.1.0",
