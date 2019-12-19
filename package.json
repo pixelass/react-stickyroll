@@ -130,7 +130,7 @@
     "typedoc": "0.15.3",
     "typescript": "3.7.3",
     "webpack": "4.41.2",
-    "webpack-dev-server": "3.9.0"
+    "webpack-dev-server": "3.10.1"
   },
   "engines": {
     "node": ">=8",
