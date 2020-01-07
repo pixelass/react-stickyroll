@@ -68,7 +68,7 @@
     "@stickyroll/testing-utils": "^1.2.0",
     "@types/react": "16.9.14",
     "@types/react-dom": "16.9.4",
-    "@types/styled-components": "4.4.0",
+    "@types/styled-components": "4.4.2",
     "ava": "2.4.0",
     "babel-plugin-styled-components": "1.10.6",
     "cross-env": "6.0.3",
