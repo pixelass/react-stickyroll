@@ -52,7 +52,7 @@
     "@babel/core": "7.7.4",
     "@stickyroll/testing-utils": "^1.2.0",
     "@types/react": "16.9.14",
-    "@types/react-dom": "16.9.4",
+    "@types/react-dom": "16.9.5",
     "ava": "2.4.0",
     "cross-env": "6.0.3",
     "enzyme": "3.10.0",
