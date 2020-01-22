@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@stickyroll/hooks": "^1.2.0",
-    "@types/react": "16.9.14",
+    "@types/react": "16.9.19",
     "react": "16.12.0"
   },
   "devDependencies": {

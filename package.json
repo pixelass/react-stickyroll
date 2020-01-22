@@ -74,7 +74,7 @@
     "@stickyroll/stickyroll": "1.2.0",
     "@stickyroll/themes": "1.2.0",
     "@stickyroll/utils": "1.2.0",
-    "@types/react": "16.9.14",
+    "@types/react": "16.9.19",
     "@types/react-dom": "16.9.4",
     "@types/styled-components": "4.4.0",
     "lottie-web": "5.5.10",
