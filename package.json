@@ -94,7 +94,7 @@
     "babel-loader": "8.0.6",
     "babel-plugin-istanbul": "5.2.0",
     "babel-plugin-styled-components": "1.10.6",
-    "codecov": "3.6.1",
+    "codecov": "3.6.2",
     "commitlint": "8.2.0",
     "concurrently": "^5.0.0",
     "copy-webpack-plugin": "5.0.5",
