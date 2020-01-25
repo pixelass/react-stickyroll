@@ -93,7 +93,7 @@
     "ava": "2.4.0",
     "babel-loader": "8.0.6",
     "babel-plugin-istanbul": "5.2.0",
-    "babel-plugin-styled-components": "1.10.6",
+    "babel-plugin-styled-components": "1.10.7",
     "codecov": "3.6.1",
     "commitlint": "8.2.0",
     "concurrently": "^5.0.0",
