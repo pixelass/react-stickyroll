@@ -57,7 +57,7 @@
     "karma-ie-launcher": "1.0.0",
     "karma-jasmine": "2.0.1",
     "karma-safari-launcher": "1.0.0",
-    "karma-viewport": "1.0.4",
+    "karma-viewport": "1.0.5",
     "karma-webpack": "4.0.2",
     "puppeteer": "2.0.0",
     "react": "16.12.0",
