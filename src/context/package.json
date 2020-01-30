@@ -43,7 +43,7 @@
     "last 2 Edge versions"
   ],
   "devDependencies": {
-    "@babel/core": "7.7.4",
+    "@babel/core": "7.8.4",
     "@stickyroll/testing-utils": "^1.2.0",
     "@types/react": "16.9.14",
     "@types/react-dom": "16.9.4",
