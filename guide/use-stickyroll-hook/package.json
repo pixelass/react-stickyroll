@@ -32,7 +32,7 @@
     "typescript": "3.7.5"
   },
   "engines": {
-    "node": ">=8",
+    "node": ">=10.18.0",
     "npm": ">=6"
   },
   "publishConfig": {

@@ -90,11 +90,11 @@
     "@patternplate/widgets": "3.2.5",
     "@stickyroll/testing-utils": "1.2.0",
     "@types/jasmine": "3.5.2",
-    "ava": "3.1.0",
+    "ava": "3.2.0",
     "babel-loader": "8.0.6",
     "babel-plugin-istanbul": "6.0.0",
     "babel-plugin-styled-components": "1.10.7",
-    "codecov": "3.6.2",
+    "codecov": "3.6.4",
     "commitlint": "8.3.5",
     "concurrently": "^5.1.0",
     "copy-webpack-plugin": "5.1.1",
@@ -130,10 +130,10 @@
     "typedoc": "0.16.9",
     "typescript": "3.7.5",
     "webpack": "4.41.5",
-    "webpack-dev-server": "3.10.1"
+    "webpack-dev-server": "3.10.2"
   },
   "engines": {
-    "node": ">=8",
+    "node": ">=10.18.0",
     "npm": ">=6"
   },
   "renovate": {
