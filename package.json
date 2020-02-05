@@ -121,7 +121,7 @@
     "nyc": "15.0.0",
     "os": "0.1.1",
     "prettier": "1.19.1",
-    "puppeteer": "2.1.0",
+    "puppeteer": "2.1.1",
     "rimraf": "3.0.1",
     "serve": "11.3.0",
     "stylelint-config-styled-components": "0.1.1",
