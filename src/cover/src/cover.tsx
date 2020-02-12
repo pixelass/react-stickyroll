@@ -22,12 +22,7 @@ import {
 	dark,
 	deepOrange,
 	deepPurple,
-	pink,
-	red,
-	indigo,
-	purple,
-	amber,
-	yellow
+	pink
 } from "@stickyroll/themes";
 import {Logo} from "./logo";
 

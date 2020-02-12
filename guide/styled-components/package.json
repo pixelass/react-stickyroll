@@ -1,5 +1,5 @@
 {
-  "name": "use-stickyroll-hook",
+  "name": "styled-components",
   "version": "1.2.0",
   "private": true,
   "homepage": "https://stickyroll.github.io/react-stickyroll",
@@ -18,7 +18,10 @@
     "demo:watch": "rimraf lib && imhotep babel --watch"
   },
   "dependencies": {
-    "@stickyroll/hooks": "^1.2.0",
+    "@stickyroll/inner": "^1.2.0",
+    "@stickyroll/pagers": "^1.2.0",
+    "@stickyroll/stickyroll": "^1.2.0",
+    "@stickyroll/themes": "^1.2.0",
     "@types/react": "16.9.19",
     "react": "16.12.0"
   },
@@ -31,10 +34,6 @@
     "rimraf": "3.0.2",
     "typescript": "3.7.5"
   },
-  "resolutions": {
-    "react": "",
-    "react-dom": "16.12.0"
-  },
   "engines": {
     "node": ">=10.18.0",
     "npm": ">=6"
@@ -43,6 +42,6 @@
     "access": "private"
   },
   "patternplate": {
-    "displayName": "06 - Stickyroll hook"
+    "displayName": "05 - Using Decorators"
   }
 }
