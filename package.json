@@ -125,7 +125,7 @@
     "rimraf": "3.0.2",
     "serve": "11.3.0",
     "stylelint-config-styled-components": "0.1.1",
-    "stylelint-processor-styled-components": "1.9.0",
+    "stylelint-processor-styled-components": "1.10.0",
     "ts-node": "8.6.2",
     "typedoc": "0.16.9",
     "typescript": "3.7.5",
