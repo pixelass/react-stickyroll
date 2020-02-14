@@ -116,7 +116,7 @@
     "karma-viewport": "1.0.5",
     "karma-webpack": "4.0.2",
     "lerna": "3.20.2",
-    "meow": "6.0.0",
+    "meow": "6.0.1",
     "npm-check-updates": "4.0.1",
     "nyc": "15.0.0",
     "os": "0.1.1",
