@@ -1,10 +1,10 @@
-import {JSDOM} from "jsdom";
+import {JSDOM, DOMWindow} from "jsdom";
 
 declare global {
 	namespace NodeJS {
 		interface Global {
 			document: Document;
-			window: Window;
+			window: DOMWindow;
 			navigator: Navigator | {userAgent: string};
 			requestAnimationFrame: (callback: any) => number;
 			cancelAnimationFrame: (id: any) => void;
