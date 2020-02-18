@@ -32,6 +32,8 @@ For user docs see [Getting started][getting-started]
 
 ## Core Packages
 
+> The newly added [stickyroll hooks][hooks] ships with >1KB. 
+
 | version                                                  | description                                 |
 | :------------------------------------------------------- | :------------------------------------------ |
 | [![stickyroll][stickyroll-badge]][stickyroll]            | The core component and listener             |

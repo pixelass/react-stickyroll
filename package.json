@@ -54,7 +54,7 @@
     "serve:public": "serve public",
     "pretest": "yarn clear:coverage && yarn rollup && lerna run test --parallel",
     "test": "yarn karma:headless --local --chrome",
-    "posttest": "lerna run lint --parallel",
+    "posttest": "lerna run lint --parallel; bundlesize",
     "toc": "npx markdown-toc README.md -i"
   },
   "browserslist": [
@@ -74,7 +74,7 @@
     "@stickyroll/stickyroll": "1.2.0",
     "@stickyroll/themes": "1.2.0",
     "@stickyroll/utils": "1.2.0",
-    "@types/react": "16.9.19",
+    "@types/react": "16.9.20",
     "@types/react-dom": "16.9.5",
     "@types/styled-components": "4.4.3",
     "lottie-web": "5.6.4",
@@ -94,6 +94,7 @@
     "babel-loader": "8.0.6",
     "babel-plugin-istanbul": "6.0.0",
     "babel-plugin-styled-components": "1.10.7",
+    "bundlesize": "^0.18.0",
     "codecov": "3.6.5",
     "commitlint": "8.3.5",
     "concurrently": "^5.1.0",
@@ -138,5 +139,11 @@
   },
   "renovate": {
     "major": false
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./packages/hooks/dist/index.js",
+      "maxSize": "1 kB"
+    }
+  ]
 }
