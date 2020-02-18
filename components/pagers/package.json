@@ -67,7 +67,7 @@
     "@ava/babel": "^1.0.1",
     "@babel/core": "7.8.4",
     "@stickyroll/testing-utils": "^1.2.0",
-    "@types/react": "16.9.19",
+    "@types/react": "16.9.20",
     "@types/react-dom": "16.9.5",
     "@types/styled-components": "4.4.3",
     "ava": "3.3.0",
