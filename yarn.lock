@@ -2655,10 +2655,10 @@
   resolved "https://registry.npmjs.org/@types/iframe-resizer/-/iframe-resizer-3.5.8.tgz#d141f3cbebca951788e3b9a7654d46317bb9345b"
   integrity sha512-gkdjvjShS1aKe3giEwOlKGJzUixA5kqMlFRT4zwjC+K+BZWiwGq5/HMSDFu2oeTBJlKP0iWABabssSYjc9PVuQ==
 
-"@types/jasmine@3.5.4":
-  version "3.5.4"
-  resolved "https://registry.npmjs.org/@types/jasmine/-/jasmine-3.5.4.tgz#8f9b7b03cc6204d2048b08128dac1f341bfe0591"
-  integrity sha512-Uc/obv/lRh1t6RMOV6wkiAfYSZ0AOSTJqVl0Th8bHFcDhw4rQ0L60sxVnmOJj+RXbVboAE1Fd/mBclQWARRAsQ==
+"@types/jasmine@3.5.5":
+  version "3.5.5"
+  resolved "https://registry.npmjs.org/@types/jasmine/-/jasmine-3.5.5.tgz#3cad028470cf36ea24771078ec7ef86939af0d48"
+  integrity sha512-LlhwGivHkUV8ehNmaXjGGXopLm91G9ORIRcjw7Ya47jVAIGudewFZM2PdPXBvueZfRWwYzLt083wiPfKRXrSlg==
 
 "@types/jsdom@16.1.0":
   version "16.1.0"
@@ -2826,10 +2826,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@16.9.20", "@types/react@^16.9.20":
-  version "16.9.20"
-  resolved "https://registry.npmjs.org/@types/react/-/react-16.9.20.tgz#e83285766340fb1a7fafe7e5c4708c53832e3641"
-  integrity sha512-jRrWBr25zzEVNa4QbESKLPluvrZ3W6Odfwrfe2F5vzbrDuNvlpnHa/xbZcXg8RH5D4CE181J5VxrRrLvzRH+5A==
+"@types/react@16.9.21", "@types/react@^16.9.21":
+  version "16.9.21"
+  resolved "https://registry.npmjs.org/@types/react/-/react-16.9.21.tgz#99e274e2ecfab6bb93920e918341daa3198b348d"
+  integrity sha512-xpmenCMeBwJRct8vmIfczlgdOXWIWASoOM857kxKfHlVQvDltRh7IFRVfGws79iO2jkNPXOeWREyKoClzhBaQA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
