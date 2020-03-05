@@ -67,7 +67,7 @@
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
-    "@babel/core": "7.8.4",
+    "@babel/core": "7.8.7",
     "cross-env": "7.0.0",
     "imhotep": "1.1.7",
     "rollup": "1.31.1",
