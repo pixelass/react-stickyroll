@@ -71,7 +71,7 @@
     "cross-env": "7.0.0",
     "imhotep": "1.1.7",
     "rollup": "1.31.1",
-    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-typescript2": "0.26.0",
     "ts-node": "8.6.2"
   },
