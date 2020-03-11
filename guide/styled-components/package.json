@@ -22,17 +22,17 @@
     "@stickyroll/pagers": "^1.2.0",
     "@stickyroll/stickyroll": "^1.2.0",
     "@stickyroll/themes": "^1.2.0",
-    "@types/react": "16.9.21",
-    "react": "16.12.0"
+    "@types/react": "16.9.23",
+    "react": "16.13.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
-    "@babel/core": "7.8.4",
+    "@babel/core": "7.8.7",
     "@types/react-dom": "16.9.5",
     "imhotep": "1.1.7",
-    "react-dom": "16.12.0",
+    "react-dom": "16.13.0",
     "rimraf": "3.0.2",
-    "typescript": "3.7.5"
+    "typescript": "3.8.3"
   },
   "engines": {
     "node": ">=10.18.0",
