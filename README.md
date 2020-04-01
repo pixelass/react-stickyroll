@@ -23,7 +23,7 @@
 
 **Powered by**
 
-<!-- [![Webstorm][webstorm-badge]][webstorm] -->
+[![Webstorm][webstorm-badge]][webstorm]
 
 [![Browserstack][browserstack-badge]][browserstack]
 
