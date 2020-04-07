@@ -1957,10 +1957,10 @@
   resolved "https://registry.npmjs.org/@npmcli/ci-detect/-/ci-detect-1.1.1.tgz#9a158cf4e3e88f0067cbc1ca5d0de2f453de6afe"
   integrity sha512-h5eW3DljLypyhvfK94FkSSm4qtSUFddth/xW+7vnkVCEUJR38MYvctCSZkxqrzmXZSzpfImuAwwKvRqkEuDvCQ==
 
-"@npmcli/git@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@npmcli/git/-/git-1.0.1.tgz#b99b75b8784dfa30db5b37965b2e76fec5a480a7"
-  integrity sha512-686TE8b/zjY7S45uGzUNre8TZNAwhaTOqWWkn2nSIht2ZE/PUeTPBwuiY8bkLMHzhZJjPRa03MQYHtlIcO0kxg==
+"@npmcli/git@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@npmcli/git/-/git-2.0.1.tgz#d7ecaa9c945de6bb1af5a7e6ea634771193c168b"
+  integrity sha512-hVatexiBtx71F01Ars38Hr5AFUGmJgHAfQtRlO5fJlnAawRGSXwEFgjB5i3XdUUmElZU/RXy7fefN02dZKxgPw==
   dependencies:
     "@npmcli/promise-spawn" "^1.1.0"
     mkdirp "^1.0.3"
@@ -5553,10 +5553,10 @@ commander@^2.12.1, commander@^2.19.0, commander@^2.20.0, commander@^2.8.1, comma
   resolved "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
-  integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
+commander@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/commander/-/commander-5.0.0.tgz#dbf1909b49e5044f8fdaf0adc809f0c0722bdfd0"
+  integrity sha512-JrDGPAKjMGSP1G0DUoaceEJ3DZgAfr/q6X7FVk4+U5KxUSKviYGM2k6zWkfyyBHy5rAtzgYJFa1ro2O9PtoxwQ==
 
 commander@~2.19.0:
   version "2.19.0"
@@ -11936,15 +11936,15 @@ npm-bundled@^1.0.1, npm-bundled@^1.1.1:
   dependencies:
     npm-normalize-package-bin "^1.0.1"
 
-npm-check-updates@4.0.4:
-  version "4.0.4"
-  resolved "https://registry.npmjs.org/npm-check-updates/-/npm-check-updates-4.0.4.tgz#93a8613dfbb3e39cb7d5abec968d9685cf73655f"
-  integrity sha512-o1Db+kfi8Vvs345Xxpn+3WSUJtLa85F2hMF6v6kYfQuvTulsphvDzgbiVkp4vEKC8+BQETCag730XPJudYf4mA==
+npm-check-updates@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/npm-check-updates/-/npm-check-updates-4.1.2.tgz#700f52b17999aa914a5fbdd9c1a0a51d093d89c0"
+  integrity sha512-CRO20Z12fygKL/ow4j4pnpyxevda/PuFbWpsF5E9sFW0B+M3d32A1dD+fTHLDjgderhKXr64W8qQ6M/Gq8OLiw==
   dependencies:
     chalk "^3.0.0"
     cint "^8.2.1"
     cli-table "^0.3.1"
-    commander "^4.1.1"
+    commander "^5.0.0"
     fast-diff "^1.2.0"
     find-up "4.1.0"
     get-stdin "^7.0.0"
@@ -11952,12 +11952,13 @@ npm-check-updates@4.0.4:
     libnpmconfig "^1.2.1"
     lodash "^4.17.15"
     node-alias "^1.0.4"
-    pacote "^11.1.0"
+    p-map "^4.0.0"
+    pacote "^11.1.4"
     progress "^2.0.3"
-    prompts "^2.3.1"
+    prompts "^2.3.2"
     rc-config-loader "^3.0.0"
     requireg "^0.2.2"
-    semver "^7.1.3"
+    semver "^7.2.1"
     semver-utils "^1.1.4"
     spawn-please "^0.3.0"
     update-notifier "^4.1.0"
@@ -12005,6 +12006,15 @@ npm-package-arg@^8.0.0:
   dependencies:
     hosted-git-info "^3.0.2"
     osenv "^0.1.5"
+    semver "^7.0.0"
+    validate-npm-package-name "^3.0.0"
+
+npm-package-arg@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.npmjs.org/npm-package-arg/-/npm-package-arg-8.0.1.tgz#9d76f8d7667b2373ffda60bb801a27ef71e3e270"
+  integrity sha512-/h5Fm6a/exByzFSTm7jAyHbgOqErl9qSNJDQF32Si/ZzgwT2TERVxRxn3Jurw1wflgyVVAxnFR4fRHPM7y1ClQ==
+  dependencies:
+    hosted-git-info "^3.0.2"
     semver "^7.0.0"
     validate-npm-package-name "^3.0.0"
 
@@ -12506,6 +12516,13 @@ p-map@^3.0.0:
   dependencies:
     aggregate-error "^3.0.0"
 
+p-map@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/p-map/-/p-map-4.0.0.tgz#bb2f95a5eda2ec168ec9274e06a747c3e2904d2b"
+  integrity sha512-/bjOqmgETBYB5BoEeGVea8dmvHb2m9GLy1E9W43yeyfP6QQCZGFNa+XRceJEuDB6zqr+gKpIAmlLebMpykw/MQ==
+  dependencies:
+    aggregate-error "^3.0.0"
+
 p-pipe@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/p-pipe/-/p-pipe-1.2.0.tgz#4b1a11399a11520a67790ee5a0c1d5881d6befe9"
@@ -12567,12 +12584,12 @@ package-json@^6.3.0:
     registry-url "^5.0.0"
     semver "^6.2.0"
 
-pacote@^11.1.0:
-  version "11.1.1"
-  resolved "https://registry.npmjs.org/pacote/-/pacote-11.1.1.tgz#dc0db0635d86e0a34fbf163f5d745f07739d6296"
-  integrity sha512-oQ6vCUTFnYTs28UuQ/hqDl2Q+xfXNWGvoU8y6veWWRm6MjCsmFRmMiFBZFSTmWLdmuasnOunkZeoUHYTKyyCng==
+pacote@^11.1.4:
+  version "11.1.4"
+  resolved "https://registry.npmjs.org/pacote/-/pacote-11.1.4.tgz#5529a453c59881b7f059da8af6903b0f79c124b2"
+  integrity sha512-eUGJvSSpWFZKn3z8gig/HgnBmUl6gIWByIIaHzSyEr3tOWX0w8tFEADXtpu8HGv5E0ShCeTP6enRq8iHKCHSvw==
   dependencies:
-    "@npmcli/git" "^1.0.1"
+    "@npmcli/git" "^2.0.1"
     "@npmcli/installed-package-contents" "^1.0.5"
     "@npmcli/promise-spawn" "^1.1.0"
     cacache "^15.0.0"
@@ -12583,14 +12600,14 @@ pacote@^11.1.0:
     minipass "^3.0.1"
     minipass-fetch "^1.2.1"
     mkdirp "^1.0.3"
-    npm-package-arg "^8.0.0"
+    npm-package-arg "^8.0.1"
     npm-packlist "^2.1.0"
     npm-pick-manifest "^6.0.0"
     npm-registry-fetch "^8.0.0"
-    osenv "^0.1.5"
     promise-inflight "^1.0.1"
     promise-retry "^1.1.1"
     read-package-json-fast "^1.1.3"
+    rimraf "^2.7.1"
     semver "^7.1.3"
     ssri "^8.0.0"
     tar "^6.0.1"
@@ -13546,10 +13563,10 @@ promise-retry@^1.1.1:
     err-code "^1.0.0"
     retry "^0.10.0"
 
-prompts@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.npmjs.org/prompts/-/prompts-2.3.1.tgz#b63a9ce2809f106fa9ae1277c275b167af46ea05"
-  integrity sha512-qIP2lQyCwYbdzcqHIUi2HAxiWixhoM9OdLCWf8txXsapC/X9YdsCoeyRIXE/GP+Q0J37Q7+XN/MFqbUa7IzXNA==
+prompts@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/prompts/-/prompts-2.3.2.tgz#480572d89ecf39566d2bd3fe2c9fccb7c4c0b068"
+  integrity sha512-Q06uKs2CkNYVID0VqwfAl9mipo99zkBv/n2JtWY89Yxa3ZabWSrs0e2KTudKVa3peLUvYXMefDqIleLPVUBZMA==
   dependencies:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
@@ -13952,15 +13969,6 @@ react-test-renderer@^16.0.0-0:
     prop-types "^15.6.2"
     react-is "^16.8.6"
     scheduler "^0.18.0"
-
-react@16.12.0:
-  version "16.12.0"
-  resolved "https://registry.npmjs.org/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
-  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 react@16.13.0, react@^16.13.0:
   version "16.13.0"
@@ -14886,10 +14894,10 @@ rollup-pluginutils@2.8.2, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-2.0.3.tgz#b28fd528b3b15a8caf01fa7446c83bd66142b0ab"
-  integrity sha512-OjTD1pmtqCFaaoTl+zf3dXlG0FR1PudauQzAYmP5hDLLrrisXP6EuzAx9MY6En5bv61e8F6JGcVQxsVOcqFTUA==
+rollup@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-2.0.5.tgz#55b8c0d62360a095e322ac7425b13ac5a97edcb4"
+  integrity sha512-bECGz+RYpw3NYCvLnABu3REUROYbnZsfQZA37ekm/KlgKt/fyxBNN4waBnlLwzx4r6jNBs56SbTn7PEgJjw3fQ==
   optionalDependencies:
     fsevents "~2.1.2"
 
@@ -15092,6 +15100,11 @@ semver@^7.1.3:
   version "7.1.3"
   resolved "https://registry.npmjs.org/semver/-/semver-7.1.3.tgz#e4345ce73071c53f336445cfc19efb1c311df2a6"
   integrity sha512-ekM0zfiA9SCBlsKa2X1hxyxiI4L3B6EbVJkkdgQXnSEEaHlGdvyodMruTiulSRWMMB4NeIuYNMC9rTKTz97GxA==
+
+semver@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.npmjs.org/semver/-/semver-7.2.1.tgz#d997aa36bdbb00b501ae4ac4c7d17e9f7a587ae5"
+  integrity sha512-aHhm1pD02jXXkyIpq25qBZjr3CQgg8KST8uX0OWXch3xE6jw+1bfbWnCjzMwojsTquroUmKFHNzU6x26mEiRxw==
 
 semver@~5.3.0:
   version "5.3.0"
