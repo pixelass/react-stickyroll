@@ -33,7 +33,9 @@
     "lint": "imhotep lint",
     "pretest": "yarn build",
     "upgrade-all": "yarn-upgrade-all",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -54,7 +56,8 @@
     "@types/styled-components": "^5.0.1",
     "react": "^16.13.0",
     "react-helmet": "^5.2.1",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
@@ -78,5 +81,6 @@
   },
   "publishConfig": {
     "access": "private"
-  }
+  },
+  "snyk": true
 }
