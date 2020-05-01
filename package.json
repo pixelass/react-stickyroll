@@ -45,7 +45,7 @@
     "refresh": "yarn clear:cache; yarn clean:lerna",
     "reinstall": "yarn clear:yarn && lerna clean --yes && yarn clear:modules && yarn",
     "prerelease": "yarn rollup",
-    "prepublish": "yarn rollup",
+    "prepublish": "yarn run snyk-protect && yarn rollup",
     "release": "lerna publish --conventional-commits",
     "reset": "yarn refresh && yarn reinstall",
     "rollup": "lerna run build",
@@ -55,7 +55,8 @@
     "pretest": "yarn clear:coverage && yarn rollup && lerna run test --parallel",
     "test": "yarn karma:headless --local --chrome",
     "posttest": "lerna run lint --parallel; bundlesize",
-    "toc": "npx markdown-toc README.md -i"
+    "toc": "npx markdown-toc README.md -i",
+    "snyk-protect": "snyk protect"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -80,7 +81,8 @@
     "lottie-web": "5.6.6",
     "react": "16.13.0",
     "react-dom": "16.13.0",
-    "styled-components": "5.0.1"
+    "styled-components": "5.0.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@asspixel/karma-browserstack-launcher": "1.5.1",
@@ -145,5 +147,6 @@
       "path": "./packages/hooks/dist/index.js",
       "maxSize": "1 kB"
     }
-  ]
+  ],
+  "snyk": true
 }
