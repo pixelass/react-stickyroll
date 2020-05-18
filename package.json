@@ -95,7 +95,7 @@
     "babel-plugin-istanbul": "6.0.0",
     "babel-plugin-styled-components": "1.10.7",
     "bundlesize": "^0.18.0",
-    "codecov": "3.6.5",
+    "codecov": "3.7.0",
     "commitlint": "8.3.5",
     "concurrently": "^5.1.0",
     "copy-webpack-plugin": "5.1.1",
