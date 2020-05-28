@@ -73,7 +73,7 @@
     "rollup": "2.0.5",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-typescript2": "0.26.0",
-    "ts-node": "8.6.2"
+    "ts-node": "8.10.2"
   },
   "peerDependencies": {
     "enzyme": "^3.11.0"

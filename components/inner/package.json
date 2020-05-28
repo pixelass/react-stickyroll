@@ -84,7 +84,7 @@
     "styled-components": "4.4.1",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",
-    "ts-node": "8.6.2",
+    "ts-node": "8.10.2",
     "typescript": "3.8.3"
   },
   "peerDependencies": {
