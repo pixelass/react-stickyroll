@@ -119,7 +119,7 @@
     "lerna": "3.20.2",
     "meow": "6.0.1",
     "npm-check-updates": "4.0.4",
-    "nyc": "15.0.0",
+    "nyc": "15.1.0",
     "os": "0.1.1",
     "prettier": "1.19.1",
     "puppeteer": "2.1.1",
