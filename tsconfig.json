@@ -16,6 +16,7 @@
     "rootDir": "",
     "sourceMap": true,
     "strict": false,
-    "target": "es6"
+    "target": "es6",
+    "types": ["@emotion/core"]
   }
 }

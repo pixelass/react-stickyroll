@@ -1,11 +1,12 @@
 /**
  * @typedef {object} IScrollOptions
- * @property {boolean} [noFocus]
  * @property {boolean} [noHash]
+ * @property {boolean} [smooth]
  */
 export interface IScrollToOptions {
-	noFocus?: boolean;
 	noHash?: boolean;
+	noFocus?: boolean;
+	smooth?: boolean;
 }
 
 /**
@@ -17,26 +18,17 @@ export interface IScrollToOptions {
 export const scrollTo = (
 	hash: string,
 	target: HTMLElement,
-	options: IScrollToOptions = {}
+	{ smooth, noFocus, noHash }: IScrollToOptions = {}
 ): void => {
-	const {hash: currentHash} = window.location
-	const currentHashTarget = currentHash.split("/").reverse()[0];
-
-	const el = document.getElementById(hash);
-	if (!options.noFocus) {
+	if (!noFocus) {
 		target.focus();
 	}
-
-	const hashTarget = hash.split("/").reverse()[0];
-	const wasSkip = currentHashTarget === "skip";
-	const isSkip = hashTarget === "skip";
-	const index = isSkip ? -1 : parseInt(hashTarget, 10);
-	const currentIndex = wasSkip ? -1 : parseInt(currentHashTarget, 10);
-	const diff = index > 0 && currentIndex > 0 ? Math.abs(index - currentIndex) : -1;
-	const shouldJump = isSkip || (diff !== 1);
-	document.documentElement.style["scroll-behavior"] = shouldJump ? "auto" : "smooth";
-	el.scrollIntoView(true);
-	if (!options.noHash) {
+	const behavior = smooth ? "smooth" : "auto";
+	const id = hash.substr(1);
+	const el = document.getElementById(id);
+	document.documentElement.style["scroll-behavior"] = behavior;
+	el.scrollIntoView({ behavior });
+	if (!noHash) {
 		window.location.hash = hash;
 	}
 };

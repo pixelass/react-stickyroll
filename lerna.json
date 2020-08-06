@@ -1,10 +1,7 @@
 {
   "npmClient": "yarn",
   "packages": [
-    "components/*",
-    "guide/*",
-    "packages/*",
-    "src/*"
+    "packages/*"
   ],
   "useWorkspaces": true,
   "version": "1.2.0"
