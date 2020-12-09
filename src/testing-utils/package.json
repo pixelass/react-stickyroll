@@ -68,7 +68,7 @@
   "devDependencies": {
     "@ava/babel": "^1.0.1",
     "@babel/core": "7.8.7",
-    "cross-env": "7.0.2",
+    "cross-env": "7.0.3",
     "imhotep": "1.1.7",
     "rollup": "2.0.5",
     "rollup-plugin-babel": "4.4.0",
