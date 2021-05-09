@@ -100,7 +100,7 @@
     "concurrently": "^5.1.0",
     "copy-webpack-plugin": "5.1.1",
     "cross-env": "7.0.2",
-    "dotenv": "8.2.0",
+    "dotenv": "8.6.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "execa": "4.0.0",
