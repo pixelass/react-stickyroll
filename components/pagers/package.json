@@ -71,7 +71,7 @@
     "@types/react-dom": "16.9.5",
     "@types/styled-components": "5.0.1",
     "ava": "3.5.0",
-    "babel-plugin-styled-components": "1.10.7",
+    "babel-plugin-styled-components": "1.13.3",
     "cross-env": "7.0.2",
     "enzyme": "3.11.0",
     "imhotep": "1.1.7",
