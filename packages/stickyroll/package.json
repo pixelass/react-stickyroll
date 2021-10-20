@@ -80,7 +80,7 @@
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-typescript2": "0.26.0",
     "ts-node": "8.6.2",
-    "typescript": "3.8.3"
+    "typescript": "3.9.10"
   },
   "peerDependencies": {
     "react": "^16.13.0"
