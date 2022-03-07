@@ -104,7 +104,7 @@
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "execa": "4.0.0",
-    "globby": "11.0.0",
+    "globby": "11.1.0",
     "husky": "4.2.3",
     "imhotep": "1.1.7",
     "jasmine-core": "3.5.0",
