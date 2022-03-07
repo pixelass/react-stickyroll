@@ -96,7 +96,7 @@
     "babel-plugin-styled-components": "1.10.7",
     "bundlesize": "^0.18.0",
     "codecov": "3.6.5",
-    "commitlint": "8.3.5",
+    "commitlint": "8.3.6",
     "concurrently": "^5.1.0",
     "copy-webpack-plugin": "5.1.1",
     "cross-env": "7.0.2",
