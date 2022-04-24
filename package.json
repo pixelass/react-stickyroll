@@ -91,7 +91,7 @@
     "@stickyroll/testing-utils": "1.2.0",
     "@types/jasmine": "3.5.9",
     "ava": "3.5.0",
-    "babel-loader": "8.0.6",
+    "babel-loader": "8.2.5",
     "babel-plugin-istanbul": "6.0.0",
     "babel-plugin-styled-components": "1.10.7",
     "bundlesize": "^0.18.0",
