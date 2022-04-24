@@ -114,7 +114,7 @@
     "karma-ie-launcher": "1.0.0",
     "karma-jasmine": "3.1.1",
     "karma-safari-launcher": "1.0.0",
-    "karma-viewport": "1.0.5",
+    "karma-viewport": "1.0.9",
     "karma-webpack": "4.0.2",
     "lerna": "3.20.2",
     "meow": "6.0.1",

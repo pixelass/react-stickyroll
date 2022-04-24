@@ -2563,11 +2563,6 @@
   resolved "https://registry.npmjs.org/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
 
-"@types/bluebird@*":
-  version "3.5.29"
-  resolved "https://registry.npmjs.org/@types/bluebird/-/bluebird-3.5.29.tgz#7cd933c902c4fc83046517a1bef973886d00bdb6"
-  integrity sha512-kmVtnxTuUuhCET669irqQmPAez4KFnFVKvpleVRyfC3g+SHD1hIkFZcWLim9BVcwUBLO59o8VZE4yGCmTif8Yw==
-
 "@types/body-parser@*":
   version "1.17.1"
   resolved "https://registry.npmjs.org/@types/body-parser/-/body-parser-1.17.1.tgz#18fcf61768fb5c30ccc508c21d6fd2e8b3bf7897"
@@ -2758,14 +2753,13 @@
     "@types/parse5" "*"
     "@types/tough-cookie" "*"
 
-"@types/karma@^3.0.2":
-  version "3.0.6"
-  resolved "https://registry.npmjs.org/@types/karma/-/karma-3.0.6.tgz#6aa64400d92dd0af2b5ad6eb2ae875cee061b8ca"
-  integrity sha512-2HanAMFucp8UU9yxQpFFSjnvqSxT0WhyC4ATlYZnbEjGaIp/4pCIV3nf0zefUbUseCalzZ1y3blbWjMLJ9/feg==
+"@types/karma@^6.3.3":
+  version "6.3.3"
+  resolved "https://registry.npmjs.org/@types/karma/-/karma-6.3.3.tgz#fc48cc53d13ec9beeea3a2a47a2036ed7647ba29"
+  integrity sha512-nRMec4mTCt+tkpRqh5/pAxmnjzEgAaalIq7mdfLFH88gSRC8+bxejLiSjHMMT/vHIhJHqg4GPIGCnCFbwvDRww==
   dependencies:
-    "@types/bluebird" "*"
     "@types/node" "*"
-    log4js "^4.0.0"
+    log4js "^6.4.1"
 
 "@types/loader-utils@^1.1.3":
   version "1.1.3"
@@ -6423,6 +6417,11 @@ date-format@^2.0.0:
   resolved "https://registry.npmjs.org/date-format/-/date-format-2.1.0.tgz#31d5b5ea211cf5fd764cd38baf9d033df7e125cf"
   integrity sha512-bYQuGLeFxhkxNOF3rcMtiZxvCBAquGzZm6oWA1oZ0g2THUzivaRhv8uOhdr19LmoobSOLoIAxeUK2RdbM8IFTA==
 
+date-format@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.npmjs.org/date-format/-/date-format-4.0.7.tgz#aa1cf4400badfe693c8462bbfcba43ab821d7d14"
+  integrity sha512-k5xqlzDGIfv2N/DHR/BR8Kc4N9CRy9ReuDkmdxeX/jNfit94QXd36emWMm40ZOEDKNm/c91yV9EO3uGPkR7wWQ==
+
 date-time@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/date-time/-/date-time-2.1.0.tgz#0286d1b4c769633b3ca13e1e62558d2dbdc2eba2"
@@ -6462,6 +6461,13 @@ debug@^3.0.0, debug@^3.1.0, debug@^3.1.1, debug@^3.2.5, debug@^3.2.6:
   integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
   dependencies:
     ms "^2.1.1"
+
+debug@^4.3.4:
+  version "4.3.4"
+  resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
+  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
+  dependencies:
+    ms "2.1.2"
 
 debuglog@^1.0.1:
   version "1.0.1"
@@ -7941,6 +7947,11 @@ flatted@^2.0.0:
   resolved "https://registry.npmjs.org/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
+flatted@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
+  integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
+
 flatten@^1.0.2:
   version "1.0.3"
   resolved "https://registry.npmjs.org/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
@@ -8083,6 +8094,15 @@ fs-extra@8.1.0, fs-extra@^8.1.0:
     graceful-fs "^4.2.0"
     jsonfile "^4.0.0"
     universalify "^0.1.0"
+
+fs-extra@^10.0.1:
+  version "10.1.0"
+  resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
+  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
 
 fs-extra@^7.0.1:
   version "7.0.1"
@@ -10332,6 +10352,15 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+jsonfile@^6.0.1:
+  version "6.1.0"
+  resolved "https://registry.npmjs.org/jsonfile/-/jsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
+  integrity sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==
+  dependencies:
+    universalify "^2.0.0"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
+
 jsonfilter@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/jsonfilter/-/jsonfilter-1.1.2.tgz#21ef7cedc75193813c75932e96a98be205ba5a11"
@@ -10357,10 +10386,10 @@ jsonparse@^1.2.0, jsonparse@^1.3.1:
   resolved "https://registry.npmjs.org/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=
 
-jsonschema@^1.2.4:
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/jsonschema/-/jsonschema-1.2.5.tgz#bab69d97fa28946aec0a56a9cc266d23fe80ae61"
-  integrity sha512-kVTF+08x25PQ0CjuVc0gRM9EUPb0Fe9Ln/utFOgcdxEIOHuU7ooBk/UPTd7t1M91pP35m0MU1T8M5P7vP1bRRw==
+jsonschema@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/jsonschema/-/jsonschema-1.4.0.tgz#1afa34c4bc22190d8e42271ec17ac8b3404f87b2"
+  integrity sha512-/YgW6pRMr6M7C+4o8kS+B/2myEpHCrxO4PEWnqJNBFMjn7EWXqlQ4tGwL6xTHeRplwuZmcAncdvfOad1nT2yMw==
 
 jsprim@^1.2.2:
   version "1.4.1"
@@ -10405,13 +10434,13 @@ karma-safari-launcher@1.0.0:
   resolved "https://registry.npmjs.org/karma-safari-launcher/-/karma-safari-launcher-1.0.0.tgz#96982a2cc47d066aae71c553babb28319115a2ce"
   integrity sha1-lpgqLMR9BmquccVTursoMZEVos4=
 
-karma-viewport@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.5.tgz#2a530eefbaecfaeb98615c3f8934e100234647d5"
-  integrity sha512-XQvyCDNLrlnUQGQyh9kmINIlSUbQR0YzvkgtYoDW39xP4SX5dJmEwTuRtvgSgOVVtWdnGl94qzXIilRtf5x8Mg==
+karma-viewport@1.0.9:
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/karma-viewport/-/karma-viewport-1.0.9.tgz#7a92ae41af70ccd58c4740e104364d9753afef9a"
+  integrity sha512-E1xVe66vBQtI66TGOtZMzV5nf6BW5tW4TQVUqPK+oakVLdsG/ZUG688tGK0lL1q0t7nfQD1dwLD8Z9Guu/RVdg==
   dependencies:
-    "@types/karma" "^3.0.2"
-    jsonschema "^1.2.4"
+    "@types/karma" "^6.3.3"
+    jsonschema "^1.4.0"
 
 karma-webpack@4.0.2:
   version "4.0.2"
@@ -10812,6 +10841,17 @@ log4js@^4.0.0:
     flatted "^2.0.0"
     rfdc "^1.1.4"
     streamroller "^1.0.6"
+
+log4js@^6.4.1:
+  version "6.4.5"
+  resolved "https://registry.npmjs.org/log4js/-/log4js-6.4.5.tgz#5cca31b29ece65a625efbc3df6fcbd9cecb9ee7b"
+  integrity sha512-43RJcYZ7nfUxpPO2woTl8CJ0t5+gucLJZ43mtp2PlInT+LygCp/bl6hNJtKulCJ+++fQsjIv4EO3Mp611PfeLQ==
+  dependencies:
+    date-format "^4.0.7"
+    debug "^4.3.4"
+    flatted "^3.2.5"
+    rfdc "^1.3.0"
+    streamroller "^3.0.7"
 
 logform@^2.1.1:
   version "2.1.2"
@@ -11587,7 +11627,7 @@ ms@2.1.1:
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-ms@^2.0.0, ms@^2.1.1, ms@^2.1.2:
+ms@2.1.2, ms@^2.0.0, ms@^2.1.1, ms@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
@@ -13953,15 +13993,6 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.8.6"
     scheduler "^0.18.0"
 
-react@16.12.0:
-  version "16.12.0"
-  resolved "https://registry.npmjs.org/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
-  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-
 react@16.13.0, react@^16.13.0:
   version "16.13.0"
   resolved "https://registry.npmjs.org/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
@@ -14817,6 +14848,11 @@ rfdc@^1.1.4:
   resolved "https://registry.npmjs.org/rfdc/-/rfdc-1.1.4.tgz#ba72cc1367a0ccd9cf81a870b3b58bd3ad07f8c2"
   integrity sha512-5C9HXdzK8EAqN7JDif30jqsBzavB7wLpaubisuQIGHWf2gUXSpzy6ArX/+Da8RjFpagWsCn+pIgxTMAmKw9Zug==
 
+rfdc@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/rfdc/-/rfdc-1.3.0.tgz#d0b7c441ab2720d05dc4cf26e01c89631d9da08b"
+  integrity sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==
+
 rimraf@2, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.0, rimraf@^2.6.1, rimraf@^2.6.2, rimraf@^2.6.3, rimraf@^2.7.1:
   version "2.7.1"
   resolved "https://registry.npmjs.org/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
@@ -14886,10 +14922,10 @@ rollup-pluginutils@2.8.2, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-2.0.3.tgz#b28fd528b3b15a8caf01fa7446c83bd66142b0ab"
-  integrity sha512-OjTD1pmtqCFaaoTl+zf3dXlG0FR1PudauQzAYmP5hDLLrrisXP6EuzAx9MY6En5bv61e8F6JGcVQxsVOcqFTUA==
+rollup@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-2.0.5.tgz#55b8c0d62360a095e322ac7425b13ac5a97edcb4"
+  integrity sha512-bECGz+RYpw3NYCvLnABu3REUROYbnZsfQZA37ekm/KlgKt/fyxBNN4waBnlLwzx4r6jNBs56SbTn7PEgJjw3fQ==
   optionalDependencies:
     fsevents "~2.1.2"
 
@@ -15822,6 +15858,15 @@ streamroller@^1.0.6:
     debug "^3.2.6"
     fs-extra "^7.0.1"
     lodash "^4.17.14"
+
+streamroller@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.npmjs.org/streamroller/-/streamroller-3.0.7.tgz#d566353d3d8b5d2f3d813d2df557c08083b414cf"
+  integrity sha512-kh68kwiDGuIPiPDWwRbEC5us+kfARP1e9AsQiaLaSqGrctOvMn0mtL8iNY3r4/o5nIoYi3gPI1jexguZsXDlxw==
+  dependencies:
+    date-format "^4.0.7"
+    debug "^4.3.4"
+    fs-extra "^10.0.1"
 
 strict-uri-encode@^2.0.0:
   version "2.0.0"
@@ -17138,6 +17183,11 @@ universalify@^0.1.0:
   version "0.1.2"
   resolved "https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
   integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
+
+universalify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
+  integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
