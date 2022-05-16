@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
-    "@babel/core": "7.8.7",
+    "@babel/core": "7.17.10",
     "@types/react-dom": "16.9.5",
     "imhotep": "1.1.7",
     "react-dom": "16.13.0",
