@@ -43,7 +43,7 @@
     "last 2 Edge versions"
   ],
   "dependencies": {
-    "@types/jsdom": "16.1.0",
+    "@types/jsdom": "16.2.15",
     "@types/react": "16.9.23",
     "@types/react-dom": "16.9.5",
     "ava": "3.5.0",
