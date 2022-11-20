@@ -887,15 +887,15 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.3.2"
 
-"@babel/register@7.8.6":
-  version "7.8.6"
-  resolved "https://registry.npmjs.org/@babel/register/-/register-7.8.6.tgz#a1066aa6168a73a70c35ef28cc5865ccc087ea69"
-  integrity sha512-7IDO93fuRsbyml7bAafBQb3RcBGlCpU4hh5wADA2LJEEcYk92WkwFZ0pHyIi2fb5Auoz1714abETdZKCOxN0CQ==
+"@babel/register@7.18.9":
+  version "7.18.9"
+  resolved "https://registry.npmjs.org/@babel/register/-/register-7.18.9.tgz#1888b24bc28d5cc41c412feb015e9ff6b96e439c"
+  integrity sha512-ZlbnXDcNYHMR25ITwwNKT88JiaukkdVj/nG7r3wnuXkOTHc60Uy05PwMCPre0hSkY68E6zK3xz+vUJSP2jWmcw==
   dependencies:
+    clone-deep "^4.0.1"
     find-cache-dir "^2.0.0"
-    lodash "^4.17.13"
     make-dir "^2.1.0"
-    pirates "^4.0.0"
+    pirates "^4.0.5"
     source-map-support "^0.5.16"
 
 "@babel/runtime@^7.0.0-beta.40", "@babel/runtime@^7.6.3":
@@ -11820,11 +11820,6 @@ node-libs-browser@^2.0.0, node-libs-browser@^2.2.1:
     util "^0.11.0"
     vm-browserify "^1.0.1"
 
-node-modules-regexp@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/node-modules-regexp/-/node-modules-regexp-1.0.0.tgz#8d9dbe28964a4ac5712e9131642107c71e90ec40"
-  integrity sha1-jZ2+KJZKSsVxLpExZCEHxx6Q7EA=
-
 node-preload@^0.2.0:
   version "0.2.1"
   resolved "https://registry.npmjs.org/node-preload/-/node-preload-0.2.1.tgz#c03043bb327f417a18fee7ab7ee57b408a144301"
@@ -12900,12 +12895,10 @@ pinkie@^2.0.0:
   resolved "https://registry.npmjs.org/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-pirates@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
-  integrity sha512-WuNqLTbMI3tmfef2TKxlQmAiLHKtFhlsCZnPIpuv2Ow0RDVO8lfy1Opf4NUzlMXLjPl+Men7AuVdX6TA+s+uGA==
-  dependencies:
-    node-modules-regexp "^1.0.0"
+pirates@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.npmjs.org/pirates/-/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
+  integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
 pkg-conf@^3.1.0:
   version "3.1.0"
@@ -13953,15 +13946,6 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.8.6"
     scheduler "^0.18.0"
 
-react@16.12.0:
-  version "16.12.0"
-  resolved "https://registry.npmjs.org/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
-  integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-
 react@16.13.0, react@^16.13.0:
   version "16.13.0"
   resolved "https://registry.npmjs.org/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
@@ -14886,10 +14870,10 @@ rollup-pluginutils@2.8.2, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-2.0.3.tgz#b28fd528b3b15a8caf01fa7446c83bd66142b0ab"
-  integrity sha512-OjTD1pmtqCFaaoTl+zf3dXlG0FR1PudauQzAYmP5hDLLrrisXP6EuzAx9MY6En5bv61e8F6JGcVQxsVOcqFTUA==
+rollup@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-2.0.5.tgz#55b8c0d62360a095e322ac7425b13ac5a97edcb4"
+  integrity sha512-bECGz+RYpw3NYCvLnABu3REUROYbnZsfQZA37ekm/KlgKt/fyxBNN4waBnlLwzx4r6jNBs56SbTn7PEgJjw3fQ==
   optionalDependencies:
     fsevents "~2.1.2"
 
