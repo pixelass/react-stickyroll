@@ -80,7 +80,7 @@
     "rimraf": "3.0.2",
     "rollup": "2.0.5",
     "rollup-plugin-babel": "4.4.0",
-    "rollup-plugin-typescript2": "0.26.0",
+    "rollup-plugin-typescript2": "0.34.1",
     "styled-components": "4.4.1",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.10.0",

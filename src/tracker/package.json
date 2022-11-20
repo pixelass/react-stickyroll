@@ -59,7 +59,7 @@
     "react-dom": "16.13.0",
     "rollup": "2.0.5",
     "rollup-plugin-babel": "4.4.0",
-    "rollup-plugin-typescript2": "0.26.0",
+    "rollup-plugin-typescript2": "0.34.1",
     "ts-node": "8.6.2",
     "typescript": "3.8.3"
   },
