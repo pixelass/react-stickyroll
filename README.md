@@ -1,6 +1,6 @@
 # Stickyroll
 
-<p align="center"><img src="https://raw.githubusercontent.com/pixelass/stickyroll/4126e6adef588513c8309886014cf3d046091e8c/resources/logo.svg" width="400" alt="logo"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pixelass/react-stickyroll/6fff51d8c4716410a4370e53ebe52e53996436da/resources/logo.svg" width="400" alt="logo"/></p>
 
 <p>A sticky view with scroll listener API for parallax style views.</p>
 

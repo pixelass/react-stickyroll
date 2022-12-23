@@ -32,9 +32,9 @@ const theme = create({
 	inputBorderRadius: 3,
 
 	brandTitle: "Stickyroll",
-	brandUrl: "https://stickyroll.vercel.app",
+	brandUrl: "https://react-stickyroll.vercel.app",
 	brandImage:
-		"https://raw.githubusercontent.com/pixelass/stickyroll/4126e6adef588513c8309886014cf3d046091e8c/resources/logo.svg",
+		"https://raw.githubusercontent.com/pixelass/react-stickyroll/6fff51d8c4716410a4370e53ebe52e53996436da/resources/logo.svg",
 	brandTarget: "_blank",
 });
 
