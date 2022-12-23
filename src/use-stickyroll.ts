@@ -16,8 +16,12 @@ import type { UseStickyrollOptions } from "./types";
  * @example
  * const ref = useRef<HTMLDivElement>(null);
  * useStickyroll(ref, { pages: 5 });
+ *
  * return (
- *   <div ref={ref} className={className} style={{height: cssVars.height}}>
+ *   <div ref={ref}
+ *        style={{
+ *          height: `var(${CSS_VARS.height})`,
+ *        }}>
  *     <div style={{position: "sticky", inset: 0}}>
  *       Hello Stickyroll
  *     </div>
