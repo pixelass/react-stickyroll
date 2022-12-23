@@ -1,125 +1,229 @@
-> A sticky view with scroll listener API for parallax style views.
-
 # Stickyroll
 
-<p align="center"><img width="200" src="https://stickyroll.github.io/media/images/logo_deepPurple.svg" alt="Stickyroll logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pixelass/stickyroll/4126e6adef588513c8309886014cf3d046091e8c/resources/logo.svg" width="400" alt="logo"/></p>
 
-## [Site][site] | [Getting started][getting-started] | [Live support][live-support] | [Typedoc][typedoc]
+<p>A sticky view with scroll listener API for parallax style views.</p>
 
-> Are you looking for a Vue.js version?  
-> Check out [Vue Stickyroll][vue-stickyroll].
+![Codacy coverage](https://img.shields.io/codacy/coverage/7c2869c31a824536b44725f79dcfa02e?style=for-the-badge)
+![Codacy grade](https://img.shields.io/codacy/grade/7c2869c31a824536b44725f79dcfa02e?style=for-the-badge)
 
-<!-- [![npm][npm-badge]][npm] -->
+## Table of Contents
 
-[![MIT license][license-badge]][license]
-[![Getting started][patternplate-badge]][getting-started]
-[![Code of Conduct][coc-badge]][coc]
-[![Say Thanks][say-thanks-badge]][say-thanks]
+<!-- toc -->
 
-[![Build status][build-badge]][build]
-[![Test Coverage][codecov-badge]][codecov]
-[![Code Quality][codeclimate-badge]][codeclimate]
-[![Vulnerabilities][snyk-badge]][snyk]
+- [Getting started](#getting-started)
+- [Basic usage](#basic-usage)
+- [Adjusting pages and factor usage](#adjusting-pages-and-factor-usage)
+- [Using listeners](#using-listeners)
+- [Using CSS variables](#using-css-variables)
+- [Using ClassNames](#using-classnames)
+- [Using the hook](#using-the-hook)
+- [Advanced usage](#advanced-usage)
+- [Why we don't use States](#why-we-dont-use-states)
+- [Typescript](#typescript)
+- [Testing](#testing)
 
-**Powered by**
+<!-- tocstop -->
 
-[![Webstorm][webstorm-badge]][webstorm]
+## Getting started
 
-[![Browserstack][browserstack-badge]][browserstack]
+Please install stickyroll and react. Stickyroll does not have any additional dependencies.
 
-This is the contributor documentation for the `react-stickyroll` mono-repository.
-For user docs see [Getting started][getting-started]
+**With NPM**
 
-## Core Packages
-
-> The newly added [stickyroll hooks][hooks] ships with >1KB. 
-
-| version                                                  | description                                 |
-| :------------------------------------------------------- | :------------------------------------------ |
-| [![stickyroll][stickyroll-badge]][stickyroll]            | The core component and listener             |
-| [![stickyroll decorators][decorators-badge]][decorators] | Decorators for plugins and smart components |
-| [![stickyroll utils][utils-badge]][utils]                | Utilities to build plugins                  |
-| [![stickyroll hooks][hooks-badge]][hooks]                | Use stickyroll with react hooks             |
-
-## Styled Components
-
-| version                                      | description                                  |
-| :------------------------------------------- | :------------------------------------------- |
-| [![stickyroll inner][inner-badge]][inner]    | A themed inner frame (made for pagers)       |
-| [![stickyroll pagers][pagers-badge]][pagers] | Themed pagers (made for inner)               |
-| [![stickyroll themes][themes-badge]][themes] | A collection of themes to select and combine |
-
-## Contribute to Stickyroll
-
-Please read our [contributing guide][contribute]
-
-```sh
-git clone https://github.com/stickyroll/react-stickyroll.git
-cd react-stickyroll
-yarn
-yarn dev
-
-# Test your changes
-yarn test
-# scoped tests
-yarn lerna run test --scope @stickyroll/<package_name>
+```shell
+npm install @stickyroll/react react react-dom
 ```
 
-## Develop guides (via patternplate)
+**With Yarn**
 
-```bash
-yarn patternplate:dev
+```shell
+yarn add @stickyroll/react react react-dom
 ```
 
-## License
+## Basic usage
 
-Copyright by [Gregor Adams][pixelass]. All `@stickyroll` packages are released under the [MIT license][license].
+```jsx
+import Stickyroll from "@stickyroll/react/stickyroll";
 
-<!-- User support -->
+export default function App() {
+  return <Stickyroll pages={1}>Scroll here.</Stickyroll>;
+}
+```
 
-[site]: https://stickyroll.github.io/react-stickyroll/
-[getting-started]: https://stickyroll.github.io/react-stickyroll/doc/guide/getting-started/Readme.html?guides-enabled=true
-[live-support]: https://spectrum.chat/stickyroll
-[typedoc]: https://stickyroll.github.io/react-stickyroll/typedoc/
+## Adjusting pages and factor usage
 
-<!-- Badges -->
+```jsx
+import Stickyroll from "@stickyroll/react/stickyroll";
 
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge
-[license]: https://raw.githubusercontent.com/stickyroll/react-stickyroll/master/LICENSE
-[build-badge]: https://img.shields.io/travis/stickyroll/react-stickyroll/master.svg?style=for-the-badge&logo=travis&logoColor=white
-[build]: https://travis-ci.org/stickyroll/react-stickyroll
-[browserstack-badge]: https://img.shields.io/badge/browserstack-open_source-132434.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAACwklEQVQoFT2SS2gTYRSFz535Z5K0Nm2aNNY0Gvvw2eIDUbEVq9SCm9K6UHAhSlFEF4K4E0FRFy66EhRBtD5wI4ig4K5qVbCCj0KF1rcxiZo0nSTmMZN5/U6q9d/cc+GcnwvnIziPA0TO4Hd2eVIjqc2YjHXy4hc/vOCENXHxU8sTf+zuKwLxOW9FkZPiyZOdrZTSTljxwkCxpbV+pqMNWq0AWf2I+uSvqC8dvtXQ7r9Ag8PT/8JA/PTWMEv9vuROoe/bxt14tKYTL0UPMpbJQ3KGumkE6xIv0JgO3WhYMf84bb84wyqnSqo1KGVSfYmV+/G4a6d5LW2I754+BXIZYNUGPra01zoc/sZ2uLP7ahTvlBM5LyTO9S/kpWwfRx2S67aYUe5i5Xu3CUNH6BgfpzPFCZqaVNjzcof5M5CDVm3u4Y+PtAkw1YXcLEXKrB5GrY+ooCAzch8B59ss1eHHxBsgMQXVlISEJUBnVhvKxmrB0MsugdVIpv0TpqFQc6AOyzd2Ie0Eh69cweXbo+heFIBPVGA4QRLgMbjZxFgtqTCrNVlMQo+Ocm8kgj0HDmJx0A9lWkGwaz18y3QUMIWA4YXbJttmgnNgc0MsryejVaWmxtC7B/gccqG6uQfbBvtRVHPICzF8154hUsij3aiH5BGzhkv66PQOZK4NnBXi6ZPFr3n+oUm1x9pbxFxwCUzSoZfeY3HB4FsysrU2HGLlKvdD3cDe2To8rfNvlkX0+GS2aflnJgSzcSsRmCDVXY067udhLiHSFmSaS57mNi7V7riq0BxCxujBTi2dHxJzpU1CTodZsp2CHXJ8MqRGL1SPHLOJn5rXMzxcufI/cpWFvz26RFOK+yzN6OW23UQCiXCJMySyMZnMG9LW689mfRVM5wQcVQG9spfGDoS5RQssw2Iyp2nXh/EoHXpt/PVyh23ifwDDwUINhcyvywAAAABJRU5ErkJggg==
-[browserstack]: https://www.browserstack.com/open-source
-[webstorm-badge]: https://img.shields.io/badge/Webstorm-open_source-06e0e2.svg?style=for-the-badge&logo=webstorm
-[webstorm]: https://www.jetbrains.com/buy/opensource/
-[codecov-badge]: https://img.shields.io/codecov/c/github/stickyroll/react-stickyroll.svg?style=for-the-badge&logo=codecov&logoColor=white
-[codecov]: https://codecov.io/gh/stickyroll/react-stickyroll
-[codeclimate-badge]: https://img.shields.io/codeclimate/maintainability/stickyroll/react-stickyroll.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABEUlEQVQoFaWSMU5CQRCGQR9aCI0NFbVHoCPhBCSYGGIsDAUFjS2HIKGiIgYoKTkDJ/EAdBiCRpfvH2bXhyZQOMn3Zvbfmdl5+16hcMZCCEW4OJN2vK2iqJws9u6Z+3yRxeiXsVHy6qiCJHiA1oMplCXhSymHRepE3ISqJz0Tv4NsDteuZ+qQL3pk/QEzuIM3kH0dnBVn6UTv0mEzdlfeKwxgBH3YgGwKt1ZM0IYdyFawtiiEMf7KG3ddk3vQqPfwrRW2gBt4gqjpZHsd/AsMoazCFmxhaYK/ALFu8xMm8HOTvh9HrbNZ85Hs5jxuoFc8TpeCVtSJ6dsRx5GOfjF0Wys3n69i/S2/k5X0R7cR//PYA9fyTxxMD3mIAAAAAElFTkSuQmCC
-[codeclimate]: https://codeclimate.com/github/stickyroll/react-stickyroll/
-[snyk-badge]: https://img.shields.io/snyk/vulnerabilities/github/stickyroll/react-stickyroll.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABVklEQVQoFU2Ryy5DURRAe9sKA00NEKmBlETjkU6EYWPiDxjgQ/yGbzHlB/yCSDwmCIlHaD1a11rH3XQnK/vss9/nlEqF5Hle9oiegvaQ3eC8EnGhU3BhxHkfey/Lsu/ifhl9QPK4Nrqiji4VAvtcTnC3BJnOQnL0JGwM2b+JXOhU1uAFZiiyCGOcV+ERmth1J0FXqlwMi+PMwT3sQA+mwcJN+IQkkejc7nRRcIj+AgvdwC7U6NajWxk9iMQY1Q5X8Iyzi34AH0StT0mxkRiPUcPxAdsE28kJOjCAPpQoiCvPIjE6vuLzZU/gHOwiW5C+xyST4++saLUzlPu2OL+BwSPQhlNQ0j+mjlZAqmjH0dHBfkcvwB204BaU/x2L9mkHHHZ3101owDU8gd9yCek9YlTs9HqjKAPd0S7z4N5H4O5/Eq+ZLuhsoTrYYR1m4Ricxv/rFtPlP8nIkiO/MYTJAAAAAElFTkSuQmCC
-[snyk]: https://snyk.io/test/github/stickyroll/react-stickyroll
-[coc-badge]: https://img.shields.io/badge/code%20of-conduct-FF5722.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAActpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx4bXA6Q3JlYXRvclRvb2w+d3d3Lmlua3NjYXBlLm9yZzwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KGMtVWAAAAnBJREFUWAntlb1uE0EUhdnYKFYiIiGEItHSpEqbJ0jBU1CEF6HmDaiQkEgdKYZIiWiQIqVKgVs6ihQpAMlgY8fLd9ZzV+Px7njN2lvlSsd3dv7uuefOjJMHgaVpmgRdCz+TJEkXTrqfUKLAjNzI/5Z5B+AXaJWs8bvHfDwB7yjDG9a38Hf+hEXttmru1VDB9xctKhjfc30zCRXMm+vaCHqUuWwwdZV/lw5sO7et4bzJ3uH7PTgDO6BM1gljW+AayPS9lIUE/MXnlOaD3xFrU8qHjOPSUNVwmWqeJxQjEC6MfrPpKDqhZDBG4JBsxPQRWFragnh6rDbBd8ie5OMEyQ8Q7S9A9mfq1vL71YKzexLWSwdOpkO4arOb9dPfuI0c/jt+5QarPkT+XkVtqauz8Qw8dxPCpF33Gh1SH3nFvLRQRSWwsVX70kM8dwvEKhZdJcN0mndBH8Qk1f634DEotDkCwZmYWeSR05/Qa/AS3IC5fejT2VIy9lrqSttLS/M/DRJZxvgOuABVbeQm1jsDKDRhI/3t6lodglOXy1+8slXmQ9fnO1NJT3Zu0XrnswoakNAVHuO1Rxe8AAqs8/ENvAK6ztvAnmmR+MG6Hr6+iYR2kSKgC2TDqUuP60eosAPBjMQG7Y8u+MD5c3wmOX4TiGj9gxjyYlOfhCnxm37ZJ2DjmQ/Xr+TbC6IsTYk+bZlI2O1phIReK1PCSJx5JGKPVz1BCGJy+wfTyvGZ8ewf18jUi1ay2iMhJawcNNMeeKpl+PWp4AKYEiKhF1PBLfvV34QiMQiYBVJgYJk3E9wIETiX2gjZWGOewCpDTqSxwFUC/QMZVyLU+bjG/wAAAABJRU5ErkJggg==
-[coc]: https://github.com/stickyroll/react-stickyroll/blob/master/.github/CODE_OF_CONDUCT.md
-[patternplate-badge]: https://img.shields.io/badge/docs-patterplate-ff0353.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABT0lEQVQoFXXSPyjEYRzH8d9z7gipIwplULqJusVgZJFSymJRVrFZnNloMtwZGK6uk6IoLDYDg79lZpUSg+Xcco/357meX8/vytWr75/f9+l5fr97oij4WWsNMkHLpfTSrb245mGb+Ab5EmaDOkOd8rWLNOJdyMdxiGc8YReDfgF5cncanSjgBfsYQR5nuMNKsNj4Had4cIprLPgBH+mt4h4HyPlFOYpvXASDKeoOCXoD1K94QLde9h07aKexhX5jTAN10UJ6Y4RNvKGEmhYOoweXyOOIwUWiFmjnNdIyNHMFfaisvtAXejGNc+jF11kwR+xCH44xhGWc4Kf5dcgYnCds4BM30PFq+ID+z19sc/xHYqSbouNaGqRWOxQwg1voeBOo8nyP6I6voFxF4qpRT6KCIkbdUHMuvii+5yJDaegEid9//dYh7R5fqzAPB/8AmhIA/Fwob48AAAAASUVORK5CYII=
-[stickyroll-badge]: https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fpackages%2Fstickyroll%2Fpackage.json&query=version&prefix=@stickyroll/stickyroll@&style=for-the-badge&label=yarn&colorB=2c8ebb&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABQElEQVQoFW2Ru0qDQRBG8+divIAYsE0EBa2t7ATR3jewTO9bWNrZ2QXBBxC0sRGfQZCARWwMGLBRcnE93/wzuGgGzs7s3HZnt1LJJKVUQFUudANWs/B8U0V5hP0p9KAl/9+45eZO7CNQwRAk17DmxXabeUUnJI2Unckr9pYX1q2IRR3sigRr2Meg7l8wAckIxmZliwrVvFoUxQz7zmOL6Jj5GXvg/m/XVhWv2KHBrbogk1LZnAdKZq8b/RcC5548Q0dhH3tH2eiaU0eXt8FYhgeQjEuV1EByBb/JfmY87yb7tvtCxTyHOLZ5AzXRARuwEIVdgh3QAzUgQcgUY4VkzXoDZ9CKf4nBlfQJSxBN17EvQA3voQfvYIPv0/EDnmAAubywuYQ9S/bFXgdnk70C+vRd0LXfYAiPzNdHm5Crk6c/GFYcwU+KPfkAAAAASUVORK5CYII=
-[stickyroll]: https://www.yarnpkg.com/package/@stickyroll/stickyroll
-[decorators-badge]: https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fpackages%2Fdecorators%2Fpackage.json&query=version&prefix=@stickyroll/decorators@&style=for-the-badge&label=yarn&colorB=2c8ebb&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABQElEQVQoFW2Ru0qDQRBG8+divIAYsE0EBa2t7ATR3jewTO9bWNrZ2QXBBxC0sRGfQZCARWwMGLBRcnE93/wzuGgGzs7s3HZnt1LJJKVUQFUudANWs/B8U0V5hP0p9KAl/9+45eZO7CNQwRAk17DmxXabeUUnJI2Unckr9pYX1q2IRR3sigRr2Meg7l8wAckIxmZliwrVvFoUxQz7zmOL6Jj5GXvg/m/XVhWv2KHBrbogk1LZnAdKZq8b/RcC5548Q0dhH3tH2eiaU0eXt8FYhgeQjEuV1EByBb/JfmY87yb7tvtCxTyHOLZ5AzXRARuwEIVdgh3QAzUgQcgUY4VkzXoDZ9CKf4nBlfQJSxBN17EvQA3voQfvYIPv0/EDnmAAubywuYQ9S/bFXgdnk70C+vRd0LXfYAiPzNdHm5Crk6c/GFYcwU+KPfkAAAAASUVORK5CYII=
-[decorators]: https://www.yarnpkg.com/package/@stickyroll/decorators
-[utils-badge]: https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fpackages%2Futils%2Fpackage.json&query=version&prefix=@stickyroll/utils@&style=for-the-badge&label=yarn&colorB=2c8ebb&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABQElEQVQoFW2Ru0qDQRBG8+divIAYsE0EBa2t7ATR3jewTO9bWNrZ2QXBBxC0sRGfQZCARWwMGLBRcnE93/wzuGgGzs7s3HZnt1LJJKVUQFUudANWs/B8U0V5hP0p9KAl/9+45eZO7CNQwRAk17DmxXabeUUnJI2Unckr9pYX1q2IRR3sigRr2Meg7l8wAckIxmZliwrVvFoUxQz7zmOL6Jj5GXvg/m/XVhWv2KHBrbogk1LZnAdKZq8b/RcC5548Q0dhH3tH2eiaU0eXt8FYhgeQjEuV1EByBb/JfmY87yb7tvtCxTyHOLZ5AzXRARuwEIVdgh3QAzUgQcgUY4VkzXoDZ9CKf4nBlfQJSxBN17EvQA3voQfvYIPv0/EDnmAAubywuYQ9S/bFXgdnk70C+vRd0LXfYAiPzNdHm5Crk6c/GFYcwU+KPfkAAAAASUVORK5CYII=
-[utils]: https://www.yarnpkg.com/package/@stickyroll/utils
-[hooks-badge]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fpackages%2Fhooks%2Fpackage.json&query=version&prefix=@stickyroll/hooks@&style=for-the-badge&label=yarn&colorB=2c8ebb&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABQElEQVQoFW2Ru0qDQRBG8+divIAYsE0EBa2t7ATR3jewTO9bWNrZ2QXBBxC0sRGfQZCARWwMGLBRcnE93/wzuGgGzs7s3HZnt1LJJKVUQFUudANWs/B8U0V5hP0p9KAl/9+45eZO7CNQwRAk17DmxXabeUUnJI2Unckr9pYX1q2IRR3sigRr2Meg7l8wAckIxmZliwrVvFoUxQz7zmOL6Jj5GXvg/m/XVhWv2KHBrbogk1LZnAdKZq8b/RcC5548Q0dhH3tH2eiaU0eXt8FYhgeQjEuV1EByBb/JfmY87yb7tvtCxTyHOLZ5AzXRARuwEIVdgh3QAzUgQcgUY4VkzXoDZ9CKf4nBlfQJSxBN17EvQA3voQfvYIPv0/EDnmAAubywuYQ9S/bFXgdnk70C+vRd0LXfYAiPzNdHm5Crk6c/GFYcwU+KPfkAAAAASUVORK5CYII=
-[hooks]: https://www.yarnpkg.com/package/@stickyroll/hooks
-[inner-badge]: https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fcomponents%2Finner%2Fpackage.json&query=version&prefix=@stickyroll/inner@&style=for-the-badge&label=yarn&colorB=2c8ebb&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABQElEQVQoFW2Ru0qDQRBG8+divIAYsE0EBa2t7ATR3jewTO9bWNrZ2QXBBxC0sRGfQZCARWwMGLBRcnE93/wzuGgGzs7s3HZnt1LJJKVUQFUudANWs/B8U0V5hP0p9KAl/9+45eZO7CNQwRAk17DmxXabeUUnJI2Unckr9pYX1q2IRR3sigRr2Meg7l8wAckIxmZliwrVvFoUxQz7zmOL6Jj5GXvg/m/XVhWv2KHBrbogk1LZnAdKZq8b/RcC5548Q0dhH3tH2eiaU0eXt8FYhgeQjEuV1EByBb/JfmY87yb7tvtCxTyHOLZ5AzXRARuwEIVdgh3QAzUgQcgUY4VkzXoDZ9CKf4nBlfQJSxBN17EvQA3voQfvYIPv0/EDnmAAubywuYQ9S/bFXgdnk70C+vRd0LXfYAiPzNdHm5Crk6c/GFYcwU+KPfkAAAAASUVORK5CYII=
-[inner]: https://www.yarnpkg.com/package/@stickyroll/inner
-[pagers-badge]: https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fcomponents%2Fpagers%2Fpackage.json&query=version&prefix=@stickyroll/pagers@&style=for-the-badge&label=yarn&colorB=2c8ebb&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABQElEQVQoFW2Ru0qDQRBG8+divIAYsE0EBa2t7ATR3jewTO9bWNrZ2QXBBxC0sRGfQZCARWwMGLBRcnE93/wzuGgGzs7s3HZnt1LJJKVUQFUudANWs/B8U0V5hP0p9KAl/9+45eZO7CNQwRAk17DmxXabeUUnJI2Unckr9pYX1q2IRR3sigRr2Meg7l8wAckIxmZliwrVvFoUxQz7zmOL6Jj5GXvg/m/XVhWv2KHBrbogk1LZnAdKZq8b/RcC5548Q0dhH3tH2eiaU0eXt8FYhgeQjEuV1EByBb/JfmY87yb7tvtCxTyHOLZ5AzXRARuwEIVdgh3QAzUgQcgUY4VkzXoDZ9CKf4nBlfQJSxBN17EvQA3voQfvYIPv0/EDnmAAubywuYQ9S/bFXgdnk70C+vRd0LXfYAiPzNdHm5Crk6c/GFYcwU+KPfkAAAAASUVORK5CYII=
-[pagers]: https://www.yarnpkg.com/package/@stickyroll/pagers
-[themes-badge]: https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstickyroll%2Freact-stickyroll%2Fmaster%2Fcomponents%2Fthemes%2Fpackage.json&query=version&prefix=@stickyroll/themes@&style=for-the-badge&label=yarn&colorB=2c8ebb&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD53d3cuaW5rc2NhcGUub3JnPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoE1OjLAAABQElEQVQoFW2Ru0qDQRBG8+divIAYsE0EBa2t7ATR3jewTO9bWNrZ2QXBBxC0sRGfQZCARWwMGLBRcnE93/wzuGgGzs7s3HZnt1LJJKVUQFUudANWs/B8U0V5hP0p9KAl/9+45eZO7CNQwRAk17DmxXabeUUnJI2Unckr9pYX1q2IRR3sigRr2Meg7l8wAckIxmZliwrVvFoUxQz7zmOL6Jj5GXvg/m/XVhWv2KHBrbogk1LZnAdKZq8b/RcC5548Q0dhH3tH2eiaU0eXt8FYhgeQjEuV1EByBb/JfmY87yb7tvtCxTyHOLZ5AzXRARuwEIVdgh3QAzUgQcgUY4VkzXoDZ9CKf4nBlfQJSxBN17EvQA3voQfvYIPv0/EDnmAAubywuYQ9S/bFXgdnk70C+vRd0LXfYAiPzNdHm5Crk6c/GFYcwU+KPfkAAAAASUVORK5CYII=
-[themes]: https://www.yarnpkg.com/package/@stickyroll/themes
-[say-thanks-badge]: https://img.shields.io/badge/say-thanks-673AB7.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAActpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx4bXA6Q3JlYXRvclRvb2w+d3d3Lmlua3NjYXBlLm9yZzwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KGMtVWAAAAXBJREFUKBVtkjtLA1EQRrN5aJAY0RQ2VqIoCgoWFhaC9lZaa6GFNgo2Af+FYGHhP0hhIXaCpY8irYgpRPBRCKLgKxjWcza7UcGBs9/cmbk7985uKoWFYZiHOehx/Z+Zi2vy5rNxUR9ahirJS/QKnkDrhkEYggm4gFqyscBiH7ZhCzohA1oD2mATNsDaVscP/H5YgRoUgyDYRb3GKvIMy2DNIaTSPrA3mIIvWIQCG2YF3+5LYM4aa1sdPfI9OJxTcAAL4ItvwVgJ7iC63u87nhA8gkk4hwEIwEEZOwNf+OeOdQId3KuKipZoy+fo8yxCA8kdPUKRRBYCyKgWaPjtTe/nmbaITi+EnNw0vm/MqVgXlPA/4y1RN307JgvHv0ZhnkI/j5aDHWK90ao5mKQ+Okr0sSmYgQqMxYUecwT2wGuUYdxcNFU6NEygx+gD8XX0Fb2GG3iP/Ue0AtG41cjizX5oO40iw+D4/W/97TzmAQ3q31XfqrpsHc4xAAAAAElFTkSuQmCC
-[say-thanks]: https://saythanks.io/to/pixelass
+export default function App() {
+  return (
+    // Uses 10 poages of 300vh each
+    <Stickyroll pages={10} factor={3}>
+      Scroll here.
+    </Stickyroll>
+  );
+}
+```
 
-<!-- Misc Links -->
+## Using listeners
 
-[contribute]: https://github.com/stickyroll/react-stickyroll/blob/master/.github/CONTRIBUTING.md
-[pixelass]: mailto:greg@pixelass.com
-[vue-stickyroll]: https://github.com/stickyroll/vue-stickyroll
+```jsx
+import Stickyroll from "@stickyroll/react/stickyroll";
+
+export default function App() {
+  return (
+    <Stickyroll
+      pages={1}
+      onStart={() => {
+        console.log("onStart");
+      }}
+      onPage={(page, index) => {
+        console.log("onPage", page, index);
+      }}
+      onProgress={(progress, page, index) => {
+        console.log("onProgress", progress, page, index);
+      }}
+      onEnd={() => {
+        console.log("onEnd");
+      }}
+    >
+      Scroll here.
+    </Stickyroll>
+  );
+}
+```
+
+## Using CSS variables
+
+- height: `CSS_VARS.height`
+- pages: `CSS_VARS.pages`
+- factor: `CSS_VARS.factor`
+- progress: `CSS_VARS.progress`
+- page: `CSS_VARS.page`
+
+```jsx
+import Stickyroll from "@stickyroll/react/stickyroll";
+import { CSS_VARS } from "@stickyroll/react/constants";
+
+export default function App() {
+  return (
+    <Stickyroll pages={1}>
+      <div
+        style={{
+          height: 10,
+          background: "red",
+          transform: `scaleX(var(${CSS_VARS.progress}, 0))`,
+        }}
+      />
+    </Stickyroll>
+  );
+}
+```
+
+## Using ClassNames
+
+- root: `CLASS_NAMES.root`
+- above: `CLASS_NAMES.above`
+- scrolling: `CLASS_NAMES.scrolling`
+- below: `CLASS_NAMES.below`
+- sticky: `CLASS_NAMES.sticky`
+- nonSticky: `CLASS_NAMES.nonSticky`
+- page: `CLASS_NAMES.page` (`type: function`)
+
+```jsx
+import styled from "@emotion/styled";
+import Stickyroll from "@stickyroll/react/stickyroll";
+import { CLASS_NAMES } from "@stickyroll/react/constants";
+
+const StyledComponent = styled.div`
+  height: 10px;
+  background: red;
+
+  /* Active while in sticky mode */
+  &.${CLASS_NAMES.sticky} {
+    background: yellow;
+  }
+
+  /* Active before sticky mode */
+  &.${CLASS_NAMES.above} {
+    background: blue;
+  }
+
+  /* Active after sticky mode */
+  &.${CLASS_NAMES.below} {
+    background: hotpink;
+  }
+
+  /* Active while on page 0 (index) */
+  &.${CLASS_NAMES.page(0)} {
+    background: rebeccapurple;
+  }
+`;
+
+export default function App() {
+  return (
+    <Stickyroll pages={1}>
+      <StyledComponent />
+    </Stickyroll>
+  );
+}
+```
+
+## Using the hook
+
+```jsx
+import { CSS_VARS, STYLE } from "@stickyroll/react/constants";
+import useStickyroll from "@stickyroll/react/use-stickyroll";
+import { useRef } from "react";
+
+export default function App() {
+  const ref = useRef();
+  useStickyroll(ref, { pages: 1 });
+  return (
+    <div
+      ref={ref}
+      style={{
+        height: `var(${CSS_VARS.height}, var(--100vh, 100vh))`,
+      }}
+    >
+      <div style={STYLE}>Scroll here.</div>
+    </div>
+  );
+}
+```
+
+## Advanced usage
+
+You can provide your own styles and behavior to adjust stickyroll to your needs. Take a look at the
+examples:
+
+- [Demo](https://react-stickyroll.vercel.app/?path=/story/examples--apple)
+- [Source](https://github.com/pixelass/react-stickyroll/blob/main/src/examples.stories.tsx)
+
+## Why we don't use States
+
+While you can write the output of stickyroll to a state we recommend to work without states, to
+optimize performance.
+
+You can access the ref (see
+[the example](https://github.com/pixelass/react-stickyroll/blob/main/src/examples.stories.tsx)) and
+modify the styles and additional behavior from there.
+
+If you still need a state, we recommend using a global state that can then be accessed in child
+components to prevent re-rendering the top level component.
+
+You can take a look at these state management libraries or use your own preferred library:
+
+- [Zustand](https://github.com/pmndrs/zustand)
+- [Jotai](https://github.com/pmndrs/jotai)
+
+## Typescript
+
+Stickyroll provides types and is fully typed. Use them, don't use them… if you ever need them, we've
+got you covered.
+
+## Testing
+
+We test stickyroll in real browsers with real interactions to ensure full coverage and reliability
+of this library.

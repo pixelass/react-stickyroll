@@ -1,7 +1,0 @@
-ignore:
-  - "components"
-  - "packages/stickyroll"
-  - "packages/utils/src/scroll-to.ts"
-  - "packages/utils/src/throttle.ts"
-  - "src/context"
-  - "**/test"

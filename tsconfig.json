@@ -1,21 +1,36 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-		"skipLibCheck": true,
     "alwaysStrict": true,
-    "declaration": false,
+    "declaration": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "jsx": "react",
-    "lib": ["dom", "es2015", "es2017.object", "es6", "es7"],
-    "module": "es6",
-    "moduleResolution": "node",
-    "pretty": true,
-    "removeComments": true,
-    "rootDir": "",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "Node16",
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "strict": false,
-    "target": "es6"
-  }
+    "target": "es2018",
+    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types"],
+    "incremental": true
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "src/**/*.d.ts",
+    "src/*.d.ts",
+    "src/**/*.ts",
+    "src/*.ts",
+    "src/**/*.tsx",
+    "src/*.tsx",
+    "cypress.d.ts",
+    "cypress"
+  ]
 }

@@ -1,0 +1,15 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes stickyroll-logo-path {
+            to {
+                stroke-dashoffset: -667.2792205811;
+            }
+        }
+        .stickyroll-logo-path {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 444.8528137207, 222.42640686035156;
+            animation: stickyroll-logo-path 3s linear infinite;
+        }
+    </style>
+    <path class="stickyroll-logo-path" fill="none" stroke="#673AB7" stroke-width="10" stroke-linecap="square" d="M55 15H15v20h70v20H55l30 30"/>
+</svg>

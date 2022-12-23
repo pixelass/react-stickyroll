@@ -6,22 +6,14 @@ indent_style = tab
 indent_size = 4
 max_line_length = 100
 end_of_line = lf
-trim_trailing_spaces = true
+trim_trailing_whitespace = true
 insert_final_newline = true
 
 # trailing spaces in markdown indicate word wrap
 [*.md]
-trim_trailing_spaces = false
+trim_trailing_whitespace = false
 
-# Set indents
-[*.{json,md,yml}]
-indent_size = 2
 
-# Set spaces
-[*.{json,md,yml}]
-indent_style = space
-
-[.*rc]
+[{*.json,*.md,*.yml,.*rc,.*config}]
 indent_style = space
 indent_size = 2
-

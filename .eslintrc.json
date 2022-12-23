@@ -1,0 +1,86 @@
+{
+  "root": true,
+  "extends": [
+    "typescript",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true,
+    "cypress/globals": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["unicorn", "react-hooks", "import", "cypress"],
+  "ignorePatterns": ["dist", "*.d.ts"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "error",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
+      }
+    ],
+    "no-nested-ternary": "error",
+    "object-curly-spacing": ["error", "always"],
+    "prettier/prettier": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
+  },
+  "overrides": [
+    {
+      "files": "{**/*,*}.{ts,tsx}",
+      "rules": {
+        "import/extensions": [
+          "error",
+          {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never",
+            "css": "always",
+            "json": "always",
+            "png": "always",
+            "jpg": "always",
+            "jpeg": "always",
+            "svg": "always"
+          }
+        ],
+        "react/prop-types": "off",
+        "unicorn/prefer-module": "off"
+      }
+    },
+    {
+      "files": "types.ts",
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    },
+    {
+      "files": "*.test.ts",
+      "rules": {
+        "import/no-unassigned-import": "off"
+      }
+    },
+    {
+      "files": "*.config.mjs",
+      "rules": {
+        "import/extensions": "off",
+        "node/file-extension-in-import": "off"
+      }
+    }
+  ]
+}
