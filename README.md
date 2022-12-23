@@ -199,7 +199,7 @@ You can provide your own styles and behavior to adjust stickyroll to your needs.
 examples:
 
 - [Demo](https://react-stickyroll.vercel.app/?path=/story/examples--apple)
-- [Source](https://github.com/pixelass/react-stickyroll/blob/main/src/examples.stories.tsx)
+- [Source](https://github.com/pixelass/react-stickyroll/blob/main/stories/examples.stories.tsx)
 
 ## Why we don't use States
 
@@ -207,8 +207,8 @@ While you can write the output of stickyroll to a state we recommend to work wit
 optimize performance.
 
 You can access the ref (see
-[the example](https://github.com/pixelass/react-stickyroll/blob/main/src/examples.stories.tsx)) and
-modify the styles and additional behavior from there.
+[the example](https://github.com/pixelass/react-stickyroll/blob/main/stories/examples.stories.tsx))
+and modify the styles and additional behavior from there.
 
 If you still need a state, we recommend using a global state that can then be accessed in child
 components to prevent re-rendering the top level component.
