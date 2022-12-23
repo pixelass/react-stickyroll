@@ -1,6 +1,7 @@
 {
   "name": "@stickyroll/react",
   "version": "2.0.0",
+  "private": false,
   "description": "A sticky view with scroll listener API for parallax style views",
   "homepage": "https://stickyroll.vercel.app",
   "bugs": {
@@ -158,5 +159,8 @@
     "react": ">=18",
     "react-dom": ">=18"
   },
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "publishConfig": {
+    "access": "public"
+  }
 }
