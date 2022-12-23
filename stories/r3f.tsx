@@ -10,9 +10,8 @@ export const geometry = new THREE.ShapeGeometry(
 	new THREE.Shape()
 		.moveTo(-0.5, -1.5)
 		.lineTo(0.5, -1.5)
-		.lineTo(0.5, 0.5)
-		.lineTo(0.5, 1.5)
-		.lineTo(-0.5, 0.5)
+		.lineTo(0.5, 1.505)
+		.lineTo(-0.5, 0.505)
 		.lineTo(-0.5, -1.5)
 );
 export const material = new THREE.MeshStandardMaterial({
@@ -36,8 +35,19 @@ export function Scene() {
 			<directionalLight position={[-100, 300, 400]} />
 			<group ref={ref} scale={100} position={[0, -100, 0]}>
 				<mesh position={[2, 0, 0.5]} material={material} geometry={geometry}></mesh>
+				<mesh position={[2, 0, -0.5]} material={material} geometry={geometry}></mesh>
+				<mesh position={[1.5, -0.5, 0]} rotation={[0, Math.PI / 2, 0]} material={material}>
+					<planeGeometry args={[1, 2]} />
+				</mesh>
 				<mesh position={[2.5, 0, 0]} rotation={[0, Math.PI / 2, 0]} material={material}>
-					<planeGeometry args={[1, 5]} />
+					<planeGeometry args={[1, 3.005]} />
+				</mesh>
+				<mesh
+					position={[2, 1, 0]}
+					rotation={[Math.PI / 2, Math.PI / 4, 0]}
+					material={material}
+				>
+					<planeGeometry args={[Math.sqrt(2), 1]} />
 				</mesh>
 				<mesh position={[0, -2, 0]} material={material}>
 					<boxGeometry args={[5, 1, 1]} />
