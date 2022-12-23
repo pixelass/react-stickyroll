@@ -76,6 +76,12 @@
       }
     },
     {
+      "files": "stories/r3f.tsx",
+      "rules": {
+        "react/no-unknown-property": "off"
+      }
+    },
+    {
       "files": "*.config.mjs",
       "rules": {
         "import/extensions": "off",

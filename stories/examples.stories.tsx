@@ -1,12 +1,17 @@
 import { css, Global } from "@emotion/react";
 import styled from "@emotion/styled";
+import { Canvas } from "@react-three/fiber";
 import { useEffect, useState } from "@storybook/addons";
-import type { ComponentStory, ComponentMeta } from "@storybook/react";
+import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import { forwardRef, useRef } from "react";
 
-import { CLASS_NAMES, CSS_VARS } from "./constants";
-import StickyRoll from "./stickyroll";
+import type { UseStickyrollOptions } from "../src";
+import { CLASS_NAMES, CSS_VARS } from "../src";
+import StickyRoll from "../src/stickyroll";
+import useStickyroll from "../src/use-stickyroll";
+
+import { progressRef, Scene } from "./r3f";
 
 const Flex = styled("div")({
 	position: "relative",
@@ -420,5 +425,47 @@ const AppleBase: ComponentStory<typeof StickyRoll> = ({ factor }) => {
 export const Apple = AppleBase.bind({});
 
 Apple.args = {
+	factor: 3,
+};
+
+const R3fWrapper = styled("div")({
+	minHeight: "var(--100vh, 100vh)",
+	height: `var(${CSS_VARS.height}, var(--100vh, 100vh))`,
+});
+
+const R3fInner = styled("div")({
+	position: "sticky",
+	inset: 0,
+	height: `var(--100vh, 100vh)`,
+});
+
+function R3FBase(args: UseStickyrollOptions) {
+	const ref = useRef<HTMLDivElement>(null);
+	useStickyroll(ref, {
+		...args,
+		onProgress(progress) {
+			progressRef.current = progress;
+		},
+		pages: 1,
+	});
+
+	return (
+		<>
+			<Global styles={css({ ".sb-show-main.sb-main-padded": { padding: 0 } })} />
+			<div style={{ height: "100vh" }} />
+			<R3fWrapper ref={ref}>
+				<R3fInner>
+					<Canvas orthographic camera={{ far: 1000, near: -1000 }}>
+						<Scene />
+					</Canvas>
+				</R3fInner>
+			</R3fWrapper>
+			<div style={{ height: "100vh" }} />
+		</>
+	);
+}
+export const R3F = R3FBase.bind({});
+
+R3F.args = {
 	factor: 3,
 };

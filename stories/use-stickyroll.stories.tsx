@@ -2,9 +2,9 @@ import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import type { ReactNode } from "react";
 import { useRef } from "react";
 
-import { CLASS_NAMES, CSS_VARS, STYLE } from "./constants";
-import type { UseStickyrollOptions } from "./types";
-import useStickyroll from "./use-stickyroll";
+import { CLASS_NAMES, CSS_VARS, STYLE } from "../src";
+import type { UseStickyrollOptions } from "../src";
+import useStickyroll from "../src/use-stickyroll";
 
 function Stickyroll({ children, ...args }: UseStickyrollOptions & { children?: ReactNode }) {
 	const ref = useRef<HTMLDivElement>(null);

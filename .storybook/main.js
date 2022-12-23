@@ -4,7 +4,7 @@ const process = require("node:process");
 const toPath = path_ => path.join(process.cwd(), path_);
 
 module.exports = {
-	stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+	stories: ["../stories/**/*.stories.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
 	addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-docs"],
 	framework: "@storybook/react",
 	typescript: { reactDocgen: true },

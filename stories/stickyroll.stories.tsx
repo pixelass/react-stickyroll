@@ -1,8 +1,8 @@
 import type { ComponentStory, ComponentMeta } from "@storybook/react";
 import { useRef } from "react";
 
-import { CSS_VARS } from "./constants";
-import Stickyroll from "./stickyroll";
+import { CSS_VARS } from "../src";
+import Stickyroll from "../src/stickyroll";
 
 export default {
 	title: "Stickyroll",
