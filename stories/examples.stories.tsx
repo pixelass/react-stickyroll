@@ -11,7 +11,7 @@ import { CLASS_NAMES, CSS_VARS } from "../src";
 import StickyRoll from "../src/stickyroll";
 import useStickyroll from "../src/use-stickyroll";
 
-import { progressRef, Scene } from "./r3f";
+import { state, Scene } from "./r3f";
 
 const Flex = styled("div")({
 	position: "relative",
@@ -437,6 +437,7 @@ const R3fInner = styled("div")({
 	position: "sticky",
 	inset: 0,
 	height: `var(--100vh, 100vh)`,
+	background: "#000",
 });
 
 function R3FBase(args: UseStickyrollOptions) {
@@ -444,7 +445,10 @@ function R3FBase(args: UseStickyrollOptions) {
 	useStickyroll(ref, {
 		...args,
 		onProgress(progress) {
-			progressRef.current = progress;
+			state.current.progress = progress;
+		},
+		onPage(_, index) {
+			state.current.page = index;
 		},
 		pages: 1,
 	});
@@ -455,7 +459,7 @@ function R3FBase(args: UseStickyrollOptions) {
 			<div style={{ height: "100vh" }} />
 			<R3fWrapper ref={ref}>
 				<R3fInner>
-					<Canvas orthographic camera={{ far: 1000, near: -1000 }}>
+					<Canvas orthographic camera={{ far: 500, near: -500 }}>
 						<Scene />
 					</Canvas>
 				</R3fInner>
