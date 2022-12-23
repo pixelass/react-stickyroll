@@ -73,6 +73,7 @@
     "ncu:patch": "yarn ncu -t patch",
     "prepublishOnly": "yarn clean && yarn build && yarn tsc:emitOnly",
     "prettier": "prettier 'src/{**/*,*}.{ts,tsx}'",
+    "release": "yarn dlx standard-version@9",
     "rollup": "rollup -c",
     "spj": "yarn dlx sort-package-json package.json",
     "storybook": "start-storybook -p 6006",
