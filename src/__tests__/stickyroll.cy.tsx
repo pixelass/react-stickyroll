@@ -50,13 +50,11 @@ describe("Stickyroll", () => {
 		cy.get(`[data-cy="stickyroll"]`).should("have.class", CLASS_NAMES.above);
 		cy.get(`[data-cy="stickyroll"]`).should("have.class", CLASS_NAMES.page(-1));
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.sticky);
-		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.scrolling);
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.below);
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.page(0));
 		cy.scrollTo(0, 201);
 		cy.wait(100);
 		cy.get(`[data-cy="stickyroll"]`).should("have.class", CLASS_NAMES.sticky);
-		cy.get(`[data-cy="stickyroll"]`).should("have.class", CLASS_NAMES.scrolling);
 		cy.get(`[data-cy="stickyroll"]`).should("have.class", CLASS_NAMES.page(0));
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.nonSticky);
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.above);
@@ -68,7 +66,6 @@ describe("Stickyroll", () => {
 		cy.get(`[data-cy="stickyroll"]`).should("have.class", CLASS_NAMES.below);
 		cy.get(`[data-cy="stickyroll"]`).should("have.class", CLASS_NAMES.page(0));
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.sticky);
-		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.scrolling);
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.above);
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.page(-1));
 	});
