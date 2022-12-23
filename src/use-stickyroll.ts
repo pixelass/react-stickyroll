@@ -1,8 +1,40 @@
 import type { RefObject } from "react";
 import { useEffect, useRef } from "react";
+import type { Except } from "type-fest";
 
 import { CLASS_NAMES, CSS_VARS } from "./constants";
 import type { UseStickyrollOptions } from "./types";
+
+function removeClassNames<T extends HTMLElement>(
+	element: T,
+	classNames: (keyof Except<typeof CLASS_NAMES, "page">)[],
+	pages = 0
+) {
+	element.classList.remove(
+		...classNames.map(className => CLASS_NAMES[className]),
+		...Array.from({ length: pages ? pages + 1 : 0 }, (_, index) => CLASS_NAMES.page(index - 1))
+	);
+}
+
+function addClassNames<T extends HTMLElement>(
+	element: T,
+	classNames: (keyof Except<typeof CLASS_NAMES, "page">)[],
+	page?: number
+) {
+	element.classList.add(...classNames.map(className => CLASS_NAMES[className]));
+	if (page !== undefined) {
+		element.classList.add(CLASS_NAMES.page(page));
+	}
+}
+
+function setCSSVariables<T extends HTMLElement>(
+	element: T,
+	record: Partial<Record<keyof typeof CSS_VARS, string | number>>
+) {
+	Object.entries(record).forEach(([key, value]) => {
+		element.style.setProperty(CSS_VARS[key], value.toString());
+	});
+}
 
 /**
  *
@@ -38,20 +70,16 @@ export default function useStickyroll<T extends HTMLElement>(
 		let started = false;
 		let ended = false;
 		let page = -1;
-		ref.current.style.setProperty(
-			CSS_VARS.height,
-			`calc(${pages * factor + 1} * var(--100vh, 100vh))`
-		);
-		ref.current.style.setProperty(CSS_VARS.pages, pages.toString());
-		ref.current.style.setProperty(CSS_VARS.factor, factor.toString());
-		ref.current.style.setProperty(CSS_VARS.progress, "0");
-		ref.current.style.setProperty(CSS_VARS.page, "0");
-		ref.current.classList.add(
-			CLASS_NAMES.root,
-			CLASS_NAMES.above,
-			CLASS_NAMES.nonSticky,
-			CLASS_NAMES.page(-1)
-		);
+
+		setCSSVariables(ref.current, {
+			height: `calc(${pages * factor + 1} * var(--100vh, 100vh))`,
+			pages,
+			factor,
+			progress: 0,
+			page: -1,
+		});
+		addClassNames(ref.current, ["root"]);
+
 		function eventHandler() {
 			const { innerHeight } = window;
 			const end = innerHeight * (pages * factor) * -1;
@@ -69,20 +97,13 @@ export default function useStickyroll<T extends HTMLElement>(
 			// Approaching sticky box
 			if (top > 0 && !started) {
 				const time = Math.max(-1, (top / innerHeight) * -1);
-				ref.current.style.setProperty(CSS_VARS.progress, time.toString());
-				ref.current.style.setProperty(CSS_VARS.page, "-1");
-				ref.current.classList.remove(
-					CLASS_NAMES.sticky,
-					CLASS_NAMES.scrolling,
-					CLASS_NAMES.below,
-					CLASS_NAMES.page(-1),
-					...Array.from({ length: pages }, (_, index) => CLASS_NAMES.page(index))
-				);
-				ref.current.classList.add(
-					CLASS_NAMES.nonSticky,
-					CLASS_NAMES.above,
-					CLASS_NAMES.page(-1)
-				);
+
+				setCSSVariables(ref.current, {
+					progress: time,
+					page: -1,
+				});
+				removeClassNames(ref.current, ["sticky", "below"], pages);
+				addClassNames(ref.current, ["nonSticky", "above"], -1);
 			}
 
 			// During the sticky phase
@@ -97,20 +118,12 @@ export default function useStickyroll<T extends HTMLElement>(
 				started = true;
 				page = nextPageIndex;
 
-				ref.current.style.setProperty(CSS_VARS.progress, nextProgress.toString());
-				ref.current.style.setProperty(CSS_VARS.page, nextPageIndex.toString());
-				ref.current.classList.remove(
-					CLASS_NAMES.nonSticky,
-					CLASS_NAMES.above,
-					CLASS_NAMES.below,
-					CLASS_NAMES.page(-1),
-					...Array.from({ length: pages }, (_, index) => CLASS_NAMES.page(index))
-				);
-				ref.current.classList.add(
-					CLASS_NAMES.sticky,
-					CLASS_NAMES.scrolling,
-					CLASS_NAMES.page(nextPageIndex)
-				);
+				setCSSVariables(ref.current, {
+					progress: nextProgress,
+					page: nextPageIndex,
+				});
+				removeClassNames(ref.current, ["nonSticky", "above", "below"], pages);
+				addClassNames(ref.current, ["sticky"], nextPageIndex);
 
 				if (firstRun && handlers.current.onStart) {
 					handlers.current.onStart();
@@ -130,20 +143,13 @@ export default function useStickyroll<T extends HTMLElement>(
 				if (top < end && !ended) {
 					ended = true;
 					page = pages;
-					ref.current.style.setProperty(CSS_VARS.progress, "1");
-					ref.current.style.setProperty(CSS_VARS.page, (pages - 1).toString());
-					ref.current.classList.remove(
-						CLASS_NAMES.sticky,
-						CLASS_NAMES.scrolling,
-						CLASS_NAMES.above,
-						CLASS_NAMES.page(-1),
-						...Array.from({ length: pages }, (_, index) => CLASS_NAMES.page(index))
-					);
-					ref.current.classList.add(
-						CLASS_NAMES.nonSticky,
-						CLASS_NAMES.below,
-						CLASS_NAMES.page(pages - 1)
-					);
+
+					setCSSVariables(ref.current, {
+						progress: 1,
+						page: pages - 1,
+					});
+					removeClassNames(ref.current, ["sticky", "above"], pages);
+					addClassNames(ref.current, ["nonSticky", "below"], pages - 1);
 
 					if (handlers.current.onEnd) {
 						handlers.current.onEnd();
