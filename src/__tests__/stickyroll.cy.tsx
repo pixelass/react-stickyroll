@@ -73,6 +73,52 @@ describe("Stickyroll", () => {
 		cy.get(`[data-cy="stickyroll"]`).should("not.have.class", CLASS_NAMES.page(-1));
 	});
 
+	it("should allow changing the factor", () => {
+		cy.viewport(1000, 1000);
+		cy.mount(
+			<>
+				<div style={{ height: 200 }} />
+				<StickyRoll data-cy="stickyroll" pages={1} factor={4}>
+					Test
+				</StickyRoll>
+				<div style={{ height: 200 }} />
+			</>
+		);
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.height, "calc(5 *  100vh)");
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.factor, "4");
+		cy.scrollTo(0, 201);
+		cy.wait(100);
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.page, "0");
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.progress, "0.00025");
+		cy.scrollTo(0, 1200);
+		cy.wait(100);
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.progress, "0.25");
+	});
+
+	it("should allow changing the pages", () => {
+		cy.viewport(1000, 1000);
+		cy.mount(
+			<>
+				<div style={{ height: 200 }} />
+				<StickyRoll data-cy="stickyroll" pages={10}>
+					Test
+				</StickyRoll>
+				<div style={{ height: 200 }} />
+			</>
+		);
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.height, "calc(11 *  100vh)");
+		cy.scrollTo(0, 201);
+		cy.wait(100);
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.page, "0");
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.progress, "0.001");
+		cy.scrollTo(0, 1200);
+		cy.wait(100);
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.page, "1");
+		cy.scrollTo(0, 2200);
+		cy.wait(100);
+		cy.get(`[data-cy="stickyroll"]`).should("have.css", CSS_VARS.page, "2");
+	});
+
 	it("should work without listeners", () => {
 		cy.viewport(1000, 1000);
 
