@@ -58,7 +58,7 @@ import Stickyroll from "@stickyroll/react/stickyroll";
 
 export default function App() {
   return (
-    // Uses 10 poages of 300vh each
+    // Uses 10 pages of 300vh each
     <Stickyroll pages={10} factor={3}>
       Scroll here.
     </Stickyroll>
