@@ -1,4 +1,11 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "**/__test__/*", "**/*.test.ts", "**/*.test.tsx"]
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*",
+    "**/*.test.ts",
+    "**/*.cy.tsx?",
+    "**/*.test.tsx?",
+    "cypress"
+  ]
 }
