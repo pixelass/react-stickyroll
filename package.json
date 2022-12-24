@@ -1,6 +1,6 @@
 {
   "name": "@stickyroll/react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A sticky view with scroll listener API for parallax style views",
   "homepage": "https://stickyroll.vercel.app",
   "bugs": {
