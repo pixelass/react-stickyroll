@@ -35,8 +35,8 @@ export function Scene() {
 			<directionalLight position={[100, 100, 100]} />
 			<group
 				ref={ref}
-				scale={100}
-				position={[50, -100, 0]}
+				scale={50}
+				position={[25, -50, 0]}
 				rotation={[Math.PI * 0.804, Math.PI * 0.75, 0]}
 			>
 				<mesh position={[2, 0, 0.5]} material={material} geometry={geometry}></mesh>

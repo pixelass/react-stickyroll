@@ -13,6 +13,13 @@ import useStickyroll from "../src/use-stickyroll";
 
 import { state, Scene } from "./r3f";
 
+const Spacer = styled("div")({
+	height: "100vh",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+});
+
 const Flex = styled("div")({
 	position: "relative",
 	zIndex: 1,
@@ -327,7 +334,9 @@ const AppleBase: ComponentStory<typeof StickyRoll> = ({ factor }) => {
 		<>
 			<Global styles={css({ ".sb-show-main.sb-main-padded": { padding: 0 } })} />
 			<Header ref={headerRef} />
-			<div style={{ height: "100vh" }} />
+			<Spacer>
+				<h2>Scroll Down</h2>
+			</Spacer>
 			<StickyRoll
 				ref={useRef<HTMLDivElement>(null)}
 				pages={pages}
@@ -417,7 +426,9 @@ const AppleBase: ComponentStory<typeof StickyRoll> = ({ factor }) => {
 					</Clip>
 				</Wrapper>
 			</StickyRoll>
-			<div style={{ height: "100vh", background: "#000" }} />
+			<Spacer>
+				<h2>Scroll Up</h2>
+			</Spacer>
 		</>
 	);
 };
@@ -456,7 +467,10 @@ function R3FBase(args: UseStickyrollOptions) {
 	return (
 		<>
 			<Global styles={css({ ".sb-show-main.sb-main-padded": { padding: 0 } })} />
-			<div style={{ height: "100vh" }} />
+			<Spacer>
+				<h2>Scroll Down</h2>
+			</Spacer>
+
 			<R3fWrapper ref={ref}>
 				<R3fInner>
 					<Canvas orthographic camera={{ far: 500, near: -500 }}>
@@ -464,7 +478,9 @@ function R3FBase(args: UseStickyrollOptions) {
 					</Canvas>
 				</R3fInner>
 			</R3fWrapper>
-			<div style={{ height: "100vh" }} />
+			<Spacer>
+				<h2>Scroll Up</h2>
+			</Spacer>
 		</>
 	);
 }

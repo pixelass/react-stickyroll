@@ -38,7 +38,16 @@ export default {
 
 const Template: ComponentStory<typeof Stickyroll> = args => (
 	<>
-		<div style={{ height: "50vh" }} />
+		<div
+			style={{
+				height: "50vh",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+			}}
+		>
+			<h2>Scroll Down</h2>
+		</div>
 		<Stickyroll {...args}>
 			<div
 				style={{
@@ -67,7 +76,16 @@ const Template: ComponentStory<typeof Stickyroll> = args => (
 				</svg>
 			</div>
 		</Stickyroll>
-		<div style={{ height: "50vh" }} />
+		<div
+			style={{
+				height: "50vh",
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+			}}
+		>
+			<h2>Scroll Up</h2>
+		</div>{" "}
 	</>
 );
 
