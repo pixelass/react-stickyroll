@@ -18,24 +18,24 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
       "default": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./*": {
-      "import": [
-        "./dist/*.mjs",
-        "./dist/index.mjs"
-      ],
-      "require": [
-        "./dist/*.cjs",
-        "./dist/index.cjs"
-      ],
-      "default": [
-        "./dist/*.js",
-        "./dist/index.js"
-      ],
+      "import": "./dist/*.mjs",
+      "default": "./dist/*.js",
       "types": [
+        "./dist/*.d.ts",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
         "./dist/*.d.ts",
         "./dist/index.d.ts"
       ]
