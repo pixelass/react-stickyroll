@@ -17,17 +17,44 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
-    "./*": {
-      "import": "./dist/*.mjs",
-      "default": "./dist/*.js",
-      "types": [
-        "./dist/*.d.ts",
-        "./dist/index.d.ts"
-      ]
+    "./constants": {
+      "import": {
+        "types": "./dist/constants.d.ts",
+        "default": "./dist/constants.mjs"
+      },
+      "require": {
+        "types": "./dist/constants.d.ts",
+        "default": "./dist/constants.js"
+      }
+    },
+    "./stickyroll": {
+      "import": {
+        "types": "./dist/stickyroll.d.ts",
+        "default": "./dist/stickyroll.mjs"
+      },
+      "require": {
+        "types": "./dist/stickyroll.d.ts",
+        "default": "./dist/stickyroll.js"
+      }
+    },
+    "./use-stickyroll": {
+      "import": {
+        "types": "./dist/use-stickyroll.d.ts",
+        "default": "./dist/use-stickyroll.mjs"
+      },
+      "require": {
+        "types": "./dist/use-stickyroll.d.ts",
+        "default": "./dist/use-stickyroll.js"
+      }
     }
   },
   "main": "./dist/index.js",
@@ -35,9 +62,14 @@
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "*": [
-        "./dist/*.d.ts",
-        "./dist/index.d.ts"
+      "constants": [
+        "./dist/constants.d.ts"
+      ],
+      "stickyroll": [
+        "./dist/stickyroll.d.ts"
+      ],
+      "use-stickyroll": [
+        "./dist/use-stickyroll.d.ts"
       ]
     }
   },

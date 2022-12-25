@@ -34,14 +34,13 @@ const config = allFiles.map(filename => {
 	const file = filename.substring(4);
 	const [filePath] = file.split(".");
 	return {
-		external(id) {
-			return [
-				...Object.keys({
-					...(pkg.dependencies ?? {}),
-					...(pkg.peerDependencies ?? {}),
-				}),
-			].some(key => id.startsWith(key) || id.startsWith("."));
-		},
+		external: [
+			...Object.keys({
+				...(pkg.dependencies ?? {}),
+				...(pkg.optionalDependencies ?? {}),
+				...(pkg.peerDependencies ?? {}),
+			}),
+		],
 		input: filename,
 		output: [
 			{
