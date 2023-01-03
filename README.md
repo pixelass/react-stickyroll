@@ -125,7 +125,6 @@ export default function App() {
 
 - root: `CLASS_NAMES.root`
 - above: `CLASS_NAMES.above`
-- scrolling: `CLASS_NAMES.scrolling`
 - below: `CLASS_NAMES.below`
 - sticky: `CLASS_NAMES.sticky`
 - nonSticky: `CLASS_NAMES.nonSticky`
